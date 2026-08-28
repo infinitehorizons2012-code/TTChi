@@ -1,4 +1,4 @@
-// Interactive Application Logic for UbD + AI HSK1 Lesson 1 App
+// Interactive Application Logic for UbD + AI HSK1 Lesson 1 App (School Context Refined)
 
 // 1. Navigation Tab Controller
 function switchSection(sectionId) {
@@ -14,20 +14,30 @@ function switchSection(sectionId) {
   if (activeBtn) activeBtn.classList.add('active');
 }
 
-// 2. Restructured UbD Slide Deck Data
+// 2. Restructured UbD Slide Deck Data (Refined to User Specs)
 const slidesData = [
   {
     id: 1,
     stage: "Giai Đoạn 1",
     stageBadgeClass: "badge-stage1",
-    type: "SKILL GAP & CLO",
-    title: "Slide 1: Xác Định Chuẩn Đầu Ra (CLO) Từ Dữ Liệu Tuyển Dụng",
+    type: "CLO & ESSENTIAL QUESTION",
+    title: "Slide 1: Kết Quả Mong Muốn (Desired Results)",
     content: `
-      <h3>🎯 Mục Tiêu Giao Tiếp Cốt Lõi:</h3>
-      <p>Thực hiện giao tiếp chào hỏi, cảm ơn và tạm biệt chuẩn mực trong môi trường doanh nghiệp hiện đại có sự phối hợp giữa Đồng nghiệp, Cấp trên và Trợ lý AI.</p>
-      <div style="background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 10px; border-left: 4px solid var(--cyan); margin-top: 1rem;">
+      <h3>🎯 CLO Cốt Lõi:</h3>
+      <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 600;">
+        Chào hỏi, tạm biệt và cảm ơn trong môi trường trường học (Học sinh, cô giáo & Trợ lý AI).
+      </p>
+
+      <h3 style="margin-top: 1.2rem;">🌸 Nét Văn Hóa Xưng Hô:</h3>
+      <p style="color: var(--cyan); font-weight: 600;">
+        Phân biệt chính xác quy tắc xưng hô <code>你</code> (bạn/AI) vs <code>您</code> (cấp trên/kính trọng).
+      </p>
+
+      <div style="background: rgba(99, 102, 241, 0.1); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--primary); margin-top: 1.2rem;">
         <strong>💡 Essential Question (EQ):</strong><br>
-        <em>"Làm thế nào để chọn lựa giữa đại từ '你' (bạn/AI) và '您' (kính ngữ cấp trên) để thể hiện đúng văn hóa tôn trọng và chuyên nghiệp?"</em>
+        <em style="font-size: 1.05rem; color: #a5b4fc;">
+          "Làm sao để lựa chọn danh xưng vừa lịch sự vừa chuyên nghiệp trong kỷ nguyên số?"
+        </em>
       </div>
     `
   },
@@ -35,39 +45,50 @@ const slidesData = [
     id: 2,
     stage: "Giai Đoạn 2",
     stageBadgeClass: "badge-stage2",
-    type: "PERFORMANCE TASK",
+    type: "PERFORMANCE TASK (GRASPS)",
     title: "Slide 2: Thách Thức Thực Chiến (GRASPS Performance Task)",
     content: `
-      <h3>⚡ Nhiệm Vụ Chinh Phục (Đặt Đánh Giá TRƯỚC KHI Học):</h3>
-      <p><strong>Bối cảnh (Situation):</strong> Ngày đầu tiên đi làm tại văn phòng công nghệ, bạn cần tiến hành chào hỏi 2 nhân vật:</p>
-      <ul class="feature-list" style="margin: 1rem 0;">
-        <li><i class="fa-solid fa-user-tie"></i> <strong>Giám đốc Wang (王老师):</strong> Cần dùng danh xưng kính trọng (您).</li>
-        <li><i class="fa-solid fa-robot"></i> <strong>Trợ lý AI Xiaoyu (小语):</strong> Dùng danh xưng chào hỏi thân thiện (你/你好).</li>
-      </ul>
-      <p><em>Học viên sẽ thực hiện đối thoại thoại trực tiếp tại tab <strong>AI Xiaoyu Bot</strong> để chấm điểm Rubric.</em></p>
+      <h3>⚡ Performance Task (GRASPS):</h3>
+      <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 600; line-height: 1.5;">
+        Đóng vai chào hỏi, tạm biệt và cảm ơn Giáo sư Wang, Trợ lý AI Xiaoyu và các bạn học sinh cũng như toàn trường trong ngày học đầu tiên (开学第一天).
+      </p>
+
+      <div style="margin-top: 1.2rem; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glass);">
+        <h4 style="color: var(--amber); margin-bottom: 0.5rem;"><i class="fa-solid fa-users-viewfinder"></i> Phân Vai Giao Tiếp:</h4>
+        <ul class="feature-list">
+          <li><i class="fa-solid fa-user-graduate"></i> <strong>Với Giáo sư/Cô Wang (王老师):</strong> Sử dụng đại từ kính ngữ <code>您</code> (nín hǎo).</li>
+          <li><i class="fa-solid fa-robot"></i> <strong>Với Trợ lý AI Xiaoyu (小语):</strong> Xưng hô thân thiện <code>你</code> (nǐ hǎo).</li>
+          <li><i class="fa-solid fa-school"></i> <strong>Với Bạn học & Toàn trường:</strong> Dùng <code>同学</code>, <code>大家</code> (dàjiā hǎo).</li>
+        </ul>
+      </div>
     `
   },
   {
     id: 3,
     stage: "Giai Đoạn 2",
     stageBadgeClass: "badge-stage2",
-    type: "RUBRIC STANDARDS",
-    title: "Slide 3: Tiêu Chí Chấm Điểm Năng Lực (AI Rubric)",
+    type: "AI RUBRIC 3 TRỤC",
+    title: "Slide 3: Tiêu Chí Chấm Điểm & Micro-Credential",
     content: `
-      <h3>📊 Thước Đo Đo Lường Năng Lực Đầu Ra:</h3>
+      <h3>📊 AI Rubric 3 Trục Đo Lường Năng Lực:</h3>
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
         <div style="background: rgba(99,102,241,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--cyan);">1. Đại Từ Xưng Hổ (40%)</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Sử dụng chính xác "您" cho bề trên và "你" cho bạn bè/AI.</p>
+          <h4 style="color: var(--cyan);">(1) Đại từ kính ngữ `您`</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Đánh giá việc chọn đúng `您` cho Giáo sư Wang và `你` cho AI/bạn học.</p>
         </div>
         <div style="background: rgba(168,85,247,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--secondary);">2. Phát Âm & Thanh Điệu (30%)</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Phát âm chuẩn Pinyin (nǐ hǎo, nín hǎo, xièxie, zàijiàn).</p>
+          <h4 style="color: var(--secondary);">(2) Thanh điệu chuẩn</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Đánh giá độ chính xác thanh điệu (nǐ hǎo, nín hǎo, xièxie, zàijiàn).</p>
         </div>
         <div style="background: rgba(16,185,129,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--emerald);">3. Phản Xạ Ngữ Cảnh (30%)</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Đáp lời đáp ứng chính xác khi nhận câu cảm ơn (不客气).</p>
+          <h4 style="color: var(--emerald);">(3) Phản xạ tự nhiên</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Độ nhạy đáp lời chào, câu cảm ơn (不客气) và tạm biệt (再见).</p>
         </div>
+      </div>
+
+      <div style="margin-top: 1.5rem; text-align: center; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); padding: 1rem; border-radius: 12px;">
+        <strong style="color: #fcd34d; font-size: 1.1rem;"><i class="fa-solid fa-award"></i> Ngưỡng Đo Lường:</strong>
+        <span style="color: var(--text-main);"> Học viên phải đạt <strong>$\ge 80\%$ điểm Rubric</strong> để được cấp Micro-Credential.</span>
       </div>
     `
   },
@@ -76,21 +97,21 @@ const slidesData = [
     stage: "Giai Đoạn 3",
     stageBadgeClass: "badge-stage3",
     type: "JUST-IN-TIME CONTENT",
-    title: "Slide 4: Học Liệu Vừa Đủ 1 - Nhóm Từ Xưng Hổ & Kính Ngữ",
+    title: "Slide 4: Học Liệu Vừa Đủ 1 - Xưng Hô Trường Học",
     content: `
-      <h3>📚 Nạp Học Liệu Tinh Gọn (Chỉ Từ Cần Cho Task):</h3>
+      <h3>📚 Học Liệu Tinh Gọn (Từ Vựng Xưng Hô Cốt Lõi):</h3>
       <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
-        <div class="vocab-card" style="flex: 1; min-width: 140px;">
-          <div class="vocab-hanzi">你 / 您</div>
-          <div class="vocab-pinyin">nǐ / nín</div>
-          <div class="vocab-meaning">Bạn / Ngài (Kính ngữ)</div>
-          <button class="audio-btn" onclick="speakChinese('您好')"><i class="fa-solid fa-volume-high"></i></button>
+        <div class="vocab-card" style="flex: 1; min-width: 130px;">
+          <div class="vocab-hanzi">王老师 / 您</div>
+          <div class="vocab-pinyin">Wáng lǎoshī / nín</div>
+          <div class="vocab-meaning">Cô Wang / Ngài (Kính ngữ)</div>
+          <button class="audio-btn" onclick="speakChinese('王老师，您好')"><i class="fa-solid fa-volume-high"></i></button>
         </div>
-        <div class="vocab-card" style="flex: 1; min-width: 140px;">
-          <div class="vocab-hanzi">老师 / 大家</div>
-          <div class="vocab-pinyin">lǎoshī / dàjiā</div>
-          <div class="vocab-meaning">Thầy giáo / Mọi người</div>
-          <button class="audio-btn" onclick="speakChinese('老师好')"><i class="fa-solid fa-volume-high"></i></button>
+        <div class="vocab-card" style="flex: 1; min-width: 130px;">
+          <div class="vocab-hanzi">同学 / 大家</div>
+          <div class="vocab-pinyin">tóngxué / dàjiā</div>
+          <div class="vocab-meaning">Bạn học / Mọi người</div>
+          <button class="audio-btn" onclick="speakChinese('同学们好，大家好')"><i class="fa-solid fa-volume-high"></i></button>
         </div>
       </div>
     `
@@ -100,12 +121,12 @@ const slidesData = [
     stage: "Giai Đoạn 3",
     stageBadgeClass: "badge-stage3",
     type: "JUST-IN-TIME CONTENT",
-    title: "Slide 5: Học Liệu Vừa Đủ 2 - Cụm Câu Chào & Cảm Ơn",
+    title: "Slide 5: Học Liệu Vừa Đủ 2 - Chào Hỏi, Cảm Ơn & Tạm Biệt",
     content: `
-      <h3>📚 Nạp Học Liệu Tinh Gọn (Mẫu Câu Thực Chiến):</h3>
+      <h3>📚 Nạp Học Liệu Tinh Gọn (Mẫu Câu Giao Tiếp):</h3>
       <ul class="feature-list" style="font-size: 1rem; margin-top: 1rem;">
-        <li><i class="fa-solid fa-message"></i> <strong>你好！ (nǐ hǎo):</strong> Xin chào (thông thường).</li>
-        <li><i class="fa-solid fa-message"></i> <strong>王老师，您好！ (Wáng lǎoshī, nín hǎo):</strong> Chào Cô Wang (Lịch sự).</li>
+        <li><i class="fa-solid fa-message"></i> <strong>你好！ (nǐ hǎo):</strong> Chào bạn / Chào Xiaoyu!</li>
+        <li><i class="fa-solid fa-message"></i> <strong>王老师，您好！ (Wáng lǎoshī, nín hǎo):</strong> Em chào Giáo sư/Cô Wang!</li>
         <li><i class="fa-solid fa-message"></i> <strong>谢谢！ - 不客气！ (xièxie - bú kèqi):</strong> Cảm ơn! - Không có gì!</li>
         <li><i class="fa-solid fa-message"></i> <strong>再见！ (zàijiàn):</strong> Tạm biệt!</li>
       </ul>
@@ -116,9 +137,9 @@ const slidesData = [
     stage: "Giai Đoạn 3",
     stageBadgeClass: "badge-stage3",
     type: "PHONETICS DRILL",
-    title: "Slide 6: Phản Xạ Ngữ Âm & Rao口令 (Tongue Twister)",
+    title: "Slide 6: Luyện Âm Tiết Rao口令 (Tongue Twister)",
     content: `
-      <h3>🎙️ Luyện Tập Âm Tiết Giải Quyết Lỗi Ngắt Giọng:</h3>
+      <h3>🎙️ Luyện Phát Âm & Thanh Điệu Rõ Ràng:</h3>
       <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245,158,11,0.3); padding: 1.5rem; border-radius: 12px; text-align: center; margin-top: 1rem;">
         <h2 style="font-family: 'Noto Sans SC'; color: #fcd34d;">Mā zhòng má, wǒ fàng mǎ. Mǎ chī má, mā mà mǎ.</h2>
         <p style="color: var(--text-muted); margin: 0.8rem 0;">(妈种麻，我放马。马吃麻，妈骂马。)</p>
@@ -183,25 +204,25 @@ function goToSlide(idx) {
 // 3. Web Speech Synthesis (Chinese Pronunciation)
 function speakChinese(text) {
   if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel(); // Stop current speech
+    window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'zh-CN';
     utterance.rate = 0.9;
     window.speechSynthesis.speak(utterance);
   } else {
-    alert('Trình duyệt của bạn không hỗ trợ TTS Web Speech API.');
+    alert('Trình duyệt không hỗ trợ Web Speech API.');
   }
 }
 
-// 4. AI Xiaoyu Chat & Rubric Simulator
+// 4. AI Xiaoyu Chat & Rubric Simulator (School Context)
 const aiResponses = [
-  { keywords: ['你好', 'hello', 'hi'], reply: '你好！很高兴在办公室见到你！请问您是王老师吗？', pinyin: 'Nǐ hǎo! Hěn gāoxìng zài bàngōngshì jiàndào nǐ!' },
-  { keywords: ['王老师', '我是', 'nín'], reply: '王老师好！我是AI助教小语。今后请多关照！', pinyin: 'Wáng lǎoshī hǎo! Wǒ shì AI zhùjiào Xiǎoyǔ.' },
-  { keywords: ['谢谢', 'xièxie'], reply: '不客气！这是我应该做的。', pinyin: 'Bú kèqi! Zhè shì wǒ yīnggāi zuò de.' },
-  { keywords: ['再见', 'zàijiàn'], reply: '再见！祝您工作愉快！', pinyin: 'Zàijiàn! Zhù nín gōngzuò yúkuài!' }
+  { keywords: ['你好', 'hello', 'hi'], reply: '你好！欢迎来到学校！我是AI助教小语。请问您怎么称呼？', pinyin: 'Nǐ hǎo! Huānyíng lái dào xuéxiào!' },
+  { keywords: ['王老师', '老师', 'nín', '您'], reply: '王老师好！同学们好！新学期开学第一天，祝大家学习进步！', pinyin: 'Wáng lǎoshī hǎo! Tóngxuémen hǎo!' },
+  { keywords: ['谢谢', 'xièxie'], reply: '不客气！大家一起加油！', pinyin: 'Bú kèqi! Dàjiā yìqǐ jiāyóu!' },
+  { keywords: ['再见', 'zàijiàn'], reply: '再见！明天见！', pinyin: 'Zàijiàn! Míngtiān jiàn!' }
 ];
 
-let lastAIMessage = "你好！我是AI助教小语。欢迎来到 office！请问您怎么称呼？";
+let lastAIMessage = "你好！我是AI助教小语。欢迎来到学校！开学第一天，请问您怎么称呼？";
 
 function speakCurrentAIMessage() {
   speakChinese(lastAIMessage);
@@ -223,10 +244,10 @@ function sendUserChatMessage() {
   input.value = '';
   chatContainer.scrollTop = chatContainer.scrollHeight;
 
-  // Simulate AI response after 600ms
+  // Simulate AI response
   setTimeout(() => {
     let replyObj = aiResponses.find(r => r.keywords.some(kw => msgText.toLowerCase().includes(kw))) || {
-      reply: '收到！我们一起加油学习中文！(Tôi đã nhận tin! Chúng ta cùng cố gắng nhé!)'
+      reply: '收到！在学校要互相帮助，礼貌问好哦！(Đã nhận! Ở trường chúng ta cùng hỏi thăm lịch sự nhé!)'
     };
 
     lastAIMessage = replyObj.reply;
@@ -237,10 +258,9 @@ function sendUserChatMessage() {
     chatContainer.appendChild(aiDiv);
     chatContainer.scrollTop = chatContainer.scrollHeight;
 
-    // Automatically speak AI reply
     speakChinese(replyObj.reply);
 
-    // Dynamic Rubric adjustment based on keywords
+    // Dynamic Rubric adjustment
     if (msgText.includes('您') || msgText.includes('王老师')) {
       const honorificSlider = document.getElementById('slider-honorific');
       if (honorificSlider) {
@@ -270,25 +290,25 @@ function updateRubricScore() {
 
   const badgeElem = document.getElementById('rubric-status-badge');
   if (total >= 80) {
-    badgeElem.innerHTML = `<i class="fa-solid fa-certificate"></i> Đạt Chuẩn Micro-Credential`;
+    badgeElem.innerHTML = `<i class="fa-solid fa-certificate"></i> Đạt Ngưỡng ${total}% (Cấp Micro-Credential)`;
     badgeElem.style.color = "var(--emerald)";
   } else {
-    badgeElem.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Cần Cải Thiện Thêm`;
+    badgeElem.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Chưa Đạt Ngưỡng 80% (Cần Cải Thiện)`;
     badgeElem.style.color = "var(--amber)";
   }
 }
 
 function generateCertificateModal() {
   const total = document.getElementById('total-rubric-score').innerText;
-  alert(`🏆 CHỨNG CHỈ NĂNG LỰC MICRO-CREDENTIAL\n\nKhóa Học: HSK 1 Bài 1 (AI小语，你好！)\nĐiểm Đánh Giá Rubric: ${total}\nTrạng Thái: ĐÃ XÁC NHẬN CHUẨN ĐẦU RA UBD\n\nChúc mừng bạn đã hoàn thành nhiệm vụ thực chiến Giai đoạn 2!`);
+  alert(`🏆 CHỨNG CHỈ MICRO-CREDENTIAL\n\nBài Học: HSK 1 Bài 1 (AI小语，你好！)\nBối Cảnh: Môi trường Trường học (Học sinh, Giáo sư Wang & AI Xiaoyu)\nĐiểm AI Rubric: ${total}\nTrạng Thái: ĐÃ ĐẠT CHUẨN ĐẦU RA UBD (≥80%)\n\nChúc mừng bạn đã chinh phục thành công Performance Task trong ngày học đầu tiên!`);
 }
 
 // 5. Vocabulary Cards Vault Generator
 const vocabVaultData = [
   { hanzi: "你好", pinyin: "nǐ hǎo", meaning: "Xin chào (Hello)" },
-  { hanzi: "王老师", pinyin: "Wáng lǎoshī", meaning: "Cô giáo Wang" },
+  { hanzi: "王老师", pinyin: "Wáng lǎoshī", meaning: "Giáo sư / Cô giáo Wang" },
   { hanzi: "请问", pinyin: "qǐngwèn", meaning: "Xin hỏi (Excuse me)" },
-  { hanzi: "大家", pinyin: "dàjiā", meaning: "Mọi người (Everybody)" },
+  { hanzi: "大家", pinyin: "dàjiā", meaning: "Mọi người / Toàn trường" },
   { hanzi: "好", pinyin: "hǎo", meaning: "Tốt / Nắng (Good)" },
   { hanzi: "学生", pinyin: "xuéshēng", meaning: "Học sinh (Student)" },
   { hanzi: "您", pinyin: "nín", meaning: "Ngài / Thầy (Kính ngữ)" },
