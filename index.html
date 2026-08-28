@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI小语，你好！Xin chào AI Tiểu Ngữ!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=honorific_note_v18">
+  <link rel="stylesheet" href="styles.css?v=start_button_timer_v19">
   <!-- HanziWriter for Hanzi Etymology Animation -->
   <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 </head>
@@ -462,7 +462,7 @@
         </div>
       </section>
 
-      <!-- GHI CHÚ ĐẠI TỪ KÍNH NGỮ 您 / 你 / 你们 (BỔ SUNG VÀO TRƯỚC PHẦN THANH ĐIỆU THEO YÊU CẦU) -->
+      <!-- GHI CHÚ ĐẠI TỪ KÍNH NGỮ 您 / 你 / 你们 -->
       <section class="section-block">
         <div class="card" style="border: 2px solid #6366f1; background: #f5f3ff;">
           <h4 style="font-size: 1.2rem; color: #4338ca; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
@@ -605,10 +605,10 @@
 
     </div>
 
-    <!-- TAB 3: TEST TRANSFER INTERACTIVE PURE JS ENGINE -->
+    <!-- TAB 3: TEST TRANSFER INTERACTIVE PURE JS ENGINE WITH START BUTTON OVERLAY -->
     <div id="test-tab" class="tab-content">
 
-      <!-- 4-SKILL TEST SUITE -->
+      <!-- 4-SKILL TEST SUITE CARD -->
       <div class="card" style="margin-bottom: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 12px;">
           <div>
@@ -621,7 +621,7 @@
           <!-- REAL-TIME TIMER BAR & RANDOMIZER BUTTON -->
           <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
             <div class="timer-badge" id="test-timer-badge">
-              <i class="fa-solid fa-stopwatch" style="color: #ef4444;"></i> Thời gian: <strong id="timer-sec-count">0</strong> giây (Bẫy tốc độ > 8s)
+              <i class="fa-solid fa-stopwatch" style="color: #ef4444;"></i> Thời gian: <strong id="timer-sec-count">0</strong> giây <span id="timer-status-sub">(Chưa bấm Bắt Đầu)</span>
             </div>
             <button type="button" class="btn-shuffle" onclick="shuffleAndGenerateNewTestSet()">
               <i class="fa-solid fa-rotate-right"></i> 🔄 Sinh Đề Biến Thể Mới Từ Ngân Hàng Đề
@@ -629,12 +629,26 @@
           </div>
         </div>
 
-        <!-- DYNAMICALLY RENDERED TEST QUESTIONS CONTAINER -->
-        <div id="test-questions-container">
+        <!-- START TEST OVERLAY SCREEN (REQUIRE CLICK TO START TIMER) -->
+        <div id="test-start-overlay" style="background: linear-gradient(135deg, #eef2ff 0%, #f3e8ff 100%); border: 2px dashed #818cf8; border-radius: 20px; padding: 2.5rem 1.5rem; text-align: center; margin-bottom: 1.5rem;">
+          <div style="width: 60px; height: 60px; border-radius: 50%; background: #ffffff; color: #6366f1; display: inline-flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1rem; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);">
+            <i class="fa-solid fa-play"></i>
+          </div>
+          <h3 style="font-size: 1.35rem; color: #312e81; margin-bottom: 0.5rem;">Sẵn Sàng Làm Bài Test Transfer HSK 1 Bài 1?</h3>
+          <p style="color: #475569; max-width: 600px; margin: 0 auto 1.5rem auto; font-weight: 600;">
+            Khi bạn bấm nút <strong>"Bắt Đầu Làm Bài"</strong> dưới đây, đồng hồ bấm giờ đo tốc độ phản xạ mới bắt đầu chạy!
+          </p>
+          <button type="button" class="btn-eval" style="max-width: 320px; margin: 0 auto; font-size: 1.15rem;" onclick="startTestNow()">
+            <i class="fa-solid fa-circle-play"></i> BẮT ĐẦU LÀM BÀI NGAY
+          </button>
+        </div>
+
+        <!-- DYNAMICALLY RENDERED TEST QUESTIONS CONTAINER (HIDDEN UNTIL STARTED) -->
+        <div id="test-questions-container" style="display: none;">
           <!-- JS WILL AUTOMATICALLY RENDER QUESTIONS HERE -->
         </div>
 
-        <button type="button" class="btn-eval" onclick="runPureJSEvaluator()">
+        <button type="button" id="btn-submit-eval" class="btn-eval" style="display: none;" onclick="runPureJSEvaluator()">
           <i class="fa-solid fa-bolt"></i> Nộp Bài & Phân Tích Lỗi Sai + Sinh Bài Tập Biến Thể Tương Tác
         </button>
 
@@ -657,6 +671,6 @@
   </main>
 
   <!-- Script setup -->
-  <script src="script.js?v=honorific_note_v18"></script>
+  <script src="script.js?v=start_button_timer_v19"></script>
 </body>
 </html>

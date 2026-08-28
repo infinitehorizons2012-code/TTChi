@@ -1,9 +1,10 @@
-// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Vocab Learning Module & HanziWriter)
+// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Vocab Learning Module & Start Button Timer)
 
 let timerInterval = null;
 let timerSeconds = 0;
 let currentBankSetIndex = 0;
 let currentWriter = null;
+let isTestStarted = false;
 
 // 1. Vocabulary Database for HSK 1 Lesson 1 (11 Nòng cốt từ vựng & Chiết Tự)
 const vocabDatabase = [
@@ -418,7 +419,6 @@ function renderVocabGridList() {
   });
 
   container.innerHTML = html;
-  // Select first word by default
   selectVocabWord(0);
 }
 
@@ -478,7 +478,6 @@ function selectVocabWord(index, el) {
       </div>
     `;
 
-    // Render HanziWriter animation for single character
     setTimeout(() => {
       renderHanziAnimation(item.singleChar);
     }, 50);
@@ -623,7 +622,23 @@ function renderCurrentTestSet() {
   container.innerHTML = html;
 }
 
-// 8. Tab Switcher & Timer Manager
+// 8. Start Test Action (Triggers Timer and Reveals Questions)
+function startTestNow() {
+  isTestStarted = true;
+  const overlay = document.getElementById('test-start-overlay');
+  const questionsBox = document.getElementById('test-questions-container');
+  const submitBtn = document.getElementById('btn-submit-eval');
+  const statusSub = document.getElementById('timer-status-sub');
+
+  if (overlay) overlay.style.display = 'none';
+  if (questionsBox) questionsBox.style.display = 'block';
+  if (submitBtn) submitBtn.style.display = 'flex';
+  if (statusSub) statusSub.innerText = '(Bẫy tốc độ > 8s)';
+
+  startTestTimer();
+}
+
+// 9. Tab Switcher & Timer Manager
 function switchPageTab(tabId, el) {
   const tabs = document.querySelectorAll('.tab-content');
   tabs.forEach(t => {
@@ -643,7 +658,22 @@ function switchPageTab(tabId, el) {
   if (el) el.classList.add('active');
 
   if (tabId === 'test-tab') {
-    startTestTimer();
+    if (!isTestStarted) {
+      const overlay = document.getElementById('test-start-overlay');
+      const questionsBox = document.getElementById('test-questions-container');
+      const submitBtn = document.getElementById('btn-submit-eval');
+      const statusSub = document.getElementById('timer-status-sub');
+
+      if (overlay) overlay.style.display = 'block';
+      if (questionsBox) questionsBox.style.display = 'none';
+      if (submitBtn) submitBtn.style.display = 'none';
+      if (statusSub) statusSub.innerText = '(Chưa bấm Bắt Đầu)';
+      
+      stopTestTimer();
+      timerSeconds = 0;
+      const countEl = document.getElementById('timer-sec-count');
+      if (countEl) countEl.innerText = '0';
+    }
   } else {
     stopTestTimer();
   }
@@ -670,7 +700,7 @@ function stopTestTimer() {
   }
 }
 
-// 9. Web Speech API
+// 10. Web Speech API
 function speakText(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
@@ -683,7 +713,7 @@ function speakText(text) {
   }
 }
 
-// 10. Calibration State Manager ([V], [?], [X])
+// 11. Calibration State Manager ([V], [?], [X])
 const jsCalibData = { 1: '?', 2: '?', 3: '?', 4: '?' };
 
 function setQuestionCalib(qNum, state, btnEl) {
@@ -701,7 +731,7 @@ function setQuestionCalib(qNum, state, btnEl) {
   else if (state === 'X') btnEl.classList.add('active-red');
 }
 
-// 11. Interactive Option Checker for Transfer Practice Questions
+// 12. Interactive Option Checker for Transfer Practice Questions
 function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl, explainText) {
   const container = btnEl.parentElement;
   if (!container) return;
@@ -732,7 +762,7 @@ function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl,
   }
 }
 
-// 12. Evaluator Execution Function (Evaluates current active set)
+// 13. Evaluator Execution Function (Evaluates current active set)
 function runPureJSEvaluator() {
   stopTestTimer();
 
@@ -878,11 +908,11 @@ function runPureJSEvaluator() {
   }
 }
 
-// 13. Dynamic Bank Swapper Button Action
+// 14. Dynamic Bank Swapper Button Action
 function shuffleAndGenerateNewTestSet() {
   currentBankSetIndex = (currentBankSetIndex + 1) % testBankSets.length;
   renderCurrentTestSet();
-  startTestTimer();
+  startTestNow();
 
   const logBox = document.getElementById('js-error-log-box');
   if (logBox) logBox.style.display = 'none';
@@ -891,7 +921,7 @@ function shuffleAndGenerateNewTestSet() {
   if (testArea) testArea.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 14. Automatic Daily Scheduler via LocalStorage
+// 15. Automatic Daily Scheduler via LocalStorage
 function checkDailyScheduleOnLoad() {
   try {
     const raw = localStorage.getItem('hsk1_ubd_spaced_db');
@@ -919,7 +949,10 @@ function checkDailyScheduleOnLoad() {
 
 function startDailyTaskReview() {
   const testTabBtn = document.querySelectorAll('.tab-btn')[2];
-  if (testTabBtn) switchPageTab('test-tab', testTabBtn);
+  if (testTabBtn) {
+    switchPageTab('test-tab', testTabBtn);
+    startTestNow();
+  }
 }
 
 // Initial Setup
