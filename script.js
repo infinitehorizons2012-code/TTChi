@@ -1,4 +1,4 @@
-// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Vocab Learning Module, Student Accounts & Spaced Retrieval 1-3-7 Review Tab)
+// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Vocab Learning Module, Auth Username/Password & Spaced Retrieval 1-3-7)
 
 let timerInterval = null;
 let timerSeconds = 0;
@@ -6,9 +6,19 @@ let currentBankSetIndex = 0;
 let currentWriters = [];
 let isTestStarted = false;
 
-// Student Account System Data
+// Student Account & Authentication System Data
 let activeStudentName = "Vương Nhất Phi";
-let activeStudentRank = "🌱 Học viên mới";
+let activeUsername = "vuongnhatphi";
+
+// Default Seed Account
+const defaultAccounts = {
+  "vuongnhatphi": {
+    fullName: "Vương Nhất Phi",
+    username: "vuongnhatphi",
+    password: "123",
+    rank: "🌱 Học viên chính thức"
+  }
+};
 
 // 1. Vocabulary Database for HSK 1 Lesson 1 (12 Nòng cốt từ vựng & Chiết Tự)
 const vocabDatabase = [
@@ -400,11 +410,31 @@ const testBankSets = [
   }
 ];
 
-// 3. Student Account Manager Functions
+// 3. Student Account Authentication & Database Functions
+function getAllAccounts() {
+  try {
+    const raw = localStorage.getItem('hsk1_auth_accounts_db');
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return defaultAccounts;
+}
+
+function saveAllAccounts(db) {
+  try {
+    localStorage.setItem('hsk1_auth_accounts_db', JSON.stringify(db));
+  } catch (e) {}
+}
+
 function loadActiveStudentAccount() {
   try {
-    const saved = localStorage.getItem('hsk1_active_student_name');
-    if (saved) activeStudentName = saved;
+    const savedUser = localStorage.getItem('hsk1_active_username');
+    if (savedUser) {
+      const db = getAllAccounts();
+      if (db[savedUser]) {
+        activeUsername = savedUser;
+        activeStudentName = db[savedUser].fullName;
+      }
+    }
   } catch (e) {}
 
   const nameEl = document.getElementById('display-student-name');
@@ -413,64 +443,154 @@ function loadActiveStudentAccount() {
 
 function openAccountModal() {
   const modal = document.getElementById('account-modal');
-  const input = document.getElementById('input-student-name');
   if (modal) modal.style.display = 'flex';
-  if (input) input.value = activeStudentName;
-
+  switchAuthTab('login');
   renderSavedAccountsList();
 }
 
 function closeAccountModal() {
   const modal = document.getElementById('account-modal');
   if (modal) modal.style.display = 'none';
+  showAuthMsg("", "");
 }
 
-function saveStudentAccount() {
-  const input = document.getElementById('input-student-name');
-  if (!input || !input.value.trim()) return;
+function switchAuthTab(type) {
+  const loginForm = document.getElementById('auth-login-form');
+  const regForm = document.getElementById('auth-register-form');
+  const btnLogin = document.getElementById('btn-tab-login');
+  const btnReg = document.getElementById('btn-tab-register');
 
-  const newName = input.value.trim();
-  activeStudentName = newName;
-
-  try {
-    localStorage.setItem('hsk1_active_student_name', newName);
-    let list = JSON.parse(localStorage.getItem('hsk1_student_list') || '[]');
-    if (!list.includes(newName)) {
-      list.push(newName);
-      localStorage.setItem('hsk1_student_list', JSON.stringify(list));
-    }
-  } catch (e) {}
-
-  loadActiveStudentAccount();
-  closeAccountModal();
+  if (type === 'login') {
+    if (loginForm) loginForm.style.display = 'block';
+    if (regForm) regForm.style.display = 'none';
+    if (btnLogin) btnLogin.classList.add('active');
+    if (btnReg) btnReg.classList.remove('active');
+  } else {
+    if (loginForm) loginForm.style.display = 'none';
+    if (regForm) regForm.style.display = 'block';
+    if (btnReg) btnReg.classList.add('active');
+    if (btnLogin) btnLogin.classList.remove('active');
+  }
+  showAuthMsg("", "");
 }
 
-function selectExistingAccount(name) {
-  activeStudentName = name;
-  try {
-    localStorage.setItem('hsk1_active_student_name', name);
-  } catch (e) {}
+function showAuthMsg(msg, color) {
+  const box = document.getElementById('auth-status-msg');
+  if (!box) return;
+  if (!msg) {
+    box.style.display = 'none';
+    return;
+  }
+  box.style.display = 'block';
+  box.innerText = msg;
+  if (color === 'red') {
+    box.style.background = '#fef2f2';
+    box.style.color = '#dc2626';
+    box.style.border = '1px solid #fca5a5';
+  } else {
+    box.style.background = '#ecfdf5';
+    box.style.color = '#047857';
+    box.style.border = '1px solid #a7f3d0';
+  }
+}
+
+function handleLoginSubmit() {
+  const uInput = document.getElementById('login-username')?.value.trim();
+  const pInput = document.getElementById('login-password')?.value.trim();
+
+  if (!uInput || !pInput) {
+    showAuthMsg("Vui lòng nhập đầy đủ Tên đăng nhập và Mật khẩu!", "red");
+    return;
+  }
+
+  const db = getAllAccounts();
+  if (!db[uInput]) {
+    showAuthMsg("Tên đăng nhập không tồn tại! Hãy tạo tài khoản mới.", "red");
+    return;
+  }
+
+  if (db[uInput].password !== pInput) {
+    showAuthMsg("Mật khẩu không chính xác! Vui lòng thử lại.", "red");
+    return;
+  }
+
+  activeUsername = uInput;
+  activeStudentName = db[uInput].fullName;
+  localStorage.setItem('hsk1_active_username', uInput);
+
   loadActiveStudentAccount();
-  closeAccountModal();
+  showAuthMsg("🎉 Đăng nhập thành công!", "green");
+
+  setTimeout(() => {
+    closeAccountModal();
+  }, 600);
+}
+
+function handleRegisterSubmit() {
+  const fullName = document.getElementById('reg-fullname')?.value.trim();
+  const username = document.getElementById('reg-username')?.value.trim().toLowerCase();
+  const password = document.getElementById('reg-password')?.value.trim();
+
+  if (!fullName || !username || !password) {
+    showAuthMsg("Vui lòng nhập đầy đủ Họ tên, Tên đăng nhập và Mật khẩu!", "red");
+    return;
+  }
+
+  const db = getAllAccounts();
+  if (db[username]) {
+    showAuthMsg("Tên đăng nhập này đã có người sử dụng! Vui lòng chọn tên khác.", "red");
+    return;
+  }
+
+  db[username] = {
+    fullName: fullName,
+    username: username,
+    password: password,
+    rank: "🌱 Học viên chính thức"
+  };
+
+  saveAllAccounts(db);
+
+  activeUsername = username;
+  activeStudentName = fullName;
+  localStorage.setItem('hsk1_active_username', username);
+
+  loadActiveStudentAccount();
+  showAuthMsg("🎉 Tạo tài khoản và bảo mật mật khẩu thành công!", "green");
+
+  setTimeout(() => {
+    closeAccountModal();
+  }, 600);
+}
+
+function quickSwitchAccount(username) {
+  const db = getAllAccounts();
+  if (db[username]) {
+    activeUsername = username;
+    activeStudentName = db[username].fullName;
+    localStorage.setItem('hsk1_active_username', username);
+    loadActiveStudentAccount();
+    closeAccountModal();
+  }
 }
 
 function renderSavedAccountsList() {
   const container = document.getElementById('saved-accounts-list');
   if (!container) return;
 
-  let list = ["Vương Nhất Phi"];
-  try {
-    const saved = JSON.parse(localStorage.getItem('hsk1_student_list') || '[]');
-    saved.forEach(s => { if (!list.includes(s)) list.push(s); });
-  } catch (e) {}
-
+  const db = getAllAccounts();
   let html = '';
-  list.forEach(name => {
-    const isCurrent = name === activeStudentName;
+
+  Object.keys(db).forEach(u => {
+    const acc = db[u];
+    const isCurrent = u === activeUsername;
     html += `
-      <div style="display: flex; justify-content: space-between; align-items: center; background: ${isCurrent ? '#eef2ff' : '#ffffff'}; border: 1px solid ${isCurrent ? '#6366f1' : '#cbd5e1'}; padding: 8px 12px; border-radius: 10px; cursor: pointer;" onclick="selectExistingAccount('${name}')">
-        <strong style="color: ${isCurrent ? '#4338ca' : '#1e293b'}; font-size: 0.92rem;">👤 ${name}</strong>
-        ${isCurrent ? '<span style="color: #6366f1; font-weight: 800; font-size: 0.8rem;">[Đang chọn]</span>' : '<span style="color: #64748b; font-size: 0.8rem;">Chọn</span>'}
+      <div style="display: flex; justify-content: space-between; align-items: center; background: ${isCurrent ? '#eef2ff' : '#ffffff'}; border: 1px solid ${isCurrent ? '#6366f1' : '#cbd5e1'}; padding: 8px 12px; border-radius: 10px; cursor: pointer;" onclick="quickSwitchAccount('${u}')">
+        <div>
+          <strong style="color: ${isCurrent ? '#4338ca' : '#1e293b'}; font-size: 0.92rem;">👤 ${acc.fullName}</strong>
+          <span style="font-size: 0.8rem; color: #64748b; margin-left: 6px;">(@${acc.username})</span>
+        </div>
+        ${isCurrent ? '<span style="color: #6366f1; font-weight: 800; font-size: 0.8rem;">[Đang đăng nhập]</span>' : '<span style="color: #64748b; font-size: 0.8rem;">Chuyển</span>'}
       </div>
     `;
   });
@@ -748,7 +868,7 @@ function renderSpacedReviewTab() {
   const formatDate = (d) => `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
   let lastDate = new Date();
   try {
-    const raw = localStorage.getItem('hsk1_ubd_spaced_db');
+    const raw = localStorage.getItem(`hsk1_spaced_${activeUsername}`);
     if (raw) {
       const parsed = JSON.parse(raw);
       if (parsed.lastTestDate) lastDate = new Date(parsed.lastTestDate);
@@ -769,7 +889,7 @@ function renderSpacedReviewTab() {
 
   let html = `
     <p style="color: #475569; font-weight: 600; margin-bottom: 1.2rem;">
-      Hệ thống đã tự động lọc ra 3 bài tập rèn phản xạ thanh điệu 3+3, kính ngữ 您 và biến điệu chữ 不 cho học sinh <strong>${activeStudentName}</strong>:
+      Hệ thống đã tự động lọc ra 3 bài tập rèn phản xạ thanh điệu 3+3, kính ngữ 您 và biến điệu chữ 不 cho học sinh <strong>${activeStudentName}</strong> (@${activeUsername}):
     </p>
 
     <div class="transfer-quiz-card">
@@ -1032,14 +1152,14 @@ function runPureJSEvaluator() {
     }
   });
 
-  // Save Spaced Retrieval Schedule
+  // Save Spaced Retrieval Schedule per username
   const todayStr = new Date().toISOString().split('T')[0];
   const storageData = {
     lastTestDate: todayStr,
     missedQuestions: missedQuestionsList
   };
   try {
-    localStorage.setItem('hsk1_ubd_spaced_db', JSON.stringify(storageData));
+    localStorage.setItem(`hsk1_spaced_${activeUsername}`, JSON.stringify(storageData));
   } catch (e) {}
 
   const today = new Date();
@@ -1111,28 +1231,21 @@ function shuffleAndGenerateNewTestSet() {
   if (testArea) testArea.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 17. Automatic Daily Scheduler via LocalStorage
+// 17. Automatic Daily Scheduler via LocalStorage per student account
 function checkDailyScheduleOnLoad() {
   try {
-    const raw = localStorage.getItem('hsk1_ubd_spaced_db');
+    const raw = localStorage.getItem(`hsk1_spaced_${activeUsername}`);
     if (!raw) return;
     const db = JSON.parse(raw);
     if (!db || !db.lastTestDate) return;
 
-    const lastDate = new Date(db.lastTestDate);
-    const today = new Date();
-    const diffTime = Math.abs(today - lastDate);
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-    if (diffDays === 1 || diffDays === 3 || diffDays === 7 || diffDays >= 0) {
-      const banner = document.getElementById('daily-task-banner');
-      const bannerDesc = document.getElementById('daily-banner-desc');
-      if (banner) {
-        if (bannerDesc) {
-          bannerDesc.innerText = `Hôm nay là mốc ôn tập Spaced Retrieval cho ${activeStudentName}! Có các bài tập rèn phản xạ thanh điệu và kính ngữ!`;
-        }
-        banner.style.display = 'flex';
+    const banner = document.getElementById('daily-task-banner');
+    const bannerDesc = document.getElementById('daily-banner-desc');
+    if (banner) {
+      if (bannerDesc) {
+        bannerDesc.innerText = `Hôm nay là mốc ôn tập Spaced Retrieval của ${activeStudentName}! Bạn có các bài tập rèn phản xạ thanh điệu và kính ngữ!`;
       }
+      banner.style.display = 'flex';
     }
   } catch (e) {}
 }
