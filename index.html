@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Khung Thiết Kế Ngược UbD - HSK 1 Bài 1</title>
+  <title>UbD HSK 1 - Lý Thuyết & Đề Thi 4 Kỹ Năng Error-Driven</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=single_page_kids">
+  <link rel="stylesheet" href="styles.css?v=pure_js_engine_v3">
 </head>
 <body>
 
@@ -15,8 +15,8 @@
       <div class="logo">
         <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
         <div class="logo-title">
-          <h1>UbD <span>HSK 1</span></h1>
-          <p>Tái Cấu Trúc Sư Phạm Theo Chuẩn Backward Design</p>
+          <h1>UbD <span>HSK 1 Kids</span></h1>
+          <p>Thiết Kế Ngược & Pure JS Error-Driven Engine (Không Cần AI API)</p>
         </div>
       </div>
       <a href="https://github.com/infinitehorizons2012-code/TTChi" target="_blank" class="gh-link">
@@ -28,286 +28,403 @@
   <!-- Main Content Container -->
   <main class="page-container">
 
-    <!-- PAGE TITLE -->
+    <!-- PAGE TITLE BANNER -->
     <div class="page-title-banner">
-      <h2><i class="fa-solid fa-sparkles" style="color: #f59e0b;"></i> Khung Thiết Kế Ngược (UbD) 《新HSK教程1》第1课</h2>
-      <p>Mô hình Backward Design 3 Giai đoạn & Mẫu câu chuẩn trường học dành cho trẻ em</p>
+      <h2><i class="fa-solid fa-sparkles" style="color: #f59e0b;"></i> HSK 1 Bài 1: Lý Thuyết UbD & Đề Thi 4 Kỹ Năng Self-Contained</h2>
+      <p>Tích hợp sẵn 100% bằng JavaScript thuần (Web Speech API, Calibration [V][?][X], Root Cause Analysis & Spaced Retrieval 1-3-7)</p>
     </div>
 
-    <!-- SECTION 1: 3 GIAI ĐOẠN UBD (Ảnh 1) -->
-    <section class="section-block">
-      <div class="grid-3">
-        
-        <!-- CARD GIAI ĐOẠN 1 -->
-        <div class="card card-stage1">
-          <div class="card-top">
-            <span class="badge badge-cyan">GIAI ĐOẠN 1</span>
-            <i class="fa-solid fa-bullseye icon-top icon-cyan"></i>
-          </div>
-          <h3 class="card-h3">Kết Quả Mong Muốn (Desired Results)</h3>
-          <p class="card-sub">Xác định Chuẩn đầu ra (CLOs) & Nét văn hóa xưng hô cốt lõi trong trường học.</p>
+    <!-- TAB NAVIGATOR -->
+    <div class="tab-bar">
+      <button type="button" class="tab-btn active" onclick="switchPageTab('theory-tab', this)">
+        <i class="fa-solid fa-book-open"></i> 1. Lý Thuyết Sư Phạm UbD (5 Ảnh)
+      </button>
+      <button type="button" class="tab-btn" onclick="switchPageTab('test-tab', this)">
+        <i class="fa-solid fa-pen-to-square"></i> 2. Bài Tập 4 Kỹ Năng Pure JS Engine
+      </button>
+    </div>
 
-          <div class="item-list">
-            <div class="item-row">
-              <i class="fa-solid fa-circle-check check-cyan"></i>
-              <div>
-                <strong>CLO Cốt Lõi:</strong>
-                <span>Chào hỏi, tạm biệt và cảm ơn trong môi trường trường học (Học sinh, cô giáo & Trợ lý AI).</span>
+    <!-- TAB 1: LÝ THUYẾT SƯ PHẠM (NỘI DUNG 5 ẢNH) -->
+    <div id="theory-tab" class="tab-content active">
+
+      <!-- SECTION 1: 3 GIAI ĐOẠN UBD (Ảnh 1) -->
+      <section class="section-block">
+        <div class="grid-3">
+          
+          <!-- CARD GIAI ĐOẠN 1 -->
+          <div class="card card-stage1">
+            <div class="card-top">
+              <span class="badge badge-cyan">GIAI ĐOẠN 1</span>
+              <i class="fa-solid fa-bullseye icon-top icon-cyan"></i>
+            </div>
+            <h3 class="card-h3">Kết Quả Mong Muốn (Desired Results)</h3>
+            <p class="card-sub">Xác định Chuẩn đầu ra (CLOs) & Nét văn hóa xưng hô cốt lõi trong trường học.</p>
+
+            <div class="item-list">
+              <div class="item-row">
+                <i class="fa-solid fa-circle-check check-cyan"></i>
+                <div>
+                  <strong>CLO Cốt Lõi:</strong>
+                  <span>Chào hỏi, tạm biệt và cảm ơn trong môi trường trường học (Học sinh, cô giáo & Trợ lý AI).</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <i class="fa-solid fa-circle-check check-cyan"></i>
+                <div>
+                  <strong>Nét Văn Hóa:</strong>
+                  <span>Phân biệt chính xác quy tắc xưng hô <code>你</code> (bạn/AI) vs <code>您</code> (cấp trên/kính trọng) & <code>你们</code> (các bạn).</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <i class="fa-solid fa-circle-check check-cyan"></i>
+                <div>
+                  <strong>Essential Question (EQ):</strong>
+                  <em>Làm sao để lựa chọn danh xưng vừa lịch sự vừa chuyên nghiệp trong kỷ nguyên số?</em>
+                </div>
               </div>
             </div>
-            <div class="item-row">
-              <i class="fa-solid fa-circle-check check-cyan"></i>
-              <div>
-                <strong>Nét Văn Hóa:</strong>
-                <span>Phân biệt chính xác quy tắc xưng hô <code>你</code> (bạn/AI) vs <code>您</code> (cấp trên/kính trọng) & <code>你们</code> (các bạn).</span>
+          </div>
+
+          <!-- CARD GIAI ĐOẠN 2 -->
+          <div class="card card-stage2">
+            <div class="card-top">
+              <span class="badge badge-amber">GIAI ĐOẠN 2</span>
+              <i class="fa-solid fa-clipboard-check icon-top icon-amber"></i>
+            </div>
+            <h3 class="card-h3">Bằng Chứng Đánh Giá (Assessment Evidence)</h3>
+            <p class="card-sub">Thiết kế Đề Thi 4 Kỹ Năng & Error-Driven Engine TRƯỚC KHI xây dựng bài giảng.</p>
+
+            <div class="item-list">
+              <div class="item-row">
+                <i class="fa-solid fa-circle-check check-amber"></i>
+                <div>
+                  <strong>Đề Thi 4 Kỹ Năng:</strong>
+                  <span>Đánh giá Nghe – Nói – Đọc – Viết bám sát ngữ cảnh khai trường (开学第一天).</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <i class="fa-solid fa-circle-check check-amber"></i>
+                <div>
+                  <strong>Calibration [V][?][X]:</strong>
+                  <span>Phân loại câu chắc chắn vs câu đoán mò để triệt tiêu bẫy "đoán đúng".</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <i class="fa-solid fa-circle-check check-amber"></i>
+                <div>
+                  <strong>Đo Lường Rubric:</strong>
+                  <span>Học viên đạt <strong>80% điểm Rubric</strong> để được cấp Micro-Credential.</span>
+                </div>
               </div>
             </div>
-            <div class="item-row">
-              <i class="fa-solid fa-circle-check check-cyan"></i>
+          </div>
+
+          <!-- CARD GIAI ĐOẠN 3 -->
+          <div class="card card-stage3">
+            <div class="card-top">
+              <span class="badge badge-purple">GIAI ĐOẠN 3</span>
+              <i class="fa-solid fa-route icon-top icon-purple"></i>
+            </div>
+            <h3 class="card-h3">Kế Hoạch Học Tập (Learning Plan - JIT)</h3>
+            <p class="card-sub">Lắp ráp học liệu Just-In-Time tinh gọn vừa đủ dựa trên Sổ Tay Lỗi Sai (Error Log).</p>
+
+            <div class="item-list">
+              <div class="item-row">
+                <i class="fa-solid fa-circle-check check-purple"></i>
+                <div>
+                  <strong>Học Từ Lỗi Sai:</strong>
+                  <span>Bóc tách 4 loại lỗi (Vocab Gap, Grammar Deficit, Distractor Trap, Time Constraint).</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <i class="fa-solid fa-circle-check check-purple"></i>
+                <div>
+                  <strong>Transfer Testing:</strong>
+                  <span>Dùng AI tạo 3 câu biến thể giữ nguyên điểm bẫy để kiểm tra mức độ hiểu bản chất.</span>
+                </div>
+              </div>
+              <div class="item-row">
+                <i class="fa-solid fa-circle-check check-purple"></i>
+                <div>
+                  <strong>Lịch Ôn 1-3-7:</strong>
+                  <span>Lặp lại ngắt quãng để ghi nhớ sâu thanh điệu 3+3 (`ní hǎo`) & chữ 不 (`bú kèqi`).</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION 2: PHẠM VI MẪU CÂU BÀI 1 (Ảnh 2) -->
+      <section class="section-block">
+        <div class="card scope-box">
+          <h3 class="scope-header">
+            <i class="fa-solid fa-vector-square"></i> Phạm Vi Mẫu Câu Bài 1 (Không dùng ngữ pháp chưa học):
+          </h3>
+
+          <div class="scope-list">
+            <div class="scope-item">
+              <i class="fa-solid fa-user-graduate scope-icon icon-emerald"></i>
               <div>
-                <strong>Essential Question (EQ):</strong>
-                <em>Làm sao để lựa chọn danh xưng vừa lịch sự vừa chuyên nghiệp trong kỷ nguyên số?</em>
+                <strong>Chào Giáo sư/Cô Wang:</strong>
+                <span class="hz">王老师，您好！</span>
+                <span class="py">(Wáng lǎoshī, nín hǎo!).</span>
+              </div>
+            </div>
+
+            <div class="scope-item">
+              <i class="fa-solid fa-robot scope-icon icon-cyan"></i>
+              <div>
+                <strong>Chào Trợ lý AI Xiaoyu:</strong>
+                <span class="hz">你好！ / 小语，你好！</span>
+                <span class="py">(nǐ hǎo!).</span>
+              </div>
+            </div>
+
+            <div class="scope-item">
+              <i class="fa-solid fa-school scope-icon icon-teal"></i>
+              <div>
+                <strong>Chào Học sinh & Tập thể:</strong>
+                <span class="hz">同学们好！ / 大家好！ / 你们好！</span>
+              </div>
+            </div>
+
+            <div class="scope-item">
+              <i class="fa-solid fa-heart scope-icon icon-pink"></i>
+              <div>
+                <strong>Cảm ơn & Tạm biệt:</strong>
+                <span class="hz">谢谢！ - 不客气！ / 再见！</span>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- CARD GIAI ĐOẠN 2 -->
-        <div class="card card-stage2">
-          <div class="card-top">
-            <span class="badge badge-amber">GIAI ĐOẠN 2</span>
-            <i class="fa-solid fa-clipboard-check icon-top icon-amber"></i>
+      <!-- SECTION 3: AI RUBRIC 3 TRỤC (Ảnh 3) -->
+      <section class="section-block">
+        <div class="grid-3">
+          <div class="card rubric-card card-cyan-bg">
+            <h4 class="rubric-title title-cyan">(1) Đại từ kính ngữ 您 / 你 / 你们</h4>
+            <p class="rubric-desc">Chọn đúng <strong>您</strong> cho Giáo sư Wang và <strong>你们 / 你</strong> cho AI/bạn học.</p>
           </div>
-          <h3 class="card-h3">Bằng Chứng Đánh Giá (Assessment Evidence)</h3>
-          <p class="card-sub">Thiết kế Đề Thi 4 Kỹ Năng & Error-Driven Engine TRƯỚC KHI xây dựng bài giảng.</p>
 
-          <div class="item-list">
-            <div class="item-row">
-              <i class="fa-solid fa-circle-check check-amber"></i>
-              <div>
-                <strong>Đề Thi 4 Kỹ Năng:</strong>
-                <span>Đánh giá Nghe – Nói – Đọc – Viết bám sát ngữ cảnh khai trường (开学第一天).</span>
-              </div>
-            </div>
-            <div class="item-row">
-              <i class="fa-solid fa-circle-check check-amber"></i>
-              <div>
-                <strong>Calibration [V][?][X]:</strong>
-                <span>Phân loại câu chắc chắn vs câu đoán mò để triệt tiêu bẫy "đoán đúng".</span>
-              </div>
-            </div>
-            <div class="item-row">
-              <i class="fa-solid fa-circle-check check-amber"></i>
-              <div>
-                <strong>Đo Lường Rubric:</strong>
-                <span>Học viên đạt <strong>80% điểm Rubric</strong> để được cấp Micro-Credential.</span>
-              </div>
-            </div>
+          <div class="card rubric-card card-purple-bg">
+            <h4 class="rubric-title title-purple">(2) Thanh điệu chuẩn (3+3 & Biến điệu 不)</h4>
+            <p class="rubric-desc">Biến điệu 3+3 (nǐ hǎo $\rightarrow$ ní hǎo) & Biến điệu 不 (bù kèqi $\rightarrow$ bú kèqi).</p>
+          </div>
+
+          <div class="card rubric-card card-emerald-bg">
+            <h4 class="rubric-title title-emerald">(3) Phản xạ 3 chức năng Bài 1</h4>
+            <p class="rubric-desc">Chào hỏi, Cảm ơn (不客气) và Tạm biệt (再见) chuẩn mẫu câu Bài 1.</p>
           </div>
         </div>
+      </section>
 
-        <!-- CARD GIAI ĐOẠN 3 -->
-        <div class="card card-stage3">
-          <div class="card-top">
-            <span class="badge badge-purple">GIAI ĐOẠN 3</span>
-            <i class="fa-solid fa-route icon-top icon-purple"></i>
-          </div>
-          <h3 class="card-h3">Kế Hoạch Học Tập (Learning Plan - JIT)</h3>
-          <p class="card-sub">Lắp ráp học liệu Just-In-Time tinh gọn vừa đủ dựa trên Sổ Tay Lỗi Sai (Error Log).</p>
-
-          <div class="item-list">
-            <div class="item-row">
-              <i class="fa-solid fa-circle-check check-purple"></i>
-              <div>
-                <strong>Học Từ Lỗi Sai:</strong>
-                <span>Bóc tách 4 loại lỗi (Vocab Gap, Grammar Deficit, Distractor Trap, Time Constraint).</span>
-              </div>
-            </div>
-            <div class="item-row">
-              <i class="fa-solid fa-circle-check check-purple"></i>
-              <div>
-                <strong>Transfer Testing:</strong>
-                <span>Dùng AI tạo 3 câu biến thể giữ nguyên điểm bẫy để kiểm tra mức độ hiểu bản chất.</span>
-              </div>
-            </div>
-            <div class="item-row">
-              <i class="fa-solid fa-circle-check check-purple"></i>
-              <div>
-                <strong>Lịch Ôn 1-3-7:</strong>
-                <span>Lặp lại ngắt quãng để ghi nhớ sâu thanh điệu 3+3 (`ní hǎo`) & chữ 不 (`bú kèqi`).</span>
-              </div>
+      <!-- SECTION 4: MẪU CÂU TƯƠNG TÁC VAI VẾ (Ảnh 4) -->
+      <section class="section-block">
+        <div class="pattern-stack">
+          
+          <!-- CARD 1 -->
+          <div class="card pattern-card card-cyan-bg">
+            <h4 class="pattern-header title-cyan">
+              <i class="fa-solid fa-user-tie"></i> 1. Với Bề Trên (Giáo sư Wang - 王老师):
+            </h4>
+            <div class="pattern-body">
+              <p>• Chào: <strong class="hz">王老师，您好！</strong> <span class="py">(Wáng lǎoshī, nín hǎo!)</span></p>
+              <p>• Cảm ơn: <strong class="hz">谢谢您，王老师！</strong> <span class="py">(Xièxie nín, Wáng lǎoshī!)</span></p>
+              <p>• Tạm biệt: <strong class="hz">王老师，再见！</strong> <span class="py">(Wáng lǎoshī, zàijiàn!)</span></p>
             </div>
           </div>
+
+          <!-- CARD 2 -->
+          <div class="card pattern-card card-blue-bg">
+            <h4 class="pattern-header title-blue">
+              <i class="fa-solid fa-robot"></i> 2. Với AI & Bạn Bè (Trợ lý AI Xiaoyu - 小语):
+            </h4>
+            <div class="pattern-body">
+              <p>• Chào: <strong class="hz">你好！ / 小语，你好！</strong> <span class="py">(nǐ hǎo!)</span></p>
+              <p>• Cảm ơn & Đáp: <strong class="hz">谢谢！ - 不客气！</strong> <span class="py">(Xièxie! - Bú kèqi!)</span></p>
+              <p>• Tạm biệt: <strong class="hz">再见！</strong> <span class="py">(Zàijiàn!)</span></p>
+            </div>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="card pattern-card card-purple-bg">
+            <h4 class="pattern-header title-purple">
+              <i class="fa-solid fa-users"></i> 3. Với Học Sinh & Tập Thể (学生, 你们, 同学, 大家):
+            </h4>
+            <div class="pattern-body">
+              <p>• Chào tập thể: <strong class="hz">你们好！ / 同学们好！ / 大家好！</strong> <span class="py">(Nǐmen hǎo! / Tóngxuémen hǎo! / Dàjiā hǎo!)</span></p>
+              <p>• Cảm ơn tập thể: <strong class="hz">谢谢大家！ / 谢谢你们！</strong> <span class="py">(Xièxie dàjiā! / Xièxie nǐmen!)</span></p>
+            </div>
+          </div>
+
         </div>
+      </section>
 
+      <!-- SECTION 5: BIẾN ĐIỆU THANH ĐIỆU (Ảnh 5) -->
+      <section class="section-block">
+        <div class="grid-2">
+          
+          <!-- CARD 1: 3+3 -->
+          <div class="card sandhi-card card-yellow-bg">
+            <h4 class="sandhi-title title-amber">
+              <i class="fa-solid fa-wave-square"></i> 1. Biến Điệu 3+3 (Tone Sandhi 3+3)
+            </h4>
+            <p class="sandhi-desc">
+              Khi 2 thanh 3 đi liền nhau: <strong>Thanh 3 thứ nhất chuyển thành Thanh 2</strong> (hướng lên).
+            </p>
+
+            <div class="sandhi-box">
+              <strong class="hz-highlight title-cyan">你 (nǐ) + 好 (hǎo) $\rightarrow$ ní hǎo (你好)</strong>
+            </div>
+
+            <button type="button" class="audio-btn-wide" onclick="speakText('你好')">
+              <i class="fa-solid fa-volume-high"></i> Nghe Biến Điệu ní hǎo
+            </button>
+          </div>
+
+          <!-- CARD 2: BU -->
+          <div class="card sandhi-card card-emerald-bg">
+            <h4 class="sandhi-title title-emerald">
+              <i class="fa-solid fa-bolt"></i> 2. Biến Điệu Chữ 不 (Tone Sandhi of 不)
+            </h4>
+            <p class="sandhi-desc">
+              Chữ <strong>不 (bù)</strong> mang thanh 4 gốc. Khi đi trước âm mang <strong>Thanh 4 (như 客 kè)</strong>, <strong>不</strong> biến thành <strong>Thanh 2 (bú)</strong>!
+            </p>
+
+            <div class="sandhi-box">
+              <strong class="hz-highlight title-emerald">不 (bù) + 客气 (kèqi) $\rightarrow$ bú kèqi (不客气)</strong>
+            </div>
+
+            <button type="button" class="audio-btn-wide" onclick="speakText('不客气')">
+              <i class="fa-solid fa-volume-high"></i> Nghe Biến Điệu bú kèqi
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- TAB 2: INTERACTIVE PURE JS TEST ENGINE (KHÔNG DÙNG AI API) -->
+    <div id="test-tab" class="tab-content">
+      
+      <div class="card scope-box" style="margin-bottom: 2rem;">
+        <h3 class="scope-header" style="color: #6366f1;">
+          <i class="fa-solid fa-microchip"></i> Đề Thi 4 Kỹ Năng Chạy Bằng Pure JavaScript (Web Speech API Native)
+        </h3>
+        <p style="color: #475569; font-size: 0.98rem; margin-bottom: 1rem;">
+          Ứng dụng chạy <strong>100% offline / local trong trình duyệt</strong> mà không cần trả phí hay phụ thuộc vào bất kỳ API AI bên ngoài nào!
+        </p>
       </div>
-    </section>
 
-    <!-- SECTION 2: PHẠM VI MẪU CÂU BÀI 1 (Ảnh 2) -->
-    <section class="section-block">
-      <div class="card scope-box">
-        <h3 class="scope-header">
-          <i class="fa-solid fa-vector-square"></i> Phạm Vi Mẫu Câu Bài 1 (Không dùng ngữ pháp chưa học):
+      <!-- 4-SKILL TEST SUITE -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <h3 style="font-size: 1.4rem; color: #0f172a; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-gamepad" style="color: #ec4899;"></i> Bộ Đề Đánh Giá 4 Kỹ Năng HSK 1 Bài 1
         </h3>
 
-        <div class="scope-list">
-          <div class="scope-item">
-            <i class="fa-solid fa-user-graduate scope-icon icon-emerald"></i>
-            <div>
-              <strong>Chào Giáo sư/Cô Wang:</strong>
-              <span class="hz">王老师，您好！</span>
-              <span class="py">(Wáng lǎoshī, nín hǎo!).</span>
+        <!-- TEST 1: LISTENING -->
+        <div class="test-item-card">
+          <div class="test-header">
+            <span class="badge badge-cyan">1. Kỹ Năng Nghe (Listening)</span>
+            <div class="calib-btn-group">
+              <button type="button" class="calib-btn" onclick="setQuestionCalib(1, 'V', this)">[V] Chắc chắn</button>
+              <button type="button" class="calib-btn active-amber" onclick="setQuestionCalib(1, '?', this)">[?] Phân vân</button>
+              <button type="button" class="calib-btn" onclick="setQuestionCalib(1, 'X', this)">[X] Đoán mò</button>
             </div>
           </div>
-
-          <div class="scope-item">
-            <i class="fa-solid fa-robot scope-icon icon-cyan"></i>
-            <div>
-              <strong>Chào Trợ lý AI Xiaoyu:</strong>
-              <span class="hz">你好！ / 小语，你好！</span>
-              <span class="py">(nǐ hǎo!).</span>
-            </div>
-          </div>
-
-          <div class="scope-item">
-            <i class="fa-solid fa-school scope-icon icon-teal"></i>
-            <div>
-              <strong>Chào Học sinh & Tập thể:</strong>
-              <span class="hz">同学们好！ / 大家好！ / 你们好！</span>
-            </div>
-          </div>
-
-          <div class="scope-item">
-            <i class="fa-solid fa-heart scope-icon icon-pink"></i>
-            <div>
-              <strong>Cảm ơn & Tạm biệt:</strong>
-              <span class="hz">谢谢！ - 不客气！ / 再见！</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: AI RUBRIC 3 TRỤC (Ảnh 3) -->
-    <section class="section-block">
-      <div class="grid-3">
-        <div class="card rubric-card card-cyan-bg">
-          <h4 class="rubric-title title-cyan">(1) Đại từ kính ngữ 您 / 你 / 你们</h4>
-          <p class="rubric-desc">Chọn đúng <strong>您</strong> cho Giáo sư Wang và <strong>你们 / 你</strong> cho AI/bạn học.</p>
-        </div>
-
-        <div class="card rubric-card card-purple-bg">
-          <h4 class="rubric-title title-purple">(2) Thanh điệu chuẩn (3+3 & Biến điệu 不)</h4>
-          <p class="rubric-desc">Biến điệu 3+3 (nǐ hǎo $\rightarrow$ ní hǎo) & Biến điệu 不 (bù kèqi $\rightarrow$ bú kèqi).</p>
-        </div>
-
-        <div class="card rubric-card card-emerald-bg">
-          <h4 class="rubric-title title-emerald">(3) Phản xạ 3 chức năng Bài 1</h4>
-          <p class="rubric-desc">Chào hỏi, Cảm ơn (不客气) và Tạm biệt (再见) chuẩn mẫu câu Bài 1.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: MẪU CÂU TƯƠNG TÁC VAI VẾ (Ảnh 4) -->
-    <section class="section-block">
-      <div class="pattern-stack">
-        
-        <!-- CARD 1 -->
-        <div class="card pattern-card card-cyan-bg">
-          <h4 class="pattern-header title-cyan">
-            <i class="fa-solid fa-user-tie"></i> 1. Với Bề Trên (Giáo sư Wang - 王老师):
-          </h4>
-          <div class="pattern-body">
-            <p>• Chào: <strong class="hz">王老师，您好！</strong> <span class="py">(Wáng lǎoshī, nín hǎo!)</span></p>
-            <p>• Cảm ơn: <strong class="hz">谢谢您，王老师！</strong> <span class="py">(Xièxie nín, Wáng lǎoshī!)</span></p>
-            <p>• Tạm biệt: <strong class="hz">王老师，再见！</strong> <span class="py">(Wáng lǎoshī, zàijiàn!)</span></p>
-          </div>
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="card pattern-card card-blue-bg">
-          <h4 class="pattern-header title-blue">
-            <i class="fa-solid fa-robot"></i> 2. Với AI & Bạn Bè (Trợ lý AI Xiaoyu - 小语):
-          </h4>
-          <div class="pattern-body">
-            <p>• Chào: <strong class="hz">你好！ / 小语，你好！</strong> <span class="py">(nǐ hǎo!)</span></p>
-            <p>• Cảm ơn & Đáp: <strong class="hz">谢谢！ - 不客气！</strong> <span class="py">(Xièxie! - Bú kèqi!)</span></p>
-            <p>• Tạm biệt: <strong class="hz">再见！</strong> <span class="py">(Zàijiàn!)</span></p>
-          </div>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="card pattern-card card-purple-bg">
-          <h4 class="pattern-header title-purple">
-            <i class="fa-solid fa-users"></i> 3. Với Học Sinh & Tập Thể (学生, 你们, 同学, 大家):
-          </h4>
-          <div class="pattern-body">
-            <p>• Chào tập thể: <strong class="hz">你们好！ / 同学们好！ / 大家好！</strong> <span class="py">(Nǐmen hǎo! / Tóngxuémen hǎo! / Dàjiā hǎo!)</span></p>
-            <p>• Cảm ơn tập thể: <strong class="hz">谢谢大家！ / 谢谢你们！</strong> <span class="py">(Xièxie dàjiā! / Xièxie nǐmen!)</span></p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 5: BIẾN ĐIỆU THANH ĐIỆU (Ảnh 5) -->
-    <section class="section-block">
-      <div class="grid-2">
-        
-        <!-- CARD 1: 3+3 -->
-        <div class="card sandhi-card card-yellow-bg">
-          <h4 class="sandhi-title title-amber">
-            <i class="fa-solid fa-wave-square"></i> 1. Biến Điệu 3+3 (Tone Sandhi 3+3)
-          </h4>
-          <p class="sandhi-desc">
-            Khi 2 thanh 3 đi liền nhau: <strong>Thanh 3 thứ nhất chuyển thành Thanh 2</strong> (hướng lên).
+          <p class="test-question">
+            🔊 <strong>Câu 1 (Nghe):</strong> Bấm nghe âm thanh và chọn cụm từ có chứa <strong>Biến điệu chữ 不 (bú kèqi)</strong>:
+            <button type="button" class="audio-btn-inline" onclick="speakText('不客气')"><i class="fa-solid fa-volume-high"></i> Nghe âm mẫu</button>
           </p>
-
-          <div class="sandhi-box">
-            <strong class="hz-highlight title-cyan">你 (nǐ) + 好 (hǎo) $\rightarrow$ ní hǎo (你好)</strong>
+          <div class="options-grid">
+            <label class="opt-label"><input type="radio" name="js_q1" value="A"> A. bù kèqi (giữ nguyên thanh 4 bù)</label>
+            <label class="opt-label"><input type="radio" name="js_q1" value="B"> B. bú kèqi (chữ 不 biến thành thanh 2 bú) [ĐÚNG]</label>
           </div>
-
-          <button type="button" class="audio-btn-wide" onclick="speakText('你好')">
-            <i class="fa-solid fa-volume-high"></i> Nghe Biến Điệu ní hǎo
-          </button>
         </div>
 
-        <!-- CARD 2: BU -->
-        <div class="card sandhi-card card-emerald-bg">
-          <h4 class="sandhi-title title-emerald">
-            <i class="fa-solid fa-bolt"></i> 2. Biến Điệu Chữ 不 (Tone Sandhi of 不)
-          </h4>
-          <p class="sandhi-desc">
-            Chữ <strong>不 (bù)</strong> mang thanh 4 gốc. Khi đi trước âm mang <strong>Thanh 4 (như 客 kè)</strong>, <strong>不</strong> biến thành <strong>Thanh 2 (bú)</strong>!
+        <!-- TEST 2: SPEAKING -->
+        <div class="test-item-card">
+          <div class="test-header">
+            <span class="badge badge-purple">2. Kỹ Năng Nói (Speaking Roleplay)</span>
+            <div class="calib-btn-group">
+              <button type="button" class="calib-btn" onclick="setQuestionCalib(2, 'V', this)">[V] Chắc chắn</button>
+              <button type="button" class="calib-btn active-amber" onclick="setQuestionCalib(2, '?', this)">[?] Phân vân</button>
+              <button type="button" class="calib-btn" onclick="setQuestionCalib(2, 'X', this)">[X] Đoán mò</button>
+            </div>
+          </div>
+          <p class="test-question">
+            🎙️ <strong>Câu 2 (Nói):</strong> Trong ngày khai trường, để thể hiện thái độ tôn trọng khi chào Giáo sư Wang (王老师), em nên thốt ra câu nào?
           </p>
-
-          <div class="sandhi-box">
-            <strong class="hz-highlight title-emerald">不 (bù) + 客气 (kèqi) $\rightarrow$ bú kèqi (不客气)</strong>
+          <div class="options-grid">
+            <label class="opt-label"><input type="radio" name="js_q2" value="A"> A. 王老师，你好！ (Wáng lǎoshī, nǐ hǎo!)</label>
+            <label class="opt-label"><input type="radio" name="js_q2" value="B"> B. 王老师，您好！ (Wáng lǎoshī, nín hǎo!) [ĐÚNG - Dùng kính ngữ 您]</label>
+            <label class="opt-label"><input type="radio" name="js_q2" value="C"> C. 王老师，你们好！ (Wáng lǎoshī, nǐmen hǎo!)</label>
           </div>
-
-          <button type="button" class="audio-btn-wide" onclick="speakText('不客气')">
-            <i class="fa-solid fa-volume-high"></i> Nghe Biến Điệu bú kèqi
-          </button>
         </div>
+
+        <!-- TEST 3: READING -->
+        <div class="test-item-card">
+          <div class="test-header">
+            <span class="badge badge-amber">3. Kỹ Năng Đọc (Reading Etiquette)</span>
+            <div class="calib-btn-group">
+              <button type="button" class="calib-btn" onclick="setQuestionCalib(3, 'V', this)">[V] Chắc chắn</button>
+              <button type="button" class="calib-btn active-amber" onclick="setQuestionCalib(3, '?', this)">[?] Phân vân</button>
+              <button type="button" class="calib-btn" onclick="setQuestionCalib(3, 'X', this)">[X] Đoán mò</button>
+            </div>
+          </div>
+          <p class="test-question">
+            📖 <strong>Câu 3 (Đọc):</strong> Đọc hội thoại sau và điền từ thích hợp vào chỗ trống: <br>
+            <code>A: 谢谢你！ (Xièxie nǐ!) ⟶ B: _____！</code>
+          </p>
+          <div class="options-grid">
+            <label class="opt-label"><input type="radio" name="js_q3" value="A"> A. 再见！ (Zàijiàn!)</label>
+            <label class="opt-label"><input type="radio" name="js_q3" value="B"> B. 不客气！ (Bú kèqi!) [ĐÚNG - Không có gì!]</label>
+            <label class="opt-label"><input type="radio" name="js_q3" value="C"> C. 您好！ (Nín hǎo!)</label>
+          </div>
+        </div>
+
+        <!-- TEST 4: WRITING -->
+        <div class="test-item-card">
+          <div class="test-header">
+            <span class="badge badge-emerald">4. Kỹ Năng Viết (Writing Word Order)</span>
+            <div class="calib-btn-group">
+              <button type="button" class="calib-btn" onclick="setQuestionCalib(4, 'V', this)">[V] Chắc chắn</button>
+              <button type="button" class="calib-btn active-amber" onclick="setQuestionCalib(4, '?', this)">[?] Phân vân</button>
+              <button type="button" class="calib-btn" onclick="setQuestionCalib(4, 'X', this)">[X] Đoán mò</button>
+            </div>
+          </div>
+          <p class="test-question">
+            ✍️ <strong>Câu 4 (Viết):</strong> Sắp xếp các khối từ sau thành câu chào tập thể các bạn học sinh đúng trật tự:
+          </p>
+          <div class="options-grid">
+            <label class="opt-label"><input type="radio" name="js_q4" value="A"> A. 同学们 (1) + 好 (2) ⟶ 同学们好！ [ĐÚNG]</label>
+            <label class="opt-label"><input type="radio" name="js_q4" value="B"> B. 好 (2) + 同学们 (1) ⟶ 好同学们！</label>
+          </div>
+        </div>
+
+        <button type="button" class="btn-eval" onclick="runPureJSEvaluator()">
+          <i class="fa-solid fa-bolt"></i> Nộp Bài & Phân Tích Lỗi Sai Root Cause (Chạy Pure JS)
+        </button>
 
       </div>
-    </section>
+
+      <!-- ACTIVE ERROR LOG OUTPUT BOX (GENERATED BY PURE JS) -->
+      <div id="js-error-log-box" class="card" style="display: none; border-color: #6366f1;">
+        <h3 style="color: #4338ca; font-size: 1.35rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-book-journal-whills" style="color: #f59e0b;"></i> Sổ Tay Lỗi Sai Số Hóa (Active Error Log 4 Dòng)
+        </h3>
+        <div id="js-error-log-content"></div>
+      </div>
+
+    </div>
 
   </main>
 
-  <!-- Audio JavaScript -->
-  <script>
-    function speakText(text) {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'zh-CN';
-        utterance.rate = 0.85;
-        window.speechSynthesis.speak(utterance);
-      } else {
-        alert('Trình duyệt của bạn chưa hỗ trợ phát âm tiếng Trung.');
-      }
-    }
-  </script>
+  <!-- Script setup -->
+  <script src="script.js?v=pure_js_engine_v3"></script>
 </body>
 </html>
