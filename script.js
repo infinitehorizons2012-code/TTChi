@@ -43,7 +43,7 @@ const slidesData = [
 
       <h3 style="margin-top: 1.2rem;">🌸 Nét Văn Hóa Xưng Hô:</h3>
       <p style="color: var(--cyan); font-weight: 600;">
-        Phân biệt chính xác quy tắc xưng hô <code>你</code> (bạn/AI) vs <code>您</code> (cấp trên/kính trọng).
+        Phân biệt chính xác quy tắc xưng hô <code>你</code> (bạn/AI) vs <code>您</code> (cấp trên/kính trọng) & <code>你们</code> (các bạn).
       </p>
 
       <div style="background: rgba(99, 102, 241, 0.1); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--primary); margin-top: 1.2rem;">
@@ -63,7 +63,7 @@ const slidesData = [
     content: `
       <h3>⚡ Performance Task (GRASPS):</h3>
       <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 600; line-height: 1.5;">
-        Đóng vai chào hỏi, tạm biệt và cảm ơn Giáo sư Wang, Trợ lý AI Xiaoyu và các bạn học sinh cũng như toàn trường trong ngày học đầu tiên (开学第一天).
+        Đóng vai chào hỏi, tạm biệt và cảm ơn Giáo sư Wang, Trợ lý AI Xiaoyu và các bạn học sinh (学生) cũng như toàn trường trong ngày học đầu tiên (开学第一天).
       </p>
 
       <div style="margin-top: 1.2rem; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glass);">
@@ -71,7 +71,7 @@ const slidesData = [
         <ul class="feature-list">
           <li><i class="fa-solid fa-user-graduate"></i> <strong>Với Giáo sư/Cô Wang (王老师):</strong> Sử dụng đại từ kính ngữ <code>您</code> (nín hǎo).</li>
           <li><i class="fa-solid fa-robot"></i> <strong>Với Trợ lý AI Xiaoyu (小语):</strong> Xưng hô thân thiện <code>你</code> (nǐ hǎo).</li>
-          <li><i class="fa-solid fa-school"></i> <strong>Với Bạn học & Toàn trường:</strong> Dùng <code>同学</code>, <code>大家</code> (dàjiā hǎo).</li>
+          <li><i class="fa-solid fa-school"></i> <strong>Với Học sinh & Tập thể:</strong> Dùng <code>学生</code>, <code>你们</code>, <code>同学</code>, <code>大家</code> (nǐmen hǎo, dàjiā hǎo).</li>
         </ul>
       </div>
     `
@@ -86,12 +86,12 @@ const slidesData = [
       <h3>📊 AI Rubric 3 Trục Đo Lường Năng Lực:</h3>
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
         <div style="background: rgba(99,102,241,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--cyan);">(1) Đại từ kính ngữ 您</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Đánh giá việc chọn đúng <code>您</code> cho Giáo sư Wang và <code>你</code> cho AI/bạn học.</p>
+          <h4 style="color: var(--cyan);">(1) Đại từ kính ngữ 您 / 你们</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Đánh giá việc chọn đúng <code>您</code> cho Giáo sư Wang và <code>你们</code> / <code>你</code> cho AI/học sinh.</p>
         </div>
         <div style="background: rgba(168,85,247,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--secondary);">(2) Thanh điệu chuẩn (3+3 & Bù)</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Biến điệu 3+3 (nǐ hǎo → ní hǎo) & Nửa thanh 3 (bù thanh 3).</p>
+          <h4 style="color: var(--secondary);">(2) Thanh điệu chuẩn (3+3 & Biến điệu 不)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Biến điệu 3+3 (nǐ hǎo → ní hǎo) & Biến điệu 不 (bù kèqi → bú kèqi).</p>
         </div>
         <div style="background: rgba(16,185,129,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
           <h4 style="color: var(--emerald);">(3) Phản xạ tự nhiên</h4>
@@ -110,7 +110,7 @@ const slidesData = [
     stage: "Giai Đoạn 3",
     stageBadgeClass: "badge-stage3",
     type: "JIT VOCAB & PATTERNS",
-    title: "Slide 4: Từ Vựng & Mẫu Câu Vừa Đủ Phân Theo Vai Vế",
+    title: "Slide 4: Từ Vựng & Mẫu Câu Vừa Đủ (Bổ Sung 你们, 学生)",
     content: `
       <h3>📚 Học Liệu JIT Phục Vụ 3 Chức Năng (Chào - Cảm Ơn - Tạm Biệt):</h3>
       <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
@@ -127,9 +127,9 @@ const slidesData = [
           <p style="color: var(--text-main); font-size: 0.95rem;">• Tạm biệt: <strong>再见！ / 明天见！</strong> (Zàijiàn! / Míngtiān jiàn!)</p>
         </div>
         <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); padding: 1rem; border-radius: 10px;">
-          <h4 style="color: var(--secondary);"><i class="fa-solid fa-users"></i> 3. Với Bạn Học & Tập Thể Toàn Trường:</h4>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Chào tập thể: <strong>同学们好！ / 大家好！</strong> (Tóngxuémen hǎo! / Dàjiā hǎo!)</p>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn tập thể: <strong>谢谢大家！</strong> (Xièxie dàjiā!)</p>
+          <h4 style="color: var(--secondary);"><i class="fa-solid fa-users"></i> 3. Với Học Sinh & Tập Thể (学生, 你们, 同学, 大家):</h4>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Chào tập thể: <strong>你们好！ / 同学们好！ / 大家好！</strong> (Nǐmen hǎo! / Tóngxuémen hǎo! / Dàjiā hǎo!)</p>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn tập thể: <strong>谢谢你们！ / 谢谢大家！</strong> (Xièxie nǐmen! / Xièxie dàjiā!)</p>
         </div>
       </div>
     `
@@ -138,15 +138,15 @@ const slidesData = [
     id: 5,
     stage: "Giai Đoạn 3",
     stageBadgeClass: "badge-stage3",
-    type: "TONE SANDHI 3+3 & HALF 3RD",
-    title: "Slide 5: Chú Ý Thanh Điệu 3+3 & Bù (Half 3rd Tone)",
+    type: "TONE SANDHI 3+3 & BU",
+    title: "Slide 5: Quy Tắc Biến Điệu Thanh Điệu (3+3 & Biến Điệu chữ 不)",
     content: `
-      <h3>🎶 Quy Tắc Âm Tiết & Thanh Điệu Cốt Lõi:</h3>
+      <h3>🎶 Quy Tắc Phối Âm & Biến Điệu Cốt Lõi:</h3>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
         <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); padding: 1.2rem; border-radius: 12px;">
-          <h4 style="color: #fcd34d;"><i class="fa-solid fa-wave-square"></i> Biến Điệu 3+3 (Tone Sandhi)</h4>
+          <h4 style="color: #fcd34d;"><i class="fa-solid fa-wave-square"></i> 1. Biến Điệu 3+3 (Tone Sandhi 3+3)</h4>
           <p style="font-size: 0.9rem; color: var(--text-main); margin-top: 0.5rem;">
-            Khi 2 thanh 3 đi liền nhau: <strong>Thanh 3 thứ nhất đọc thành Thanh 2</strong> (đọc hướng lên).
+            Khi 2 thanh 3 đi liền nhau: <strong>Thanh 3 thứ nhất chuyển thành Thanh 2</strong> (hướng lên).
           </p>
           <div style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin-top: 0.8rem; text-align: center;">
             <strong style="color: var(--cyan); font-size: 1.1rem;">你 (nǐ) + 好 (hǎo) → <code>ní hǎo</code> (你好)</strong>
@@ -157,15 +157,15 @@ const slidesData = [
         </div>
 
         <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); padding: 1.2rem; border-radius: 12px;">
-          <h4 style="color: #6ee7b7;"><i class="fa-solid fa-arrow-down-short-wide"></i> Nửa Thanh 3 (Bù Thanh 3)</h4>
+          <h4 style="color: #6ee7b7;"><i class="fa-solid fa-bolt"></i> 2. Biến Điệu Chữ 不 (Tone Sandhi of 不)</h4>
           <p style="font-size: 0.9rem; color: var(--text-main); margin-top: 0.5rem;">
-            Khi thanh 3 đứng trước Thanh 1, 2, 4: Chỉ đọc <strong>nửa đầu trầm xuống</strong> (không nảy âm lên).
+            Chữ <strong>不 (bù)</strong> mang thanh 4 gốc. Khi đi trước âm mang <strong>Thanh 4 (như 客 kè)</strong>, <strong>不</strong> biến thành <strong>Thanh 2 (bú)</strong>!
           </p>
           <div style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin-top: 0.8rem; text-align: center;">
-            <strong style="color: var(--emerald); font-size: 1.1rem;">好 (hǎo) + 看 (kàn) → <code>hǎo kàn</code> (Half-3rd)</strong>
+            <strong style="color: var(--emerald); font-size: 1.1rem;">不 (bù) + 客气 (kèqi) → <code>bú kèqi</code> (不客气)</strong>
           </div>
-          <button type="button" class="btn btn-secondary" style="margin-top: 0.8rem; width: 100%; justify-content: center;" onclick="speakChinese('好看')">
-            <i class="fa-solid fa-volume-high"></i> Nghe Nửa Thanh 3
+          <button type="button" class="btn btn-secondary" style="margin-top: 0.8rem; width: 100%; justify-content: center;" onclick="speakChinese('不客气')">
+            <i class="fa-solid fa-volume-high"></i> Nghe Biến Điệu bú kèqi
           </button>
         </div>
       </div>
@@ -302,7 +302,7 @@ function sendUserChatMessage() {
     speakChinese(replyObj.reply);
 
     // Dynamic Rubric adjustment
-    if (msgText.includes('您') || msgText.includes('王老师')) {
+    if (msgText.includes('您') || msgText.includes('王老师') || msgText.includes('你们')) {
       const honorificSlider = document.getElementById('slider-honorific');
       if (honorificSlider) {
         honorificSlider.value = Math.min(100, parseInt(honorificSlider.value) + 5);
@@ -349,20 +349,21 @@ function updateRubricScore() {
 function generateCertificateModal() {
   const totalElem = document.getElementById('total-rubric-score');
   const total = totalElem ? totalElem.innerText : '85 / 100';
-  alert(`🏆 CHỨNG CHỈ MICRO-CREDENTIAL\n\nBài Học: HSK 1 Bài 1 (AI小语，你好！)\nBối Cảnh: Môi trường Trường học (Học sinh, Giáo sư Wang & AI Xiaoyu)\nKỹ Năng: Giao tiếp vai vế + Biến điệu 3+3 (ní hǎo) & Bù thanh 3\nĐiểm AI Rubric: ${total}\nTrạng Thái: ĐÃ ĐẠT CHUẨN ĐẦU RA UBD (≥80%)\n\nChúc mừng bạn đã chinh phục thành công Performance Task trong ngày học đầu tiên!`);
+  alert(`🏆 CHỨNG CHỈ MICRO-CREDENTIAL\n\nBài Học: HSK 1 Bài 1 (AI小语，你好！)\nBối Cảnh: Trường học (Giáo sư Wang, Học sinh 学生, 你们 & AI Xiaoyu)\nKỹ Năng: Giao tiếp vai vế + Biến điệu 3+3 (ní hǎo) & Biến điệu chữ 不 (bú kèqi)\nĐiểm AI Rubric: ${total}\nTrạng Thái: ĐÃ ĐẠT CHUẨN ĐẦU RA UBD (≥80%)\n\nChúc mừng bạn đã chinh phục thành công Performance Task trong ngày học đầu tiên!`);
 }
 
-// 5. Vocabulary Cards Vault Generator
+// 5. Complete Vocabulary Cards Vault Generator (11 Words)
 const vocabVaultData = [
-  { hanzi: "你好", pinyin: "nǐ hǎo (ní hǎo)", meaning: "Xin chào (Tone 3+3 sandhi)" },
+  { hanzi: "你好", pinyin: "nǐ hǎo (ní hǎo)", meaning: "Xin chào (Biến điệu 3+3)" },
   { hanzi: "王老师", pinyin: "Wáng lǎoshī", meaning: "Giáo sư / Cô giáo Wang" },
+  { hanzi: "学生", pinyin: "xuéshēng", meaning: "Học sinh (Student)" },
+  { hanzi: "你们", pinyin: "nǐmen", meaning: "Các bạn (Số nhiều - Plural You)" },
   { hanzi: "请问", pinyin: "qǐngwèn", meaning: "Xin hỏi (Excuse me)" },
   { hanzi: "大家", pinyin: "dàjiā", meaning: "Mọi người / Toàn trường" },
   { hanzi: "好", pinyin: "hǎo", meaning: "Tốt / Nắng (Good)" },
-  { hanzi: "学生", pinyin: "xuéshēng", meaning: "Học sinh (Student)" },
   { hanzi: "您", pinyin: "nín", meaning: "Ngài / Thầy (Kính ngữ)" },
   { hanzi: "谢谢", pinyin: "xièxie", meaning: "Cảm ơn (Thank you)" },
-  { hanzi: "不客气", pinyin: "bú kèqi", meaning: "Không có gì (You're welcome)" },
+  { hanzi: "不客气", pinyin: "bú kèqi", meaning: "Không có gì (Biến điệu 不 bù → bú)" },
   { hanzi: "再见", pinyin: "zàijiàn", meaning: "Tạm biệt (Goodbye)" }
 ];
 
