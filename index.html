@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI小语，你好！Xin chào AI Tiểu Ngữ!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=vocab_module_v17">
+  <link rel="stylesheet" href="styles.css?v=honorific_note_v18">
   <!-- HanziWriter for Hanzi Etymology Animation -->
   <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 </head>
@@ -52,7 +52,7 @@
         <i class="fa-solid fa-book-open"></i> Lý thuyết
       </button>
 
-      <!-- TAB TỪ VỰNG (MỚI THEO YÊU CẦU) -->
+      <!-- TAB TỪ VỰNG -->
       <button type="button" class="tab-btn" onclick="switchPageTab('vocab-tab', this)">
         <i class="fa-solid fa-language"></i> Từ vựng
       </button>
@@ -462,6 +462,44 @@
         </div>
       </section>
 
+      <!-- GHI CHÚ ĐẠI TỪ KÍNH NGỮ 您 / 你 / 你们 (BỔ SUNG VÀO TRƯỚC PHẦN THANH ĐIỆU THEO YÊU CẦU) -->
+      <section class="section-block">
+        <div class="card" style="border: 2px solid #6366f1; background: #f5f3ff;">
+          <h4 style="font-size: 1.2rem; color: #4338ca; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-crown" style="color: #f59e0b;"></i> Ghi Chú Quy Tắc Đại Từ Kính Ngữ 您 / 你 / 你们:
+          </h4>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem;">
+            <!-- ITEM 1: NIN -->
+            <div style="background: #ffffff; border: 1.5px solid #c7d2fe; padding: 1rem; border-radius: 14px;">
+              <strong style="color: #4338ca; font-size: 1.1rem;">1. 您 (nín) - Kính ngữ:</strong>
+              <p style="font-size: 0.92rem; color: #334155; margin-top: 4px;">
+                • <strong>Đối tượng:</strong> Thầy cô giáo (王老师), bề trên, người lớn tuổi.<br>
+                • <strong>Mẹo chiết tự:</strong> Chữ <code>你</code> (bạn) ở trên + Bộ <code>心</code> (trái tim) ở dưới ⟶ Đặt người đối diện ở trong tim để kính trọng.
+              </p>
+            </div>
+
+            <!-- ITEM 2: NI -->
+            <div style="background: #ffffff; border: 1.5px solid #a5f3fc; padding: 1rem; border-radius: 14px;">
+              <strong style="color: #0284c7; font-size: 1.1rem;">2. 你 (nǐ) - Bạn/Cậu:</strong>
+              <p style="font-size: 0.92rem; color: #334155; margin-top: 4px;">
+                • <strong>Đối tượng:</strong> Trợ lý AI (小语), bạn bè cùng lứa tuổi, em nhỏ.<br>
+                • <strong>Cách dùng:</strong> Xưng hô thân mật bình đẳng.
+              </p>
+            </div>
+
+            <!-- ITEM 3: NIMEN -->
+            <div style="background: #ffffff; border: 1.5px solid #e9d5ff; padding: 1rem; border-radius: 14px;">
+              <strong style="color: #7e22ce; font-size: 1.1rem;">3. 你们 (nǐmen) - Các bạn:</strong>
+              <p style="font-size: 0.92rem; color: #334155; margin-top: 4px;">
+                • <strong>Đối tượng:</strong> Tập thể từ 2 người trở lên.<br>
+                • <strong>Cách dùng:</strong> Thêm hậu tố <code>们</code> (số nhiều) sau <code>你</code>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- BIẾN ĐIỆU THANH ĐIỆU (Ảnh 5) -->
       <section class="section-block">
         <div class="grid-2">
@@ -507,7 +545,7 @@
 
     </div>
 
-    <!-- TAB 2: TỪ VỰNG MODULE (MỚI THEO YÊU CẦU NGUYÊN BẢN) -->
+    <!-- TAB 2: TỪ VỰNG MODULE -->
     <div id="vocab-tab" class="tab-content">
       
       <!-- SUB-TAB SWITCHER BAR -->
@@ -619,6 +657,6 @@
   </main>
 
   <!-- Script setup -->
-  <script src="script.js?v=vocab_module_v17"></script>
+  <script src="script.js?v=honorific_note_v18"></script>
 </body>
 </html>
