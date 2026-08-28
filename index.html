@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI小语，你好！Xin chào AI Tiểu Ngữ!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=restore_ubd_clean_header_v12">
+  <link rel="stylesheet" href="styles.css?v=split_sentences_audio_v13">
 </head>
 <body>
 
@@ -54,7 +54,7 @@
       </button>
     </div>
 
-    <!-- TAB 1: LÝ THUYẾT (FULL 5 SECTIONS RESTORED) -->
+    <!-- TAB 1: LÝ THUYẾT -->
     <div id="theory-tab" class="tab-content active">
 
       <!-- SECTION 1: 3 GIAI ĐOẠN UBD (Ảnh 1) -->
@@ -236,49 +236,213 @@
         </div>
       </section>
 
-      <!-- SECTION 4: MẪU CÂU TƯƠNG TÁC VAI VẾ (Ảnh 4) -->
+      <!-- SECTION 4: MẪU CÂU TƯƠNG TÁC VAI VẾ (ĐÃ TÁCH THÀNH TỪNG CÂU RIÊNG BIỆT CÓ HÁN, PINYIN, NGHĨA TIẾNG VIỆT & LOA PHÁT ÂM) -->
       <section class="section-block">
         <div class="pattern-stack">
           
-          <!-- CARD 1 -->
+          <!-- CARD 1: VỚI BỀ TRÊN -->
           <div class="card pattern-card card-cyan-bg">
             <h4 class="pattern-header title-cyan">
               <i class="fa-solid fa-user-tie"></i> 1. Với Bề Trên (Giáo sư Wang - 王老师):
             </h4>
-            <div class="pattern-body">
-              <p>• Chào: <strong class="hz">王老师，您好！</strong> <span class="py">(Wáng lǎoshī, nín hǎo!)</span></p>
-              <p>• Cảm ơn: <strong class="hz">谢谢您，王老师！</strong> <span class="py">(Xièxie nín, Wáng lǎoshī!)</span></p>
-              <p>• Tạm biệt: <strong class="hz">王老师，再见！</strong> <span class="py">(Wáng lǎoshī, zàijiàn!)</span></p>
+            <div class="sentence-list">
+              
+              <!-- CÂU 1.1 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Chào:</span>
+                  <strong class="hz-large">王老师，您好！</strong>
+                  <span class="py-tag">(Wáng lǎoshī, nín hǎo!)</span>
+                  <span class="vi-tag">⟶ Chào Giáo sư Wang!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('王老师，您好！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
+              <!-- CÂU 1.2 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Cảm ơn:</span>
+                  <strong class="hz-large">谢谢您，王老师！</strong>
+                  <span class="py-tag">(Xièxie nín, Wáng lǎoshī!)</span>
+                  <span class="vi-tag">⟶ Cảm ơn Giáo sư Wang!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('谢谢您，王老师！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
+              <!-- CÂU 1.3 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Tạm biệt:</span>
+                  <strong class="hz-large">王老师，再见！</strong>
+                  <span class="py-tag">(Wáng lǎoshī, zàijiàn!)</span>
+                  <span class="vi-tag">⟶ Tạm biệt Giáo sư Wang!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('王老师，再见！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
             </div>
           </div>
 
-          <!-- CARD 2 -->
+          <!-- CARD 2: VỚI AI & BẠN BÈ -->
           <div class="card pattern-card card-blue-bg">
             <h4 class="pattern-header title-blue">
               <i class="fa-solid fa-robot"></i> 2. Với AI & Bạn Bè (Trợ lý AI Xiaoyu - 小语):
             </h4>
-            <div class="pattern-body">
-              <p>• Chào: <strong class="hz">你好！ / 小语，你好！</strong> <span class="py">(nǐ hǎo!)</span></p>
-              <p>• Cảm ơn & Đáp: <strong class="hz">谢谢！ - 不客气！</strong> <span class="py">(Xièxie! - Bú kèqi!)</span></p>
-              <p>• Tạm biệt: <strong class="hz">再见！</strong> <span class="py">(Zàijiàn!)</span></p>
+            <div class="sentence-list">
+              
+              <!-- CÂU 2.1 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Chào 1:</span>
+                  <strong class="hz-large">你好！</strong>
+                  <span class="py-tag">(nǐ hǎo!)</span>
+                  <span class="vi-tag">⟶ Chào bạn!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('你好！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
+              <!-- CÂU 2.2 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Chào 2:</span>
+                  <strong class="hz-large">小语，你好！</strong>
+                  <span class="py-tag">(Xiǎoyǔ, nǐ hǎo!)</span>
+                  <span class="vi-tag">⟶ Chào Tiểu Ngữ!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('小语，你好！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
+              <!-- CÂU 2.3 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Cảm ơn:</span>
+                  <strong class="hz-large">谢谢！</strong>
+                  <span class="py-tag">(Xièxie!)</span>
+                  <span class="vi-tag">⟶ Cảm ơn bạn!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('谢谢！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
+              <!-- CÂU 2.4 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Đáp lại cảm ơn:</span>
+                  <strong class="hz-large">不客气！</strong>
+                  <span class="py-tag">(Bú kèqi!)</span>
+                  <span class="vi-tag">⟶ Không có gì! / Đừng khách khí!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('不客气！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
+              <!-- CÂU 2.5 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Tạm biệt:</span>
+                  <strong class="hz-large">再见！</strong>
+                  <span class="py-tag">(Zàijiàn!)</span>
+                  <span class="vi-tag">⟶ Tạm biệt!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('再见！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
             </div>
           </div>
 
-          <!-- CARD 3 -->
+          <!-- CARD 3: VỚI HỌC SINH & TẬP THỂ -->
           <div class="card pattern-card card-purple-bg">
             <h4 class="pattern-header title-purple">
               <i class="fa-solid fa-users"></i> 3. Với Học Sinh & Tập Thể (学生, 你们, 同学, 大家):
             </h4>
-            <div class="pattern-body">
-              <p>• Chào tập thể: <strong class="hz">你们好！ / 同学们好！ / 大家好！</strong> <span class="py">(Nǐmen hǎo! / Tóngxuémen hǎo! / Dàjiā hǎo!)</span></p>
-              <p>• Cảm ơn tập thể: <strong class="hz">谢谢大家！ / 谢谢你们！</strong> <span class="py">(Xièxie dàjiā! / Xièxie nǐmen!)</span></p>
+            <div class="sentence-list">
+              
+              <!-- CÂU 3.1 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Chào tập thể 1:</span>
+                  <strong class="hz-large">你们好！</strong>
+                  <span class="py-tag">(Nǐmen hǎo!)</span>
+                  <span class="vi-tag">⟶ Chào các bạn!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('你们好！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
+              <!-- CÂU 3.2 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Chào tập thể 2:</span>
+                  <strong class="hz-large">同学们好！</strong>
+                  <span class="py-tag">(Tóngxuémen hǎo!)</span>
+                  <span class="vi-tag">⟶ Chào các em học sinh!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('同学们好！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
+              <!-- CÂU 3.3 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Chào tập thể 3:</span>
+                  <strong class="hz-large">大家好！</strong>
+                  <span class="py-tag">(Dàjiā hǎo!)</span>
+                  <span class="vi-tag">⟶ Chào mọi người!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('大家好！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
+              <!-- CÂU 3.4 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Cảm ơn tập thể 1:</span>
+                  <strong class="hz-large">谢谢大家！</strong>
+                  <span class="py-tag">(Xièxie dàjiā!)</span>
+                  <span class="vi-tag">⟶ Cảm ơn mọi người!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('谢谢大家！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
+              <!-- CÂU 3.5 -->
+              <div class="sentence-item-row">
+                <div class="sentence-main">
+                  <span class="sentence-tag">• Cảm ơn tập thể 2:</span>
+                  <strong class="hz-large">谢谢你们！</strong>
+                  <span class="py-tag">(Xièxie nǐmen!)</span>
+                  <span class="vi-tag">⟶ Cảm ơn các bạn!</span>
+                </div>
+                <button type="button" class="audio-btn-inline" onclick="speakText('谢谢你们！')">
+                  <i class="fa-solid fa-volume-high"></i> Nghe đọc
+                </button>
+              </div>
+
             </div>
           </div>
 
         </div>
       </section>
 
-      <!-- SECTION 5: BIẾN ĐIỆU THANH ĐIỆU (Ảnh 5) -->
+      <!-- BIẾN ĐIỆU THANH ĐIỆU (Ảnh 5) -->
       <section class="section-block">
         <div class="grid-2">
           
@@ -375,6 +539,6 @@
   </main>
 
   <!-- Script setup -->
-  <script src="script.js?v=restore_ubd_clean_header_v12"></script>
+  <script src="script.js?v=split_sentences_audio_v13"></script>
 </body>
 </html>
