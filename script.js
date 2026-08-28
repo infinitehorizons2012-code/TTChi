@@ -1,4 +1,4 @@
-// Interactive Application Logic for UbD + AI HSK1 Lesson 1 App (School Context Refined)
+// Interactive Application Logic for UbD + AI HSK1 Lesson 1 App (Strict Lesson 1 Beginner Scope)
 
 // 1. Navigation Tab Controller (Bulletproof Cross-Browser Implementation)
 function switchSection(sectionId, el) {
@@ -63,15 +63,16 @@ const slidesData = [
     content: `
       <h3>⚡ Performance Task (GRASPS):</h3>
       <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 600; line-height: 1.5;">
-        Đóng vai chào hỏi, tạm biệt và cảm ơn Giáo sư Wang, Trợ lý AI Xiaoyu và các bạn học sinh (学生) cũng như toàn trường trong ngày học đầu tiên (开学第一天).
+        Đóng vai chào hỏi, tạm biệt và cảm ơn Giáo sư Wang, Trợ lý AI Xiaoyu và các bạn học sinh (学生) trong phạm vi mẫu câu Bài 1 (开学第一天).
       </p>
 
       <div style="margin-top: 1.2rem; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glass);">
-        <h4 style="color: var(--amber); margin-bottom: 0.5rem;"><i class="fa-solid fa-users-viewfinder"></i> Phân Vai Giao Tiếp:</h4>
+        <h4 style="color: var(--amber); margin-bottom: 0.5rem;"><i class="fa-solid fa-users-viewfinder"></i> Phạm Vi Mẫu Câu Bài 1 (Không dùng ngữ pháp chưa học):</h4>
         <ul class="feature-list">
-          <li><i class="fa-solid fa-user-graduate"></i> <strong>Với Giáo sư/Cô Wang (王老师):</strong> Sử dụng đại từ kính ngữ <code>您</code> (nín hǎo).</li>
-          <li><i class="fa-solid fa-robot"></i> <strong>Với Trợ lý AI Xiaoyu (小语):</strong> Xưng hô thân thiện <code>你</code> (nǐ hǎo).</li>
-          <li><i class="fa-solid fa-school"></i> <strong>Với Học sinh & Tập thể:</strong> Dùng <code>学生</code>, <code>你们</code>, <code>同学</code>, <code>大家</code> (nǐmen hǎo, dàjiā hǎo).</li>
+          <li><i class="fa-solid fa-user-graduate"></i> <strong>Chào Giáo sư/Cô Wang:</strong> <code>王老师，您好！</code> (Wáng lǎoshī, nín hǎo!).</li>
+          <li><i class="fa-solid fa-robot"></i> <strong>Chào Trợ lý AI Xiaoyu:</strong> <code>你好！ / 小语，你好！</code> (nǐ hǎo!).</li>
+          <li><i class="fa-solid fa-school"></i> <strong>Chào Học sinh & Tập thể:</strong> <code>同学们好！ / 大家好！ / 你们好！</code></li>
+          <li><i class="fa-solid fa-heart"></i> <strong>Cảm ơn & Tạm biệt:</strong> <code>谢谢！ - 不客气！ / 再见！</code></li>
         </ul>
       </div>
     `
@@ -83,19 +84,19 @@ const slidesData = [
     type: "AI RUBRIC 3 TRỤC",
     title: "Slide 3: Tiêu Chí Chấm Điểm & Micro-Credential",
     content: `
-      <h3>📊 AI Rubric 3 Trục Đo Lường Năng Lực:</h3>
+      <h3>📊 AI Rubric 3 Trục Đo Lường Năng Lực (Bài 1 Scope):</h3>
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
         <div style="background: rgba(99,102,241,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
           <h4 style="color: var(--cyan);">(1) Đại từ kính ngữ 您 / 你们</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Đánh giá việc chọn đúng <code>您</code> cho Giáo sư Wang và <code>你们</code> / <code>你</code> cho AI/học sinh.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Chọn đúng <code>您</code> cho Giáo sư Wang và <code>你们</code> / <code>你</code> cho AI/bạn học.</p>
         </div>
         <div style="background: rgba(168,85,247,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
           <h4 style="color: var(--secondary);">(2) Thanh điệu chuẩn (3+3 & Biến điệu 不)</h4>
           <p style="font-size: 0.85rem; color: var(--text-muted);">Biến điệu 3+3 (nǐ hǎo → ní hǎo) & Biến điệu 不 (bù kèqi → bú kèqi).</p>
         </div>
         <div style="background: rgba(16,185,129,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--emerald);">(3) Phản xạ tự nhiên</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Phản xạ 3 chức năng: Chào, Cảm ơn (不客气) và Tạm biệt (再见).</p>
+          <h4 style="color: var(--emerald);">(3) Phản xạ 3 chức năng Bài 1</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Chào hỏi, Cảm ơn (不客气) và Tạm biệt (再见) chuẩn mẫu câu Bài 1.</p>
         </div>
       </div>
 
@@ -110,9 +111,9 @@ const slidesData = [
     stage: "Giai Đoạn 3",
     stageBadgeClass: "badge-stage3",
     type: "JIT VOCAB & PATTERNS",
-    title: "Slide 4: Từ Vựng & Mẫu Câu Vừa Đủ (Bổ Sung 你们, 学生)",
+    title: "Slide 4: Từ Vựng & Mẫu Câu Vừa Đủ Chuẩn Bài 1",
     content: `
-      <h3>📚 Học Liệu JIT Phục Vụ 3 Chức Năng (Chào - Cảm Ơn - Tạm Biệt):</h3>
+      <h3>📚 Học Liệu JIT Chuẩn Bài 1 (Không dùng từ chưa học):</h3>
       <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
         <div style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); padding: 1rem; border-radius: 10px;">
           <h4 style="color: var(--cyan);"><i class="fa-solid fa-user-tie"></i> 1. Với Bề Trên (Giáo sư Wang - 王老师):</h4>
@@ -122,14 +123,14 @@ const slidesData = [
         </div>
         <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); padding: 1rem; border-radius: 10px;">
           <h4 style="color: var(--primary);"><i class="fa-solid fa-robot"></i> 2. Với AI & Bạn Bè (Trợ lý AI Xiaoyu - 小语):</h4>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Chào: <strong>小语，你好！</strong> (Xiǎoyǔ, nǐ hǎo!)</p>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn & Đáp: <strong>谢谢你！ - 不客气！</strong> (Xièxie nǐ! - Bú kèqi!)</p>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Tạm biệt: <strong>再见！ / 明天见！</strong> (Zàijiàn! / Míngtiān jiàn!)</p>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Chào: <strong>你好！ / 小语，你好！</strong> (nǐ hǎo!)</p>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn & Đáp: <strong>谢谢！ - 不客气！</strong> (Xièxie! - Bú kèqi!)</p>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Tạm biệt: <strong>再见！</strong> (Zàijiàn!)</p>
         </div>
         <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); padding: 1rem; border-radius: 10px;">
           <h4 style="color: var(--secondary);"><i class="fa-solid fa-users"></i> 3. Với Học Sinh & Tập Thể (学生, 你们, 同学, 大家):</h4>
           <p style="color: var(--text-main); font-size: 0.95rem;">• Chào tập thể: <strong>你们好！ / 同学们好！ / 大家好！</strong> (Nǐmen hǎo! / Tóngxuémen hǎo! / Dàjiā hǎo!)</p>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn tập thể: <strong>谢谢你们！ / 谢谢大家！</strong> (Xièxie nǐmen! / Xièxie dàjiā!)</p>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn tập thể: <strong>谢谢大家！ / 谢谢你们！</strong> (Xièxie dàjiā! / Xièxie nǐmen!)</p>
         </div>
       </div>
     `
@@ -253,15 +254,15 @@ function speakChinese(text) {
   }
 }
 
-// 4. AI Xiaoyu Chat & Rubric Simulator (School Context)
+// 4. AI Xiaoyu Chat & Rubric Simulator (School Context - Strict Lesson 1 Scope)
 const aiResponses = [
-  { keywords: ['你好', 'hello', 'hi'], reply: '你好！欢迎来到学校！我是AI助教小语。请问您怎么称呼？', pinyin: 'Nǐ hǎo! Huānyíng lái dào xuéxiào!' },
-  { keywords: ['王老师', '老师', 'nín', '您'], reply: '王老师好！同学们好！新学期开学第一天，祝大家学习进步！', pinyin: 'Wáng lǎoshī hǎo! Tóngxuémen hǎo!' },
-  { keywords: ['谢谢', 'xièxie'], reply: '不客气！大家一起加油！', pinyin: 'Bú kèqi! Dàjiā yìqǐ jiāyóu!' },
-  { keywords: ['再见', 'zàijiàn'], reply: '再见！明天见！', pinyin: 'Zàijiàn! Míngtiān jiàn!' }
+  { keywords: ['你好', 'hello', 'hi'], reply: '你好！王老师好！同学们好！我是AI助教小语。', pinyin: 'Nǐ hǎo! Wáng lǎoshī hǎo! Tóngxuémen hǎo!' },
+  { keywords: ['王老师', '老师', 'nín', '您'], reply: '王老师，您好！同学们好！', pinyin: 'Wáng lǎoshī, nín hǎo! Tóngxuémen hǎo!' },
+  { keywords: ['谢谢', 'xièxie'], reply: '不客气！', pinyin: 'Bú kèqi!' },
+  { keywords: ['再见', 'zàijiàn'], reply: '再见！同学们再见！', pinyin: 'Zàijiàn! Tóngxuémen zàijiàn!' }
 ];
 
-let lastAIMessage = "你好！我是AI助教小语。欢迎来到学校！开学第一天，请问您怎么称呼？";
+let lastAIMessage = "你好！王老师好！同学们好！我是AI助教小语。";
 
 function speakCurrentAIMessage() {
   speakChinese(lastAIMessage);
@@ -288,7 +289,7 @@ function sendUserChatMessage() {
   // Simulate AI response
   setTimeout(() => {
     let replyObj = aiResponses.find(r => r.keywords.some(kw => msgText.toLowerCase().includes(kw))) || {
-      reply: '收到！在学校要互相帮助，礼貌问好哦！(Đã nhận! Ở trường chúng ta cùng hỏi thăm lịch sự nhé!)'
+      reply: '你好！ (Xin chào! Hãy dùng các mẫu câu Chào, Cảm ơn, Tạm biệt của Bài 1 nhé!)'
     };
 
     lastAIMessage = replyObj.reply;
@@ -349,36 +350,40 @@ function updateRubricScore() {
 function generateCertificateModal() {
   const totalElem = document.getElementById('total-rubric-score');
   const total = totalElem ? totalElem.innerText : '85 / 100';
-  alert(`🏆 CHỨNG CHỈ MICRO-CREDENTIAL\n\nBài Học: HSK 1 Bài 1 (AI小语，你好！)\nBối Cảnh: Trường học (Giáo sư Wang, Học sinh 学生, 你们 & AI Xiaoyu)\nKỹ Năng: Giao tiếp vai vế + Biến điệu 3+3 (ní hǎo) & Biến điệu chữ 不 (bú kèqi)\nĐiểm AI Rubric: ${total}\nTrạng Thái: ĐÃ ĐẠT CHUẨN ĐẦU RA UBD (≥80%)\n\nChúc mừng bạn đã chinh phục thành công Performance Task trong ngày học đầu tiên!`);
+  alert(`🏆 CHỨNG CHỈ MICRO-CREDENTIAL\n\nBài Học: HSK 1 Bài 1 (AI小语，你好！)\nBối Cảnh: Mẫu câu chuẩn Bài 1 (Giáo sư Wang, Học sinh 学生, 你们 & AI Xiaoyu)\nKỹ Năng: Giao tiếp vai vế + Biến điệu 3+3 (ní hǎo) & Biến điệu chữ 不 (bú kèqi)\nĐiểm AI Rubric: ${total}\nTrạng Thái: ĐÃ ĐẠT CHUẨN ĐẦU RA UBD (≥80%)\n\nChúc mừng bạn đã chinh phục thành công Performance Task trong ngày học đầu tiên!`);
 }
 
-// System Prompt Copier for ChatGPT/Gemini Evaluator
+// System Prompt Copier for ChatGPT/Gemini Evaluator (Strict Lesson 1 Scope Constraint)
 function copyAIEvaluatorPrompt() {
-  const systemPrompt = `[SYSTEM PROMPT: AI EVALUATOR & ROLEPLAY BOT FOR HSK 1 LESSON 1]
+  const systemPrompt = `[SYSTEM PROMPT: AI EVALUATOR & ROLEPLAY BOT - HSK 1 LESSON 1 STRICT SCOPE]
 
 You are "AI助教小语" (AI Xiaoyu Assistant) at a Chinese Language School on the First Day of School (开学第一天).
-You act as both an interactive conversation partner and a strict Pedagogical AI Evaluator based on Backward Design (UbD) Stage 2 Rubric.
+You act as an interactive conversation partner and a strict Pedagogical AI Evaluator based on Backward Design (UbD) Stage 2 Rubric.
 
-CONTEXT & PERFORMANCE TASK (GRASPS):
-The student is role-playing on the first day of school. They need to greet, thank, and say goodbye to:
-1. Teacher Wang (王老师) - Must use honorific "您" (nín hǎo).
-2. AI Xiaoyu (小语) & Classmates (学生/同学/大家/你们) - Use "你" (nǐ hǎo), "你们好", "大家好".
+STRICT LESSON 1 SCOPE CONSTRAINTS:
+The student is a COMPLETE BEGINNER (0% previous knowledge) currently learning HSK 1 Lesson 1 ONLY.
+Target Vocabulary Available: 你, 您, 你们, 王老师, 学生, 同学, 大家, 好, 谢谢, 不客气, 再见.
+UN-TAUGHT GRAMMAR NOT ALLOWED TO EXPECT: Do NOT ask the student to introduce themselves using un-taught verbs like "是" (shì - to be) or "叫" (jiào - to be named), such as "我是..." or "我叫...".
+Only expect and prompt for the exact 3 functional sentence patterns taught in Lesson 1:
+1. Greetings: "王老师，您好！" / "你好！" / "大家好！" / "同学们好！" / "你们好！"
+2. Thanking: "谢谢！" / "谢谢您！" / "谢谢大家！" ⟶ Response: "不客气！"
+3. Farewells: "再见！" / "王老师，再见！"
 
 YOUR DUAL ROLE:
-1. INTERACTIVE MODE: Chat in Chinese (with Pinyin & Vietnamese summary). Start by saying:
-   "你好！我是AI助教小语。欢迎来到学校！开学第一天，请问您怎么称护？"
+1. INTERACTIVE MODE: Start by greeting the user strictly within Lesson 1 scope:
+   "你好！王老师好！同学们好！我是AI助教小语。"
 2. EVALUATOR MODE: Track and grade the student across 3 Rubric Axes (Max 100 pts):
    - Axis 1: Honorific Choice & Role Honorifics (40 pts) [Proper use of 您 vs 你 vs 你们]
    - Axis 2: Phonetic Tone Sandhi Rules (30 pts) [3+3 tone sandhi 'ní hǎo' & '不' tone sandhi 'bú kèqi']
    - Axis 3: Functional Reflex Across 3 Tasks (30 pts) [Greetings, Thanking (不客气), Farewell (再见)]
 
 END OF EVALUATION:
-When the student says goodbye or ends the dialogue, output a formatted Rubric Report:
+When the student says "再见" or ends the dialogue, output a formatted Rubric Report:
 --------------------------------------------------
 📊 AI RUBRIC ASSESSMENT REPORT (UbD Stage 2)
 - Honorifics (您/你/你们): [Score]/40
 - Phonetics (3+3 & bú kèqi): [Score]/30
-- Functional Reflex: [Score]/30
+- Functional Reflex (Chào/Cảm ơn/Tạm biệt): [Score]/30
 TOTAL SCORE: [Total]/100
 STATUS: [PASS (≥80) - Micro-Credential Badge Issued / RETRY (<80)]
 💡 Feedback & Correction: [Detailed guidance]
@@ -388,7 +393,7 @@ Please confirm you are ready by initiating the first greeting in character!`;
 
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(systemPrompt).then(() => {
-      alert("✅ Đã sao chép System Prompt Chấm Điểm AI!\n\nBạn có thể dán (Ctrl+V) vào ChatGPT, Gemini hoặc Claude để test ngay lập tức!");
+      alert("✅ Đã sao chép System Prompt Chấm Điểm AI (Chuẩn Bài 1)!\n\nBạn có thể dán (Ctrl+V) vào ChatGPT, Gemini hoặc Claude để test ngay!");
     }).catch(err => {
       prompt("Sao chép System Prompt dưới đây:", systemPrompt);
     });
