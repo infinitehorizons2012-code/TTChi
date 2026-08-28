@@ -21,19 +21,19 @@
     </div>
 
     <nav class="nav-links">
-      <button class="nav-btn active" data-section="ubd-overview" onclick="switchSection('ubd-overview', this)">
+      <button type="button" class="nav-btn active" data-section="ubd-overview" onclick="switchSection('ubd-overview', this)">
         <i class="fa-solid fa-bullseye"></i> 3 Giai Đoạn UbD
       </button>
-      <button class="nav-btn" data-section="matrix-comparison" onclick="switchSection('matrix-comparison', this)">
+      <button type="button" class="nav-btn" data-section="matrix-comparison" onclick="switchSection('matrix-comparison', this)">
         <i class="fa-solid fa-code-compare"></i> So Sánh Matrix
       </button>
-      <button class="nav-btn" data-section="slide-presentation" onclick="switchSection('slide-presentation', this)">
+      <button type="button" class="nav-btn" data-section="slide-presentation" onclick="switchSection('slide-presentation', this)">
         <i class="fa-solid fa-sliders"></i> Slide Presentation
       </button>
-      <button class="nav-btn" data-section="ai-simulator" onclick="switchSection('ai-simulator', this)">
+      <button type="button" class="nav-btn" data-section="ai-simulator" onclick="switchSection('ai-simulator', this)">
         <i class="fa-solid fa-robot"></i> AI Xiaoyu Bot
       </button>
-      <button class="nav-btn" data-section="vocab-vault" onclick="switchSection('vocab-vault', this)">
+      <button type="button" class="nav-btn" data-section="vocab-vault" onclick="switchSection('vocab-vault', this)">
         <i class="fa-solid fa-book-open"></i> Kho Từ Vựng
       </button>
     </nav>
@@ -46,43 +46,44 @@
   <!-- Main Body Content -->
   <main class="main-container">
 
-    <!-- HERO BANNER -->
-    <div class="hero-banner">
-      <div class="hero-tag">
-        <i class="fa-solid fa-school"></i> Môi Trường Trường Học: Học Sinh, Giáo Viên & Trợ Lý AI
-      </div>
-      <h1 class="hero-title">Tái Cấu Trúc Sư Phạm chuẩn UbD: <span>《新HSK教程1》第1课</span></h1>
-      <p class="hero-desc">
-        Mô hình <strong>Backward Design (Thiết kế ngược)</strong> chuẩn hóa cho ngày học đầu tiên: Xác định chuẩn giao tiếp trong trường học $\rightarrow$ Thiết lập Performance Task & Rubric AI $\rightarrow$ Lắp ráp Học liệu Just-In-Time.
-      </p>
-
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-          <div class="stat-info">
-            <h4>Bối Cảnh Trường Học</h4>
-            <p>Học sinh, Cô giáo & Trợ lý AI</p>
-          </div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
-          <div class="stat-info">
-            <h4>Micro-Credentials</h4>
-            <p>Ngưỡng đạt 80% Rubric</p>
-          </div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon"><i class="fa-solid fa-robot"></i></div>
-          <div class="stat-info">
-            <h4>AI Rubric 3 Trục</h4>
-            <p>Kính ngữ, Thanh điệu, Phản xạ</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SECTION 1: 3 GIAI ĐOẠN UBD -->
+    <!-- SECTION 1: 3 GIAI ĐOẠN UBD (Includes Hero Banner) -->
     <section id="ubd-overview" class="section active">
+      
+      <!-- HERO BANNER -->
+      <div class="hero-banner">
+        <div class="hero-tag">
+          <i class="fa-solid fa-school"></i> Môi Trường Trường Học: Học Sinh, Giáo Viên & Trợ Lý AI
+        </div>
+        <h1 class="hero-title">Tái Cấu Trúc Sư Phạm chuẩn UbD: <span>《新HSK教程1》第1课</span></h1>
+        <p class="hero-desc">
+          Mô hình <strong>Backward Design (Thiết kế ngược)</strong> chuẩn hóa cho ngày học đầu tiên: Xác định chuẩn giao tiếp trong trường học $\rightarrow$ Thiết lập Performance Task & Rubric AI $\rightarrow$ Lắp ráp Học liệu Just-In-Time.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <div class="stat-info">
+              <h4>Bối Cảnh Trường Học</h4>
+              <p>Học sinh, Cô giáo & Trợ lý AI</p>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
+            <div class="stat-info">
+              <h4>Micro-Credentials</h4>
+              <p>Ngưỡng đạt 80% Rubric</p>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fa-solid fa-robot"></i></div>
+            <div class="stat-info">
+              <h4>AI Rubric 3 Trục</h4>
+              <p>Kính ngữ, Thanh điệu, Phản xạ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
         <i class="fa-solid fa-layer-group" style="color: var(--primary);"></i> Khung Thiết Kế Ngược (UbD) 3 Giai Đoạn
       </h2>
@@ -205,9 +206,9 @@
           </div>
 
           <div class="slide-controls">
-            <button class="btn btn-secondary" onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Slide Trước</button>
+            <button type="button" class="btn btn-secondary" onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Slide Trước</button>
             <span style="font-weight: 700; color: var(--text-muted);" id="slide-counter">Slide 1 / 6</span>
-            <button class="btn btn-primary" onclick="nextSlide()">Slide Tiếp <i class="fa-solid fa-arrow-right"></i></button>
+            <button type="button" class="btn btn-primary" onclick="nextSlide()">Slide Tiếp <i class="fa-solid fa-arrow-right"></i></button>
           </div>
         </div>
       </div>
@@ -230,7 +231,7 @@
                 <p style="font-size: 0.75rem; color: var(--emerald);"><i class="fa-solid fa-circle" style="font-size: 0.6rem;"></i> Live Assessment Mode - School Context</p>
               </div>
             </div>
-            <button class="audio-btn" title="Phát âm thoại AI" onclick="speakCurrentAIMessage()"><i class="fa-solid fa-volume-high"></i></button>
+            <button type="button" class="audio-btn" title="Phát âm thoại AI" onclick="speakCurrentAIMessage()"><i class="fa-solid fa-volume-high"></i></button>
           </div>
 
           <div class="chat-messages" id="chat-messages-list">
@@ -242,7 +243,7 @@
 
           <div class="chat-input-area">
             <input type="text" class="chat-input" id="user-chat-input" placeholder="Nhập tin nhắn (e.g. 王老师，您好！我是... / 谢谢大家)..." onkeypress="handleChatKeyPress(event)">
-            <button class="btn btn-primary" onclick="sendUserChatMessage()"><i class="fa-solid fa-paper-plane"></i> Gửi</button>
+            <button type="button" class="btn btn-primary" onclick="sendUserChatMessage()"><i class="fa-solid fa-paper-plane"></i> Gửi</button>
           </div>
         </div>
 
@@ -284,7 +285,7 @@
             </p>
           </div>
 
-          <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="generateCertificateModal()">
+          <button type="button" class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="generateCertificateModal()">
             <i class="fa-solid fa-award"></i> Xem Chứng Chỉ Micro-Credential
           </button>
         </div>

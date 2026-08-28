@@ -27,6 +27,9 @@ function switchSection(sectionId, el) {
     const activeBtn = document.querySelector(`.nav-btn[data-section="${sectionId}"]`);
     if (activeBtn) activeBtn.classList.add('active');
   }
+
+  // Scroll to top smoothly
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // 2. Restructured UbD Slide Deck Data (Refined to User Specs)
@@ -120,13 +123,13 @@ const slidesData = [
           <div class="vocab-hanzi">王老师 / 您</div>
           <div class="vocab-pinyin">Wáng lǎoshī / nín</div>
           <div class="vocab-meaning">Cô Wang / Ngài (Kính ngữ)</div>
-          <button class="audio-btn" onclick="speakChinese('王老师，您好')"><i class="fa-solid fa-volume-high"></i></button>
+          <button type="button" class="audio-btn" onclick="speakChinese('王老师，您好')"><i class="fa-solid fa-volume-high"></i></button>
         </div>
         <div class="vocab-card" style="flex: 1; min-width: 130px;">
           <div class="vocab-hanzi">同学 / 大家</div>
           <div class="vocab-pinyin">tóngxué / dàjiā</div>
           <div class="vocab-meaning">Bạn học / Mọi người</div>
-          <button class="audio-btn" onclick="speakChinese('同学们好，大家好')"><i class="fa-solid fa-volume-high"></i></button>
+          <button type="button" class="audio-btn" onclick="speakChinese('同学们好，大家好')"><i class="fa-solid fa-volume-high"></i></button>
         </div>
       </div>
     `
@@ -158,7 +161,7 @@ const slidesData = [
       <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245,158,11,0.3); padding: 1.5rem; border-radius: 12px; text-align: center; margin-top: 1rem;">
         <h2 style="font-family: 'Noto Sans SC'; color: #fcd34d;">Mā zhòng má, wǒ fàng mǎ. Mǎ chī má, mā mà mǎ.</h2>
         <p style="color: var(--text-muted); margin: 0.8rem 0;">(妈种麻，我放马。马吃麻，妈骂马。)</p>
-        <button class="btn btn-primary" onclick="speakChinese('妈种麻，我放马。马吃麻，妈骂马。')">
+        <button type="button" class="btn btn-primary" onclick="speakChinese('妈种麻，我放马。马吃麻，妈骂马。')">
           <i class="fa-solid fa-play"></i> Nghe Thử Rao口令 (1.0x)
         </button>
       </div>
@@ -351,7 +354,7 @@ function renderVocabVault() {
       <div class="vocab-hanzi">${item.hanzi}</div>
       <div class="vocab-pinyin">${item.pinyin}</div>
       <div class="vocab-meaning">${item.meaning}</div>
-      <button class="audio-btn" title="Phát âm ${item.hanzi}" onclick="speakChinese('${item.hanzi}')">
+      <button type="button" class="audio-btn" title="Phát âm ${item.hanzi}" onclick="speakChinese('${item.hanzi}')">
         <i class="fa-solid fa-volume-high"></i>
       </button>
     </div>
@@ -364,9 +367,10 @@ document.addEventListener('DOMContentLoaded', () => {
   renderVocabVault();
   updateRubricScore();
 
-  // Attach click listeners to all nav buttons as secondary fallback
+  // Attach click listeners to all nav buttons
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
+      e.preventDefault();
       const sectionId = this.getAttribute('data-section');
       if (sectionId) {
         switchSection(sectionId, this);
