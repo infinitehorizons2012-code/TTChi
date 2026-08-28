@@ -73,8 +73,8 @@ const slidesData = [
       <h3>📊 AI Rubric 3 Trục Đo Lường Năng Lực:</h3>
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
         <div style="background: rgba(99,102,241,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--cyan);">(1) Đại từ kính ngữ `您`</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Đánh giá việc chọn đúng `您` cho Giáo sư Wang và `你` cho AI/bạn học.</p>
+          <h4 style="color: var(--cyan);">(1) Đại từ kính ngữ 您</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Đánh giá việc chọn đúng <code>您</code> cho Giáo sư Wang và <code>你</code> cho AI/bạn học.</p>
         </div>
         <div style="background: rgba(168,85,247,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
           <h4 style="color: var(--secondary);">(2) Thanh điệu chuẩn</h4>
@@ -88,7 +88,7 @@ const slidesData = [
 
       <div style="margin-top: 1.5rem; text-align: center; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); padding: 1rem; border-radius: 12px;">
         <strong style="color: #fcd34d; font-size: 1.1rem;"><i class="fa-solid fa-award"></i> Ngưỡng Đo Lường:</strong>
-        <span style="color: var(--text-main);"> Học viên phải đạt <strong>$\ge 80\%$ điểm Rubric</strong> để được cấp Micro-Credential.</span>
+        <span style="color: var(--text-main);"> Học viên phải đạt <strong>≥ 80% điểm Rubric</strong> để được cấp Micro-Credential.</span>
       </div>
     `
   },
