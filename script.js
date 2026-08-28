@@ -52,7 +52,7 @@ function setQuestionCalib(qNum, state, btnEl) {
   else if (state === 'X') btnEl.classList.add('active-red');
 }
 
-// 4. Interactive Transfer Test & Error-Driven Engine Metadata (Cleaned options without explicit hints)
+// 4. Interactive Transfer Test & Error-Driven Engine Metadata (Dialogue labels updated to Học sinh 1 & 2)
 const questionMeta = {
   1: {
     skill: "Nghe (Listening)",
@@ -62,10 +62,10 @@ const questionMeta = {
     rule: "不 (bù) + Thanh 4 ⟶ bú + Thanh 4",
     transferQuizzes: [
       {
-        title: "Biến thể 1.1: Chọn âm biến điệu đúng khi trả lời 'Cảm ơn':",
+        title: "Biến thể 1.1: Chọn âm biến điệu đúng khi Học sinh 2 đáp lời 'Cảm ơn':",
         options: ["A. bù kèqi", "B. bú kèqi"],
         correctIdx: 1,
-        explain: "Chính xác! 谢谢你！ ⟶ 不客气！ (bú kèqi - biến điệu thanh 2 bú)."
+        explain: "Chính xác! Học sinh 1: 谢谢你！ ⟶ Học sinh 2: 不客气！ (bú kèqi - biến điệu thanh 2 bú)."
       },
       {
         title: "Biến thể 1.2: Chọn âm biến điệu đúng cho chữ 不 trong '不是' (bú shì - không phải):",
@@ -104,10 +104,10 @@ const questionMeta = {
     rule: "谢谢！ ⟶ Đáp lại: 不客气！",
     transferQuizzes: [
       {
-        title: "Biến thể 3.1: Đáp lại lời cảm ơn của tập thể '谢谢大家！':",
+        title: "Biến thể 3.1: Học sinh 2 đáp lại lời cảm ơn của Học sinh 1 '谢谢大家！':",
         options: ["A. 再见！", "B. 不客气！"],
         correctIdx: 1,
-        explain: "Chính xác! 谢谢大家！ ⟶ Đáp lại: 不客气！ (Bú kèqi!)."
+        explain: "Chính xác! Học sinh 1: 谢谢大家！ ⟶ Học sinh 2 đáp lại: 不客气！ (Bú kèqi!)."
       }
     ]
   },
