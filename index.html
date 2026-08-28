@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI小语，你好！Xin chào AI Tiểu Ngữ!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=multi_char_hanzi_v20">
+  <link rel="stylesheet" href="styles.css?v=spaced_review_tab_v21">
   <!-- HanziWriter for Hanzi Etymology Animation -->
   <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 </head>
 <body>
 
-  <!-- Top Bar -->
+  <!-- Top Bar with Student Account Control -->
   <header class="top-header">
     <div class="header-container">
       <div class="logo">
@@ -19,6 +19,20 @@
         <div class="logo-title">
           <h1>UbD <span>HSK 1 Kids</span></h1>
         </div>
+      </div>
+
+      <!-- STUDENT ACCOUNT BAR -->
+      <div class="student-profile-bar">
+        <div class="student-info" onclick="openAccountModal()">
+          <i class="fa-solid fa-circle-user avatar-icon"></i>
+          <div>
+            <strong id="display-student-name">Vương Nhất Phi</strong>
+            <span class="student-rank" id="display-student-rank">🌱 Học viên mới</span>
+          </div>
+        </div>
+        <button type="button" class="btn-switch-account" onclick="openAccountModal()">
+          <i class="fa-solid fa-right-to-bracket"></i> Đổi tài khoản
+        </button>
       </div>
     </div>
   </header>
@@ -35,8 +49,8 @@
           <p id="daily-banner-desc">Hôm nay bạn có bài tập cần ôn lại để ghi nhớ sâu thanh điệu và kính ngữ!</p>
         </div>
       </div>
-      <button type="button" class="btn-daily-action" onclick="startDailyTaskReview()">
-        <i class="fa-solid fa-play"></i> Làm Bài Ôn Hôm Nay Ngay
+      <button type="button" class="btn-daily-action" onclick="goToReviewTab()">
+        <i class="fa-solid fa-play"></i> Làm Bài Ôn Ngay
       </button>
     </div>
 
@@ -46,7 +60,7 @@
       <p>Ngày đầu tiên đi học, Vương Nhất Phi chào hỏi trợ giảng AI Tiểu Ngữ ở trong văn phòng.</p>
     </div>
 
-    <!-- TAB NAVIGATOR (LÝ THUYẾT - TỪ VỰNG - TEST TRANSFER) -->
+    <!-- TAB NAVIGATOR (LÝ THUYẾT - TỪ VỰNG - TEST TRANSFER - ÔN TẬP) -->
     <div class="tab-bar">
       <button type="button" class="tab-btn active" onclick="switchPageTab('theory-tab', this)">
         <i class="fa-solid fa-book-open"></i> Lý thuyết
@@ -59,6 +73,11 @@
 
       <button type="button" class="tab-btn" onclick="switchPageTab('test-tab', this)">
         <i class="fa-solid fa-pen-to-square"></i> Test transfer
+      </button>
+
+      <!-- TAB ÔN TẬP (BỔ SUNG MỚI THEO YÊU CẦU NGUYÊN BẢN) -->
+      <button type="button" class="tab-btn" onclick="switchPageTab('review-tab', this)">
+        <i class="fa-solid fa-clock-rotate-left"></i> Ôn tập
       </button>
     </div>
 
@@ -668,9 +687,113 @@
 
     </div>
 
+    <!-- TAB 4: ÔN TẬP (SPACED RETRIEVAL 1-3-7 DEDICATED REVIEW TAB) -->
+    <div id="review-tab" class="tab-content">
+      
+      <!-- SPACED RETRIEVAL DASHBOARD HEADER CARD -->
+      <div class="card" style="margin-bottom: 1.5rem; border-color: #f59e0b; background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+          <div>
+            <h3 style="font-size: 1.4rem; color: #b45309; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-clock-rotate-left"></i> Ôn Tập Hàng Ngày (Spaced Retrieval 1-3-7)
+            </h3>
+            <p style="color: #78350f; font-weight: 600; font-size: 0.95rem;">
+              Tự động lặp lại ngắt quãng vào Ngày 1, Ngày 3, và Ngày 7 để ghi nhớ sâu vĩnh viễn thanh điệu và kính ngữ!
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <div style="background: #ffffff; border: 1.5px solid #fde68a; padding: 10px 16px; border-radius: 14px; text-align: center;">
+              <span style="font-size: 0.78rem; font-weight: 800; color: #d97706; display: block;">CHUỖI ÔN TẬP</span>
+              <strong id="review-streak-count" style="font-size: 1.25rem; color: #b45309;">🔥 3 Ngày</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPACED RETRIEVAL TIMELINE CALENDAR -->
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <h4 style="font-size: 1.15rem; color: #0f172a; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-calendar-days" style="color: #6366f1;"></i> Tiến Độ Ôn Tập Ngắt Quãng Của Bé:
+        </h4>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem;">
+          <!-- DAY 1 -->
+          <div id="day1-card" style="background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 16px; padding: 1.2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span class="badge badge-cyan">MỐC 1 (NGÀY 1)</span>
+              <i class="fa-solid fa-1 icon-top icon-cyan"></i>
+            </div>
+            <strong style="font-size: 1.05rem; color: #0f172a; display: block; margin-bottom: 4px;">Lần Ôn Đầu Tiên</strong>
+            <p style="font-size: 0.88rem; color: #64748b;" id="day1-date-status">Đã lưu lịch</p>
+          </div>
+
+          <!-- DAY 3 -->
+          <div id="day3-card" style="background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 16px; padding: 1.2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span class="badge badge-amber">MỐC 2 (NGÀY 3)</span>
+              <i class="fa-solid fa-3 icon-top icon-amber"></i>
+            </div>
+            <strong style="font-size: 1.05rem; color: #0f172a; display: block; margin-bottom: 4px;">Củng Cố Phản Xạ</strong>
+            <p style="font-size: 0.88rem; color: #64748b;" id="day3-date-status">Đã lưu lịch</p>
+          </div>
+
+          <!-- DAY 7 -->
+          <div id="day7-card" style="background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 16px; padding: 1.2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span class="badge badge-purple">MỐC 3 (NGÀY 7)</span>
+              <i class="fa-solid fa-7 icon-top icon-purple"></i>
+            </div>
+            <strong style="font-size: 1.05rem; color: #0f172a; display: block; margin-bottom: 4px;">Khắc Sâu Trí Nhớ Dài Hạn</strong>
+            <p style="font-size: 0.88rem; color: #64748b;" id="day7-date-status">Đã lưu lịch</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPACED PRACTICE QUIZZES GENERATOR CONTAINER -->
+      <div class="card" style="border-color: #6366f1;">
+        <h3 style="color: #4338ca; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-fire-burner" style="color: #f59e0b;"></i> Bài Tập Ôn Tập Hàng Ngày (Tự Động Sinh Từ Lỗ Hổng Kiến Thức)
+        </h3>
+        
+        <div id="spaced-review-questions-box">
+          <!-- JS RENDERS DYNAMIC REVIEW QUESTIONS BASED ON ERROR LOG -->
+        </div>
+      </div>
+
+    </div>
+
   </main>
 
+  <!-- STUDENT ACCOUNT MODAL -->
+  <div id="account-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+        <h3 style="color: #4338ca; font-size: 1.3rem; margin: 0;"><i class="fa-solid fa-user-gear"></i> Tài Khoản Học Sinh & Tiến Độ</h3>
+        <button type="button" style="background: none; border: none; font-size: 1.5rem; color: #64748b; cursor: pointer;" onclick="closeAccountModal()">&times;</button>
+      </div>
+
+      <p style="color: #475569; font-size: 0.95rem; margin-bottom: 1.2rem;">
+        Nhập tên học sinh để tạo tài khoản mới hoặc chuyển đổi giữa các bé. Mọi tiến độ làm bài test, lịch ôn 1-3-7 và sổ tay lỗi sai sẽ được lưu riêng cho từng tài khoản!
+      </p>
+
+      <div style="margin-bottom: 1.2rem;">
+        <label style="font-weight: 700; font-size: 0.9rem; color: #1e293b; display: block; margin-bottom: 6px;">Tên Học Sinh / Bé:</label>
+        <input type="text" id="input-student-name" placeholder="Ví dụ: Vương Nhất Phi..." style="width: 100%; padding: 12px 16px; border-radius: 12px; border: 1.5px solid #cbd5e1; font-weight: 700; font-size: 1rem;">
+      </div>
+
+      <button type="button" class="btn-eval" style="margin-bottom: 1rem;" onclick="saveStudentAccount()">
+        <i class="fa-solid fa-floppy-disk"></i> Lưu & Kích Hoạt Tài Khoản Này
+      </button>
+
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem;">
+        <strong style="color: #64748b; font-size: 0.85rem; display: block; margin-bottom: 8px;">DANH SÁCH TÀI KHOẢN ĐÃ TẠO:</strong>
+        <div id="saved-accounts-list" style="display: flex; flex-direction: column; gap: 6px;"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Script setup -->
-  <script src="script.js?v=multi_char_hanzi_v20"></script>
+  <script src="script.js?v=spaced_review_tab_v21"></script>
 </body>
 </html>

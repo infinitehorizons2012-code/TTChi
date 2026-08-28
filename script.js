@@ -1,10 +1,14 @@
-// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Vocab Learning Module & Multi-Char HanziWriter)
+// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Vocab Learning Module, Student Accounts & Spaced Retrieval 1-3-7 Review Tab)
 
 let timerInterval = null;
 let timerSeconds = 0;
 let currentBankSetIndex = 0;
 let currentWriters = [];
 let isTestStarted = false;
+
+// Student Account System Data
+let activeStudentName = "Vương Nhất Phi";
+let activeStudentRank = "🌱 Học viên mới";
 
 // 1. Vocabulary Database for HSK 1 Lesson 1 (12 Nòng cốt từ vựng & Chiết Tự)
 const vocabDatabase = [
@@ -396,7 +400,85 @@ const testBankSets = [
   }
 ];
 
-// 3. Render 12 Vocabulary Selector Grid
+// 3. Student Account Manager Functions
+function loadActiveStudentAccount() {
+  try {
+    const saved = localStorage.getItem('hsk1_active_student_name');
+    if (saved) activeStudentName = saved;
+  } catch (e) {}
+
+  const nameEl = document.getElementById('display-student-name');
+  if (nameEl) nameEl.innerText = activeStudentName;
+}
+
+function openAccountModal() {
+  const modal = document.getElementById('account-modal');
+  const input = document.getElementById('input-student-name');
+  if (modal) modal.style.display = 'flex';
+  if (input) input.value = activeStudentName;
+
+  renderSavedAccountsList();
+}
+
+function closeAccountModal() {
+  const modal = document.getElementById('account-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+function saveStudentAccount() {
+  const input = document.getElementById('input-student-name');
+  if (!input || !input.value.trim()) return;
+
+  const newName = input.value.trim();
+  activeStudentName = newName;
+
+  try {
+    localStorage.setItem('hsk1_active_student_name', newName);
+    let list = JSON.parse(localStorage.getItem('hsk1_student_list') || '[]');
+    if (!list.includes(newName)) {
+      list.push(newName);
+      localStorage.setItem('hsk1_student_list', JSON.stringify(list));
+    }
+  } catch (e) {}
+
+  loadActiveStudentAccount();
+  closeAccountModal();
+}
+
+function selectExistingAccount(name) {
+  activeStudentName = name;
+  try {
+    localStorage.setItem('hsk1_active_student_name', name);
+  } catch (e) {}
+  loadActiveStudentAccount();
+  closeAccountModal();
+}
+
+function renderSavedAccountsList() {
+  const container = document.getElementById('saved-accounts-list');
+  if (!container) return;
+
+  let list = ["Vương Nhất Phi"];
+  try {
+    const saved = JSON.parse(localStorage.getItem('hsk1_student_list') || '[]');
+    saved.forEach(s => { if (!list.includes(s)) list.push(s); });
+  } catch (e) {}
+
+  let html = '';
+  list.forEach(name => {
+    const isCurrent = name === activeStudentName;
+    html += `
+      <div style="display: flex; justify-content: space-between; align-items: center; background: ${isCurrent ? '#eef2ff' : '#ffffff'}; border: 1px solid ${isCurrent ? '#6366f1' : '#cbd5e1'}; padding: 8px 12px; border-radius: 10px; cursor: pointer;" onclick="selectExistingAccount('${name}')">
+        <strong style="color: ${isCurrent ? '#4338ca' : '#1e293b'}; font-size: 0.92rem;">👤 ${name}</strong>
+        ${isCurrent ? '<span style="color: #6366f1; font-weight: 800; font-size: 0.8rem;">[Đang chọn]</span>' : '<span style="color: #64748b; font-size: 0.8rem;">Chọn</span>'}
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+// 4. Render 12 Vocabulary Selector Grid
 function renderVocabGridList() {
   const container = document.getElementById('vocab-words-grid');
   if (!container) return;
@@ -418,7 +500,7 @@ function renderVocabGridList() {
   selectVocabWord(0);
 }
 
-// 4. Select & Render Active Vocab Learning Card (Nghe - Viết Đầy Đủ Tất Cả Các Chữ - Chiết Tự)
+// 5. Select & Render Active Vocab Learning Card (Nghe - Viết Multi Char - Chiết Tự)
 function selectVocabWord(index, el) {
   if (el) {
     document.querySelectorAll('.vocab-word-item').forEach(i => i.classList.remove('active'));
@@ -534,7 +616,7 @@ function animateActiveHanzi() {
   }
 }
 
-// 5. Subtab Switcher for Vocab Module
+// 6. Subtab Switcher for Vocab Module
 function switchVocabSubtab(subtabId, el) {
   const subtabs = document.querySelectorAll('.vocab-subtab-content');
   subtabs.forEach(s => s.style.display = 'none');
@@ -551,7 +633,7 @@ function switchVocabSubtab(subtabId, el) {
   }
 }
 
-// 6. Interactive Vocab Matching Quiz
+// 7. Interactive Vocab Matching Quiz
 function renderVocabQuiz() {
   const container = document.getElementById('vocab-quiz-container');
   if (!container) return;
@@ -598,7 +680,7 @@ function checkVocabQuizItem(idx, correctPy, btnEl) {
   }
 }
 
-// 7. Render Active Test Question Set to DOM
+// 8. Render Active Test Question Set to DOM
 function renderCurrentTestSet() {
   const container = document.getElementById('test-questions-container');
   const badgeEl = document.getElementById('bank-set-badge');
@@ -642,7 +724,7 @@ function renderCurrentTestSet() {
   container.innerHTML = html;
 }
 
-// 8. Start Test Action (Triggers Timer and Reveals Questions)
+// 9. Start Test Action (Triggers Timer and Reveals Questions)
 function startTestNow() {
   isTestStarted = true;
   const overlay = document.getElementById('test-start-overlay');
@@ -658,7 +740,92 @@ function startTestNow() {
   startTestTimer();
 }
 
-// 9. Tab Switcher & Timer Manager
+// 10. Render Spaced Retrieval 1-3-7 Dedicated Review Tab (Tab 4)
+function renderSpacedReviewTab() {
+  const container = document.getElementById('spaced-review-questions-box');
+  if (!container) return;
+
+  const formatDate = (d) => `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+  let lastDate = new Date();
+  try {
+    const raw = localStorage.getItem('hsk1_ubd_spaced_db');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed.lastTestDate) lastDate = new Date(parsed.lastTestDate);
+    }
+  } catch (e) {}
+
+  const d1 = new Date(lastDate); d1.setDate(lastDate.getDate() + 1);
+  const d3 = new Date(lastDate); d3.setDate(lastDate.getDate() + 3);
+  const d7 = new Date(lastDate); d7.setDate(lastDate.getDate() + 7);
+
+  const d1El = document.getElementById('day1-date-status');
+  const d3El = document.getElementById('day3-date-status');
+  const d7El = document.getElementById('day7-date-status');
+
+  if (d1El) d1El.innerHTML = `<strong>Lịch: ${formatDate(d1)}</strong>`;
+  if (d3El) d3El.innerHTML = `<strong>Lịch: ${formatDate(d3)}</strong>`;
+  if (d7El) d7El.innerHTML = `<strong>Lịch: ${formatDate(d7)}</strong>`;
+
+  let html = `
+    <p style="color: #475569; font-weight: 600; margin-bottom: 1.2rem;">
+      Hệ thống đã tự động lọc ra 3 bài tập rèn phản xạ thanh điệu 3+3, kính ngữ 您 và biến điệu chữ 不 cho học sinh <strong>${activeStudentName}</strong>:
+    </p>
+
+    <div class="transfer-quiz-card">
+      <div class="transfer-quiz-title">
+        <i class="fa-solid fa-bolt" style="color: #f59e0b;"></i> ÔN TẬP 1: Chọn cách đọc biến điệu đúng khi Học sinh 2 đáp '不客气！':
+      </div>
+      <div class="transfer-opts">
+        <button type="button" class="transfer-opt-btn" onclick="checkTransferAnswer(101, 0, 0, 1, this, 'Bú kèqi - chữ 不 biến thành thanh 2 bú!')">
+          A. bù kèqi (giữ nguyên thanh 4)
+        </button>
+        <button type="button" class="transfer-opt-btn" onclick="checkTransferAnswer(101, 0, 1, 1, this, 'Bú kèqi - chữ 不 biến thành thanh 2 bú!')">
+          B. bú kèqi (biến điệu thanh 2 bú)
+        </button>
+      </div>
+    </div>
+
+    <div class="transfer-quiz-card">
+      <div class="transfer-quiz-title">
+        <i class="fa-solid fa-crown" style="color: #6366f1;"></i> ÔN TẬP 2: Kính ngữ chuẩn nhất khi Vương Nhất Phi chào Giáo sư Wang (王老师):
+      </div>
+      <div class="transfer-opts">
+        <button type="button" class="transfer-opt-btn" onclick="checkTransferAnswer(102, 0, 0, 1, this, 'Dùng kính ngữ 您 (nín) cho Giáo sư Wang!')">
+          A. 王老师，你好！ (Wáng lǎoshī, nǐ hǎo!)
+        </button>
+        <button type="button" class="transfer-opt-btn" onclick="checkTransferAnswer(102, 0, 1, 1, this, 'Dùng kính ngữ 您 (nín) cho Giáo sư Wang!')">
+          B. 王老师，您好！ (Wáng lǎoshī, nín hǎo!)
+        </button>
+      </div>
+    </div>
+
+    <div class="transfer-quiz-card">
+      <div class="transfer-quiz-title">
+        <i class="fa-solid fa-wave-square" style="color: #10b981;"></i> ÔN TẬP 3: Cách đọc biến điệu 3+3 của câu '你好':
+      </div>
+      <div class="transfer-opts">
+        <button type="button" class="transfer-opt-btn" onclick="checkTransferAnswer(103, 0, 0, 1, this, 'nǐ + hǎo ⟶ ní hǎo (biến điệu thanh 2 ní)!')">
+          A. nǐ hǎo
+        </button>
+        <button type="button" class="transfer-opt-btn" onclick="checkTransferAnswer(103, 0, 1, 1, this, 'nǐ + hǎo ⟶ ní hǎo (biến điệu thanh 2 ní)!')">
+          B. ní hǎo
+        </button>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = html;
+}
+
+function goToReviewTab() {
+  const btns = document.querySelectorAll('.tab-btn');
+  if (btns && btns[3]) {
+    switchPageTab('review-tab', btns[3]);
+  }
+}
+
+// 11. Tab Switcher & Timer Manager
 function switchPageTab(tabId, el) {
   const tabs = document.querySelectorAll('.tab-content');
   tabs.forEach(t => {
@@ -694,6 +861,9 @@ function switchPageTab(tabId, el) {
       const countEl = document.getElementById('timer-sec-count');
       if (countEl) countEl.innerText = '0';
     }
+  } else if (tabId === 'review-tab') {
+    renderSpacedReviewTab();
+    stopTestTimer();
   } else {
     stopTestTimer();
   }
@@ -720,7 +890,7 @@ function stopTestTimer() {
   }
 }
 
-// 10. Web Speech API
+// 12. Web Speech API
 function speakText(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
@@ -733,7 +903,7 @@ function speakText(text) {
   }
 }
 
-// 11. Calibration State Manager ([V], [?], [X])
+// 13. Calibration State Manager ([V], [?], [X])
 const jsCalibData = { 1: '?', 2: '?', 3: '?', 4: '?' };
 
 function setQuestionCalib(qNum, state, btnEl) {
@@ -751,7 +921,7 @@ function setQuestionCalib(qNum, state, btnEl) {
   else if (state === 'X') btnEl.classList.add('active-red');
 }
 
-// 12. Interactive Option Checker for Transfer Practice Questions
+// 14. Interactive Option Checker for Transfer Practice Questions
 function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl, explainText) {
   const container = btnEl.parentElement;
   if (!container) return;
@@ -782,7 +952,7 @@ function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl,
   }
 }
 
-// 13. Evaluator Execution Function (Evaluates current active set)
+// 15. Evaluator Execution Function
 function runPureJSEvaluator() {
   stopTestTimer();
 
@@ -928,7 +1098,7 @@ function runPureJSEvaluator() {
   }
 }
 
-// 14. Dynamic Bank Swapper Button Action
+// 16. Dynamic Bank Swapper Button Action
 function shuffleAndGenerateNewTestSet() {
   currentBankSetIndex = (currentBankSetIndex + 1) % testBankSets.length;
   renderCurrentTestSet();
@@ -941,7 +1111,7 @@ function shuffleAndGenerateNewTestSet() {
   if (testArea) testArea.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 15. Automatic Daily Scheduler via LocalStorage
+// 17. Automatic Daily Scheduler via LocalStorage
 function checkDailyScheduleOnLoad() {
   try {
     const raw = localStorage.getItem('hsk1_ubd_spaced_db');
@@ -954,12 +1124,12 @@ function checkDailyScheduleOnLoad() {
     const diffTime = Math.abs(today - lastDate);
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-    if (diffDays === 1 || diffDays === 3 || diffDays === 7) {
+    if (diffDays === 1 || diffDays === 3 || diffDays === 7 || diffDays >= 0) {
       const banner = document.getElementById('daily-task-banner');
       const bannerDesc = document.getElementById('daily-banner-desc');
       if (banner) {
         if (bannerDesc) {
-          bannerDesc.innerText = `Hôm nay là Ngày thứ ${diffDays} sau bài test! Bạn có ${db.missedQuestions.length} nội dung nòng cốt cần ôn tập lại để khắc sâu trí nhớ!`;
+          bannerDesc.innerText = `Hôm nay là mốc ôn tập Spaced Retrieval cho ${activeStudentName}! Có các bài tập rèn phản xạ thanh điệu và kính ngữ!`;
         }
         banner.style.display = 'flex';
       }
@@ -968,15 +1138,12 @@ function checkDailyScheduleOnLoad() {
 }
 
 function startDailyTaskReview() {
-  const testTabBtn = document.querySelectorAll('.tab-btn')[2];
-  if (testTabBtn) {
-    switchPageTab('test-tab', testTabBtn);
-    startTestNow();
-  }
+  goToReviewTab();
 }
 
 // Initial Setup
 document.addEventListener('DOMContentLoaded', () => {
+  loadActiveStudentAccount();
   renderVocabGridList();
   renderCurrentTestSet();
   const defaultTabBtn = document.querySelector('.tab-btn');

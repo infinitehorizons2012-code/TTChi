@@ -1,4 +1,4 @@
-/* Single Page Kids & UbD Educational CSS - Vocabulary Module & Multi-Character Etymology Animation */
+/* Single Page Kids & UbD Educational CSS - Spaced Retrieval Review Tab & Student Account System */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+SC:wght@500;700;900&display=swap');
 
 :root {
@@ -58,6 +58,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .logo {
@@ -88,10 +90,61 @@ body {
   color: #6366f1;
 }
 
-.logo-title p {
-  font-size: 0.78rem;
-  color: #64748b;
-  font-weight: 600;
+/* Student Account Bar */
+.student-profile-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 50px;
+  padding: 4px 6px 4px 14px;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.avatar-icon {
+  font-size: 1.6rem;
+  color: #6366f1;
+}
+
+.student-info strong {
+  font-size: 0.92rem;
+  color: #0f172a;
+  display: block;
+  line-height: 1.2;
+}
+
+.student-rank {
+  font-size: 0.75rem;
+  color: #059669;
+  font-weight: 700;
+}
+
+.btn-switch-account {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-switch-account:hover {
+  background: #eef2ff;
+  color: #6366f1;
+  border-color: #a5b4fc;
 }
 
 /* Page Layout */
@@ -913,6 +966,32 @@ body {
   background: #fef2f2;
   border-color: #ef4444;
   color: #b91c1c;
+}
+
+/* Modal Popup Dialog */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-card {
+  background: #ffffff;
+  border-radius: 24px;
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: fadeIn 0.25s ease;
 }
 
 @media (max-width: 850px) {
