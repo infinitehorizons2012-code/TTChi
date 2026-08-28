@@ -1,4 +1,4 @@
-// Interactive Application Logic for UbD + AI HSK1 Lesson 1 App (Strict Lesson 1 Beginner Scope)
+// Interactive Application Logic for UbD + AI HSK1 Lesson 1 App (Error-Driven Learning Engine)
 
 // 1. Navigation Tab Controller (Bulletproof Cross-Browser Implementation)
 function switchSection(sectionId, el) {
@@ -353,6 +353,88 @@ function generateCertificateModal() {
   alert(`🏆 CHỨNG CHỈ MICRO-CREDENTIAL\n\nBài Học: HSK 1 Bài 1 (AI小语，你好！)\nBối Cảnh: Mẫu câu chuẩn Bài 1 (Giáo sư Wang, Học sinh 学生, 你们 & AI Xiaoyu)\nKỹ Năng: Giao tiếp vai vế + Biến điệu 3+3 (ní hǎo) & Biến điệu chữ 不 (bú kèqi)\nĐiểm AI Rubric: ${total}\nTrạng Thái: ĐÃ ĐẠT CHUẨN ĐẦU RA UBD (≥80%)\n\nChúc mừng bạn đã chinh phục thành công Performance Task trong ngày học đầu tiên!`);
 }
 
+// 5. Calibration & Error-Driven Engine Implementation
+const calibState = { 1: '?', 2: '?', 3: '?' };
+
+function setCalibration(qNum, state) {
+  calibState[qNum] = state;
+  const label = document.getElementById(`calib-label-${qNum}`);
+  if (label) {
+    if (state === 'V') {
+      label.innerText = '[V] Chắc chắn 100%';
+      label.style.color = 'var(--emerald)';
+    } else if (state === '?') {
+      label.innerText = '[?] Phân vân 50/50';
+      label.style.color = 'var(--amber)';
+    } else if (state === 'X') {
+      label.innerText = '[X] Đoán mò 100%';
+      label.style.color = '#fca5a5';
+    }
+  }
+}
+
+function evaluateErrorDrivenTest() {
+  const q1Ans = document.querySelector('input[name="q1"]:checked')?.value;
+  const q2Ans = document.querySelector('input[name="q2"]:checked')?.value;
+  const q3Ans = document.querySelector('input[name="q3"]:checked')?.value;
+
+  const correctAnswers = { 1: 'B', 2: 'B', 3: 'A' };
+  const userAnswers = { 1: q1Ans, 2: q2Ans, 3: q3Ans };
+
+  let errorLogsHTML = '';
+
+  for (let i = 1; i <= 3; i++) {
+    const isCorrectChoice = userAnswers[i] === correctAnswers[i];
+    const isCalibV = calibState[i] === 'V';
+    const isErrorOrGuess = !isCorrectChoice || !isCalibV;
+
+    if (isErrorOrGuess) {
+      let cause = '';
+      let action = '';
+      let rule = '';
+      let sample = '';
+
+      if (i === 1) {
+        cause = 'Distractor Trap (Bẫy nhầm thanh điệu chữ 不)';
+        action = 'Ôn lại quy tắc: 不 (bù) đi trước thanh 4 (kèqi) biến thành bú (bú kèqi).';
+        rule = '不 (bù) + Thanh 4 ⟶ bú + Thanh 4';
+        sample = 'A: 谢谢你！ - B: 不客气！(bú kèqi)';
+      } else if (i === 2) {
+        cause = 'Grammar & Etiquette Deficit (Gãy quy tắc kính ngữ 您)';
+        action = 'Phân biệt: 你 cho bạn bè/AI; 您 cho bề trên/Giáo sư Wang.';
+        rule = 'Bề trên (王老师) + 您好 (nín hǎo)';
+        sample = '王老师，您好！ (Wáng lǎoshī, nín hǎo!)';
+      } else if (i === 3) {
+        cause = 'Time & Word Order Constraint (Trật tự từ xưng hô tập thể)';
+        action = 'Trật tự câu chào tập thể: [Danh từ tập thể] + 好';
+        rule = '同学们 / 大家 / 你们 + 好';
+        sample = '同学们好！ / 大家好！';
+      }
+
+      errorLogsHTML += `
+        <div style="background: rgba(255,255,255,0.03); border-left: 4px solid var(--amber); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+          <h4 style="color: var(--amber);">❌ Câu ${i} [Trạng thái: ${calibState[i]}] - Root Cause: ${cause}</h4>
+          <p style="font-size: 0.9rem; color: var(--text-main); margin-top: 4px;">• <strong>Hành động xử lý:</strong> ${action}</p>
+          <p style="font-size: 0.9rem; color: var(--cyan); margin-top: 2px;">• <strong>Quy tắc cốt lõi:</strong> <code>${rule}</code></p>
+          <p style="font-size: 0.9rem; color: var(--emerald); margin-top: 2px;">• <strong>Đề biến thể AI (Transfer Test):</strong> <em>${sample}</em></p>
+        </div>
+      `;
+    }
+  }
+
+  if (!errorLogsHTML) {
+    errorLogsHTML = `<p style="color: var(--emerald); font-weight: 700;">🎉 Xuất sắc! Bạn làm đúng 100% tất cả các câu và gắn nhãn [V] Chắc chắn. Đã đạt mức độ làm chủ kiến thức Bài 1!</p>`;
+  }
+
+  const logBox = document.getElementById('active-error-log-box');
+  const logContent = document.getElementById('error-log-content');
+  if (logBox && logContent) {
+    logContent.innerHTML = errorLogsHTML;
+    logBox.style.display = 'block';
+    logBox.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 // System Prompt Copier for ChatGPT/Gemini Evaluator (Strict Lesson 1 Scope Constraint)
 function copyAIEvaluatorPrompt() {
   const systemPrompt = `[SYSTEM PROMPT: AI EVALUATOR & ROLEPLAY BOT - HSK 1 LESSON 1 STRICT SCOPE]
@@ -402,7 +484,7 @@ Please confirm you are ready by initiating the first greeting in character!`;
   }
 }
 
-// 5. Complete Vocabulary Cards Vault Generator (11 Words)
+// 6. Complete Vocabulary Cards Vault Generator (11 Words)
 const vocabVaultData = [
   { hanzi: "你好", pinyin: "nǐ hǎo (ní hǎo)", meaning: "Xin chào (Biến điệu 3+3)" },
   { hanzi: "王老师", pinyin: "Wáng lǎoshī", meaning: "Giáo sư / Cô giáo Wang" },
