@@ -2,25 +2,21 @@
 
 // 1. Navigation Tab Controller (Bulletproof Cross-Browser Implementation)
 function switchSection(sectionId, el) {
-  // Hide all sections
   const sections = document.querySelectorAll('.section');
   sections.forEach(sec => {
     sec.classList.remove('active');
     sec.style.display = 'none';
   });
 
-  // Remove active from all nav buttons
   const navBtns = document.querySelectorAll('.nav-btn');
   navBtns.forEach(btn => btn.classList.remove('active'));
 
-  // Show target section
   const targetSec = document.getElementById(sectionId);
   if (targetSec) {
     targetSec.style.display = 'block';
     targetSec.classList.add('active');
   }
 
-  // Highlight active nav button
   if (el && el.classList) {
     el.classList.add('active');
   } else {
@@ -28,7 +24,6 @@ function switchSection(sectionId, el) {
     if (activeBtn) activeBtn.classList.add('active');
   }
 
-  // Scroll to top smoothly
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -95,12 +90,12 @@ const slidesData = [
           <p style="font-size: 0.85rem; color: var(--text-muted);">Đánh giá việc chọn đúng <code>您</code> cho Giáo sư Wang và <code>你</code> cho AI/bạn học.</p>
         </div>
         <div style="background: rgba(168,85,247,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--secondary);">(2) Thanh điệu chuẩn</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Đánh giá độ chính xác thanh điệu (nǐ hǎo, nín hǎo, xièxie, zàijiàn).</p>
+          <h4 style="color: var(--secondary);">(2) Thanh điệu chuẩn (3+3 & Bù)</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Biến điệu 3+3 (nǐ hǎo → ní hǎo) & Nửa thanh 3 (bù thanh 3).</p>
         </div>
         <div style="background: rgba(16,185,129,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
           <h4 style="color: var(--emerald);">(3) Phản xạ tự nhiên</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Độ nhạy đáp lời chào, câu cảm ơn (不客气) và tạm biệt (再见).</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Phản xạ 3 chức năng: Chào, Cảm ơn (不客气) và Tạm biệt (再见).</p>
         </div>
       </div>
 
@@ -114,22 +109,27 @@ const slidesData = [
     id: 4,
     stage: "Giai Đoạn 3",
     stageBadgeClass: "badge-stage3",
-    type: "JUST-IN-TIME CONTENT",
-    title: "Slide 4: Học Liệu Vừa Đủ 1 - Xưng Hô Trường Học",
+    type: "JIT VOCAB & PATTERNS",
+    title: "Slide 4: Từ Vựng & Mẫu Câu Vừa Đủ Phân Theo Vai Vế",
     content: `
-      <h3>📚 Học Liệu Tinh Gọn (Từ Vựng Xưng Hô Cốt Lõi):</h3>
-      <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
-        <div class="vocab-card" style="flex: 1; min-width: 130px;">
-          <div class="vocab-hanzi">王老师 / 您</div>
-          <div class="vocab-pinyin">Wáng lǎoshī / nín</div>
-          <div class="vocab-meaning">Cô Wang / Ngài (Kính ngữ)</div>
-          <button type="button" class="audio-btn" onclick="speakChinese('王老师，您好')"><i class="fa-solid fa-volume-high"></i></button>
+      <h3>📚 Học Liệu JIT Phục Vụ 3 Chức Năng (Chào - Cảm Ơn - Tạm Biệt):</h3>
+      <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
+        <div style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); padding: 1rem; border-radius: 10px;">
+          <h4 style="color: var(--cyan);"><i class="fa-solid fa-user-tie"></i> 1. Với Bề Trên (Giáo sư Wang - 王老师):</h4>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Chào: <strong>王老师，您好！</strong> (Wáng lǎoshī, nín hǎo!)</p>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn: <strong>谢谢您，王老师！</strong> (Xièxie nín, Wáng lǎoshī!)</p>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Tạm biệt: <strong>王老师，再见！</strong> (Wáng lǎoshī, zàijiàn!)</p>
         </div>
-        <div class="vocab-card" style="flex: 1; min-width: 130px;">
-          <div class="vocab-hanzi">同学 / 大家</div>
-          <div class="vocab-pinyin">tóngxué / dàjiā</div>
-          <div class="vocab-meaning">Bạn học / Mọi người</div>
-          <button type="button" class="audio-btn" onclick="speakChinese('同学们好，大家好')"><i class="fa-solid fa-volume-high"></i></button>
+        <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); padding: 1rem; border-radius: 10px;">
+          <h4 style="color: var(--primary);"><i class="fa-solid fa-robot"></i> 2. Với AI & Bạn Bè (Trợ lý AI Xiaoyu - 小语):</h4>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Chào: <strong>小语，你好！</strong> (Xiǎoyǔ, nǐ hǎo!)</p>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn & Đáp: <strong>谢谢你！ - 不客气！</strong> (Xièxie nǐ! - Bú kèqi!)</p>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Tạm biệt: <strong>再见！ / 明天见！</strong> (Zàijiàn! / Míngtiān jiàn!)</p>
+        </div>
+        <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); padding: 1rem; border-radius: 10px;">
+          <h4 style="color: var(--secondary);"><i class="fa-solid fa-users"></i> 3. Với Bạn Học & Tập Thể Toàn Trường:</h4>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Chào tập thể: <strong>同学们好！ / 大家好！</strong> (Tóngxuémen hǎo! / Dàjiā hǎo!)</p>
+          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn tập thể: <strong>谢谢大家！</strong> (Xièxie dàjiā!)</p>
         </div>
       </div>
     `
@@ -138,16 +138,37 @@ const slidesData = [
     id: 5,
     stage: "Giai Đoạn 3",
     stageBadgeClass: "badge-stage3",
-    type: "JUST-IN-TIME CONTENT",
-    title: "Slide 5: Học Liệu Vừa Đủ 2 - Chào Hỏi, Cảm Ơn & Tạm Biệt",
+    type: "TONE SANDHI 3+3 & HALF 3RD",
+    title: "Slide 5: Chú Ý Thanh Điệu 3+3 & Bù (Half 3rd Tone)",
     content: `
-      <h3>📚 Nạp Học Liệu Tinh Gọn (Mẫu Câu Giao Tiếp):</h3>
-      <ul class="feature-list" style="font-size: 1rem; margin-top: 1rem;">
-        <li><i class="fa-solid fa-message"></i> <strong>你好！ (nǐ hǎo):</strong> Chào bạn / Chào Xiaoyu!</li>
-        <li><i class="fa-solid fa-message"></i> <strong>王老师，您好！ (Wáng lǎoshī, nín hǎo):</strong> Em chào Giáo sư/Cô Wang!</li>
-        <li><i class="fa-solid fa-message"></i> <strong>谢谢！ - 不客气！ (xièxie - bú kèqi):</strong> Cảm ơn! - Không có gì!</li>
-        <li><i class="fa-solid fa-message"></i> <strong>再见！ (zàijiàn):</strong> Tạm biệt!</li>
-      </ul>
+      <h3>🎶 Quy Tắc Âm Tiết & Thanh Điệu Cốt Lõi:</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+        <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); padding: 1.2rem; border-radius: 12px;">
+          <h4 style="color: #fcd34d;"><i class="fa-solid fa-wave-square"></i> Biến Điệu 3+3 (Tone Sandhi)</h4>
+          <p style="font-size: 0.9rem; color: var(--text-main); margin-top: 0.5rem;">
+            Khi 2 thanh 3 đi liền nhau: <strong>Thanh 3 thứ nhất đọc thành Thanh 2</strong> (đọc hướng lên).
+          </p>
+          <div style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin-top: 0.8rem; text-align: center;">
+            <strong style="color: var(--cyan); font-size: 1.1rem;">你 (nǐ) + 好 (hǎo) → <code>ní hǎo</code> (你好)</strong>
+          </div>
+          <button type="button" class="btn btn-secondary" style="margin-top: 0.8rem; width: 100%; justify-content: center;" onclick="speakChinese('你好')">
+            <i class="fa-solid fa-volume-high"></i> Nghe Biến Điệu ní hǎo
+          </button>
+        </div>
+
+        <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); padding: 1.2rem; border-radius: 12px;">
+          <h4 style="color: #6ee7b7;"><i class="fa-solid fa-arrow-down-short-wide"></i> Nửa Thanh 3 (Bù Thanh 3)</h4>
+          <p style="font-size: 0.9rem; color: var(--text-main); margin-top: 0.5rem;">
+            Khi thanh 3 đứng trước Thanh 1, 2, 4: Chỉ đọc <strong>nửa đầu trầm xuống</strong> (không nảy âm lên).
+          </p>
+          <div style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin-top: 0.8rem; text-align: center;">
+            <strong style="color: var(--emerald); font-size: 1.1rem;">好 (hǎo) + 看 (kàn) → <code>hǎo kàn</code> (Half-3rd)</strong>
+          </div>
+          <button type="button" class="btn btn-secondary" style="margin-top: 0.8rem; width: 100%; justify-content: center;" onclick="speakChinese('好看')">
+            <i class="fa-solid fa-volume-high"></i> Nghe Nửa Thanh 3
+          </button>
+        </div>
+      </div>
     `
   },
   {
@@ -157,7 +178,7 @@ const slidesData = [
     type: "PHONETICS DRILL",
     title: "Slide 6: Luyện Âm Tiết Rao口令 (Tongue Twister)",
     content: `
-      <h3>🎙️ Luyện Phát Âm & Thanh Điệu Rõ Ràng:</h3>
+      <h3>🎙️ Luyện Âm Tiết & Thanh Điệu Phản Xạ:</h3>
       <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245,158,11,0.3); padding: 1.5rem; border-radius: 12px; text-align: center; margin-top: 1rem;">
         <h2 style="font-family: 'Noto Sans SC'; color: #fcd34d;">Mā zhòng má, wǒ fàng mǎ. Mǎ chī má, mā mà mǎ.</h2>
         <p style="color: var(--text-muted); margin: 0.8rem 0;">(妈种麻，我放马。马吃麻，妈骂马。)</p>
@@ -328,12 +349,12 @@ function updateRubricScore() {
 function generateCertificateModal() {
   const totalElem = document.getElementById('total-rubric-score');
   const total = totalElem ? totalElem.innerText : '85 / 100';
-  alert(`🏆 CHỨNG CHỈ MICRO-CREDENTIAL\n\nBài Học: HSK 1 Bài 1 (AI小语，你好！)\nBối Cảnh: Môi trường Trường học (Học sinh, Giáo sư Wang & AI Xiaoyu)\nĐiểm AI Rubric: ${total}\nTrạng Thái: ĐÃ ĐẠT CHUẨN ĐẦU RA UBD (≥80%)\n\nChúc mừng bạn đã chinh phục thành công Performance Task trong ngày học đầu tiên!`);
+  alert(`🏆 CHỨNG CHỈ MICRO-CREDENTIAL\n\nBài Học: HSK 1 Bài 1 (AI小语，你好！)\nBối Cảnh: Môi trường Trường học (Học sinh, Giáo sư Wang & AI Xiaoyu)\nKỹ Năng: Giao tiếp vai vế + Biến điệu 3+3 (ní hǎo) & Bù thanh 3\nĐiểm AI Rubric: ${total}\nTrạng Thái: ĐÃ ĐẠT CHUẨN ĐẦU RA UBD (≥80%)\n\nChúc mừng bạn đã chinh phục thành công Performance Task trong ngày học đầu tiên!`);
 }
 
 // 5. Vocabulary Cards Vault Generator
 const vocabVaultData = [
-  { hanzi: "你好", pinyin: "nǐ hǎo", meaning: "Xin chào (Hello)" },
+  { hanzi: "你好", pinyin: "nǐ hǎo (ní hǎo)", meaning: "Xin chào (Tone 3+3 sandhi)" },
   { hanzi: "王老师", pinyin: "Wáng lǎoshī", meaning: "Giáo sư / Cô giáo Wang" },
   { hanzi: "请问", pinyin: "qǐngwèn", meaning: "Xin hỏi (Excuse me)" },
   { hanzi: "大家", pinyin: "dàjiā", meaning: "Mọi người / Toàn trường" },
@@ -367,7 +388,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderVocabVault();
   updateRubricScore();
 
-  // Attach click listeners to all nav buttons
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
