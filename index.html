@@ -3,450 +3,311 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tái Cấu Trúc PPT 《新HSK教程1》第1课 - UbD & Error-Driven Learning Engine</title>
-  <meta name="description" content="Chương trình học tiếng Trung HSK 1 Bài 1 giao diện tươi sáng cho trẻ em, tích hợp UbD (Backward Design) & Error-Driven Learning Engine.">
-  <link rel="stylesheet" href="styles.css?v=kids_2026_white">
+  <title>Khung Thiết Kế Ngược UbD - HSK 1 Bài 1</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=single_page_kids">
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
-  <header class="navbar">
-    <div class="logo-container">
-      <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-      <div class="logo-text">
-        <h1>UbD + AI <span>HSK 1 Kids</span></h1>
-        <p>School Context Learning Engine</p>
+  <!-- Top Bar -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="logo-title">
+          <h1>UbD <span>HSK 1</span></h1>
+          <p>Tái Cấu Trúc Sư Phạm Theo Chuẩn Backward Design</p>
+        </div>
       </div>
+      <a href="https://github.com/infinitehorizons2012-code/TTChi" target="_blank" class="gh-link">
+        <i class="fa-brands fa-github"></i> Repository
+      </a>
     </div>
-
-    <nav class="nav-links">
-      <button type="button" class="nav-btn active" data-section="ubd-overview" onclick="switchSection('ubd-overview', this)">
-        <i class="fa-solid fa-bullseye"></i> 3 Giai Đoạn UbD
-      </button>
-      <button type="button" class="nav-btn" data-section="matrix-comparison" onclick="switchSection('matrix-comparison', this)">
-        <i class="fa-solid fa-code-compare"></i> So Sánh Matrix
-      </button>
-      <button type="button" class="nav-btn" data-section="error-driven-test" onclick="switchSection('error-driven-test', this)">
-        <i class="fa-solid fa-pen-to-square"></i> Đề Thi 4 Kỹ Năng
-      </button>
-      <button type="button" class="nav-btn" data-section="slide-presentation" onclick="switchSection('slide-presentation', this)">
-        <i class="fa-solid fa-sliders"></i> Slide Presentation
-      </button>
-      <button type="button" class="nav-btn" data-section="ai-simulator" onclick="switchSection('ai-simulator', this)">
-        <i class="fa-solid fa-robot"></i> AI Xiaoyu Bot
-      </button>
-      <button type="button" class="nav-btn" data-section="vocab-vault" onclick="switchSection('vocab-vault', this)">
-        <i class="fa-solid fa-book-open"></i> Kho Từ Vựng
-      </button>
-    </nav>
-
-    <a href="https://github.com/infinitehorizons2012-code/TTChi" target="_blank" class="badge-gh">
-      <i class="fa-brands fa-github"></i> Repository
-    </a>
   </header>
 
-  <!-- Main Body Content -->
-  <main class="main-container">
+  <!-- Main Content Container -->
+  <main class="page-container">
 
-    <!-- SECTION 1: 3 GIAI ĐOẠN UBD (Includes Hero Banner) -->
-    <section id="ubd-overview" class="section active">
-      
-      <!-- HERO BANNER -->
-      <div class="hero-banner">
-        <div class="hero-tag">
-          <i class="fa-solid fa-school"></i> Môi Trường Trường Học: Học Sinh, Giáo Viên & Trợ Lý AI
-        </div>
-        <h1 class="hero-title">Tái Cấu Trúc Sư Phạm chuẩn UbD: <span>《新HSK教程1》第1课</span></h1>
-        <p class="hero-desc">
-          Mô hình <strong>Backward Design (Thiết kế ngược)</strong> tươi sáng dành cho bé: Xác định Chuẩn giao tiếp trường học $\rightarrow$ Đề thi 4 Kỹ năng & AI Rubric $\rightarrow$ Lắp ráp Học liệu Just-In-Time 11 từ vựng cốt lõi.
-        </p>
+    <!-- PAGE TITLE -->
+    <div class="page-title-banner">
+      <h2><i class="fa-solid fa-sparkles" style="color: #f59e0b;"></i> Khung Thiết Kế Ngược (UbD) 《新HSK教程1》第1课</h2>
+      <p>Mô hình Backward Design 3 Giai đoạn & Mẫu câu chuẩn trường học dành cho trẻ em</p>
+    </div>
 
-        <div class="hero-stats">
-          <div class="stat-item">
-            <div class="stat-icon"><i class="fa-solid fa-file-signature"></i></div>
-            <div class="stat-info">
-              <h4>Đề Thi 4 Kỹ Năng</h4>
-              <p>Nghe - Nói - Đọc - Viết HSK1</p>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-            <div class="stat-info">
-              <h4>Bóc Tách Root Cause</h4>
-              <p>4 Loại Lỗi: Vocab, Grammar, Trap, Speed</p>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
-            <div class="stat-info">
-              <h4>Lịch Ôn Lặp 1-3-7</h4>
-              <p>Transfer Testing (3 Đề Biến Thể)</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-layer-group" style="color: var(--primary);"></i> Khung Thiết Kế Ngược (UbD) 3 Giai Đoạn
-      </h2>
-
+    <!-- SECTION 1: 3 GIAI ĐOẠN UBD (Ảnh 1) -->
+    <section class="section-block">
       <div class="grid-3">
-        <!-- STAGE 1 CARD -->
-        <div class="glass-card">
-          <div class="card-header">
-            <span class="stage-badge badge-stage1">Giai Đoạn 1</span>
-            <i class="fa-solid fa-bullseye" style="color: var(--cyan); font-size: 1.4rem;"></i>
+        
+        <!-- CARD GIAI ĐOẠN 1 -->
+        <div class="card card-stage1">
+          <div class="card-top">
+            <span class="badge badge-cyan">GIAI ĐOẠN 1</span>
+            <i class="fa-solid fa-bullseye icon-top icon-cyan"></i>
           </div>
-          <h3 class="card-title">Kết Quả Mong Muốn (Desired Results)</h3>
-          <p class="card-desc">Xác định Chuẩn đầu ra (CLOs) & Nét văn hóa xưng hô cốt lõi trong trường học.</p>
+          <h3 class="card-h3">Kết Quả Mong Muốn (Desired Results)</h3>
+          <p class="card-sub">Xác định Chuẩn đầu ra (CLOs) & Nét văn hóa xưng hô cốt lõi trong trường học.</p>
 
-          <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i> <strong>CLO Cốt Lõi:</strong> Chào hỏi, tạm biệt và cảm ơn trong môi trường trường học (Học sinh, cô giáo & Trợ lý AI).</li>
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Nét Văn Hóa:</strong> Phân biệt chính xác quy tắc xưng hô <code>你</code> (bạn/AI) vs <code>您</code> (cấp trên/kính trọng) & <code>你们</code> (các bạn).</li>
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Essential Question (EQ):</strong> <em>Làm sao để lựa chọn danh xưng vừa lịch sự vừa chuyên nghiệp trong kỷ nguyên số?</em></li>
-          </ul>
-        </div>
-
-        <!-- STAGE 2 CARD -->
-        <div class="glass-card">
-          <div class="card-header">
-            <span class="stage-badge badge-stage2">Giai Đoạn 2</span>
-            <i class="fa-solid fa-clipboard-check" style="color: var(--amber); font-size: 1.4rem;"></i>
-          </div>
-          <h3 class="card-title">Bằng Chứng Đánh Giá (Assessment Evidence)</h3>
-          <p class="card-desc">Thiết kế Đề Thi 4 Kỹ Năng & Error-Driven Engine TRƯỚC KHI xây dựng bài giảng.</p>
-
-          <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Đề Thi 4 Kỹ Năng:</strong> Đánh giá Nghe - Nói - Đọc - Viết bám sát ngữ cảnh khai trường (开学第一天).</li>
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Calibration [V][?][X]:</strong> Phân loại câu chắc chắn vs câu đoán mò để triệt tiêu bẫy "đoán đúng".</li>
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Đo Lường Rubric:</strong> Học viên đạt <strong>80% điểm Rubric</strong> để được cấp Micro-Credential.</li>
-          </ul>
-        </div>
-
-        <!-- STAGE 3 CARD -->
-        <div class="glass-card">
-          <div class="card-header">
-            <span class="stage-badge badge-stage3">Giai Đoạn 3</span>
-            <i class="fa-solid fa-route" style="color: var(--secondary); font-size: 1.4rem;"></i>
-          </div>
-          <h3 class="card-title">Kế Hoạch Học Tập (Learning Plan - JIT)</h3>
-          <p class="card-desc">Lắp ráp học liệu Just-In-Time tinh gọn vừa đủ dựa trên Sổ Tay Lỗi Sai (Error Log).</p>
-
-          <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Học Từ Lỗi Sai:</strong> Bóc tách 4 loại lỗi (Vocab Gap, Grammar Deficit, Distractor Trap, Time Constraint).</li>
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Transfer Testing:</strong> Dùng AI tạo 3 câu biến thể giữ nguyên điểm bẫy để kiểm tra mức độ hiểu bản chất.</li>
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Lịch Ôn 1-3-7:</strong> Lặp lại ngắt quãng để ghi nhớ sâu thanh điệu 3+3 (`ní hǎo`) & chữ 不 (`bú kèqi`).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: ERROR-DRIVEN TEST & 4-SKILL ENGINE -->
-    <section id="error-driven-test" class="section">
-      <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-pen-to-square" style="color: var(--amber);"></i> Đề Thi 4 Kỹ Năng & Phân Tích Lỗi Sai
-      </h2>
-
-      <!-- Calibration & Root Cause Intro Card -->
-      <div class="glass-card" style="margin-bottom: 1.8rem; background: #ffffff; border-color: var(--border-glass);">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-          <div>
-            <h3 style="color: var(--cyan); font-size: 1.2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-tags"></i> 1. Đánh Dấu Calibration 3 Trạng Thái</h3>
-            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
-              <strong style="color: var(--emerald);">[V] Chắc chắn 100%</strong> | 
-              <strong style="color: var(--amber);">[?] Phân vân 50/50</strong> | 
-              <strong style="color: #ef4444;">[X] Đoán mò 100%</strong><br>
-              <em>Quy tắc:</em> Tất cả câu [?] và [X] đều bị coi là câu sai để bóc tách triệt để, tránh bẫy "đoán đúng".
-            </p>
-          </div>
-          <div>
-            <h3 style="color: var(--secondary); font-size: 1.2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-bug"></i> 2. Phân Loại 4 Nhóm Lỗi Root Cause</h3>
-            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
-              • <strong>Vocabulary Gap:</strong> Không nhớ mặt chữ / thanh điệu.<br>
-              • <strong>Grammar Deficit:</strong> Nhầm vị trí vai vế (您 / 你 / 你们).<br>
-              • <strong>Distractor Trap:</strong> Nhầm bẫy biến điệu (ní hǎo / bú kèqi).<br>
-              • <strong>Time Constraint:</strong> Phản xạ chậm chưa bật ra âm.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4-Skill Practice Module -->
-      <div class="glass-card" style="margin-bottom: 1.8rem;">
-        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--text-main); display: flex; align-items: center; gap: 10px;">
-          <i class="fa-solid fa-list-check" style="color: var(--emerald);"></i> Bài Tập Đánh Giá 4 Kỹ Năng (HSK 1 Bài 1)
-        </h3>
-
-        <!-- Question 1: Listening -->
-        <div style="background: #f8fafc; border: 2px solid #e2e8f0; padding: 1.2rem; border-radius: 16px; margin-bottom: 1.2rem;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
-            <span class="stage-badge badge-stage1">1. Kỹ Năng Nghe (Listening)</span>
-            <div>
-              <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="setCalibration(1, 'V')">[V] Chắc chắn</button>
-              <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="setCalibration(1, '?')">[?] Phân vân</button>
-              <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="setCalibration(1, 'X')">[X] Đoán mò</button>
-              <span id="calib-label-1" style="font-size: 0.8rem; margin-left: 6px; font-weight: 700; color: var(--amber);">[?] Chưa chọn</span>
-            </div>
-          </div>
-
-          <p style="font-size: 1rem; color: var(--text-main); margin-bottom: 0.8rem;">
-            🔊 <strong>Câu 1:</strong> Nghe phát âm và chọn đáp án có chứa biến điệu chữ 不 (Tone sandhi of 不):
-            <button type="button" class="audio-btn" style="width: 32px; height: 32px; vertical-align: middle; margin-left: 8px;" onclick="speakChinese('不客气')"><i class="fa-solid fa-volume-high"></i></button>
-          </p>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <label style="background: #ffffff; border: 1px solid #cbd5e1; padding: 10px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <input type="radio" name="q1" value="A"> A. bù kèqi (giữ nguyên thanh 4)
-            </label>
-            <label style="background: #ffffff; border: 1px solid #cbd5e1; padding: 10px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <input type="radio" name="q1" value="B"> B. bú kèqi (bú biến thành thanh 2) [ĐÚNG]
-            </label>
-          </div>
-        </div>
-
-        <!-- Question 2: Reading -->
-        <div style="background: #f8fafc; border: 2px solid #e2e8f0; padding: 1.2rem; border-radius: 16px; margin-bottom: 1.2rem;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
-            <span class="stage-badge badge-stage2">2. Kỹ Năng Đọc (Reading)</span>
-            <div>
-              <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="setCalibration(2, 'V')">[V] Chắc chắn</button>
-              <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="setCalibration(2, '?')">[?] Phân vân</button>
-              <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="setCalibration(2, 'X')">[X] Đoán mò</button>
-              <span id="calib-label-2" style="font-size: 0.8rem; margin-left: 6px; font-weight: 700; color: var(--amber);">[?] Chưa chọn</span>
-            </div>
-          </div>
-
-          <p style="font-size: 1rem; color: var(--text-main); margin-bottom: 0.8rem;">
-            📖 <strong>Câu 2:</strong> Chọn đại từ kính ngữ thích hợp điền vào chỗ trống để chào Giáo sư Wang trong ngày khai trường: <br>
-            <code>"王老师，_____ 好！"</code>
-          </p>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
-            <label style="background: #ffffff; border: 1px solid #cbd5e1; padding: 10px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <input type="radio" name="q2" value="A"> A. 你 (nǐ)
-            </label>
-            <label style="background: #ffffff; border: 1px solid #cbd5e1; padding: 10px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <input type="radio" name="q2" value="B"> B. 您 (nín) [ĐÚNG]
-            </label>
-            <label style="background: #ffffff; border: 1px solid #cbd5e1; padding: 10px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <input type="radio" name="q2" value="C"> C. 你们 (nǐmen)
-            </label>
-          </div>
-        </div>
-
-        <!-- Question 3: Writing -->
-        <div style="background: #f8fafc; border: 2px solid #e2e8f0; padding: 1.2rem; border-radius: 16px; margin-bottom: 1.2rem;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
-            <span class="stage-badge badge-stage3">3. Kỹ Năng Viết (Writing)</span>
-            <div>
-              <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="setCalibration(3, 'V')">[V] Chắc chắn</button>
-              <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="setCalibration(3, '?')">[?] Phân vân</button>
-              <button type="button" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="setCalibration(3, 'X')">[X] Đoán mò</button>
-              <span id="calib-label-3" style="font-size: 0.8rem; margin-left: 6px; font-weight: 700; color: var(--amber);">[?] Chưa chọn</span>
-            </div>
-          </div>
-
-          <p style="font-size: 1rem; color: var(--text-main); margin-bottom: 0.8rem;">
-            ✍️ <strong>Câu 3:</strong> Sắp xếp các từ sau thành câu chào tập thể các bạn học sinh đúng trật tự: <br>
-            <code>(1) 好 / (2) 同学们</code>
-          </p>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <label style="background: #ffffff; border: 1px solid #cbd5e1; padding: 10px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <input type="radio" name="q3" value="A"> A. (2) 同学们 + (1) 好 [ĐÚNG - 同学们好！]
-            </label>
-            <label style="background: #ffffff; border: 1px solid #cbd5e1; padding: 10px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <input type="radio" name="q3" value="B"> B. (1) 好 + (2) 同学们
-            </label>
-          </div>
-        </div>
-
-        <button type="button" class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="evaluateErrorDrivenTest()">
-          <i class="fa-solid fa-calculator"></i> Phân Tích Lỗi Sai Root Cause & Sinh Đề Biến Thể AI
-        </button>
-      </div>
-
-      <!-- Active Error Log Output Box -->
-      <div id="active-error-log-box" class="glass-card" style="display: none; background: #ffffff; border-color: var(--secondary);">
-        <h3 style="color: var(--secondary); font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
-          <i class="fa-solid fa-book" style="color: var(--amber);"></i> Sổ Tay Lỗi Sai Số Hóa (Active Error Log 4 Dòng)
-        </h3>
-        <div id="error-log-content"></div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: MATRIX SO SÁNH -->
-    <section id="matrix-comparison" class="section">
-      <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-scale-balanced" style="color: var(--secondary);"></i> So Sánh Chi Tiết: Forward Design vs. Market-Driven UbD + AI
-      </h2>
-
-      <div class="comparison-table-wrapper">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Tiêu Chí So Sánh</th>
-              <th>Truyền Thống (Forward Design)</th>
-              <th>Thiết Kế Ngược + AI (School-Context UbD)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Triết Lý Khởi Đầu</strong></td>
-              <td><span class="tag-trad">Tri Thức Có Sẵn</span><br>Giảng dạy từ vựng $\rightarrow$ Đọc bài khóa $\rightarrow$ Bài tập đóng vai phụ cuối giờ.</td>
-              <td><span class="tag-ubd">Thiết Kế Ngược</span><br>Xác định CLO & EQ $\rightarrow$ Đặt Performance Task & Rubric $\rightarrow$ Lắp học liệu vừa đủ.</td>
-            </tr>
-            <tr>
-              <td><strong>Vị Trí Đánh Giá (Assessment)</strong></td>
-              <td><span class="tag-trad">Cuối Bài Học</span><br>Bài tập đóng vai xuất hiện ở Slide 23 & 33 dạng đọc lại hội thoại có sẵn.</td>
-              <td><span class="tag-ubd">Đặt Ngay Đầu Bài (Stage 2)</span><br>Học viên nhận Performance Task chào hỏi Giáo sư Wang, Trợ lý AI Xiaoyu & Bạn học (学生) từ Slide 2.</td>
-            </tr>
-            <tr>
-              <td><strong>Học Liệu JIT & Ngữ Âm</strong></td>
-              <td><span class="tag-trad">Liệt Kê Lan Man</span><br>Giảng từ vựng rời rạc, thiếu trọng tâm về biến điệu 3+3 và quy tắc đổi thanh của <code>不</code>.</td>
-              <td><span class="tag-ubd">JIT & Biến Điệu 3+3 & 不</span><br>Học liệu tinh gọn 11 từ (gồm <code>你们</code>, <code>学生</code>) + Luyện kỹ quy tắc 3+3 (`ní hǎo`) & chữ 不 (`bú kèqi`).</td>
-            </tr>
-            <tr>
-              <td><strong>Đánh Giá & Chứng Chỉ</strong></td>
-              <td><span class="tag-trad">Thi Trắc Nghiệm/Chấm Tay</span><br>Không có tiêu chí đo lường phản xạ thực tế.</td>
-              <td><span class="tag-ubd">AI Rubric 3 Trục (80%)</span><br>Đo lường tự động: Đại từ kính ngữ (您), Thanh điệu (3+3 & 不), Phản xạ $\rightarrow$ Cấp Micro-Credential.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- SECTION 4: SLIDE PRESENTATION PLAYER -->
-    <section id="slide-presentation" class="section">
-      <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-desktop" style="color: var(--cyan);"></i> Trình Chiếu Bài Giảng Tái Cấu Trúc (Slide Player)
-      </h2>
-
-      <div class="slide-player-container">
-        <!-- Sidebar Navigation -->
-        <div class="slide-sidebar" id="slide-sidebar-list">
-          <!-- Slide thumbnails generated via JS -->
-        </div>
-
-        <!-- Main Slide Display Area -->
-        <div class="slide-view">
-          <div class="slide-content-box" id="active-slide-box">
-            <div class="slide-tag-header">
-              <span class="stage-badge badge-stage1" id="active-slide-badge">Giai Đoạn 1</span>
-              <span class="hero-tag" style="margin: 0;" id="active-slide-type">CHUẨN ĐẦU RA</span>
-            </div>
-
-            <div class="slide-body" id="active-slide-body">
-              <!-- Content injected dynamically -->
-            </div>
-          </div>
-
-          <div class="slide-controls">
-            <button type="button" class="btn btn-secondary" onclick="prevSlide()"><i class="fa-solid fa-arrow-left"></i> Slide Trước</button>
-            <span style="font-weight: 700; color: var(--text-muted);" id="slide-counter">Slide 1 / 6</span>
-            <button type="button" class="btn btn-primary" onclick="nextSlide()">Slide Tiếp <i class="fa-solid fa-arrow-right"></i></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: AI XIAOYU CHAT SIMULATOR -->
-    <section id="ai-simulator" class="section">
-      <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-robot" style="color: var(--emerald);"></i> AI Xiaoyu Dialogue & Performance Task Simulator
-      </h2>
-
-      <div class="chat-container">
-        <!-- Chat Dialogue Window -->
-        <div class="chat-box">
-          <div class="chat-header">
-            <div class="avatar-ai">
-              <div class="avatar-img"><i class="fa-solid fa-bot"></i></div>
+          <div class="item-list">
+            <div class="item-row">
+              <i class="fa-solid fa-circle-check check-cyan"></i>
               <div>
-                <h4 style="color: #0f172a; font-size: 1rem;">AI 助教小语 (Xiaoyu Assistant)</h4>
-                <p style="font-size: 0.75rem; color: var(--emerald);"><i class="fa-solid fa-circle" style="font-size: 0.6rem;"></i> Live Assessment Mode - School Context</p>
+                <strong>CLO Cốt Lõi:</strong>
+                <span>Chào hỏi, tạm biệt và cảm ơn trong môi trường trường học (Học sinh, cô giáo & Trợ lý AI).</span>
               </div>
             </div>
-            <button type="button" class="audio-btn" title="Phát âm thoại AI" onclick="speakCurrentAIMessage()"><i class="fa-solid fa-volume-high"></i></button>
-          </div>
-
-          <div class="chat-messages" id="chat-messages-list">
-            <div class="msg msg-ai">
-              <strong>AI 小语:</strong> 你好！王老师好！同学们好！我是AI助教小语。<br>
-              <em style="font-size: 0.8rem; color: #64748b;">(Xin chào! Em chào Cô Wang! Chào các bạn học sinh! Tôi là trợ lý AI Xiaoyu.)</em>
+            <div class="item-row">
+              <i class="fa-solid fa-circle-check check-cyan"></i>
+              <div>
+                <strong>Nét Văn Hóa:</strong>
+                <span>Phân biệt chính xác quy tắc xưng hô <code>你</code> (bạn/AI) vs <code>您</code> (cấp trên/kính trọng) & <code>你们</code> (các bạn).</span>
+              </div>
             </div>
-          </div>
-
-          <div class="chat-input-area">
-            <input type="text" class="chat-input" id="user-chat-input" placeholder="Nhập tin nhắn (e.g. 王老师，您好！ / 小语，你好！)..." onkeypress="handleChatKeyPress(event)">
-            <button type="button" class="btn btn-primary" onclick="sendUserChatMessage()"><i class="fa-solid fa-paper-plane"></i> Gửi</button>
+            <div class="item-row">
+              <i class="fa-solid fa-circle-check check-cyan"></i>
+              <div>
+                <strong>Essential Question (EQ):</strong>
+                <em>Làm sao để lựa chọn danh xưng vừa lịch sự vừa chuyên nghiệp trong kỷ nguyên số?</em>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Interactive AI Rubric Evaluation Panel -->
-        <div class="rubric-panel">
-          <h3 style="font-size: 1.1rem; color: var(--text-main); display: flex; align-items: center; gap: 8px;">
-            <i class="fa-solid fa-chart-line" style="color: var(--amber);"></i> AI Rubric 3 Trục
-          </h3>
+        <!-- CARD GIAI ĐOẠN 2 -->
+        <div class="card card-stage2">
+          <div class="card-top">
+            <span class="badge badge-amber">GIAI ĐOẠN 2</span>
+            <i class="fa-solid fa-clipboard-check icon-top icon-amber"></i>
+          </div>
+          <h3 class="card-h3">Bằng Chứng Đánh Giá (Assessment Evidence)</h3>
+          <p class="card-sub">Thiết kế Đề Thi 4 Kỹ Năng & Error-Driven Engine TRƯỚC KHI xây dựng bài giảng.</p>
 
-          <div class="slider-group">
-            <div class="slider-label">
-              <span>(1) Đại Từ Kính Ngữ (您/你/你们)</span>
-              <strong id="val-honorific">85%</strong>
+          <div class="item-list">
+            <div class="item-row">
+              <i class="fa-solid fa-circle-check check-amber"></i>
+              <div>
+                <strong>Đề Thi 4 Kỹ Năng:</strong>
+                <span>Đánh giá Nghe – Nói – Đọc – Viết bám sát ngữ cảnh khai trường (开学第一天).</span>
+              </div>
             </div>
-            <input type="range" class="slider-input" min="0" max="100" value="85" id="slider-honorific" oninput="updateRubricScore()">
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-label">
-              <span>(2) Thanh Điệu (3+3 & Biến điệu 不)</span>
-              <strong id="val-phonetics">80%</strong>
+            <div class="item-row">
+              <i class="fa-solid fa-circle-check check-amber"></i>
+              <div>
+                <strong>Calibration [V][?][X]:</strong>
+                <span>Phân loại câu chắc chắn vs câu đoán mò để triệt tiêu bẫy "đoán đúng".</span>
+              </div>
             </div>
-            <input type="range" class="slider-input" min="0" max="100" value="80" id="slider-phonetics" oninput="updateRubricScore()">
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-label">
-              <span>(3) Phản Xạ Tự Nhiên (3 Chức Năng)</span>
-              <strong id="val-reflex">90%</strong>
+            <div class="item-row">
+              <i class="fa-solid fa-circle-check check-amber"></i>
+              <div>
+                <strong>Đo Lường Rubric:</strong>
+                <span>Học viên đạt <strong>80% điểm Rubric</strong> để được cấp Micro-Credential.</span>
+              </div>
             </div>
-            <input type="range" class="slider-input" min="0" max="100" value="90" id="slider-reflex" oninput="updateRubricScore()">
+          </div>
+        </div>
+
+        <!-- CARD GIAI ĐOẠN 3 -->
+        <div class="card card-stage3">
+          <div class="card-top">
+            <span class="badge badge-purple">GIAI ĐOẠN 3</span>
+            <i class="fa-solid fa-route icon-top icon-purple"></i>
+          </div>
+          <h3 class="card-h3">Kế Hoạch Học Tập (Learning Plan - JIT)</h3>
+          <p class="card-sub">Lắp ráp học liệu Just-In-Time tinh gọn vừa đủ dựa trên Sổ Tay Lỗi Sai (Error Log).</p>
+
+          <div class="item-list">
+            <div class="item-row">
+              <i class="fa-solid fa-circle-check check-purple"></i>
+              <div>
+                <strong>Học Từ Lỗi Sai:</strong>
+                <span>Bóc tách 4 loại lỗi (Vocab Gap, Grammar Deficit, Distractor Trap, Time Constraint).</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <i class="fa-solid fa-circle-check check-purple"></i>
+              <div>
+                <strong>Transfer Testing:</strong>
+                <span>Dùng AI tạo 3 câu biến thể giữ nguyên điểm bẫy để kiểm tra mức độ hiểu bản chất.</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <i class="fa-solid fa-circle-check check-purple"></i>
+              <div>
+                <strong>Lịch Ôn 1-3-7:</strong>
+                <span>Lặp lại ngắt quãng để ghi nhớ sâu thanh điệu 3+3 (`ní hǎo`) & chữ 不 (`bú kèqi`).</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: PHẠM VI MẪU CÂU BÀI 1 (Ảnh 2) -->
+    <section class="section-block">
+      <div class="card scope-box">
+        <h3 class="scope-header">
+          <i class="fa-solid fa-vector-square"></i> Phạm Vi Mẫu Câu Bài 1 (Không dùng ngữ pháp chưa học):
+        </h3>
+
+        <div class="scope-list">
+          <div class="scope-item">
+            <i class="fa-solid fa-user-graduate scope-icon icon-emerald"></i>
+            <div>
+              <strong>Chào Giáo sư/Cô Wang:</strong>
+              <span class="hz">王老师，您好！</span>
+              <span class="py">(Wáng lǎoshī, nín hǎo!).</span>
+            </div>
           </div>
 
-          <div class="score-display">
-            <p style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Tổng Điểm Rubric Đạt Được</p>
-            <div class="score-num" id="total-rubric-score">85 / 100</div>
-            <p style="font-size: 0.85rem; color: var(--emerald); margin-top: 4px;" id="rubric-status-badge">
-              <i class="fa-solid fa-certificate"></i> Đạt Ngưỡng 80% (Cấp Micro-Credential)
-            </p>
+          <div class="scope-item">
+            <i class="fa-solid fa-robot scope-icon icon-cyan"></i>
+            <div>
+              <strong>Chào Trợ lý AI Xiaoyu:</strong>
+              <span class="hz">你好！ / 小语，你好！</span>
+              <span class="py">(nǐ hǎo!).</span>
+            </div>
           </div>
 
-          <button type="button" class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="generateCertificateModal()">
-            <i class="fa-solid fa-award"></i> Xem Chứng Chỉ Micro-Credential
-          </button>
+          <div class="scope-item">
+            <i class="fa-solid fa-school scope-icon icon-teal"></i>
+            <div>
+              <strong>Chào Học sinh & Tập thể:</strong>
+              <span class="hz">同学们好！ / 大家好！ / 你们好！</span>
+            </div>
+          </div>
 
-          <button type="button" class="btn btn-secondary" style="width: 100%; justify-content: center; margin-top: 8px;" onclick="copyAIEvaluatorPrompt()">
-            <i class="fa-solid fa-copy"></i> Copy System Prompt (Dùng cho ChatGPT/Gemini)
-          </button>
+          <div class="scope-item">
+            <i class="fa-solid fa-heart scope-icon icon-pink"></i>
+            <div>
+              <strong>Cảm ơn & Tạm biệt:</strong>
+              <span class="hz">谢谢！ - 不客气！ / 再见！</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 6: VOCABULARY VAULT -->
-    <section id="vocab-vault" class="section">
-      <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-book-bookmark" style="color: var(--amber);"></i> Kho Từ Vựng & Nét Âm Tiết (JIT Vault)
-      </h2>
+    <!-- SECTION 3: AI RUBRIC 3 TRỤC (Ảnh 3) -->
+    <section class="section-block">
+      <div class="grid-3">
+        <div class="card rubric-card card-cyan-bg">
+          <h4 class="rubric-title title-cyan">(1) Đại từ kính ngữ 您 / 你 / 你们</h4>
+          <p class="rubric-desc">Chọn đúng <strong>您</strong> cho Giáo sư Wang và <strong>你们 / 你</strong> cho AI/bạn học.</p>
+        </div>
 
-      <div class="vocab-grid" id="vocab-cards-grid">
-        <!-- Vocab cards rendered via JS -->
+        <div class="card rubric-card card-purple-bg">
+          <h4 class="rubric-title title-purple">(2) Thanh điệu chuẩn (3+3 & Biến điệu 不)</h4>
+          <p class="rubric-desc">Biến điệu 3+3 (nǐ hǎo $\rightarrow$ ní hǎo) & Biến điệu 不 (bù kèqi $\rightarrow$ bú kèqi).</p>
+        </div>
+
+        <div class="card rubric-card card-emerald-bg">
+          <h4 class="rubric-title title-emerald">(3) Phản xạ 3 chức năng Bài 1</h4>
+          <p class="rubric-desc">Chào hỏi, Cảm ơn (不客气) và Tạm biệt (再见) chuẩn mẫu câu Bài 1.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: MẪU CÂU TƯƠNG TÁC VAI VẾ (Ảnh 4) -->
+    <section class="section-block">
+      <div class="pattern-stack">
+        
+        <!-- CARD 1 -->
+        <div class="card pattern-card card-cyan-bg">
+          <h4 class="pattern-header title-cyan">
+            <i class="fa-solid fa-user-tie"></i> 1. Với Bề Trên (Giáo sư Wang - 王老师):
+          </h4>
+          <div class="pattern-body">
+            <p>• Chào: <strong class="hz">王老师，您好！</strong> <span class="py">(Wáng lǎoshī, nín hǎo!)</span></p>
+            <p>• Cảm ơn: <strong class="hz">谢谢您，王老师！</strong> <span class="py">(Xièxie nín, Wáng lǎoshī!)</span></p>
+            <p>• Tạm biệt: <strong class="hz">王老师，再见！</strong> <span class="py">(Wáng lǎoshī, zàijiàn!)</span></p>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card pattern-card card-blue-bg">
+          <h4 class="pattern-header title-blue">
+            <i class="fa-solid fa-robot"></i> 2. Với AI & Bạn Bè (Trợ lý AI Xiaoyu - 小语):
+          </h4>
+          <div class="pattern-body">
+            <p>• Chào: <strong class="hz">你好！ / 小语，你好！</strong> <span class="py">(nǐ hǎo!)</span></p>
+            <p>• Cảm ơn & Đáp: <strong class="hz">谢谢！ - 不客气！</strong> <span class="py">(Xièxie! - Bú kèqi!)</span></p>
+            <p>• Tạm biệt: <strong class="hz">再见！</strong> <span class="py">(Zàijiàn!)</span></p>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card pattern-card card-purple-bg">
+          <h4 class="pattern-header title-purple">
+            <i class="fa-solid fa-users"></i> 3. Với Học Sinh & Tập Thể (学生, 你们, 同学, 大家):
+          </h4>
+          <div class="pattern-body">
+            <p>• Chào tập thể: <strong class="hz">你们好！ / 同学们好！ / 大家好！</strong> <span class="py">(Nǐmen hǎo! / Tóngxuémen hǎo! / Dàjiā hǎo!)</span></p>
+            <p>• Cảm ơn tập thể: <strong class="hz">谢谢大家！ / 谢谢你们！</strong> <span class="py">(Xièxie dàjiā! / Xièxie nǐmen!)</span></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: BIẾN ĐIỆU THANH ĐIỆU (Ảnh 5) -->
+    <section class="section-block">
+      <div class="grid-2">
+        
+        <!-- CARD 1: 3+3 -->
+        <div class="card sandhi-card card-yellow-bg">
+          <h4 class="sandhi-title title-amber">
+            <i class="fa-solid fa-wave-square"></i> 1. Biến Điệu 3+3 (Tone Sandhi 3+3)
+          </h4>
+          <p class="sandhi-desc">
+            Khi 2 thanh 3 đi liền nhau: <strong>Thanh 3 thứ nhất chuyển thành Thanh 2</strong> (hướng lên).
+          </p>
+
+          <div class="sandhi-box">
+            <strong class="hz-highlight title-cyan">你 (nǐ) + 好 (hǎo) $\rightarrow$ ní hǎo (你好)</strong>
+          </div>
+
+          <button type="button" class="audio-btn-wide" onclick="speakText('你好')">
+            <i class="fa-solid fa-volume-high"></i> Nghe Biến Điệu ní hǎo
+          </button>
+        </div>
+
+        <!-- CARD 2: BU -->
+        <div class="card sandhi-card card-emerald-bg">
+          <h4 class="sandhi-title title-emerald">
+            <i class="fa-solid fa-bolt"></i> 2. Biến Điệu Chữ 不 (Tone Sandhi of 不)
+          </h4>
+          <p class="sandhi-desc">
+            Chữ <strong>不 (bù)</strong> mang thanh 4 gốc. Khi đi trước âm mang <strong>Thanh 4 (như 客 kè)</strong>, <strong>不</strong> biến thành <strong>Thanh 2 (bú)</strong>!
+          </p>
+
+          <div class="sandhi-box">
+            <strong class="hz-highlight title-emerald">不 (bù) + 客气 (kèqi) $\rightarrow$ bú kèqi (不客气)</strong>
+          </div>
+
+          <button type="button" class="audio-btn-wide" onclick="speakText('不客气')">
+            <i class="fa-solid fa-volume-high"></i> Nghe Biến Điệu bú kèqi
+          </button>
+        </div>
+
       </div>
     </section>
 
   </main>
 
-  <!-- Script setup -->
-  <script src="script.js?v=kids_2026_white"></script>
+  <!-- Audio JavaScript -->
+  <script>
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-CN';
+        utterance.rate = 0.85;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert('Trình duyệt của bạn chưa hỗ trợ phát âm tiếng Trung.');
+      }
+    }
+  </script>
 </body>
 </html>
