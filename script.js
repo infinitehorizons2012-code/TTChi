@@ -1,17 +1,32 @@
 // Interactive Application Logic for UbD + AI HSK1 Lesson 1 App (School Context Refined)
 
-// 1. Navigation Tab Controller
-function switchSection(sectionId) {
-  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+// 1. Navigation Tab Controller (Bulletproof Cross-Browser Implementation)
+function switchSection(sectionId, el) {
+  // Hide all sections
+  const sections = document.querySelectorAll('.section');
+  sections.forEach(sec => {
+    sec.classList.remove('active');
+    sec.style.display = 'none';
+  });
 
+  // Remove active from all nav buttons
+  const navBtns = document.querySelectorAll('.nav-btn');
+  navBtns.forEach(btn => btn.classList.remove('active'));
+
+  // Show target section
   const targetSec = document.getElementById(sectionId);
-  if (targetSec) targetSec.classList.add('active');
+  if (targetSec) {
+    targetSec.style.display = 'block';
+    targetSec.classList.add('active');
+  }
 
-  const activeBtn = Array.from(document.querySelectorAll('.nav-btn')).find(
-    btn => btn.getAttribute('onclick').includes(sectionId)
-  );
-  if (activeBtn) activeBtn.classList.add('active');
+  // Highlight active nav button
+  if (el && el.classList) {
+    el.classList.add('active');
+  } else {
+    const activeBtn = document.querySelector(`.nav-btn[data-section="${sectionId}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+  }
 }
 
 // 2. Restructured UbD Slide Deck Data (Refined to User Specs)
@@ -230,10 +245,12 @@ function speakCurrentAIMessage() {
 
 function sendUserChatMessage() {
   const input = document.getElementById('user-chat-input');
+  if (!input) return;
   const msgText = input.value.trim();
   if (!msgText) return;
 
   const chatContainer = document.getElementById('chat-messages-list');
+  if (!chatContainer) return;
 
   // Render User Message
   const userDiv = document.createElement('div');
@@ -276,9 +293,14 @@ function handleChatKeyPress(e) {
 }
 
 function updateRubricScore() {
-  const honorific = parseInt(document.getElementById('slider-honorific').value);
-  const phonetics = parseInt(document.getElementById('slider-phonetics').value);
-  const reflex = parseInt(document.getElementById('slider-reflex').value);
+  const honorificElem = document.getElementById('slider-honorific');
+  const phoneticsElem = document.getElementById('slider-phonetics');
+  const reflexElem = document.getElementById('slider-reflex');
+  if (!honorificElem || !phoneticsElem || !reflexElem) return;
+
+  const honorific = parseInt(honorificElem.value);
+  const phonetics = parseInt(phoneticsElem.value);
+  const reflex = parseInt(reflexElem.value);
 
   document.getElementById('val-honorific').innerText = `${honorific}%`;
   document.getElementById('val-phonetics').innerText = `${phonetics}%`;
@@ -289,17 +311,20 @@ function updateRubricScore() {
   if (totalElem) totalElem.innerText = `${total} / 100`;
 
   const badgeElem = document.getElementById('rubric-status-badge');
-  if (total >= 80) {
-    badgeElem.innerHTML = `<i class="fa-solid fa-certificate"></i> Đạt Ngưỡng ${total}% (Cấp Micro-Credential)`;
-    badgeElem.style.color = "var(--emerald)";
-  } else {
-    badgeElem.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Chưa Đạt Ngưỡng 80% (Cần Cải Thiện)`;
-    badgeElem.style.color = "var(--amber)";
+  if (badgeElem) {
+    if (total >= 80) {
+      badgeElem.innerHTML = `<i class="fa-solid fa-certificate"></i> Đạt Ngưỡng ${total}% (Cấp Micro-Credential)`;
+      badgeElem.style.color = "var(--emerald)";
+    } else {
+      badgeElem.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Chưa Đạt Ngưỡng 80% (Cần Cải Thiện)`;
+      badgeElem.style.color = "var(--amber)";
+    }
   }
 }
 
 function generateCertificateModal() {
-  const total = document.getElementById('total-rubric-score').innerText;
+  const totalElem = document.getElementById('total-rubric-score');
+  const total = totalElem ? totalElem.innerText : '85 / 100';
   alert(`🏆 CHỨNG CHỈ MICRO-CREDENTIAL\n\nBài Học: HSK 1 Bài 1 (AI小语，你好！)\nBối Cảnh: Môi trường Trường học (Học sinh, Giáo sư Wang & AI Xiaoyu)\nĐiểm AI Rubric: ${total}\nTrạng Thái: ĐÃ ĐẠT CHUẨN ĐẦU RA UBD (≥80%)\n\nChúc mừng bạn đã chinh phục thành công Performance Task trong ngày học đầu tiên!`);
 }
 
@@ -333,9 +358,19 @@ function renderVocabVault() {
   `).join('');
 }
 
-// Initialize components on DOM Load
+// Explicit Event Binding setup
 document.addEventListener('DOMContentLoaded', () => {
   renderActiveSlide();
   renderVocabVault();
   updateRubricScore();
+
+  // Attach click listeners to all nav buttons as secondary fallback
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const sectionId = this.getAttribute('data-section');
+      if (sectionId) {
+        switchSection(sectionId, this);
+      }
+    });
+  });
 });

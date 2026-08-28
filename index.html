@@ -21,19 +21,19 @@
     </div>
 
     <nav class="nav-links">
-      <button class="nav-btn active" onclick="switchSection('ubd-overview')">
+      <button class="nav-btn active" data-section="ubd-overview" onclick="switchSection('ubd-overview', this)">
         <i class="fa-solid fa-bullseye"></i> 3 Giai Đoạn UbD
       </button>
-      <button class="nav-btn" onclick="switchSection('matrix-comparison')">
+      <button class="nav-btn" data-section="matrix-comparison" onclick="switchSection('matrix-comparison', this)">
         <i class="fa-solid fa-code-compare"></i> So Sánh Matrix
       </button>
-      <button class="nav-btn" onclick="switchSection('slide-presentation')">
+      <button class="nav-btn" data-section="slide-presentation" onclick="switchSection('slide-presentation', this)">
         <i class="fa-solid fa-sliders"></i> Slide Presentation
       </button>
-      <button class="nav-btn" onclick="switchSection('ai-simulator')">
+      <button class="nav-btn" data-section="ai-simulator" onclick="switchSection('ai-simulator', this)">
         <i class="fa-solid fa-robot"></i> AI Xiaoyu Bot
       </button>
-      <button class="nav-btn" onclick="switchSection('vocab-vault')">
+      <button class="nav-btn" data-section="vocab-vault" onclick="switchSection('vocab-vault', this)">
         <i class="fa-solid fa-book-open"></i> Kho Từ Vựng
       </button>
     </nav>
@@ -130,7 +130,7 @@
           <p class="card-desc">Lắp ráp học liệu Just-In-Time tinh gọn vừa đủ để người học chinh phục bài test ở Giai đoạn 2.</p>
 
           <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Học Liệu Vừa Đủ:</strong> 9 từ vựng chìa khóa (<code>你好</code>, <code>王老师</code>, <code>您</code>, <code>谢谢</code>, <code>不客气</code>, <code>再见</code>, <code>同学</code>, <code>大家</code>).</li>
+            <li><i class="fa-solid fa-circle-check"></i> <strong>Học Liệu Vừa Đủ:</strong> 9 từ vựng chìa khóa (<code>你</code>, <code>好</code>, <code>王老师</code>, <code>您</code>, <code>谢谢</code>, <code>不客气</code>, <code>再见</code>, <code>同学</code>, <code>大家</code>).</li>
             <li><i class="fa-solid fa-circle-check"></i> <strong>Tập Trung Mục Tiêu:</strong> Loại bỏ ví dụ lan man, tập trung ngữ cảnh ngày đầu khai trường (开学第一天).</li>
             <li><i class="fa-solid fa-circle-check"></i> <strong>Luyện Âm Tiết:</strong> Bài tập Rao口令 (Tongue Twister <code>妈种麻</code>) làm chủ thanh điệu.</li>
           </ul>
