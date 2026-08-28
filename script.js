@@ -1,9 +1,9 @@
-// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Vocab Learning Module & Start Button Timer)
+// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Vocab Learning Module & Multi-Char HanziWriter)
 
 let timerInterval = null;
 let timerSeconds = 0;
 let currentBankSetIndex = 0;
-let currentWriter = null;
+let currentWriters = [];
 let isTestStarted = false;
 
 // 1. Vocabulary Database for HSK 1 Lesson 1 (12 Nòng cốt từ vựng & Chiết Tự)
@@ -13,96 +13,84 @@ const vocabDatabase = [
     py: "nǐ",
     vi: "Bạn, cậu, anh, chị (ngôi thứ 2 số ít)",
     etymology: "Bộ Nhân đứng (亻: người) + Chữ Nhĩ (尔: đối diện). ⟶ Người đứng đối diện nói chuyện chính là 'Bạn/Cậu'.",
-    example: "你好！ (nǐ hǎo!) - Chào bạn!",
-    singleChar: "你"
+    example: "你好！ (nǐ hǎo!) - Chào bạn!"
   },
   {
     hz: "您",
     py: "nín",
     vi: "Ngài, ông, bà, cô, thầy (kính ngữ tôn trọng)",
     etymology: "Chữ 你 (bạn) ở trên + Bộ Tâm (心: trái tim) ở dưới. ⟶ Đặt người đối diện ở trong tim để thể hiện lòng kính trọng.",
-    example: "王老师，您好！ (Wáng lǎoshī, nín hǎo!) - Chào Giáo sư Wang!",
-    singleChar: "您"
+    example: "王老师，您好！ (Wáng lǎoshī, nín hǎo!) - Chào Giáo sư Wang!"
   },
   {
     hz: "你们",
     py: "nǐmen",
     vi: "Các bạn, các anh, các chị (ngôi thứ 2 số nhiều)",
     etymology: "Chữ 你 (bạn) + Chữ 们 (hậu tố số nhiều: Bộ Nhân 亻 + chữ 门). ⟶ Nhiều người bạn gộp lại = Các bạn.",
-    example: "你们好！ (Nǐmen hǎo!) - Chào các bạn!",
-    singleChar: "你"
+    example: "你们好！ (Nǐmen hǎo!) - Chào các bạn!"
   },
   {
     hz: "老师",
     py: "lǎoshī",
     vi: "Thầy giáo, cô giáo",
     etymology: "Chữ 老 (Lão: người cao tuổi chống gậy) + Chữ 师 (Sư: người truyền dạy kiến thức). ⟶ Người thầy kính mến truyền dạy học trò.",
-    example: "老师好！ (Lǎoshī hǎo!) - Chào thầy/cô giáo!",
-    singleChar: "老"
+    example: "老师好！ (Lǎoshī hǎo!) - Chào thầy/cô giáo!"
   },
   {
     hz: "王老师",
     py: "Wáng lǎoshī",
     vi: "Giáo sư Wang / Thầy Wang / Cô Wang",
     etymology: "Chữ 王 (Họ Vương/Vua: 3 nét ngang nối nét dọc) + 老师 (Thầy cô giáo). ⟶ Chức danh tôn xưng thầy cô giáo.",
-    example: "谢谢您，王老师！ - Cảm ơn Giáo sư Wang!",
-    singleChar: "王"
+    example: "谢谢您，王老师！ - Cảm ơn Giáo sư Wang!"
   },
   {
     hz: "学生",
     py: "xuéshēng",
     vi: "Học sinh, sinh viên",
     etymology: "Chữ 学 (Học: mái trường) + Chữ 生 (Sinh: mầm cây sinh trưởng). ⟶ Mầm cây nhỏ sinh trưởng dưới mái trường = Học sinh.",
-    example: "我是学生。 - Tôi là học sinh.",
-    singleChar: "学"
+    example: "我是学生。 - Tôi là học sinh."
   },
   {
     hz: "同学",
     py: "tóngxué",
     vi: "Bạn học, bạn cùng lớp",
     etymology: "Chữ 同 (Cùng nhau: Bộ Đồng) + Chữ 学 (Học). ⟶ Những người học cùng một lớp với nhau = Bạn học.",
-    example: "同学们好！ (Tóngxuémen hǎo!) - Chào các em học sinh!",
-    singleChar: "同"
+    example: "同学们好！ (Tóngxuémen hǎo!) - Chào các em học sinh!"
   },
   {
     hz: "大家",
     py: "dàjiā",
     vi: "Mọi người, tất cả mọi người",
     etymology: "Chữ 大 (To lớn: người dang tay) + Chữ 家 (Mái nhà/Gia đình: mái nhà 宀 che chở). ⟶ Mọi người trong một mái nhà lớn.",
-    example: "大家好！ (Dàjiā hǎo!) - Chào mọi người!",
-    singleChar: "大"
+    example: "大家好！ (Dàjiā hǎo!) - Chào mọi người!"
   },
   {
     hz: "好",
     py: "hǎo",
     vi: "Tốt, đẹp, hay, khỏe",
     etymology: "Bộ Nữ (女: người mẹ/con gái) + Bộ Tử (子: đứa con). ⟶ Người mẹ bế đứa con nhỏ trên tay là hình ảnh tốt đẹp nhất.",
-    example: "你好！ (nǐ hǎo!) - Chào bạn!",
-    singleChar: "好"
+    example: "你好！ (nǐ hǎo!) - Chào bạn!"
   },
   {
     hz: "谢谢",
     py: "xièxie",
     vi: "Cảm ơn",
     etymology: "Bộ Ngôn (讠: lời nói) + Chữ Thân (身: thân thể) + Bộ Thốn (寸: lễ độ). ⟶ Cúi mình thốt ra lời nói có lễ độ = Cảm ơn.",
-    example: "谢谢大家！ (Xièxie dàjiā!) - Cảm ơn mọi người!",
-    singleChar: "谢"
+    example: "谢谢大家！ (Xièxie dàjiā!) - Cảm ơn mọi người!"
   },
   {
     hz: "不客气",
     py: "bú kèqi",
     vi: "Không có gì, đừng khách khí (đáp lại lời cảm ơn)",
     etymology: "Chữ 不 (Khống/Không) + 客 (Khách: mái nhà 宀 + chữ 各) + 气 (Khí/Khí chất). ⟶ Đừng coi nhau là khách sáo.",
-    example: "谢谢你！ ⟶ 不客气！ - Cảm ơn! ⟶ Không có gì!",
-    singleChar: "客"
+    example: "谢谢你！ ⟶ 不客气！ - Cảm ơn! ⟶ Không có gì!"
   },
   {
     hz: "再见",
     py: "zàijiàn",
     vi: "Tạm biệt, hẹn gặp lại",
     etymology: "Chữ 再 (Lần nữa/Lặp lại: giàn hoa) + Chữ 见 (Thấy/Gặp: mắt 目 + chân 儿 đi). ⟶ Đi bằng chân gặp lại bằng mắt = Hẹn gặp lại!",
-    example: "再见！ (Zàijiàn!) - Tạm biệt!",
-    singleChar: "见"
+    example: "再见！ (Zàijiàn!) - Tạm biệt!"
   }
 ];
 
@@ -430,7 +418,7 @@ function renderVocabGridList() {
   selectVocabWord(0);
 }
 
-// 4. Select & Render Active Vocab Learning Card (Nghe - Viết - Chiết Tự)
+// 4. Select & Render Active Vocab Learning Card (Nghe - Viết Đầy Đủ Tất Cả Các Chữ - Chiết Tự)
 function selectVocabWord(index, el) {
   if (el) {
     document.querySelectorAll('.vocab-word-item').forEach(i => i.classList.remove('active'));
@@ -446,6 +434,8 @@ function selectVocabWord(index, el) {
   if (placeholder) placeholder.style.display = 'none';
   if (contentBox) {
     contentBox.style.display = 'block';
+
+    const charArray = Array.from(item.hz);
 
     contentBox.innerHTML = `
       <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
@@ -466,13 +456,18 @@ function selectVocabWord(index, el) {
         </button>
       </div>
 
-      <!-- HANZI WRITER & ETYMOLOGY BOX -->
-      <div style="margin-top: 1.5rem; display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; align-items: flex-start;">
+      <!-- HANZI WRITER MULTI-CHARACTER CONTAINERS & ETYMOLOGY BOX -->
+      <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem;">
         <div>
-          <div id="hanzi-writer-target" class="hanzi-writer-box"></div>
-          <button type="button" class="calib-btn" style="width: 100%; margin-top: 8px; font-size: 0.85rem;" onclick="animateActiveHanzi()">
-            <i class="fa-solid fa-pen-nib"></i> Xem Nét Viết
-          </button>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <span style="font-weight: 800; color: #4338ca; font-size: 0.95rem;">
+              ✍️ Mô phỏng nét viết cho ${charArray.length} chữ của từ "${item.hz}":
+            </span>
+            <button type="button" class="calib-btn" style="font-size: 0.85rem;" onclick="animateActiveHanzi()">
+              <i class="fa-solid fa-pen-nib"></i> Xem Nét Viết
+            </button>
+          </div>
+          <div id="multi-hanzi-container" class="multi-hanzi-wrapper"></div>
         </div>
 
         <div class="etym-box">
@@ -487,38 +482,55 @@ function selectVocabWord(index, el) {
     `;
 
     setTimeout(() => {
-      renderHanziAnimation(item.singleChar);
+      renderMultiHanziAnimation(charArray);
     }, 50);
   }
 }
 
-function renderHanziAnimation(char) {
-  const target = document.getElementById('hanzi-writer-target');
-  if (!target) return;
-  target.innerHTML = '';
+function renderMultiHanziAnimation(charArray) {
+  const container = document.getElementById('multi-hanzi-container');
+  if (!container) return;
+  container.innerHTML = '';
+  currentWriters = [];
 
-  if (typeof HanziWriter !== 'undefined') {
-    try {
-      currentWriter = HanziWriter.create('hanzi-writer-target', char, {
-        width: 150,
-        height: 150,
-        padding: 5,
-        strokeColor: '#4338ca',
-        radialColor: '#f43f5e',
-        showOutline: true
-      });
-      currentWriter.animateCharacter();
-    } catch (e) {
-      target.innerHTML = `<span style="font-size: 4rem; font-family: 'Noto Sans SC'; color: #4338ca;">${char}</span>`;
+  charArray.forEach((char, idx) => {
+    const boxId = `hw_box_${idx}`;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'hanzi-writer-box-item';
+    wrapper.innerHTML = `
+      <div id="${boxId}" class="hanzi-writer-box"></div>
+      <span class="hw-char-label">Nét chữ '${char}'</span>
+    `;
+    container.appendChild(wrapper);
+
+    if (typeof HanziWriter !== 'undefined') {
+      try {
+        const writer = HanziWriter.create(boxId, char, {
+          width: 120,
+          height: 120,
+          padding: 5,
+          strokeColor: '#4338ca',
+          radialColor: '#f43f5e',
+          showOutline: true
+        });
+        writer.animateCharacter();
+        currentWriters.push(writer);
+      } catch (e) {
+        document.getElementById(boxId).innerHTML = `<span style="font-size: 3.5rem; font-family: 'Noto Sans SC'; color: #4338ca;">${char}</span>`;
+      }
+    } else {
+      document.getElementById(boxId).innerHTML = `<span style="font-size: 3.5rem; font-family: 'Noto Sans SC'; color: #4338ca;">${char}</span>`;
     }
-  } else {
-    target.innerHTML = `<span style="font-size: 4rem; font-family: 'Noto Sans SC'; color: #4338ca;">${char}</span>`;
-  }
+  });
 }
 
 function animateActiveHanzi() {
-  if (currentWriter) {
-    currentWriter.animateCharacter();
+  if (currentWriters && currentWriters.length > 0) {
+    currentWriters.forEach((writer, idx) => {
+      setTimeout(() => {
+        writer.animateCharacter();
+      }, idx * 500);
+    });
   }
 }
 

@@ -1,4 +1,4 @@
-/* Single Page Kids & UbD Educational CSS - Vocabulary Module & Etymology Animation */
+/* Single Page Kids & UbD Educational CSS - Vocabulary Module & Multi-Character Etymology Animation */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+SC:wght@500;700;900&display=swap');
 
 :root {
@@ -655,13 +655,12 @@ body {
   color: #64748b;
 }
 
-/* Hanzi Learning Detail Card */
+/* Hanzi Learning Detail Card & Multi-Character Support */
 .etym-box {
   background: #fffbeb;
   border: 2px solid #fde68a;
   border-radius: 16px;
   padding: 1.2rem;
-  margin-top: 1.2rem;
 }
 
 .etym-header {
@@ -680,16 +679,37 @@ body {
   line-height: 1.5;
 }
 
+.multi-hanzi-wrapper {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.hanzi-writer-box-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hanzi-writer-box {
   background: #ffffff;
   border: 2px solid #cbd5e1;
   border-radius: 16px;
-  width: 160px;
-  height: 160px;
+  width: 130px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.hw-char-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 800;
+  color: #4338ca;
+  font-size: 0.88rem;
+  margin-top: 4px;
 }
 
 /* Interactive Test Engine Styling */
