@@ -6,7 +6,7 @@ let currentBankSetIndex = 0;
 let currentWriter = null;
 let isTestStarted = false;
 
-// 1. Vocabulary Database for HSK 1 Lesson 1 (11 Nòng cốt từ vựng & Chiết Tự)
+// 1. Vocabulary Database for HSK 1 Lesson 1 (12 Nòng cốt từ vựng & Chiết Tự)
 const vocabDatabase = [
   {
     hz: "你",
@@ -31,6 +31,14 @@ const vocabDatabase = [
     etymology: "Chữ 你 (bạn) + Chữ 们 (hậu tố số nhiều: Bộ Nhân 亻 + chữ 门). ⟶ Nhiều người bạn gộp lại = Các bạn.",
     example: "你们好！ (Nǐmen hǎo!) - Chào các bạn!",
     singleChar: "你"
+  },
+  {
+    hz: "老师",
+    py: "lǎoshī",
+    vi: "Thầy giáo, cô giáo",
+    etymology: "Chữ 老 (Lão: người cao tuổi chống gậy) + Chữ 师 (Sư: người truyền dạy kiến thức). ⟶ Người thầy kính mến truyền dạy học trò.",
+    example: "老师好！ (Lǎoshī hǎo!) - Chào thầy/cô giáo!",
+    singleChar: "老"
   },
   {
     hz: "王老师",
@@ -400,7 +408,7 @@ const testBankSets = [
   }
 ];
 
-// 3. Render 11 Vocabulary Selector Grid
+// 3. Render 12 Vocabulary Selector Grid
 function renderVocabGridList() {
   const container = document.getElementById('vocab-words-grid');
   if (!container) return;
@@ -537,7 +545,7 @@ function renderVocabQuiz() {
   if (!container) return;
 
   let html = `<div style="display: flex; flex-direction: column; gap: 12px;">`;
-  vocabDatabase.slice(0, 5).forEach((item, idx) => {
+  vocabDatabase.slice(0, 6).forEach((item, idx) => {
     html += `
       <div class="sentence-item-row">
         <div class="sentence-main">
