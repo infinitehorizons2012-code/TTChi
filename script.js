@@ -1,4 +1,4 @@
-// Interactive Application Logic for UbD + AI HSK1 Lesson 1 App (Error-Driven Learning Engine)
+// Interactive Application Logic for UbD + AI HSK1 Lesson 1 App (Kids Bright White Edition)
 
 // 1. Navigation Tab Controller (Bulletproof Cross-Browser Implementation)
 function switchSection(sectionId, el) {
@@ -27,7 +27,7 @@ function switchSection(sectionId, el) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// 2. Restructured UbD Slide Deck Data (Refined to User Specs)
+// 2. Restructured UbD Slide Deck Data (Refined Kids Bright White Theme)
 const slidesData = [
   {
     id: 1,
@@ -37,18 +37,18 @@ const slidesData = [
     title: "Slide 1: Kết Quả Mong Muốn (Desired Results)",
     content: `
       <h3>🎯 CLO Cốt Lõi:</h3>
-      <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 600;">
+      <p style="font-size: 1.1rem; color: #0f172a; font-weight: 600;">
         Chào hỏi, tạm biệt và cảm ơn trong môi trường trường học (Học sinh, cô giáo & Trợ lý AI).
       </p>
 
       <h3 style="margin-top: 1.2rem;">🌸 Nét Văn Hóa Xưng Hô:</h3>
-      <p style="color: var(--cyan); font-weight: 600;">
+      <p style="color: #0284c7; font-weight: 700;">
         Phân biệt chính xác quy tắc xưng hô <code>你</code> (bạn/AI) vs <code>您</code> (cấp trên/kính trọng) & <code>你们</code> (các bạn).
       </p>
 
-      <div style="background: rgba(99, 102, 241, 0.1); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--primary); margin-top: 1.2rem;">
-        <strong>💡 Essential Question (EQ):</strong><br>
-        <em style="font-size: 1.05rem; color: #a5b4fc;">
+      <div style="background: #eef2ff; padding: 1.2rem; border-radius: 16px; border-left: 5px solid #6366f1; margin-top: 1.2rem;">
+        <strong style="color: #4338ca;">💡 Essential Question (EQ):</strong><br>
+        <em style="font-size: 1.05rem; color: #3730a3;">
           "Làm sao để lựa chọn danh xưng vừa lịch sự vừa chuyên nghiệp trong kỷ nguyên số?"
         </em>
       </div>
@@ -62,12 +62,12 @@ const slidesData = [
     title: "Slide 2: Thách Thức Thực Chiến (GRASPS Performance Task)",
     content: `
       <h3>⚡ Performance Task (GRASPS):</h3>
-      <p style="font-size: 1.1rem; color: var(--text-main); font-weight: 600; line-height: 1.5;">
+      <p style="font-size: 1.1rem; color: #0f172a; font-weight: 600; line-height: 1.5;">
         Đóng vai chào hỏi, tạm biệt và cảm ơn Giáo sư Wang, Trợ lý AI Xiaoyu và các bạn học sinh (学生) trong phạm vi mẫu câu Bài 1 (开学第一天).
       </p>
 
-      <div style="margin-top: 1.2rem; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glass);">
-        <h4 style="color: var(--amber); margin-bottom: 0.5rem;"><i class="fa-solid fa-users-viewfinder"></i> Phạm Vi Mẫu Câu Bài 1 (Không dùng ngữ pháp chưa học):</h4>
+      <div style="margin-top: 1.2rem; background: #ffffff; padding: 1.2rem; border-radius: 16px; border: 2px solid #e2e8f0;">
+        <h4 style="color: #d97706; margin-bottom: 0.5rem;"><i class="fa-solid fa-users-viewfinder"></i> Phạm Vi Mẫu Câu Bài 1 (Không dùng ngữ pháp chưa học):</h4>
         <ul class="feature-list">
           <li><i class="fa-solid fa-user-graduate"></i> <strong>Chào Giáo sư/Cô Wang:</strong> <code>王老师，您好！</code> (Wáng lǎoshī, nín hǎo!).</li>
           <li><i class="fa-solid fa-robot"></i> <strong>Chào Trợ lý AI Xiaoyu:</strong> <code>你好！ / 小语，你好！</code> (nǐ hǎo!).</li>
@@ -86,23 +86,23 @@ const slidesData = [
     content: `
       <h3>📊 AI Rubric 3 Trục Đo Lường Năng Lực (Bài 1 Scope):</h3>
       <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
-        <div style="background: rgba(99,102,241,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--cyan);">(1) Đại từ kính ngữ 您 / 你们</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Chọn đúng <code>您</code> cho Giáo sư Wang và <code>你们</code> / <code>你</code> cho AI/bạn học.</p>
+        <div style="background: #ecfeff; padding: 1rem; border-radius: 16px; border: 2px solid #a5f3fc;">
+          <h4 style="color: #0891b2;">(1) Đại từ kính ngữ 您 / 你们</h4>
+          <p style="font-size: 0.88rem; color: #334155;">Chọn đúng <code>您</code> cho Giáo sư Wang và <code>你们</code> / <code>你</code> cho AI/bạn học.</p>
         </div>
-        <div style="background: rgba(168,85,247,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--secondary);">(2) Thanh điệu chuẩn (3+3 & Biến điệu 不)</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Biến điệu 3+3 (nǐ hǎo → ní hǎo) & Biến điệu 不 (bù kèqi → bú kèqi).</p>
+        <div style="background: #f3e8ff; padding: 1rem; border-radius: 16px; border: 2px solid #e9d5ff;">
+          <h4 style="color: #7e22ce;">(2) Thanh điệu chuẩn (3+3 & Biến điệu 不)</h4>
+          <p style="font-size: 0.88rem; color: #334155;">Biến điệu 3+3 (nǐ hǎo → ní hǎo) & Biến điệu 不 (bù kèqi → bú kèqi).</p>
         </div>
-        <div style="background: rgba(16,185,129,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-glow);">
-          <h4 style="color: var(--emerald);">(3) Phản xạ 3 chức năng Bài 1</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Chào hỏi, Cảm ơn (不客气) và Tạm biệt (再见) chuẩn mẫu câu Bài 1.</p>
+        <div style="background: #ecfdf5; padding: 1rem; border-radius: 16px; border: 2px solid #a7f3d0;">
+          <h4 style="color: #059669;">(3) Phản xạ 3 chức năng Bài 1</h4>
+          <p style="font-size: 0.88rem; color: #334155;">Chào hỏi, Cảm ơn (不客气) và Tạm biệt (再见) chuẩn mẫu câu Bài 1.</p>
         </div>
       </div>
 
-      <div style="margin-top: 1.5rem; text-align: center; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); padding: 1rem; border-radius: 12px;">
-        <strong style="color: #fcd34d; font-size: 1.1rem;"><i class="fa-solid fa-award"></i> Ngưỡng Đo Lường:</strong>
-        <span style="color: var(--text-main);"> Học viên phải đạt <strong>≥ 80% điểm Rubric</strong> để được cấp Micro-Credential.</span>
+      <div style="margin-top: 1.5rem; text-align: center; background: #fffbeb; border: 2px solid #fde68a; padding: 1rem; border-radius: 16px;">
+        <strong style="color: #b45309; font-size: 1.1rem;"><i class="fa-solid fa-award"></i> Ngưỡng Đo Lường:</strong>
+        <span style="color: #1e293b;"> Học viên phải đạt <strong>≥ 80% điểm Rubric</strong> để được cấp Micro-Credential.</span>
       </div>
     `
   },
@@ -115,22 +115,22 @@ const slidesData = [
     content: `
       <h3>📚 Học Liệu JIT Chuẩn Bài 1 (Không dùng từ chưa học):</h3>
       <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
-        <div style="background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); padding: 1rem; border-radius: 10px;">
-          <h4 style="color: var(--cyan);"><i class="fa-solid fa-user-tie"></i> 1. Với Bề Trên (Giáo sư Wang - 王老师):</h4>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Chào: <strong>王老师，您好！</strong> (Wáng lǎoshī, nín hǎo!)</p>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn: <strong>谢谢您，王老师！</strong> (Xièxie nín, Wáng lǎoshī!)</p>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Tạm biệt: <strong>王老师，再见！</strong> (Wáng lǎoshī, zàijiàn!)</p>
+        <div style="background: #ecfeff; border: 2px solid #a5f3fc; padding: 1rem; border-radius: 14px;">
+          <h4 style="color: #0891b2;"><i class="fa-solid fa-user-tie"></i> 1. Với Bề Trên (Giáo sư Wang - 王老师):</h4>
+          <p style="color: #0f172a; font-size: 0.95rem;">• Chào: <strong>王老师，您好！</strong> (Wáng lǎoshī, nín hǎo!)</p>
+          <p style="color: #0f172a; font-size: 0.95rem;">• Cảm ơn: <strong>谢谢您，王老师！</strong> (Xièxie nín, Wáng lǎoshī!)</p>
+          <p style="color: #0f172a; font-size: 0.95rem;">• Tạm biệt: <strong>王老师，再见！</strong> (Wáng lǎoshī, zàijiàn!)</p>
         </div>
-        <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); padding: 1rem; border-radius: 10px;">
-          <h4 style="color: var(--primary);"><i class="fa-solid fa-robot"></i> 2. Với AI & Bạn Bè (Trợ lý AI Xiaoyu - 小语):</h4>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Chào: <strong>你好！ / 小语，你好！</strong> (nǐ hǎo!)</p>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn & Đáp: <strong>谢谢！ - 不客气！</strong> (Xièxie! - Bú kèqi!)</p>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Tạm biệt: <strong>再见！</strong> (Zàijiàn!)</p>
+        <div style="background: #eef2ff; border: 2px solid #c7d2fe; padding: 1rem; border-radius: 14px;">
+          <h4 style="color: #4338ca;"><i class="fa-solid fa-robot"></i> 2. Với AI & Bạn Bè (Trợ lý AI Xiaoyu - 小语):</h4>
+          <p style="color: #0f172a; font-size: 0.95rem;">• Chào: <strong>你好！ / 小语，你好！</strong> (nǐ hǎo!)</p>
+          <p style="color: #0f172a; font-size: 0.95rem;">• Cảm ơn & Đáp: <strong>谢谢！ - 不客气！</strong> (Xièxie! - Bú kèqi!)</p>
+          <p style="color: #0f172a; font-size: 0.95rem;">• Tạm biệt: <strong>再见！</strong> (Zàijiàn!)</p>
         </div>
-        <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); padding: 1rem; border-radius: 10px;">
-          <h4 style="color: var(--secondary);"><i class="fa-solid fa-users"></i> 3. Với Học Sinh & Tập Thể (学生, 你们, 同学, 大家):</h4>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Chào tập thể: <strong>你们好！ / 同学们好！ / 大家好！</strong> (Nǐmen hǎo! / Tóngxuémen hǎo! / Dàjiā hǎo!)</p>
-          <p style="color: var(--text-main); font-size: 0.95rem;">• Cảm ơn tập thể: <strong>谢谢大家！ / 谢谢你们！</strong> (Xièxie dàjiā! / Xièxie nǐmen!)</p>
+        <div style="background: #f3e8ff; border: 2px solid #e9d5ff; padding: 1rem; border-radius: 14px;">
+          <h4 style="color: #7e22ce;"><i class="fa-solid fa-users"></i> 3. Với Học Sinh & Tập Thể (学生, 你们, 同学, 大家):</h4>
+          <p style="color: #0f172a; font-size: 0.95rem;">• Chào tập thể: <strong>你们好！ / 同学们好！ / 大家好！</strong> (Nǐmen hǎo! / Tóngxuémen hǎo! / Dàjiā hǎo!)</p>
+          <p style="color: #0f172a; font-size: 0.95rem;">• Cảm ơn tập thể: <strong>谢谢大家！ / 谢谢你们！</strong> (Xièxie dàjiā! / Xièxie nǐmen!)</p>
         </div>
       </div>
     `
@@ -144,26 +144,26 @@ const slidesData = [
     content: `
       <h3>🎶 Quy Tắc Phối Âm & Biến Điệu Cốt Lõi:</h3>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
-        <div style="background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); padding: 1.2rem; border-radius: 12px;">
-          <h4 style="color: #fcd34d;"><i class="fa-solid fa-wave-square"></i> 1. Biến Điệu 3+3 (Tone Sandhi 3+3)</h4>
-          <p style="font-size: 0.9rem; color: var(--text-main); margin-top: 0.5rem;">
+        <div style="background: #fffbeb; border: 2px solid #fde68a; padding: 1.2rem; border-radius: 16px;">
+          <h4 style="color: #b45309;"><i class="fa-solid fa-wave-square"></i> 1. Biến Điệu 3+3 (Tone Sandhi 3+3)</h4>
+          <p style="font-size: 0.9rem; color: #334155; margin-top: 0.5rem;">
             Khi 2 thanh 3 đi liền nhau: <strong>Thanh 3 thứ nhất chuyển thành Thanh 2</strong> (hướng lên).
           </p>
-          <div style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin-top: 0.8rem; text-align: center;">
-            <strong style="color: var(--cyan); font-size: 1.1rem;">你 (nǐ) + 好 (hǎo) → <code>ní hǎo</code> (你好)</strong>
+          <div style="background: #ffffff; border: 1px solid #fcd34d; padding: 0.8rem; border-radius: 10px; margin-top: 0.8rem; text-align: center;">
+            <strong style="color: #0891b2; font-size: 1.1rem;">你 (nǐ) + 好 (hǎo) → <code>ní hǎo</code> (你好)</strong>
           </div>
           <button type="button" class="btn btn-secondary" style="margin-top: 0.8rem; width: 100%; justify-content: center;" onclick="speakChinese('你好')">
             <i class="fa-solid fa-volume-high"></i> Nghe Biến Điệu ní hǎo
           </button>
         </div>
 
-        <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); padding: 1.2rem; border-radius: 12px;">
-          <h4 style="color: #6ee7b7;"><i class="fa-solid fa-bolt"></i> 2. Biến Điệu Chữ 不 (Tone Sandhi of 不)</h4>
-          <p style="font-size: 0.9rem; color: var(--text-main); margin-top: 0.5rem;">
+        <div style="background: #ecfdf5; border: 2px solid #a7f3d0; padding: 1.2rem; border-radius: 16px;">
+          <h4 style="color: #047857;"><i class="fa-solid fa-bolt"></i> 2. Biến Điệu Chữ 不 (Tone Sandhi of 不)</h4>
+          <p style="font-size: 0.9rem; color: #334155; margin-top: 0.5rem;">
             Chữ <strong>不 (bù)</strong> mang thanh 4 gốc. Khi đi trước âm mang <strong>Thanh 4 (như 客 kè)</strong>, <strong>不</strong> biến thành <strong>Thanh 2 (bú)</strong>!
           </p>
-          <div style="background: rgba(0,0,0,0.3); padding: 0.8rem; border-radius: 8px; margin-top: 0.8rem; text-align: center;">
-            <strong style="color: var(--emerald); font-size: 1.1rem;">不 (bù) + 客气 (kèqi) → <code>bú kèqi</code> (不客气)</strong>
+          <div style="background: #ffffff; border: 1px solid #6ee7b7; padding: 0.8rem; border-radius: 10px; margin-top: 0.8rem; text-align: center;">
+            <strong style="color: #059669; font-size: 1.1rem;">不 (bù) + 客气 (kèqi) → <code>bú kèqi</code> (不客气)</strong>
           </div>
           <button type="button" class="btn btn-secondary" style="margin-top: 0.8rem; width: 100%; justify-content: center;" onclick="speakChinese('不客气')">
             <i class="fa-solid fa-volume-high"></i> Nghe Biến Điệu bú kèqi
@@ -180,9 +180,9 @@ const slidesData = [
     title: "Slide 6: Luyện Âm Tiết Rao口令 (Tongue Twister)",
     content: `
       <h3>🎙️ Luyện Âm Tiết & Thanh Điệu Phản Xạ:</h3>
-      <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245,158,11,0.3); padding: 1.5rem; border-radius: 12px; text-align: center; margin-top: 1rem;">
-        <h2 style="font-family: 'Noto Sans SC'; color: #fcd34d;">Mā zhòng má, wǒ fàng mǎ. Mǎ chī má, mā mà mǎ.</h2>
-        <p style="color: var(--text-muted); margin: 0.8rem 0;">(妈种麻，我放马。马吃麻，妈骂马。)</p>
+      <div style="background: #fffbeb; border: 2px solid #fde68a; padding: 1.5rem; border-radius: 16px; text-align: center; margin-top: 1rem;">
+        <h2 style="font-family: 'Noto Sans SC'; color: #d97706;">Mā zhòng má, wǒ fàng mǎ. Mǎ chī má, mā mà mǎ.</h2>
+        <p style="color: #64748b; margin: 0.8rem 0;">(妈种麻，我放马。马吃麻，妈骂马。)</p>
         <button type="button" class="btn btn-primary" onclick="speakChinese('妈种麻，我放马。马吃麻，妈骂马。')">
           <i class="fa-solid fa-play"></i> Nghe Thử Rao口令 (1.0x)
         </button>
@@ -339,10 +339,10 @@ function updateRubricScore() {
   if (badgeElem) {
     if (total >= 80) {
       badgeElem.innerHTML = `<i class="fa-solid fa-certificate"></i> Đạt Ngưỡng ${total}% (Cấp Micro-Credential)`;
-      badgeElem.style.color = "var(--emerald)";
+      badgeElem.style.color = "#059669";
     } else {
       badgeElem.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Chưa Đạt Ngưỡng 80% (Cần Cải Thiện)`;
-      badgeElem.style.color = "var(--amber)";
+      badgeElem.style.color = "#d97706";
     }
   }
 }
@@ -362,13 +362,13 @@ function setCalibration(qNum, state) {
   if (label) {
     if (state === 'V') {
       label.innerText = '[V] Chắc chắn 100%';
-      label.style.color = 'var(--emerald)';
+      label.style.color = '#059669';
     } else if (state === '?') {
       label.innerText = '[?] Phân vân 50/50';
-      label.style.color = 'var(--amber)';
+      label.style.color = '#d97706';
     } else if (state === 'X') {
       label.innerText = '[X] Đoán mò 100%';
-      label.style.color = '#fca5a5';
+      label.style.color = '#dc2626';
     }
   }
 }
@@ -412,18 +412,18 @@ function evaluateErrorDrivenTest() {
       }
 
       errorLogsHTML += `
-        <div style="background: rgba(255,255,255,0.03); border-left: 4px solid var(--amber); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
-          <h4 style="color: var(--amber);">❌ Câu ${i} [Trạng thái: ${calibState[i]}] - Root Cause: ${cause}</h4>
-          <p style="font-size: 0.9rem; color: var(--text-main); margin-top: 4px;">• <strong>Hành động xử lý:</strong> ${action}</p>
-          <p style="font-size: 0.9rem; color: var(--cyan); margin-top: 2px;">• <strong>Quy tắc cốt lõi:</strong> <code>${rule}</code></p>
-          <p style="font-size: 0.9rem; color: var(--emerald); margin-top: 2px;">• <strong>Đề biến thể AI (Transfer Test):</strong> <em>${sample}</em></p>
+        <div style="background: #fffbeb; border-left: 5px solid #d97706; padding: 1rem; border-radius: 12px; margin-bottom: 1rem;">
+          <h4 style="color: #b45309;">❌ Câu ${i} [Trạng thái: ${calibState[i]}] - Root Cause: ${cause}</h4>
+          <p style="font-size: 0.9rem; color: #0f172a; margin-top: 4px;">• <strong>Hành động xử lý:</strong> ${action}</p>
+          <p style="font-size: 0.9rem; color: #0891b2; margin-top: 2px;">• <strong>Quy tắc cốt lõi:</strong> <code>${rule}</code></p>
+          <p style="font-size: 0.9rem; color: #059669; margin-top: 2px;">• <strong>Đề biến thể AI (Transfer Test):</strong> <em>${sample}</em></p>
         </div>
       `;
     }
   }
 
   if (!errorLogsHTML) {
-    errorLogsHTML = `<p style="color: var(--emerald); font-weight: 700;">🎉 Xuất sắc! Bạn làm đúng 100% tất cả các câu và gắn nhãn [V] Chắc chắn. Đã đạt mức độ làm chủ kiến thức Bài 1!</p>`;
+    errorLogsHTML = `<p style="color: #059669; font-weight: 700;">🎉 Xuất sắc! Bạn làm đúng 100% tất cả các câu và gắn nhãn [V] Chắc chắn. Đã đạt mức độ làm chủ kiến thức Bài 1!</p>`;
   }
 
   const logBox = document.getElementById('active-error-log-box');
