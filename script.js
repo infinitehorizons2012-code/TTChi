@@ -1,12 +1,13 @@
 // Pure JavaScript Self-Contained Educational Engine (Dynamic Question Bank Swapping, Timer & 4 Root Causes)
+// Strictly scoped to HSK 1 Lesson 1 (11 Vocabulary items only: 你, 您, 你们, 王老师, 学生, 同学, 大家, 好, 谢谢, 不/不客气, 再见)
 
 let timerInterval = null;
 let timerSeconds = 0;
 let currentBankSetIndex = 0;
 
-// 1. Full Question Bank Database (3 Complete Sets of 4-Skill Questions)
+// 1. Strict Scope Question Bank Database (3 Complete Sets of 4-Skill Questions)
 const testBankSets = [
-  // --- BỘ ĐỀ 1 (SET A) ---
+  // --- BỘ ĐỀ 1 (SET A - STRICT SCOPE) ---
   {
     setName: "Bộ Đề Biến Thể 1",
     questions: [
@@ -50,10 +51,10 @@ const testBankSets = [
         rule: "Bề trên (王老师) + 您好 (nín hǎo)",
         transferQuizzes: [
           {
-            title: "Biến thể 2.1: Chọn câu chào thể hiện thái độ tôn kính nhất với Cô giáo (老师):",
-            options: ["A. 老师，你好！", "B. 老师，您好！"],
+            title: "Biến thể 2.1: Chọn câu chào thể hiện thái độ tôn kính nhất với Giáo sư Wang:",
+            options: ["A. 王老师，你好！", "B. 王老师，您好！"],
             correctIdx: 1,
-            explain: "Chính xác! Dùng kính ngữ 您 (nín) cho Thầy/Cô giáo (老师，您好！)."
+            explain: "Chính xác! Dùng kính ngữ 您 (nín) cho Giáo sư Wang (王老师，您好！)."
           }
         ]
       },
@@ -107,7 +108,7 @@ const testBankSets = [
     ]
   },
 
-  // --- BỘ ĐỀ 2 (SET B - MỚI TINH) ---
+  // --- BỘ ĐỀ 2 (SET B - STRICT SCOPE) ---
   {
     setName: "Bộ Đề Biến Thể 2",
     questions: [
@@ -206,7 +207,7 @@ const testBankSets = [
     ]
   },
 
-  // --- BỘ ĐỀ 3 (SET C - MỚI TINH) ---
+  // --- BỘ ĐỀ 3 (SET C - STRICT SCOPE: KHÔNG DÙNG TỪ NGOÀI BÀI HỌC NHƯ 不然/不是) ---
   {
     setName: "Bộ Đề Biến Thể 3",
     questions: [
@@ -214,16 +215,16 @@ const testBankSets = [
         id: 1,
         skill: "Nghe (Listening)",
         badgeClass: "badge-cyan",
-        prompt: "🔊 <strong>Câu 1 (Nghe):</strong> Bấm nghe âm thanh và chọn âm biến điệu đúng cho chữ 不 trong cụm từ <strong>不是 (bú shì)</strong>:",
-        audioText: "不是",
+        prompt: "🔊 <strong>Câu 1 (Nghe):</strong> Bấm nghe âm thanh và xác định biến điệu của chữ 不 khi đáp lời cảm ơn <strong>不客气 (bú kèqi)</strong>:",
+        audioText: "不客气",
         options: [
-          { val: "A", text: "A. bù shì (giữ nguyên thanh 4 bù)" },
-          { val: "B", text: "B. bú shì (chữ 不 biến thành thanh 2 bú)" }
+          { val: "A", text: "A. bù kèqi (đọc thanh 4 bù)" },
+          { val: "B", text: "B. bú kèqi (đọc biến điệu thanh 2 bú)" }
         ],
         correct: "B",
-        causeType: "Distractor Trap (Bẫy biến điệu chữ 不 trước thanh 4)",
-        action: "Chữ 是 (shì) mang thanh 4 ⟶ Chữ 不 (bù) phải biến điệu đọc thành bú (bú shì).",
-        rule: "不 + 清/去声(thanh 4) ⟶ bú",
+        causeType: "Distractor Trap (Bẫy biến điệu chữ 不 trước 客 kè)",
+        action: "Chữ 客 (kè) mang thanh 4 ⟶ Chữ 不 (bù) phải biến điệu đọc thành bú (bú kèqi).",
+        rule: "不 (bù) + 客 (kè) ⟶ bú kèqi",
         transferQuizzes: [
           {
             title: "Biến thể 1.1: Âm đọc đúng của chữ 不 trong 不客气:",
@@ -237,7 +238,7 @@ const testBankSets = [
         id: 2,
         skill: "Nói (Speaking Etiquette)",
         badgeClass: "badge-purple",
-        prompt: "🎙️ <strong>Câu 2 (Nói):</strong> Khi tan học, để chào tạm biệt Giáo sư Wang (王老师), em thốt ra câu nào?",
+        prompt: "🎙️ <strong>Câu 2 (Nói):</strong> Khi tan học, để chào tạm biệt Giáo sư Wang (王老师), em thốt ra câu nào đúng chuẩn?",
         audioText: null,
         options: [
           { val: "A", text: "A. 王老师，再见！ (Wáng lǎoshī, zàijiàn!)" },
@@ -246,7 +247,7 @@ const testBankSets = [
         correct: "A",
         causeType: "Grammar Deficit (Chức năng chào tạm biệt)",
         action: "Tạm biệt bề trên: Tên/Chức danh + 再见 ⟶ 王老师，再见！",
-        rule: "Chức danh + 再见 (zàijiàn)",
+        rule: "Chức danh (王老师) + 再见 (zàijiàn)",
         transferQuizzes: [
           {
             title: "Biến thể 2.1: Tạm biệt trợ lý AI Xiaoyu:",
@@ -260,16 +261,16 @@ const testBankSets = [
         id: 3,
         skill: "Đọc (Reading Etiquette)",
         badgeClass: "badge-amber",
-        prompt: "📖 <strong>Câu 3 (Đọc):</strong> Đọc hội thoại sau và điền từ thích hợp: <br><code>Cô giáo: 同学们好！ (Tóngxuémen hǎo!) ⟶ Học sinh: _____！</code>",
+        prompt: "📖 <strong>Câu 3 (Đọc):</strong> Đọc hội thoại sau và điền từ thích hợp: <br><code>Học sinh 1: 谢谢大家！ (Xièxie dàjiā!) ⟶ Học sinh 2: _____！</code>",
         audioText: null,
         options: [
-          { val: "A", text: "A. 老师好！ (Lǎoshī hǎo!)" },
-          { val: "B", text: "B. 不客气！ (Bú kèqi!)" }
+          { val: "A", text: "A. 不客气！ (Bú kèqi!)" },
+          { val: "B", text: "B. 再见！ (Zàijiàn!)" }
         ],
         correct: "A",
         causeType: "Vocabulary Gap (Lỗ hổng từ vựng phản xạ xưng hô)",
-        action: "Khi Thầy/Cô chào lớp '同学们好！', học sinh chào đáp lại '老师好！'.",
-        rule: "同学们好！ ⟶ Đáp lại: 老师好！",
+        action: "Khi ai đó cảm ơn '谢谢大家！', câu đáp lại chuẩn mực là '不客气！'.",
+        rule: "谢谢大家！ ⟶ Đáp lại: 不客气！",
         transferQuizzes: [
           {
             title: "Biến thể 3.1: Đáp lại lời chào 王老师，您好！:",
@@ -614,7 +615,6 @@ function shuffleAndGenerateNewTestSet() {
   const logBox = document.getElementById('js-error-log-box');
   if (logBox) logBox.style.display = 'none';
 
-  // Scroll to top of questions
   const testArea = document.getElementById('test-questions-container');
   if (testArea) testArea.scrollIntoView({ behavior: 'smooth' });
 }
