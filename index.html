@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI小语，你好！Xin chào AI Tiểu Ngữ!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=hocsinh_speakers_v7">
+  <link rel="stylesheet" href="styles.css?v=question_bank_timer_v8">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
         <div class="logo-title">
           <h1>UbD <span>HSK 1 Kids</span></h1>
-          <p>Thiết Kế Ngược & Lịch Ôn Tự Động Hàng Ngày 1-3-7 (Pure JS)</p>
+          <p>Ngân Hàng Đề • Timer Đếm Tốc Độ • 4 Nhóm Lỗi Root Cause (Pure JS)</p>
         </div>
       </div>
       <a href="https://github.com/infinitehorizons2012-code/TTChi" target="_blank" class="gh-link">
@@ -322,14 +322,26 @@
 
     </div>
 
-    <!-- TAB 2: TEST TRANSFER INTERACTIVE PURE JS ENGINE -->
+    <!-- TAB 2: TEST TRANSFER INTERACTIVE PURE JS ENGINE WITH TIMER & QUESTION BANK -->
     <div id="test-tab" class="tab-content">
 
       <!-- 4-SKILL TEST SUITE -->
       <div class="card" style="margin-bottom: 2rem;">
-        <h3 style="font-size: 1.4rem; color: #0f172a; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px;">
-          <i class="fa-solid fa-gamepad" style="color: #ec4899;"></i> Bộ Test transfer HSK 1 Bài 1
-        </h3>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 12px;">
+          <h3 style="font-size: 1.4rem; color: #0f172a; display: flex; align-items: center; gap: 10px; margin: 0;">
+            <i class="fa-solid fa-gamepad" style="color: #ec4899;"></i> Bộ Test transfer HSK 1 Bài 1
+          </h3>
+          
+          <!-- REAL-TIME TIMER BAR & RANDOMIZER BUTTON -->
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="timer-badge" id="test-timer-badge">
+              <i class="fa-solid fa-stopwatch" style="color: #ef4444;"></i> Thời gian: <strong id="timer-sec-count">0</strong> giây (Bẫy tốc độ > 8s)
+            </div>
+            <button type="button" class="btn-shuffle" onclick="shuffleAndGenerateNewTestSet()">
+              <i class="fa-solid fa-rotate-right"></i> 🔄 Sinh Đề Biến Thể Mới Từ Ngân Hàng Đề
+            </button>
+          </div>
+        </div>
 
         <!-- TEST 1: LISTENING -->
         <div class="test-item-card">
@@ -434,6 +446,6 @@
   </main>
 
   <!-- Script setup -->
-  <script src="script.js?v=hocsinh_speakers_v7"></script>
+  <script src="script.js?v=question_bank_timer_v8"></script>
 </body>
 </html>

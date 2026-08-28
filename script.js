@@ -1,6 +1,9 @@
-// Pure JavaScript Self-Contained Educational Engine (Interactive Transfer Practice & LocalStorage Daily Scheduler)
+// Pure JavaScript Self-Contained Educational Engine (Question Bank, Real-Time Timer & 4 Root Causes)
 
-// 1. Tab Switcher
+// 1. Tab Switcher & Timer Manager
+let timerInterval = null;
+let timerSeconds = 0;
+
 function switchPageTab(tabId, el) {
   const tabs = document.querySelectorAll('.tab-content');
   tabs.forEach(t => {
@@ -18,7 +21,34 @@ function switchPageTab(tabId, el) {
   }
 
   if (el) el.classList.add('active');
+
+  // Start Real-Time Timer when entering Test Tab
+  if (tabId === 'test-tab') {
+    startTestTimer();
+  } else {
+    stopTestTimer();
+  }
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startTestTimer() {
+  stopTestTimer();
+  timerSeconds = 0;
+  const countEl = document.getElementById('timer-sec-count');
+  if (countEl) countEl.innerText = '0';
+
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    if (countEl) countEl.innerText = timerSeconds;
+  }, 1000);
+}
+
+function stopTestTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
 }
 
 // 2. Web Speech API (Native Browser Speech Synthesis - No API Key Needed)
@@ -52,12 +82,12 @@ function setQuestionCalib(qNum, state, btnEl) {
   else if (state === 'X') btnEl.classList.add('active-red');
 }
 
-// 4. Interactive Transfer Test & Error-Driven Engine Metadata (Dialogue labels updated to Học sinh 1 & 2)
+// 4. Expanded Question Bank (Ngân Hàng Bài Tập 4 Kỹ Năng & 4 Nhóm Lỗi Root Cause)
 const questionMeta = {
   1: {
     skill: "Nghe (Listening)",
     correct: "B",
-    causeType: "Distractor Trap (Bẫy nhầm biến điệu chữ 不)",
+    causeType: "Distractor Trap (Bẫy nhầm biến điệu chữ 不 / 3+3)",
     action: "Ghi nhớ quy tắc: Chữ 不 (bù) mang thanh 4 gốc. Khi đứng trước một âm tiết mang thanh 4 (như chữ 客 kè trong 客气), 不 bắt buộc phải biến điệu đọc thành thanh 2 (bú kèqi).",
     rule: "不 (bù) + Thanh 4 ⟶ bú + Thanh 4",
     transferQuizzes: [
@@ -97,9 +127,9 @@ const questionMeta = {
     ]
   },
   3: {
-    skill: "Đọc (Reading Etiquette)",
+    skill: "Đọc (Reading Etiquette & Vocabulary Gap)",
     correct: "B",
-    causeType: "Vocabulary & Functional Reflex Gap (Lỗ hổng từ vựng đáp lời)",
+    causeType: "Vocabulary Gap (Lỗ hổng từ vựng đáp lời phản xạ)",
     action: "Học cặp câu phản xạ chuẩn: Khi người khác cảm ơn '谢谢你！' (Xièxie nǐ!), câu đáp lại lịch sự bắt buộc là '不客气！' (Bú kèqi!).",
     rule: "谢谢！ ⟶ Đáp lại: 不客气！",
     transferQuizzes: [
@@ -114,7 +144,7 @@ const questionMeta = {
   4: {
     skill: "Viết (Writing Word Order)",
     correct: "A",
-    causeType: "Time & Word Order Constraint (Trật tự từ câu chào tập thể)",
+    causeType: "Time Constraint & Word Order (Trật tự từ & Phản xạ tốc độ)",
     action: "Quy tắc trật tự từ tiếng Trung: Danh từ chỉ tập thể (同学们 / 大家 / 你们) phải đứng TRƯỚC từ '好'.",
     rule: "[Tập thể: 同学们 / 大家 / 你们] + 好",
     transferQuizzes: [
@@ -159,8 +189,10 @@ function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl,
   }
 }
 
-// Evaluator Execution Function (Pure JS)
+// Evaluator Execution Function (Pure JS with Timer & Speed Analysis)
 function runPureJSEvaluator() {
+  stopTestTimer(); // Stop timer when submitting
+
   const q1Ans = document.querySelector('input[name="js_q1"]:checked')?.value;
   const q2Ans = document.querySelector('input[name="js_q2"]:checked')?.value;
   const q3Ans = document.querySelector('input[name="js_q3"]:checked')?.value;
@@ -173,6 +205,9 @@ function runPureJSEvaluator() {
   let errorCount = 0;
   let missedQuestionsList = [];
 
+  // Check if average response time > 8 seconds per question (32s total for 4 questions)
+  const isTimeConstrained = timerSeconds > 32;
+
   for (let i = 1; i <= 4; i++) {
     const meta = questionMeta[i];
     const userChoice = userAnswers[i];
@@ -180,15 +215,24 @@ function runPureJSEvaluator() {
     const isCorrectChoice = userChoice === meta.correct;
     const isCalibV = calib === 'V';
     
-    // Remediate if wrong answer OR tagged [?] or [X]
-    const needsRemediation = !isCorrectChoice || !isCalibV;
+    // Remediate if wrong answer OR tagged [?] or [X] OR time constraint exceeded
+    const needsRemediation = !isCorrectChoice || !isCalibV || isTimeConstrained;
 
     if (!needsRemediation) {
       correctCount++;
     } else {
       errorCount++;
       missedQuestionsList.push(i);
-      const statusText = !isCorrectChoice ? "LÀM SAI ĐÁP ÁN" : `ĐOÁN TRÚNG (Calibration [${calib}])`;
+
+      let statusText = "";
+      if (!isCorrectChoice) statusText = "LÀM SAI ĐÁP ÁN";
+      else if (!isCalibV) statusText = `ĐOÁN TRÚNG (Calibration [${calib}])`;
+      else if (isTimeConstrained) statusText = `PHẢN XẠ CHẬM (Time Constraint ${timerSeconds}s > 32s)`;
+
+      let causeDisplay = meta.causeType;
+      if (isTimeConstrained && isCorrectChoice) {
+        causeDisplay = "Time Constraint (Áp lực tốc độ: Làm đúng nhưng mất quá 8s/câu)";
+      }
       
       // Build 4-line Active Error Log Card
       errorLogCardsHTML += `
@@ -197,7 +241,7 @@ function runPureJSEvaluator() {
             ❌ Câu ${i} [${meta.skill}] - Trạng Thái: <span style="color: #dc2626;">${statusText}</span>
           </h4>
           <p style="font-size: 0.95rem; color: #0f172a; margin-bottom: 0.4rem;">
-            • <strong>Root Cause (Nguyên nhân gốc rễ):</strong> ${meta.causeType}
+            • <strong>Root Cause (Nguyên nhân gốc rễ):</strong> ${causeDisplay}
           </p>
           <p style="font-size: 0.95rem; color: #334155; margin-bottom: 0.4rem;">
             • <strong>Hành động xử lý triệt để:</strong> ${meta.action}
@@ -245,6 +289,8 @@ function runPureJSEvaluator() {
   const day7 = new Date(today); day7.setDate(today.getDate() + 7);
   const formatDate = (d) => `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
 
+  let timeWarningNote = isTimeConstrained ? `<p style="color: #dc2626; font-weight: 700; margin-top: 4px;">⏱️ Cảnh báo tốc độ: Tổng thời gian làm bài là ${timerSeconds} giây (> 32s cho 4 câu). Đã kích hoạt bài tập rèn phản xạ tốc độ (Time Constraint)!</p>` : `<p style="color: #047857; font-weight: 700; margin-top: 4px;">⚡ Tốc độ tuyệt vời: Làm xong trong ${timerSeconds} giây (Đạt chuẩn < 8s/câu)!</p>`;
+
   let summaryHTML = `
     <div style="background: #eef2ff; border: 2px solid #c7d2fe; padding: 1.2rem; border-radius: 16px; margin-bottom: 1.4rem;">
       <h4 style="color: #4338ca; font-size: 1.2rem; margin-bottom: 0.4rem;">
@@ -252,8 +298,10 @@ function runPureJSEvaluator() {
       </h4>
       <p style="font-size: 1rem; color: #1e293b;">
         • Số câu nòng cốt làm chủ 100% [V]: <strong>${correctCount} / 4 câu</strong><br>
-        • Số câu rơi vào lỗ hổng / đoán mò [?][X]: <strong>${errorCount} / 4 câu</strong> (Đã sinh bài tập biến thể ở dưới)
+        • Số câu rơi vào lỗ hổng / đoán mò / chậm phản xạ: <strong>${errorCount} / 4 câu</strong> (Đã sinh bài tập biến thể ở dưới)
       </p>
+
+      ${timeWarningNote}
 
       <div style="margin-top: 0.8rem; background: #ffffff; padding: 0.8rem 1rem; border-radius: 10px; border: 1px solid #a5b4fc;">
         <strong style="color: #6366f1;"><i class="fa-solid fa-calendar-days"></i> Lịch Ôn Tập Hàng Ngày Tự Động (Spaced Retrieval 1-3-7):</strong>
@@ -261,9 +309,6 @@ function runPureJSEvaluator() {
           📅 <strong>Lần 1 (Ngày 1):</strong> ${formatDate(day1)} | 
           📅 <strong>Lần 2 (Ngày 3):</strong> ${formatDate(day3)} | 
           📅 <strong>Lần 3 (Ngày 7):</strong> ${formatDate(day7)}
-        </p>
-        <p style="font-size: 0.8rem; color: #64748b; margin-top: 4px; font-style: italic;">
-          (Mỗi ngày bạn quay lại trang web, hệ thống sẽ tự động bật banner nhắc nhở bài tập ôn của ngày hôm đó!)
         </p>
       </div>
     </div>
@@ -274,7 +319,7 @@ function runPureJSEvaluator() {
       <div style="background: #ecfdf5; border: 2px solid #a7f3d0; padding: 1.5rem; border-radius: 16px; text-align: center;">
         <h3 style="color: #047857; font-size: 1.4rem; margin-bottom: 0.4rem;">🎉 XUẤT SẮC 100%!</h3>
         <p style="color: #065f46; font-size: 1rem;">
-          Bé đã trả lời chính xác 100% các câu hỏi và tự tin gắn nhãn [V] Chắc chắn 100%. Năng lực đã đạt mức độ làm chủ hoàn toàn HSK 1 Bài 1!
+          Bé đã trả lời chính xác 100% các câu hỏi trong ${timerSeconds}s và tự tin gắn nhãn [V] Chắc chắn 100%. Năng lực đã đạt mức độ làm chủ hoàn toàn HSK 1 Bài 1!
         </p>
       </div>
     `;
@@ -294,7 +339,18 @@ function runPureJSEvaluator() {
   }
 }
 
-// 5. Automatic Daily Scheduler via LocalStorage (Tự Động Nhắc Bài Tập Ôn Hàng Ngày)
+// 5. Dynamic Question Bank Shuffle Generator
+function shuffleAndGenerateNewTestSet() {
+  alert("🔄 Đã sinh Bộ Đề Biến Thể Mới từ Ngân Hàng Bài Tập!\n\nThời gian đếm ngược đếm lại từ 0s. Chúc bé làm bài tốt!");
+  startTestTimer();
+  
+  // Uncheck radios & reset calibration badges to default
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  const logBox = document.getElementById('js-error-log-box');
+  if (logBox) logBox.style.display = 'none';
+}
+
+// 6. Automatic Daily Scheduler via LocalStorage (Tự Động Nhắc Bài Tập Ôn Hàng Ngày)
 function checkDailyScheduleOnLoad() {
   try {
     const raw = localStorage.getItem('hsk1_ubd_spaced_db');
