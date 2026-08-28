@@ -1,9 +1,356 @@
-// Pure JavaScript Self-Contained Educational Engine (Question Bank, Real-Time Timer & 4 Root Causes)
+// Pure JavaScript Self-Contained Educational Engine (Dynamic Question Bank Swapping, Timer & 4 Root Causes)
 
-// 1. Tab Switcher & Timer Manager
 let timerInterval = null;
 let timerSeconds = 0;
+let currentBankSetIndex = 0;
 
+// 1. Full Question Bank Database (3 Complete Sets of 4-Skill Questions)
+const testBankSets = [
+  // --- BỘ ĐỀ 1 (SET A) ---
+  {
+    setName: "Bộ Đề Biến Thể 1",
+    questions: [
+      {
+        id: 1,
+        skill: "Nghe (Listening)",
+        badgeClass: "badge-cyan",
+        prompt: "🔊 <strong>Câu 1 (Nghe):</strong> Bấm nghe âm thanh và chọn cụm từ có chứa <strong>Biến điệu chữ 不 (bú kèqi)</strong>:",
+        audioText: "不客气",
+        options: [
+          { val: "A", text: "A. bù kèqi (giữ nguyên thanh 4 bù)" },
+          { val: "B", text: "B. bú kèqi (chữ 不 biến thành thanh 2 bú)" }
+        ],
+        correct: "B",
+        causeType: "Distractor Trap (Bẫy nhầm biến điệu chữ 不)",
+        action: "Ghi nhớ quy tắc: Chữ 不 (bù) mang thanh 4 gốc. Khi đứng trước một âm tiết mang thanh 4 (như chữ 客 kè trong 客气), 不 bắt buộc phải biến điệu đọc thành thanh 2 (bú kèqi).",
+        rule: "不 (bù) + Thanh 4 ⟶ bú + Thanh 4",
+        transferQuizzes: [
+          {
+            title: "Biến thể 1.1: Chọn âm biến điệu đúng khi Học sinh 2 đáp lời 'Cảm ơn':",
+            options: ["A. bù kèqi", "B. bú kèqi"],
+            correctIdx: 1,
+            explain: "Chính xác! Học sinh 1: 谢谢你！ ⟶ Học sinh 2: 不客气！ (bú kèqi - biến điệu thanh 2 bú)."
+          }
+        ]
+      },
+      {
+        id: 2,
+        skill: "Nói (Speaking Etiquette)",
+        badgeClass: "badge-purple",
+        prompt: "🎙️ <strong>Câu 2 (Nói):</strong> Trong ngày khai trường, để thể hiện thái độ tôn trọng khi chào Giáo sư Wang (王老师), em nên thốt ra câu nào?",
+        audioText: null,
+        options: [
+          { val: "A", text: "A. 王老师，你好！ (Wáng lǎoshī, nǐ hǎo!)" },
+          { val: "B", text: "B. 王老师，您好！ (Wáng lǎoshī, nín hǎo!)" },
+          { val: "C", text: "C. 王老师，你们好！ (Wáng lǎoshī, nǐmen hǎo!)" }
+        ],
+        correct: "B",
+        causeType: "Grammar & Honorific Deficit (Gãy kính ngữ 您)",
+        action: "Phân biệt đối tượng: Dùng kính ngữ 您 (nín) khi chào người bề trên/Giáo sư Wang; Dùng 你 (nǐ) cho AI Xiaoyu hoặc bạn học.",
+        rule: "Bề trên (王老师) + 您好 (nín hǎo)",
+        transferQuizzes: [
+          {
+            title: "Biến thể 2.1: Chọn câu chào thể hiện thái độ tôn kính nhất với Cô giáo (老师):",
+            options: ["A. 老师，你好！", "B. 老师，您好！"],
+            correctIdx: 1,
+            explain: "Chính xác! Dùng kính ngữ 您 (nín) cho Thầy/Cô giáo (老师，您好！)."
+          }
+        ]
+      },
+      {
+        id: 3,
+        skill: "Đọc (Reading Etiquette & Vocabulary Gap)",
+        badgeClass: "badge-amber",
+        prompt: "📖 <strong>Câu 3 (Đọc):</strong> Đọc hội thoại sau và điền từ thích hợp vào chỗ trống: <br><code>Học sinh 1: 谢谢你！ (Xièxie nǐ!) ⟶ Học sinh 2: _____！</code>",
+        audioText: null,
+        options: [
+          { val: "A", text: "A. 再见！ (Zàijiàn!)" },
+          { val: "B", text: "B. 不客气！ (Bú kèqi!)" },
+          { val: "C", text: "C. 您好！ (Nín hǎo!)" }
+        ],
+        correct: "B",
+        causeType: "Vocabulary Gap (Lỗ hổng từ vựng đáp lời phản xạ)",
+        action: "Học cặp câu phản xạ chuẩn: Khi người khác cảm ơn '谢谢你！' (Xièxie nǐ!), câu đáp lại lịch sự bắt buộc là '不客气！' (Bú kèqi!).",
+        rule: "谢谢！ ⟶ Đáp lại: 不客气！",
+        transferQuizzes: [
+          {
+            title: "Biến thể 3.1: Học sinh 2 đáp lại lời cảm ơn của Học sinh 1 '谢谢大家！':",
+            options: ["A. 再见！", "B. 不客气！"],
+            correctIdx: 1,
+            explain: "Chính xác! Học sinh 1: 谢谢大家！ ⟶ Học sinh 2 đáp lại: 不客气！ (Bú kèqi!)."
+          }
+        ]
+      },
+      {
+        id: 4,
+        skill: "Viết (Writing Word Order)",
+        badgeClass: "badge-emerald",
+        prompt: "✍️ <strong>Câu 4 (Viết):</strong> Sắp xếp các khối từ sau thành câu chào tập thể các bạn học sinh đúng trật tự:",
+        audioText: null,
+        options: [
+          { val: "A", text: "A. 同学们 (1) + 好 (2) ⟶ 同学们好！" },
+          { val: "B", text: "B. 好 (2) + 同学们 (1) ⟶ 好同学们！" }
+        ],
+        correct: "A",
+        causeType: "Time Constraint & Word Order (Trật tự từ & Phản xạ tốc độ)",
+        action: "Quy tắc trật tự từ tiếng Trung: Danh từ chỉ tập thể (同学们 / 大家 / 你们) phải đứng TRƯỚC từ '好'.",
+        rule: "[Tập thể: 同学们 / 大家 / 你们] + 好",
+        transferQuizzes: [
+          {
+            title: "Biến thể 4.1: Chọn trật tự từ đúng để chào toàn thể mọi người (dùng từ 大家):",
+            options: ["A. 大家好！ (Dàjiā hǎo!)", "B. 好大家！ (Hǎo dàjiā!)"],
+            correctIdx: 0,
+            explain: "Chính xác! 大家好！ (Dàjiā hǎo!)."
+          }
+        ]
+      }
+    ]
+  },
+
+  // --- BỘ ĐỀ 2 (SET B - MỚI TINH) ---
+  {
+    setName: "Bộ Đề Biến Thể 2",
+    questions: [
+      {
+        id: 1,
+        skill: "Nghe (Listening)",
+        badgeClass: "badge-cyan",
+        prompt: "🔊 <strong>Câu 1 (Nghe):</strong> Bấm nghe âm thanh và chọn âm biến điệu 3+3 đúng cho từ <strong>你好 (ní hǎo)</strong>:",
+        audioText: "你好",
+        options: [
+          { val: "A", text: "A. nǐ hǎo (giữ nguyên hai thanh 3)" },
+          { val: "B", text: "B. ní hǎo (thanh 3 thứ nhất biến thành thanh 2 ní)" }
+        ],
+        correct: "B",
+        causeType: "Distractor Trap (Bẫy biến điệu thanh điệu 3+3)",
+        action: "Quy tắc biến điệu 3+3: Khi 2 thanh 3 đứng liền nhau, thanh 3 đầu tiên biến thành thanh 2 (ní hǎo).",
+        rule: "Thanh 3 + Thanh 3 ⟶ Thanh 2 + Thanh 3",
+        transferQuizzes: [
+          {
+            title: "Biến thể 1.1: Chọn cách đọc đúng của chữ 你 khi ghép với 好:",
+            options: ["A. nǐ hǎo", "B. ní hǎo"],
+            correctIdx: 1,
+            explain: "Chính xác! nǐ + hǎo đọc biến điệu thành ní hǎo."
+          }
+        ]
+      },
+      {
+        id: 2,
+        skill: "Nói (Speaking Etiquette)",
+        badgeClass: "badge-purple",
+        prompt: "🎙️ <strong>Câu 2 (Nói):</strong> Để chào Trợ lý AI Tiểu Ngữ (小语) hoặc bạn học cùng lứa tuổi, em dùng câu nào đúng nhất?",
+        audioText: null,
+        options: [
+          { val: "A", text: "A. 小语，你好！ (Xiǎoyǔ, nǐ hǎo!)" },
+          { val: "B", text: "B. 小语，您好！ (Xiǎoyǔ, nín hǎo!)" }
+        ],
+        correct: "A",
+        causeType: "Grammar & Honorific Deficit (Phân biệt 你 vs 您)",
+        action: "Quy tắc xưng hô: Dùng 你 (nǐ) cho AI Xiaoyu, bạn bè cùng lứa tuổi; Chỉ dùng 您 (nín) cho người bề trên.",
+        rule: "Bạn bè / AI ⟶ 你好 (nǐ hǎo)",
+        transferQuizzes: [
+          {
+            title: "Biến thể 2.1: Chào bạn học sinh mới gặp lần đầu:",
+            options: ["A. 你好！", "B. 您好！"],
+            correctIdx: 0,
+            explain: "Chính xác! Bạn học dùng 你好！ (nǐ hǎo!)."
+          }
+        ]
+      },
+      {
+        id: 3,
+        skill: "Đọc (Reading Etiquette)",
+        badgeClass: "badge-amber",
+        prompt: "📖 <strong>Câu 3 (Đọc):</strong> Đọc hội thoại sau và chọn từ điền vào chỗ trống: <br><code>Học sinh 1: 谢谢大家！ (Xièxie dàjiā!) ⟶ Học sinh 2: _____！</code>",
+        audioText: null,
+        options: [
+          { val: "A", text: "A. 不客气！ (Bú kèqi!)" },
+          { val: "B", text: "B. 再见！ (Zàijiàn!)" }
+        ],
+        correct: "A",
+        causeType: "Vocabulary Gap (Lỗ hổng từ vựng đáp lời)",
+        action: "Học cặp câu phản xạ: 谢谢大家！ ⟶ Đáp lại lịch sự: 不客气！",
+        rule: "Cảm ơn (谢谢) ⟶ Đáp lại (不客气)",
+        transferQuizzes: [
+          {
+            title: "Biến thể 3.1: Đáp lại lời cảm ơn 谢谢你们！:",
+            options: ["A. 不客气！", "B. 你好！"],
+            correctIdx: 0,
+            explain: "Chính xác! Đáp lại 谢谢 là 不客气！."
+          }
+        ]
+      },
+      {
+        id: 4,
+        skill: "Viết (Writing Word Order)",
+        badgeClass: "badge-emerald",
+        prompt: "✍️ <strong>Câu 4 (Viết):</strong> Chọn trật tự từ đúng để chào toàn thể mọi người (dùng từ 大家):",
+        audioText: null,
+        options: [
+          { val: "A", text: "A. 大家好！ (Dàjiā hǎo!)" },
+          { val: "B", text: "B. 好大家！ (Hǎo dàjiā!)" }
+        ],
+        correct: "A",
+        causeType: "Time Constraint & Word Order (Trật tự từ chào tập thể)",
+        action: "Trật tự từ tiếng Trung: Danh từ tập thể 大家 đứng trước từ 好 ⟶ 大家好！",
+        rule: "大家 + 好 ⟶ 大家好！",
+        transferQuizzes: [
+          {
+            title: "Biến thể 4.1: Chọn trật tự chào các bạn (你们):",
+            options: ["A. 你们好！", "B. 好你们！"],
+            correctIdx: 0,
+            explain: "Chính xác! 你们好！ (Nǐmen hǎo!)."
+          }
+        ]
+      }
+    ]
+  },
+
+  // --- BỘ ĐỀ 3 (SET C - MỚI TINH) ---
+  {
+    setName: "Bộ Đề Biến Thể 3",
+    questions: [
+      {
+        id: 1,
+        skill: "Nghe (Listening)",
+        badgeClass: "badge-cyan",
+        prompt: "🔊 <strong>Câu 1 (Nghe):</strong> Bấm nghe âm thanh và chọn âm biến điệu đúng cho chữ 不 trong cụm từ <strong>不是 (bú shì)</strong>:",
+        audioText: "不是",
+        options: [
+          { val: "A", text: "A. bù shì (giữ nguyên thanh 4 bù)" },
+          { val: "B", text: "B. bú shì (chữ 不 biến thành thanh 2 bú)" }
+        ],
+        correct: "B",
+        causeType: "Distractor Trap (Bẫy biến điệu chữ 不 trước thanh 4)",
+        action: "Chữ 是 (shì) mang thanh 4 ⟶ Chữ 不 (bù) phải biến điệu đọc thành bú (bú shì).",
+        rule: "不 + 清/去声(thanh 4) ⟶ bú",
+        transferQuizzes: [
+          {
+            title: "Biến thể 1.1: Âm đọc đúng của chữ 不 trong 不客气:",
+            options: ["A. bù", "B. bú"],
+            correctIdx: 1,
+            explain: "Chính xác! bú kèqi."
+          }
+        ]
+      },
+      {
+        id: 2,
+        skill: "Nói (Speaking Etiquette)",
+        badgeClass: "badge-purple",
+        prompt: "🎙️ <strong>Câu 2 (Nói):</strong> Khi tan học, để chào tạm biệt Giáo sư Wang (王老师), em thốt ra câu nào?",
+        audioText: null,
+        options: [
+          { val: "A", text: "A. 王老师，再见！ (Wáng lǎoshī, zàijiàn!)" },
+          { val: "B", text: "B. 王老师，你好！ (Wáng lǎoshī, nǐ hǎo!)" }
+        ],
+        correct: "A",
+        causeType: "Grammar Deficit (Chức năng chào tạm biệt)",
+        action: "Tạm biệt bề trên: Tên/Chức danh + 再见 ⟶ 王老师，再见！",
+        rule: "Chức danh + 再见 (zàijiàn)",
+        transferQuizzes: [
+          {
+            title: "Biến thể 2.1: Tạm biệt trợ lý AI Xiaoyu:",
+            options: ["A. 再见！", "B. 您好！"],
+            correctIdx: 0,
+            explain: "Chính xác! 再见！ (Zàijiàn!)."
+          }
+        ]
+      },
+      {
+        id: 3,
+        skill: "Đọc (Reading Etiquette)",
+        badgeClass: "badge-amber",
+        prompt: "📖 <strong>Câu 3 (Đọc):</strong> Đọc hội thoại sau và điền từ thích hợp: <br><code>Cô giáo: 同学们好！ (Tóngxuémen hǎo!) ⟶ Học sinh: _____！</code>",
+        audioText: null,
+        options: [
+          { val: "A", text: "A. 老师好！ (Lǎoshī hǎo!)" },
+          { val: "B", text: "B. 不客气！ (Bú kèqi!)" }
+        ],
+        correct: "A",
+        causeType: "Vocabulary Gap (Lỗ hổng từ vựng phản xạ xưng hô)",
+        action: "Khi Thầy/Cô chào lớp '同学们好！', học sinh chào đáp lại '老师好！'.",
+        rule: "同学们好！ ⟶ Đáp lại: 老师好！",
+        transferQuizzes: [
+          {
+            title: "Biến thể 3.1: Đáp lại lời chào 王老师，您好！:",
+            options: ["A. 你好！", "B. 谢谢！"],
+            correctIdx: 0,
+            explain: "Chính xác! Giáo sư Wang sẽ chào đáp lại: 你好！."
+          }
+        ]
+      },
+      {
+        id: 4,
+        skill: "Viết (Writing Word Order)",
+        badgeClass: "badge-emerald",
+        prompt: "✍️ <strong>Câu 4 (Viết):</strong> Sắp xếp cụm từ cảm ơn Giáo sư Wang thể hiện thái độ tôn kính nhất:",
+        audioText: null,
+        options: [
+          { val: "A", text: "A. 谢谢您，王老师！ (Xièxie nín, Wáng lǎoshī!)" },
+          { val: "B", text: "B. 王老师，谢谢你！ (Wáng lǎoshī, xièxie nǐ!)" }
+        ],
+        correct: "A",
+        causeType: "Time Constraint & Word Order (Kính ngữ 您 + Cụm cảm ơn)",
+        action: "Cảm ơn người bề trên tôn kính: Dùng kính ngữ 您 (Xièxie nín, Wáng lǎoshī!).",
+        rule: "谢谢 + 您 + Chức danh",
+        transferQuizzes: [
+          {
+            title: "Biến thể 4.1: Cảm ơn tập thể các bạn học:",
+            options: ["A. 谢谢大家！", "B. 大家谢谢！"],
+            correctIdx: 0,
+            explain: "Chính xác! 谢谢大家！ (Xièxie dàjiā!)."
+          }
+        ]
+      }
+    ]
+  }
+];
+
+// 2. Render Active Test Question Set to DOM
+function renderCurrentTestSet() {
+  const container = document.getElementById('test-questions-container');
+  const badgeEl = document.getElementById('bank-set-badge');
+
+  const currentSet = testBankSets[currentBankSetIndex];
+  if (!currentSet || !container) return;
+
+  if (badgeEl) {
+    badgeEl.innerText = `(Đang làm: ${currentSet.setName} / ${testBankSets.length})`;
+  }
+
+  let html = '';
+  currentSet.questions.forEach((q, idx) => {
+    const qNum = idx + 1;
+    const audioBtn = q.audioText ? `<button type="button" class="audio-btn-inline" onclick="speakText('${q.audioText}')"><i class="fa-solid fa-volume-high"></i> Nghe âm mẫu</button>` : '';
+
+    html += `
+      <div class="test-item-card">
+        <div class="test-header">
+          <span class="badge ${q.badgeClass}">${qNum}. Kỹ Năng ${q.skill}</span>
+          <div class="calib-btn-group">
+            <button type="button" class="calib-btn" onclick="setQuestionCalib(${qNum}, 'V', this)">[V] Chắc chắn</button>
+            <button type="button" class="calib-btn active-amber" onclick="setQuestionCalib(${qNum}, '?', this)">[?] Phân vân</button>
+            <button type="button" class="calib-btn" onclick="setQuestionCalib(${qNum}, 'X', this)">[X] Đoán mò</button>
+          </div>
+        </div>
+        <p class="test-question">
+          ${q.prompt} ${audioBtn}
+        </p>
+        <div class="options-grid">
+          ${q.options.map(opt => `
+            <label class="opt-label">
+              <input type="radio" name="js_q${qNum}" value="${opt.val}"> ${opt.text}
+            </label>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+// 3. Tab Switcher & Timer Manager
 function switchPageTab(tabId, el) {
   const tabs = document.querySelectorAll('.tab-content');
   tabs.forEach(t => {
@@ -22,7 +369,6 @@ function switchPageTab(tabId, el) {
 
   if (el) el.classList.add('active');
 
-  // Start Real-Time Timer when entering Test Tab
   if (tabId === 'test-tab') {
     startTestTimer();
   } else {
@@ -51,7 +397,7 @@ function stopTestTimer() {
   }
 }
 
-// 2. Web Speech API (Native Browser Speech Synthesis - No API Key Needed)
+// 4. Web Speech API
 function speakText(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
@@ -64,7 +410,7 @@ function speakText(text) {
   }
 }
 
-// 3. Calibration State Manager ([V], [?], [X])
+// 5. Calibration State Manager ([V], [?], [X])
 const jsCalibData = { 1: '?', 2: '?', 3: '?', 4: '?' };
 
 function setQuestionCalib(qNum, state, btnEl) {
@@ -82,83 +428,7 @@ function setQuestionCalib(qNum, state, btnEl) {
   else if (state === 'X') btnEl.classList.add('active-red');
 }
 
-// 4. Expanded Question Bank (Ngân Hàng Bài Tập 4 Kỹ Năng & 4 Nhóm Lỗi Root Cause)
-const questionMeta = {
-  1: {
-    skill: "Nghe (Listening)",
-    correct: "B",
-    causeType: "Distractor Trap (Bẫy nhầm biến điệu chữ 不 / 3+3)",
-    action: "Ghi nhớ quy tắc: Chữ 不 (bù) mang thanh 4 gốc. Khi đứng trước một âm tiết mang thanh 4 (như chữ 客 kè trong 客气), 不 bắt buộc phải biến điệu đọc thành thanh 2 (bú kèqi).",
-    rule: "不 (bù) + Thanh 4 ⟶ bú + Thanh 4",
-    transferQuizzes: [
-      {
-        title: "Biến thể 1.1: Chọn âm biến điệu đúng khi Học sinh 2 đáp lời 'Cảm ơn':",
-        options: ["A. bù kèqi", "B. bú kèqi"],
-        correctIdx: 1,
-        explain: "Chính xác! Học sinh 1: 谢谢你！ ⟶ Học sinh 2: 不客气！ (bú kèqi - biến điệu thanh 2 bú)."
-      },
-      {
-        title: "Biến thể 1.2: Chọn âm biến điệu đúng cho chữ 不 trong '不是' (bú shì - không phải):",
-        options: ["A. bù shì", "B. bú shì"],
-        correctIdx: 1,
-        explain: "Chính xác! Chữ 是 (shì) mang thanh 4 ⟶ 不 biến thành bú (bú shì)."
-      }
-    ]
-  },
-  2: {
-    skill: "Nói (Speaking Etiquette)",
-    correct: "B",
-    causeType: "Grammar & Honorific Deficit (Gãy kính ngữ 您)",
-    action: "Phân biệt đối tượng: Dùng kính ngữ 您 (nín) khi chào người bề trên/Giáo sư Wang; Dùng 你 (nǐ) cho AI Xiaoyu hoặc bạn học.",
-    rule: "Bề trên (王老师) + 您好 (nín hǎo)",
-    transferQuizzes: [
-      {
-        title: "Biến thể 2.1: Chọn câu chào thể hiện thái độ tôn kính nhất với Cô giáo (老师):",
-        options: ["A. 老师，你好！", "B. 老师，您好！"],
-        correctIdx: 1,
-        explain: "Chính xác! Dùng kính ngữ 您 (nín) cho Thầy/Cô giáo (老师，您好！)."
-      },
-      {
-        title: "Biến thể 2.2: Chọn câu cảm ơn đúng lịch sự với Giáo sư Wang:",
-        options: ["A. 谢谢你，王老师！", "B. 谢谢您，王老师！"],
-        correctIdx: 1,
-        explain: "Chính xác! 谢谢您，王老师！ (Xièxie nín, Wáng lǎoshī!)."
-      }
-    ]
-  },
-  3: {
-    skill: "Đọc (Reading Etiquette & Vocabulary Gap)",
-    correct: "B",
-    causeType: "Vocabulary Gap (Lỗ hổng từ vựng đáp lời phản xạ)",
-    action: "Học cặp câu phản xạ chuẩn: Khi người khác cảm ơn '谢谢你！' (Xièxie nǐ!), câu đáp lại lịch sự bắt buộc là '不客气！' (Bú kèqi!).",
-    rule: "谢谢！ ⟶ Đáp lại: 不客气！",
-    transferQuizzes: [
-      {
-        title: "Biến thể 3.1: Học sinh 2 đáp lại lời cảm ơn của Học sinh 1 '谢谢大家！':",
-        options: ["A. 再见！", "B. 不客气！"],
-        correctIdx: 1,
-        explain: "Chính xác! Học sinh 1: 谢谢大家！ ⟶ Học sinh 2 đáp lại: 不客气！ (Bú kèqi!)."
-      }
-    ]
-  },
-  4: {
-    skill: "Viết (Writing Word Order)",
-    correct: "A",
-    causeType: "Time Constraint & Word Order (Trật tự từ & Phản xạ tốc độ)",
-    action: "Quy tắc trật tự từ tiếng Trung: Danh từ chỉ tập thể (同学们 / 大家 / 你们) phải đứng TRƯỚC từ '好'.",
-    rule: "[Tập thể: 同学们 / 大家 / 你们] + 好",
-    transferQuizzes: [
-      {
-        title: "Biến thể 4.1: Chọn trật tự từ đúng để chào toàn thể mọi người (dùng từ 大家):",
-        options: ["A. 大家好！ (Dàjiā hǎo!)", "B. 好大家！ (Hǎo dàjiā!)"],
-        correctIdx: 0,
-        explain: "Chính xác! 大家好！ (Dàjiā hǎo!)."
-      }
-    ]
-  }
-};
-
-// Interactive Option Checker for Generated Transfer Practice Questions
+// 6. Interactive Option Checker for Transfer Practice Questions
 function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl, explainText) {
   const container = btnEl.parentElement;
   if (!container) return;
@@ -189,10 +459,11 @@ function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl,
   }
 }
 
-// Evaluator Execution Function (Pure JS with Timer & Speed Analysis)
+// 7. Evaluator Execution Function (Evaluates current active set)
 function runPureJSEvaluator() {
-  stopTestTimer(); // Stop timer when submitting
+  stopTestTimer();
 
+  const currentSet = testBankSets[currentBankSetIndex];
   const q1Ans = document.querySelector('input[name="js_q1"]:checked')?.value;
   const q2Ans = document.querySelector('input[name="js_q2"]:checked')?.value;
   const q3Ans = document.querySelector('input[name="js_q3"]:checked')?.value;
@@ -205,24 +476,22 @@ function runPureJSEvaluator() {
   let errorCount = 0;
   let missedQuestionsList = [];
 
-  // Check if average response time > 8 seconds per question (32s total for 4 questions)
   const isTimeConstrained = timerSeconds > 32;
 
-  for (let i = 1; i <= 4; i++) {
-    const meta = questionMeta[i];
-    const userChoice = userAnswers[i];
-    const calib = jsCalibData[i] || '?';
+  currentSet.questions.forEach((meta, idx) => {
+    const qNum = idx + 1;
+    const userChoice = userAnswers[qNum];
+    const calib = jsCalibData[qNum] || '?';
     const isCorrectChoice = userChoice === meta.correct;
     const isCalibV = calib === 'V';
     
-    // Remediate if wrong answer OR tagged [?] or [X] OR time constraint exceeded
     const needsRemediation = !isCorrectChoice || !isCalibV || isTimeConstrained;
 
     if (!needsRemediation) {
       correctCount++;
     } else {
       errorCount++;
-      missedQuestionsList.push(i);
+      missedQuestionsList.push(qNum);
 
       let statusText = "";
       if (!isCorrectChoice) statusText = "LÀM SAI ĐÁP ÁN";
@@ -234,11 +503,10 @@ function runPureJSEvaluator() {
         causeDisplay = "Time Constraint (Áp lực tốc độ: Làm đúng nhưng mất quá 8s/câu)";
       }
       
-      // Build 4-line Active Error Log Card
       errorLogCardsHTML += `
         <div style="background: #fffbeb; border-left: 5px solid #d97706; padding: 1.2rem; border-radius: 16px; margin-bottom: 1.2rem; border: 1px solid #fde68a;">
           <h4 style="color: #b45309; font-size: 1.1rem; margin-bottom: 0.5rem;">
-            ❌ Câu ${i} [${meta.skill}] - Trạng Thái: <span style="color: #dc2626;">${statusText}</span>
+            ❌ Câu ${qNum} [${meta.skill}] - Trạng Thái: <span style="color: #dc2626;">${statusText}</span>
           </h4>
           <p style="font-size: 0.95rem; color: #0f172a; margin-bottom: 0.4rem;">
             • <strong>Root Cause (Nguyên nhân gốc rễ):</strong> ${causeDisplay}
@@ -252,16 +520,15 @@ function runPureJSEvaluator() {
         </div>
       `;
 
-      // Build Interactive Transfer Practice Quizzes for this question
       meta.transferQuizzes.forEach((tz, quizIdx) => {
         transferPracticeHTML += `
           <div class="transfer-quiz-card">
             <div class="transfer-quiz-title">
-              <i class="fa-solid fa-pen-clip"></i> BÀI TẬP BIẾN THỂ TƯƠNG TÁC ${i}.${quizIdx + 1}: ${tz.title}
+              <i class="fa-solid fa-pen-clip"></i> BÀI TẬP BIẾN THỂ TƯƠNG TÁC ${qNum}.${quizIdx + 1}: ${tz.title}
             </div>
             <div class="transfer-opts">
               ${tz.options.map((optText, optIdx) => `
-                <button type="button" class="transfer-opt-btn" onclick="checkTransferAnswer(${i}, ${quizIdx}, ${optIdx}, ${tz.correctIdx}, this, '${tz.explain}')">
+                <button type="button" class="transfer-opt-btn" onclick="checkTransferAnswer(${qNum}, ${quizIdx}, ${optIdx}, ${tz.correctIdx}, this, '${tz.explain}')">
                   ${optText}
                 </button>
               `).join('')}
@@ -270,9 +537,9 @@ function runPureJSEvaluator() {
         `;
       });
     }
-  }
+  });
 
-  // Save Spaced Retrieval Schedule to LocalStorage for Automatic Daily Reviews
+  // Save Spaced Retrieval Schedule
   const todayStr = new Date().toISOString().split('T')[0];
   const storageData = {
     lastTestDate: todayStr,
@@ -282,7 +549,6 @@ function runPureJSEvaluator() {
     localStorage.setItem('hsk1_ubd_spaced_db', JSON.stringify(storageData));
   } catch (e) {}
 
-  // Generate Spaced Retrieval Dates
   const today = new Date();
   const day1 = new Date(today); day1.setDate(today.getDate() + 1);
   const day3 = new Date(today); day3.setDate(today.getDate() + 3);
@@ -294,7 +560,7 @@ function runPureJSEvaluator() {
   let summaryHTML = `
     <div style="background: #eef2ff; border: 2px solid #c7d2fe; padding: 1.2rem; border-radius: 16px; margin-bottom: 1.4rem;">
       <h4 style="color: #4338ca; font-size: 1.2rem; margin-bottom: 0.4rem;">
-        📊 KẾT QUẢ ĐÁNH GIÁ CẢI THIỆN:
+        📊 KẾT QUẢ ĐÁNH GIÁ CẢI THIỆN (${currentSet.setName}):
       </h4>
       <p style="font-size: 1rem; color: #1e293b;">
         • Số câu nòng cốt làm chủ 100% [V]: <strong>${correctCount} / 4 câu</strong><br>
@@ -319,7 +585,7 @@ function runPureJSEvaluator() {
       <div style="background: #ecfdf5; border: 2px solid #a7f3d0; padding: 1.5rem; border-radius: 16px; text-align: center;">
         <h3 style="color: #047857; font-size: 1.4rem; margin-bottom: 0.4rem;">🎉 XUẤT SẮC 100%!</h3>
         <p style="color: #065f46; font-size: 1rem;">
-          Bé đã trả lời chính xác 100% các câu hỏi trong ${timerSeconds}s và tự tin gắn nhãn [V] Chắc chắn 100%. Năng lực đã đạt mức độ làm chủ hoàn toàn HSK 1 Bài 1!
+          Bé đã trả lời chính xác 100% các câu hỏi của ${currentSet.setName} trong ${timerSeconds}s và tự tin gắn nhãn [V] Chắc chắn 100%. Năng lực đã đạt mức độ làm chủ hoàn toàn!
         </p>
       </div>
     `;
@@ -339,18 +605,21 @@ function runPureJSEvaluator() {
   }
 }
 
-// 5. Dynamic Question Bank Shuffle Generator
+// 8. Dynamic Bank Swapper Button Action
 function shuffleAndGenerateNewTestSet() {
-  alert("🔄 Đã sinh Bộ Đề Biến Thể Mới từ Ngân Hàng Bài Tập!\n\nThời gian đếm ngược đếm lại từ 0s. Chúc bé làm bài tốt!");
+  currentBankSetIndex = (currentBankSetIndex + 1) % testBankSets.length;
+  renderCurrentTestSet();
   startTestTimer();
-  
-  // Uncheck radios & reset calibration badges to default
-  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+
   const logBox = document.getElementById('js-error-log-box');
   if (logBox) logBox.style.display = 'none';
+
+  // Scroll to top of questions
+  const testArea = document.getElementById('test-questions-container');
+  if (testArea) testArea.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 6. Automatic Daily Scheduler via LocalStorage (Tự Động Nhắc Bài Tập Ôn Hàng Ngày)
+// 9. Automatic Daily Scheduler via LocalStorage
 function checkDailyScheduleOnLoad() {
   try {
     const raw = localStorage.getItem('hsk1_ubd_spaced_db');
@@ -363,7 +632,6 @@ function checkDailyScheduleOnLoad() {
     const diffTime = Math.abs(today - lastDate);
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-    // If student accessed on Day 1, Day 3, or Day 7 after the last test
     if (diffDays === 1 || diffDays === 3 || diffDays === 7) {
       const banner = document.getElementById('daily-task-banner');
       const bannerDesc = document.getElementById('daily-banner-desc');
@@ -378,17 +646,14 @@ function checkDailyScheduleOnLoad() {
 }
 
 function startDailyTaskReview() {
-  // Switch to test tab
   const testTabBtn = document.querySelectorAll('.tab-btn')[1];
   if (testTabBtn) switchPageTab('test-tab', testTabBtn);
 }
 
-// Explicit Event Binding setup
+// Initial Setup
 document.addEventListener('DOMContentLoaded', () => {
-  // Select first tab default
+  renderCurrentTestSet();
   const defaultTabBtn = document.querySelector('.tab-btn');
   if (defaultTabBtn) switchPageTab('theory-tab', defaultTabBtn);
-
-  // Check Daily Automatic Review Schedule
   checkDailyScheduleOnLoad();
 });
