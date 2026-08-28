@@ -1,13 +1,105 @@
-// Pure JavaScript Self-Contained Educational Engine (Dynamic Question Bank Swapping, Timer & 4 Root Causes)
-// Strictly scoped to HSK 1 Lesson 1 (11 Vocabulary items only: 你, 您, 你们, 王老师, 学生, 同学, 大家, 好, 谢谢, 不/不客气, 再见)
+// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Vocab Learning Module & HanziWriter)
 
 let timerInterval = null;
 let timerSeconds = 0;
 let currentBankSetIndex = 0;
+let currentWriter = null;
 
-// 1. Strict Scope Question Bank Database (3 Complete Sets of 4-Skill Questions)
+// 1. Vocabulary Database for HSK 1 Lesson 1 (11 Nòng cốt từ vựng & Chiết Tự)
+const vocabDatabase = [
+  {
+    hz: "你",
+    py: "nǐ",
+    vi: "Bạn, cậu, anh, chị (ngôi thứ 2 số ít)",
+    etymology: "Bộ Nhân đứng (亻: người) + Chữ Nhĩ (尔: đối diện). ⟶ Người đứng đối diện nói chuyện chính là 'Bạn/Cậu'.",
+    example: "你好！ (nǐ hǎo!) - Chào bạn!",
+    singleChar: "你"
+  },
+  {
+    hz: "您",
+    py: "nín",
+    vi: "Ngài, ông, bà, cô, thầy (kính ngữ tôn trọng)",
+    etymology: "Chữ 你 (bạn) ở trên + Bộ Tâm (心: trái tim) ở dưới. ⟶ Đặt người đối diện ở trong tim để thể hiện lòng kính trọng.",
+    example: "王老师，您好！ (Wáng lǎoshī, nín hǎo!) - Chào Giáo sư Wang!",
+    singleChar: "您"
+  },
+  {
+    hz: "你们",
+    py: "nǐmen",
+    vi: "Các bạn, các anh, các chị (ngôi thứ 2 số nhiều)",
+    etymology: "Chữ 你 (bạn) + Chữ 们 (hậu tố số nhiều: Bộ Nhân 亻 + chữ 门). ⟶ Nhiều người bạn gộp lại = Các bạn.",
+    example: "你们好！ (Nǐmen hǎo!) - Chào các bạn!",
+    singleChar: "你"
+  },
+  {
+    hz: "王老师",
+    py: "Wáng lǎoshī",
+    vi: "Giáo sư Wang / Thầy Wang / Cô Wang",
+    etymology: "Chữ 王 (Họ Vương/Vua: 3 nét ngang nối nét dọc) + 老师 (Thầy cô giáo). ⟶ Chức danh tôn xưng thầy cô giáo.",
+    example: "谢谢您，王老师！ - Cảm ơn Giáo sư Wang!",
+    singleChar: "王"
+  },
+  {
+    hz: "学生",
+    py: "xuéshēng",
+    vi: "Học sinh, sinh viên",
+    etymology: "Chữ 学 (Học: mái trường) + Chữ 生 (Sinh: mầm cây sinh trưởng). ⟶ Mầm cây nhỏ sinh trưởng dưới mái trường = Học sinh.",
+    example: "我是学生。 - Tôi là học sinh.",
+    singleChar: "学"
+  },
+  {
+    hz: "同学",
+    py: "tóngxué",
+    vi: "Bạn học, bạn cùng lớp",
+    etymology: "Chữ 同 (Cùng nhau: Bộ Đồng) + Chữ 学 (Học). ⟶ Những người học cùng một lớp với nhau = Bạn học.",
+    example: "同学们好！ (Tóngxuémen hǎo!) - Chào các em học sinh!",
+    singleChar: "同"
+  },
+  {
+    hz: "大家",
+    py: "dàjiā",
+    vi: "Mọi người, tất cả mọi người",
+    etymology: "Chữ 大 (To lớn: người dang tay) + Chữ 家 (Mái nhà/Gia đình: mái nhà 宀 che chở). ⟶ Mọi người trong một mái nhà lớn.",
+    example: "大家好！ (Dàjiā hǎo!) - Chào mọi người!",
+    singleChar: "大"
+  },
+  {
+    hz: "好",
+    py: "hǎo",
+    vi: "Tốt, đẹp, hay, khỏe",
+    etymology: "Bộ Nữ (女: người mẹ/con gái) + Bộ Tử (子: đứa con). ⟶ Người mẹ bế đứa con nhỏ trên tay là hình ảnh tốt đẹp nhất.",
+    example: "你好！ (nǐ hǎo!) - Chào bạn!",
+    singleChar: "好"
+  },
+  {
+    hz: "谢谢",
+    py: "xièxie",
+    vi: "Cảm ơn",
+    etymology: "Bộ Ngôn (讠: lời nói) + Chữ Thân (身: thân thể) + Bộ Thốn (寸: lễ độ). ⟶ Cúi mình thốt ra lời nói có lễ độ = Cảm ơn.",
+    example: "谢谢大家！ (Xièxie dàjiā!) - Cảm ơn mọi người!",
+    singleChar: "谢"
+  },
+  {
+    hz: "不客气",
+    py: "bú kèqi",
+    vi: "Không có gì, đừng khách khí (đáp lại lời cảm ơn)",
+    etymology: "Chữ 不 (Khống/Không) + 客 (Khách: mái nhà 宀 + chữ 各) + 气 (Khí/Khí chất). ⟶ Đừng coi nhau là khách sáo.",
+    example: "谢谢你！ ⟶ 不客气！ - Cảm ơn! ⟶ Không có gì!",
+    singleChar: "客"
+  },
+  {
+    hz: "再见",
+    py: "zàijiàn",
+    vi: "Tạm biệt, hẹn gặp lại",
+    etymology: "Chữ 再 (Lần nữa/Lặp lại: giàn hoa) + Chữ 见 (Thấy/Gặp: mắt 目 + chân 儿 đi). ⟶ Đi bằng chân gặp lại bằng mắt = Hẹn gặp lại!",
+    example: "再见！ (Zàijiàn!) - Tạm biệt!",
+    singleChar: "见"
+  }
+];
+
+// 2. Full Question Bank Database (3 Complete Sets of 4-Skill Questions)
 const testBankSets = [
-  // --- BỘ ĐỀ 1 (SET A - STRICT SCOPE) ---
+  // --- BỘ ĐỀ 1 (SET A) ---
   {
     setName: "Bộ Đề Biến Thể 1",
     questions: [
@@ -108,7 +200,7 @@ const testBankSets = [
     ]
   },
 
-  // --- BỘ ĐỀ 2 (SET B - STRICT SCOPE) ---
+  // --- BỘ ĐỀ 2 (SET B) ---
   {
     setName: "Bộ Đề Biến Thể 2",
     questions: [
@@ -207,7 +299,7 @@ const testBankSets = [
     ]
   },
 
-  // --- BỘ ĐỀ 3 (SET C - STRICT SCOPE: KHÔNG DÙNG TỪ NGOÀI BÀI HỌC NHƯ 不然/不是) ---
+  // --- BỘ ĐỀ 3 (SET C) ---
   {
     setName: "Bộ Đề Biến Thể 3",
     questions: [
@@ -307,7 +399,187 @@ const testBankSets = [
   }
 ];
 
-// 2. Render Active Test Question Set to DOM
+// 3. Render 11 Vocabulary Selector Grid
+function renderVocabGridList() {
+  const container = document.getElementById('vocab-words-grid');
+  if (!container) return;
+
+  let html = '';
+  vocabDatabase.forEach((item, index) => {
+    html += `
+      <div class="vocab-word-item ${index === 0 ? 'active' : ''}" onclick="selectVocabWord(${index}, this)">
+        <div>
+          <span class="vw-hz">${item.hz}</span>
+          <span class="vw-py">(${item.py})</span>
+        </div>
+        <span class="vw-vi">${item.vi}</span>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+  // Select first word by default
+  selectVocabWord(0);
+}
+
+// 4. Select & Render Active Vocab Learning Card (Nghe - Viết - Chiết Tự)
+function selectVocabWord(index, el) {
+  if (el) {
+    document.querySelectorAll('.vocab-word-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  const item = vocabDatabase[index];
+  if (!item) return;
+
+  const placeholder = document.getElementById('vocab-detail-placeholder');
+  const contentBox = document.getElementById('vocab-detail-content');
+
+  if (placeholder) placeholder.style.display = 'none';
+  if (contentBox) {
+    contentBox.style.display = 'block';
+
+    contentBox.innerHTML = `
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
+        <div>
+          <h2 style="font-size: 2.2rem; font-family: 'Noto Sans SC', sans-serif; color: #0f172a; margin-bottom: 2px;">
+            ${item.hz} <span style="font-size: 1.3rem; color: #6366f1; font-family: 'Plus Jakarta Sans', sans-serif;">(${item.py})</span>
+          </h2>
+          <p style="font-size: 1.1rem; color: #059669; font-weight: 700; margin-bottom: 0.8rem;">
+            💡 Nghĩa: ${item.vi}
+          </p>
+          <p style="font-size: 0.95rem; color: #334155; background: #f1f5f9; padding: 6px 12px; border-radius: 10px; display: inline-block;">
+            📌 Ví dụ: <strong>${item.example}</strong>
+          </p>
+        </div>
+
+        <button type="button" class="btn-daily-action" style="background: #0284c7;" onclick="speakText('${item.hz}')">
+          <i class="fa-solid fa-volume-high"></i> 🔊 Nghe Đọc Từ '${item.hz}'
+        </button>
+      </div>
+
+      <!-- HANZI WRITER & ETYMOLOGY BOX -->
+      <div style="margin-top: 1.5rem; display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; align-items: flex-start;">
+        <div>
+          <div id="hanzi-writer-target" class="hanzi-writer-box"></div>
+          <button type="button" class="calib-btn" style="width: 100%; margin-top: 8px; font-size: 0.85rem;" onclick="animateActiveHanzi()">
+            <i class="fa-solid fa-pen-nib"></i> Xem Nét Viết
+          </button>
+        </div>
+
+        <div class="etym-box">
+          <div class="etym-header">
+            <i class="fa-solid fa-puzzle-piece"></i> 🧩 CHIẾT TỰ & MẸO GHI NHỚ (Etymology):
+          </div>
+          <div class="etym-body">
+            ${item.etymology}
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Render HanziWriter animation for single character
+    setTimeout(() => {
+      renderHanziAnimation(item.singleChar);
+    }, 50);
+  }
+}
+
+function renderHanziAnimation(char) {
+  const target = document.getElementById('hanzi-writer-target');
+  if (!target) return;
+  target.innerHTML = '';
+
+  if (typeof HanziWriter !== 'undefined') {
+    try {
+      currentWriter = HanziWriter.create('hanzi-writer-target', char, {
+        width: 150,
+        height: 150,
+        padding: 5,
+        strokeColor: '#4338ca',
+        radialColor: '#f43f5e',
+        showOutline: true
+      });
+      currentWriter.animateCharacter();
+    } catch (e) {
+      target.innerHTML = `<span style="font-size: 4rem; font-family: 'Noto Sans SC'; color: #4338ca;">${char}</span>`;
+    }
+  } else {
+    target.innerHTML = `<span style="font-size: 4rem; font-family: 'Noto Sans SC'; color: #4338ca;">${char}</span>`;
+  }
+}
+
+function animateActiveHanzi() {
+  if (currentWriter) {
+    currentWriter.animateCharacter();
+  }
+}
+
+// 5. Subtab Switcher for Vocab Module
+function switchVocabSubtab(subtabId, el) {
+  const subtabs = document.querySelectorAll('.vocab-subtab-content');
+  subtabs.forEach(s => s.style.display = 'none');
+
+  const btns = document.querySelectorAll('.vocab-subtab-btn');
+  btns.forEach(b => b.classList.remove('active'));
+
+  const target = document.getElementById(subtabId);
+  if (target) target.style.display = 'block';
+  if (el) el.classList.add('active');
+
+  if (subtabId === 'vocab-quiz-subtab') {
+    renderVocabQuiz();
+  }
+}
+
+// 6. Interactive Vocab Matching Quiz
+function renderVocabQuiz() {
+  const container = document.getElementById('vocab-quiz-container');
+  if (!container) return;
+
+  let html = `<div style="display: flex; flex-direction: column; gap: 12px;">`;
+  vocabDatabase.slice(0, 5).forEach((item, idx) => {
+    html += `
+      <div class="sentence-item-row">
+        <div class="sentence-main">
+          <strong class="hz-large" style="min-width: 80px;">${item.hz}</strong>
+          <button type="button" class="audio-btn-inline" onclick="speakText('${item.hz}')">
+            <i class="fa-solid fa-volume-high"></i> Nghe
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <select id="vquiz_${idx}" style="padding: 8px 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-weight: 700; font-size: 0.95rem;">
+            <option value="">-- Chọn nghĩa đúng --</option>
+            <option value="${item.py}">${item.py} - ${item.vi}</option>
+            <option value="wrong1">nǐmen - Các bạn</option>
+            <option value="wrong2">zàijiàn - Tạm biệt</option>
+          </select>
+          <button type="button" class="calib-btn" onclick="checkVocabQuizItem(${idx}, '${item.py}', this)">Kiểm tra</button>
+        </div>
+      </div>
+    `;
+  });
+  html += `</div>`;
+
+  container.innerHTML = html;
+}
+
+function checkVocabQuizItem(idx, correctPy, btnEl) {
+  const sel = document.getElementById(`vquiz_${idx}`);
+  if (!sel) return;
+  if (sel.value === correctPy) {
+    btnEl.style.background = '#d1fae5';
+    btnEl.style.color = '#047857';
+    btnEl.innerText = "🎉 Chính xác!";
+  } else {
+    btnEl.style.background = '#fee2e2';
+    btnEl.style.color = '#dc2626';
+    btnEl.innerText = "❌ Chọn lại!";
+  }
+}
+
+// 7. Render Active Test Question Set to DOM
 function renderCurrentTestSet() {
   const container = document.getElementById('test-questions-container');
   const badgeEl = document.getElementById('bank-set-badge');
@@ -351,7 +623,7 @@ function renderCurrentTestSet() {
   container.innerHTML = html;
 }
 
-// 3. Tab Switcher & Timer Manager
+// 8. Tab Switcher & Timer Manager
 function switchPageTab(tabId, el) {
   const tabs = document.querySelectorAll('.tab-content');
   tabs.forEach(t => {
@@ -398,7 +670,7 @@ function stopTestTimer() {
   }
 }
 
-// 4. Web Speech API
+// 9. Web Speech API
 function speakText(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
@@ -411,7 +683,7 @@ function speakText(text) {
   }
 }
 
-// 5. Calibration State Manager ([V], [?], [X])
+// 10. Calibration State Manager ([V], [?], [X])
 const jsCalibData = { 1: '?', 2: '?', 3: '?', 4: '?' };
 
 function setQuestionCalib(qNum, state, btnEl) {
@@ -429,7 +701,7 @@ function setQuestionCalib(qNum, state, btnEl) {
   else if (state === 'X') btnEl.classList.add('active-red');
 }
 
-// 6. Interactive Option Checker for Transfer Practice Questions
+// 11. Interactive Option Checker for Transfer Practice Questions
 function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl, explainText) {
   const container = btnEl.parentElement;
   if (!container) return;
@@ -460,7 +732,7 @@ function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl,
   }
 }
 
-// 7. Evaluator Execution Function (Evaluates current active set)
+// 12. Evaluator Execution Function (Evaluates current active set)
 function runPureJSEvaluator() {
   stopTestTimer();
 
@@ -606,7 +878,7 @@ function runPureJSEvaluator() {
   }
 }
 
-// 8. Dynamic Bank Swapper Button Action
+// 13. Dynamic Bank Swapper Button Action
 function shuffleAndGenerateNewTestSet() {
   currentBankSetIndex = (currentBankSetIndex + 1) % testBankSets.length;
   renderCurrentTestSet();
@@ -619,7 +891,7 @@ function shuffleAndGenerateNewTestSet() {
   if (testArea) testArea.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 9. Automatic Daily Scheduler via LocalStorage
+// 14. Automatic Daily Scheduler via LocalStorage
 function checkDailyScheduleOnLoad() {
   try {
     const raw = localStorage.getItem('hsk1_ubd_spaced_db');
@@ -646,12 +918,13 @@ function checkDailyScheduleOnLoad() {
 }
 
 function startDailyTaskReview() {
-  const testTabBtn = document.querySelectorAll('.tab-btn')[1];
+  const testTabBtn = document.querySelectorAll('.tab-btn')[2];
   if (testTabBtn) switchPageTab('test-tab', testTabBtn);
 }
 
 // Initial Setup
 document.addEventListener('DOMContentLoaded', () => {
+  renderVocabGridList();
   renderCurrentTestSet();
   const defaultTabBtn = document.querySelector('.tab-btn');
   if (defaultTabBtn) switchPageTab('theory-tab', defaultTabBtn);
