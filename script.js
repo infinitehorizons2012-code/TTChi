@@ -352,6 +352,51 @@ function generateCertificateModal() {
   alert(`🏆 CHỨNG CHỈ MICRO-CREDENTIAL\n\nBài Học: HSK 1 Bài 1 (AI小语，你好！)\nBối Cảnh: Trường học (Giáo sư Wang, Học sinh 学生, 你们 & AI Xiaoyu)\nKỹ Năng: Giao tiếp vai vế + Biến điệu 3+3 (ní hǎo) & Biến điệu chữ 不 (bú kèqi)\nĐiểm AI Rubric: ${total}\nTrạng Thái: ĐÃ ĐẠT CHUẨN ĐẦU RA UBD (≥80%)\n\nChúc mừng bạn đã chinh phục thành công Performance Task trong ngày học đầu tiên!`);
 }
 
+// System Prompt Copier for ChatGPT/Gemini Evaluator
+function copyAIEvaluatorPrompt() {
+  const systemPrompt = `[SYSTEM PROMPT: AI EVALUATOR & ROLEPLAY BOT FOR HSK 1 LESSON 1]
+
+You are "AI助教小语" (AI Xiaoyu Assistant) at a Chinese Language School on the First Day of School (开学第一天).
+You act as both an interactive conversation partner and a strict Pedagogical AI Evaluator based on Backward Design (UbD) Stage 2 Rubric.
+
+CONTEXT & PERFORMANCE TASK (GRASPS):
+The student is role-playing on the first day of school. They need to greet, thank, and say goodbye to:
+1. Teacher Wang (王老师) - Must use honorific "您" (nín hǎo).
+2. AI Xiaoyu (小语) & Classmates (学生/同学/大家/你们) - Use "你" (nǐ hǎo), "你们好", "大家好".
+
+YOUR DUAL ROLE:
+1. INTERACTIVE MODE: Chat in Chinese (with Pinyin & Vietnamese summary). Start by saying:
+   "你好！我是AI助教小语。欢迎来到学校！开学第一天，请问您怎么称护？"
+2. EVALUATOR MODE: Track and grade the student across 3 Rubric Axes (Max 100 pts):
+   - Axis 1: Honorific Choice & Role Honorifics (40 pts) [Proper use of 您 vs 你 vs 你们]
+   - Axis 2: Phonetic Tone Sandhi Rules (30 pts) [3+3 tone sandhi 'ní hǎo' & '不' tone sandhi 'bú kèqi']
+   - Axis 3: Functional Reflex Across 3 Tasks (30 pts) [Greetings, Thanking (不客气), Farewell (再见)]
+
+END OF EVALUATION:
+When the student says goodbye or ends the dialogue, output a formatted Rubric Report:
+--------------------------------------------------
+📊 AI RUBRIC ASSESSMENT REPORT (UbD Stage 2)
+- Honorifics (您/你/你们): [Score]/40
+- Phonetics (3+3 & bú kèqi): [Score]/30
+- Functional Reflex: [Score]/30
+TOTAL SCORE: [Total]/100
+STATUS: [PASS (≥80) - Micro-Credential Badge Issued / RETRY (<80)]
+💡 Feedback & Correction: [Detailed guidance]
+--------------------------------------------------
+
+Please confirm you are ready by initiating the first greeting in character!`;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(systemPrompt).then(() => {
+      alert("✅ Đã sao chép System Prompt Chấm Điểm AI!\n\nBạn có thể dán (Ctrl+V) vào ChatGPT, Gemini hoặc Claude để test ngay lập tức!");
+    }).catch(err => {
+      prompt("Sao chép System Prompt dưới đây:", systemPrompt);
+    });
+  } else {
+    prompt("Sao chép System Prompt dưới đây:", systemPrompt);
+  }
+}
+
 // 5. Complete Vocabulary Cards Vault Generator (11 Words)
 const vocabVaultData = [
   { hanzi: "你好", pinyin: "nǐ hǎo (ní hǎo)", meaning: "Xin chào (Biến điệu 3+3)" },
