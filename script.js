@@ -23,7 +23,7 @@ const defaultAccounts = {
 // 1. HANZI COMPONENT DATABASE (COLOR OVERRIDE STROKES & APP_MNEMONIC)
 const hanziComponentDb = {
   '你': {
-    char: '奇',
+    char: '你',
     mnemonic: 'Người (亻) đứng đối diện (尔) trò chuyện cùng bạn chính là "Bạn/Cậu" (你).',
     components: [
       { name: 'Bộ Nhân (亻)', color: '#0284c7', strokes: [0, 1] },
@@ -50,7 +50,7 @@ const hanziComponentDb = {
     char: '老',
     mnemonic: 'Hình ảnh người cao tuổi chống gậy tay cầm thìa ăn ⟶ "Già/Lão làng/Thầy" (老).',
     components: [
-      { name: 'Bộ Lão (耂)', color: '#d97706', strokes: [0, 1, 2, 3] },
+      { name: 'Bộ Lão (<ctrl42>)', color: '#d97706', strokes: [0, 1, 2, 3] },
       { name: 'Bộ Chủy (匕)', color: '#059669', strokes: [4, 5] }
     ]
   },
@@ -823,7 +823,7 @@ function selectVocabWord(index, el) {
             <span style="font-weight: 800; color: #4338ca; font-size: 0.95rem;">
               🎨 Chiết tự & Tô màu nét bộ thủ cho ${charArray.length} chữ của từ "${item.hz}":
             </span>
-            <button type="button" class="btn-daily-action" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); font-size: 0.88rem; padding: 8px 18px; z-index: 10;" onclick="animateActiveHanzi()">
+            <button type="button" class="btn-daily-action" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); font-size: 0.88rem; padding: 8px 18px; position: relative; z-index: 20; cursor: pointer;" onclick="animateActiveHanzi()">
               <i class="fa-solid fa-pen-nib"></i> 🖊️ Xem Nét Viết Vi Cấp
             </button>
           </div>
@@ -912,11 +912,12 @@ function renderMultiHanziAnimation(charArray) {
           strokeColor: '#64748b',
           radicalColor: null,
           showOutline: true,
-          strokeAnimationSpeed: 1.2,
-          delayBetweenStrokes: 120
+          strokeAnimationSpeed: 1.5,
+          delayBetweenStrokes: 150
         });
-        writer.animateCharacter();
         currentWriters.push(writer);
+        // Play stroke order animation upon initial load
+        writer.animateCharacter();
       } catch (e) {
         document.getElementById(boxId).innerHTML = `<span style="font-size: 3.5rem; font-family: 'Noto Sans SC'; color: #4338ca;">${char}</span>`;
       }
@@ -933,7 +934,7 @@ function animateActiveHanzi() {
         if (writer && typeof writer.animateCharacter === 'function') {
           writer.animateCharacter();
         }
-      }, idx * 600);
+      }, idx * 700);
     });
   }
 }
