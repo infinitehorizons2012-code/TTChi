@@ -148,18 +148,12 @@ const hanziComponentDb = {
     etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 巾 | Số nét | 6 | nét | 帀 | táp | biểu nghĩa | vây quanh | 师 (Sư) là giản thể của 師 (bộ 𠂤 rút thành phần trái). Nghĩa gốc liên hệ với \"đám đông, đạo quân\" (sư = 2500 lính), về sau mở rộng thành \"thầy, bậc thầy\".\n\n**Tự nguyên (Nguồn gốc):** Kim văn | Tiểu triện | Theo Wiktionary, 师 là dạng giản thể của 師 (thành phần 𠂤 được rút gọn), so sánh với 帅 từ 帥. Chữ 師 vốn mang nghĩa \"đạo quân, đám đông\" (một sư gồm khoảng 2500 lính), về sau mở rộng sang nghĩa \"thầy giáo, bậc thầy\". | Theo Wiktionary · độ tin cậy trung bình · ảnh từ Wikimedia",
     components: [
           {
-                "name": "𠂤 Đôi (đội quân)",
+                "name": "师",
                 "color": "#e11d48",
                 "strokes": [
                       0,
                       1,
-                      2
-                ]
-          },
-          {
-                "name": "巾 Cân (khăn gấm)",
-                "color": "#2563eb",
-                "strokes": [
+                      2,
                       3,
                       4,
                       5
