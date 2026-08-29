@@ -551,88 +551,88 @@ const hanziComponentDb = {
 // 2. Vocabulary Database for HSK 1 Lesson 1 (12 Nòng cốt từ vựng & Chiết Tự)
 const vocabDatabase = [
   {
-    hz: "你",
-    py: "nǐ",
-    vi: "Bạn, cậu, anh, chị (ngôi thứ 2 số ít)",
-    etymology: "Bộ Nhân đứng (亻: người) + Chữ Nhĩ (尔: đối diện). ⟶ Người đứng đối diện nói chuyện chính là 'Bạn/Cậu'.",
-    example: "你好！ (nǐ hǎo!) - Chào bạn!"
+    "hz": "你",
+    "py": "nǐ",
+    "vi": "Bạn, cậu, anh, chị (ngôi thứ 2 số ít)",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nGiao tiếp trong văn hóa Trung Quốc khởi đầu từ sự gắn kết giữa \"người với người\". Khi gọi \"你\", ngón tay hoặc ánh mắt hướng thẳng vào \"người đang đứng đối diện mình\" một cách bình đẳng, tự nhiên và thân mật.\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ Bộ Nhân đứng (亻: con người) + Chữ Nhĩ (尔: người đối diện). Người đứng trực diện xưng hô với mình chính là \"Bạn/Cậu\".",
+    "example": "你好！ (nǐ hǎo!) - Chào bạn!"
   },
   {
-    hz: "您",
-    py: "nín",
-    vi: "Ngài, ông, bà, cô, thầy (kính ngữ tôn trọng)",
-    etymology: "Chữ 你 (bạn) ở trên + Bộ Tâm (心: trái tim) ở dưới. ⟶ Đặt người đối diện ở trong tim để thể hiện lòng kính trọng.",
-    example: "王老师，您好！ (Wáng lǎoshī, nín hǎo!) - Chào Giáo sư Wang!"
+    "hz": "您",
+    "py": "nín",
+    "vi": "Ngài, ông, bà, cô, thầy (kính ngữ tôn trọng)",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nĐây là đỉnh cao của văn hóa \"Lễ trị\" (礼治) và đạo lý tôn ti trật tự Nho giáo Trung Hoa. Khi xưng hô với bề trên (thầy cô, cha mẹ, đối tác), người Trung Quốc không chỉ xưng \"bạn\" thông thường mà phải đặt đối phương ở vị trí trang trọng nhất ngay trong tim mình (心). Chữ 您 là thước đo của lòng thành kính và sự lịch thiệp.\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ chữ 你 (bạn) ở phía trên + Bộ Tâm (心: trái tim/tấm lòng) ở phía dưới. Đặt người bạn đối diện ở trong tim = Kính xưng \"Ngài/Thầy/Cô\".",
+    "example": "王老师，您好！ (Wáng lǎoshī, nín hǎo!) - Chào Giáo sư Wang!"
   },
   {
-    hz: "你们",
-    py: "nǐmen",
-    vi: "Các bạn, các anh, các chị (ngôi thứ 2 số nhiều)",
-    etymology: "Chữ 你 (bạn) + Chữ 们 (hậu tố số nhiều: Bộ Nhân 亻 + chữ 门). ⟶ Nhiều người bạn gộp lại = Các bạn.",
-    example: "你们好！ (Nǐmen hǎo!) - Chào các bạn!"
+    "hz": "你们",
+    "py": "nǐmen",
+    "vi": "Các bạn, các anh, các chị (ngôi thứ 2 số nhiều)",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nVăn hóa Trung Hoa rất coi trọng tính tập thể. Hình ảnh nhiều người (亻) cùng bước qua một cánh cửa (门) tượng trưng cho một tập thể cùng chia sẻ chung một không gian giao tiếp.\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ 你 (bạn) + hậu tố số nhiều 们 (bộ Nhân 亻 + chữ 门). Nhiều người bạn đứng tụ họp trước cửa = Các bạn / Các anh chị.",
+    "example": "你们好！ (Nǐmen hǎo!) - Chào các bạn!"
   },
   {
-    hz: "老师",
-    py: "lǎoshī",
-    vi: "Thầy giáo, cô giáo",
-    etymology: "Chữ 老 (Lão: người cao tuổi chống gậy) + Chữ 师 (Sư: người truyền dạy kiến thức). ⟶ Người thầy kính mến truyền dạy học trò.",
-    example: "老师好！ (Lǎoshī hǎo!) - Chào thầy/cô giáo!"
+    "hz": "老师",
+    "py": "lǎoshī",
+    "vi": "Thầy giáo, cô giáo",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nTrong văn hóa Trung Quốc, đạo lý \"Tôn sư trọng đạo\" (尊师重道) là nền tảng đạo đức cốt lõi. Người thầy không chỉ truyền dạy kiến thức (师) mà còn là bậc đi trước (老) dạy cách làm người. Chữ 老 ở đây không có nghĩa là \"già yếu\" mà là sự tôn vinh trí tuệ, đức độ và bề dày trải nghiệm.\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ chữ 老 (Lão: người cao tuổi chống gậy) + chữ 师 (Sư: người dẫn dắt hàng ngàn môn sinh). Bậc đại trí đức dẫn dắt học trò = Thầy cô giáo.",
+    "example": "老师好！ (Lǎoshī hǎo!) - Chào thầy/cô giáo!"
   },
   {
-    hz: "王老师",
-    py: "Wáng lǎoshī",
-    vi: "Giáo sư Wang / Thầy Wang / Cô Wang",
-    etymology: "Chữ 王 (Họ Vương/Vua: 3 nét ngang nối nét dọc) + 老师 (Thầy cô giáo). ⟶ Chức danh tôn xưng thầy cô giáo.",
-    example: "谢谢您，王老师！ - Cảm ơn Giáo sư Wang!"
+    "hz": "王老师",
+    "py": "Wáng lǎoshī",
+    "vi": "Giáo sư Wang / Thầy Wang / Cô Wang",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nNgười Trung Quốc có quy tắc xưng hô kinh điển: [Họ + Chức danh] (ví dụ: 王老师, 张医生). Khác với phương Tây gọi tên riêng, người Trung Quốc đặt Họ lên trước để tỏ lòng tôn kính dòng tộc gốc rễ của thầy cô, đồng thời thể hiện sự trân trọng với sứ mệnh cao quý của người thầy.\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ Họ 王 (Vương/Vua: chiếc rìu lễ uy quyền, 3 nét ngang Thiên-Địa-Nhân nối bởi trục dọc) + Chức danh 老师 (Thầy cô). Xưng hô tôn kính Giáo sư/Thầy cô họ Vương.",
+    "example": "谢谢您，王老师！ - Cảm ơn Giáo sư Wang!"
   },
   {
-    hz: "学生",
-    py: "xuéshēng",
-    vi: "Học sinh, sinh viên",
-    etymology: "Chữ 学 (Học: mái trường) + Chữ 生 (Sinh: mầm cây sinh trưởng). ⟶ Mầm cây nhỏ sinh trưởng dưới mái trường = Học sinh.",
-    example: "我是学生。 - Tôi là học sinh."
+    "hz": "学生",
+    "py": "xuéshēng",
+    "vi": "Học sinh, sinh viên",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nNgười Trung Quốc ví người đi học như một \"mầm non tươi xanh đang vươn mình khỏi lòng đất\" (生). Việc học không phải gánh nặng mà là quá trình sinh trưởng tự nhiên của tri thức và nhân cách dưới sự che chở của mái trường.\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ chữ 学 (Học: đứa trẻ 子 dưới mái trường 宀) + chữ 生 (Sinh: mầm cây sinh trưởng). Mầm non tri thức lớn lên dưới mái trường = Học sinh.",
+    "example": "我是学生。 - Tôi là học sinh."
   },
   {
-    hz: "同学",
-    py: "tóngxué",
-    vi: "Bạn học, bạn cùng lớp",
-    etymology: "Chữ 同 (Cùng nhau: Bộ Đồng) + Chữ 学 (Học). ⟶ Những người học cùng một lớp với nhau = Bạn học.",
-    example: "同学们好！ (Tóngxuémen hǎo!) - Chào các em học sinh!"
+    "hz": "同学",
+    "py": "tóngxué",
+    "vi": "Bạn học, bạn cùng lớp",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nNgười Trung Quốc có câu \"Đồng đường thụ nghiệp\" (同堂受业) — những người cùng chung dưới một mái trường, cùng nghe một lời thầy dạy thì có mối nhân duyên tình bạn gắn kết sâu sắc như anh em một nhà.\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ chữ 同 (Đồng: cùng chung mái nhà 冂 và tiếng nói 口) + chữ 学 (Học). Những người cùng chung đèn sách một lớp = Bạn học.",
+    "example": "同学们好！ (Tóngxuémen hǎo!) - Chào các em học sinh!"
   },
   {
-    hz: "大家",
-    py: "dàjiā",
-    vi: "Mọi người, tất cả mọi người",
-    etymology: "Chữ 大 (To lớn: người dang tay) + Chữ 家 (Mái nhà/Gia đình: mái nhà 宀 che chở). ⟶ Mọi người trong một mái nhà lớn.",
-    example: "大家好！ (Dàjiā hǎo!) - Chào mọi người!"
+    "hz": "大家",
+    "py": "dàjiā",
+    "vi": "Mọi người, tất cả mọi người",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nXuất phát từ triết lý \"Thiên hạ nhất gia\" (天下一家) của văn hóa Trung Hoa. Khi cất tiếng chào 大家好！, người nói coi tất cả mọi người có mặt trong hội trường hay lớp học như những người thân thuộc về cùng một gia đình lớn (大家).\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ chữ 大 (Đại: to lớn, rộng khắp) + chữ 家 (Gia: mái nhà 宀 ấm cúng). Mọi người cùng chung sống dưới một mái nhà lớn = Tất cả mọi người.",
+    "example": "大家好！ (Dàjiā hǎo!) - Chào mọi người!"
   },
   {
-    hz: "好",
-    py: "hǎo",
-    vi: "Tốt, đẹp, hay, khỏe",
-    etymology: "Bộ Nữ (女: người mẹ/con gái) + Bộ Tử (子: đứa con). ⟶ Người mẹ bế đứa con nhỏ trên tay là hình ảnh tốt đẹp nhất.",
-    example: "你好！ (nǐ hǎo!) - Chào bạn!"
+    "hz": "好",
+    "py": "hǎo",
+    "vi": "Tốt, đẹp, hay, khỏe",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nTrong tâm thức người Trung Quốc, hình ảnh người mẹ ôm đứa con thơ vào lòng là khoảnh khắc bình yên, trọn vẹn và an lành nhất trên đời. Đó chính là định nghĩa gốc rễ của sự \"Tốt đẹp\" (好).\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ Bộ Nữ (女: người mẹ) + Bộ Tử (子: đứa con). Tình mẫu tử ấm áp chính là chuẩn mực của sự Tốt/Đẹp/Khỏe.",
+    "example": "你好！ (nǐ hǎo!) - Chào bạn!"
   },
   {
-    hz: "谢谢",
-    py: "xièxie",
-    vi: "Cảm ơn",
-    etymology: "Bộ Ngôn (讠: lời nói) + Chữ Thân (身: thân thể) + Bộ Thốn (寸: lễ độ). ⟶ Cúi mình thốt ra lời nói có lễ độ = Cảm ơn.",
-    example: "谢谢大家！ (Xièxie dàjiā!) - Cảm ơn mọi người!"
+    "hz": "谢谢",
+    "py": "xièxie",
+    "vi": "Cảm ơn",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nTrong văn hóa ứng xử Trung Hoa, cảm ơn không chỉ là lời nói suông mà là sự kết hợp giữa lời nói tri ân (讠), hành vi cúi gập thân mình (身) và thái độ khiêm nhường có chừng mực (寸). Điệp từ 谢谢 nhân đôi sự thành kính.\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nĐiệp từ chữ 谢 (Tạ: Bộ Ngôn 讠lời nói + Bộ Thân 身 thân thể + Bộ Thốn 寸 lễ độ). Cúi mình thốt ra lời cảm tạ chân thành.",
+    "example": "谢谢大家！ (Xièxie dàjiā!) - Cảm ơn mọi người!"
   },
   {
-    hz: "不客气",
-    py: "bú kèqi",
-    vi: "Không có gì, đừng khách khí (đáp lại lời cảm ơn)",
-    etymology: "Chữ 不 (Khống/Không) + 客 (Khách: mái nhà 宀 + chữ 各) + 气 (Khí/Khí chất). ⟶ Đừng coi nhau là khách sáo.",
-    example: "谢谢你！ ⟶ 不客气！ - Cảm ơn! ⟶ Không có gì!"
+    "hz": "不客气",
+    "py": "bú kèqi",
+    "vi": "Không có gì, đừng khách khí (đáp lại lời cảm ơn)",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nThể hiện nét văn hóa hiếu khách và triết lý \"Coi người ngoài như người nhà\". Khi đáp 不客气！ (Đừng khách khí!), người Trung Quốc muốn gửi thông điệp: \"Giữa chúng ta là người nhà/bạn thân, đừng tạo khoảng cách người ngoài (客气), giúp bạn là niềm vui của tôi!\"\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ 不 (Bất: phủ định) + 客 (Khách: người ghé thăm dưới mái nhà 宀) + 气 (Khí: khoảng cách/phong thái). Không coi nhau là khách sáo người ngoài = Không có gì!",
+    "example": "谢谢你！ ⟶ 不客气！ - Cảm ơn! ⟶ Không có gì!"
   },
   {
-    hz: "再见",
-    py: "zàijiàn",
-    vi: "Tạm biệt, hẹn gặp lại",
-    etymology: "Chữ 再 (Lần nữa/Lặp lại: giàn hoa) + Chữ 见 (Thấy/Gặp: mắt 目 + chân 儿 đi). ⟶ Đi bằng chân gặp lại bằng mắt = Hẹn gặp lại!",
-    example: "再见！ (Zàijiàn!) - Tạm biệt!"
+    "hz": "再见",
+    "py": "zàijiàn",
+    "vi": "Tạm biệt, hẹn gặp lại",
+    "etymology": "🏮 **Tư duy & Văn hóa Trung Hoa:**\nNgười Trung Quốc không dùng từ mang ý nghĩa chia ly đoạn tuyệt để chào tạm biệt. 再见 mang tinh thần lạc quan và lời hứa hẹn sắt đá: \"Chúng ta nhất định sẽ dùng đôi chân bước tiếp và gặp lại nhau (见) một lần nữa (再) trong tương lai!\"\n\n🧩 **Kết cấu Chiết tự từ vựng:**\nGhép từ chữ 再 (Tái: lặp lại lần nữa) + chữ 见 (Kiến: đôi mắt 目 trên đôi chân 儿 đi tới nhìn thấy). Hứa hẹn đi tới gặp lại nhau lần nữa.",
+    "example": "再见！ (Zàijiàn!) - Tạm biệt!"
   }
 ];
 
@@ -1232,13 +1232,31 @@ function selectVocabWord(index, el) {
           </div>
         </div>
 
-        <!-- 2. ETYMOLOGY CARD SECOND (KHOANH 2 ĐẶT PHÍA DƯỚI KHOANH 1) -->
+        <!-- 2. ETYMOLOGY CARD SECOND (CẤU TRÚC CHIẾT TỰ & TƯ DUY VĂN HÓA TRUNG HOA) -->
         <div class="etym-box">
           <div class="etym-header">
-            <i class="fa-solid fa-puzzle-piece"></i> 🧩 CẤU TRÚC CHIẾT TỰ (Etymology):
+            <i class="fa-solid fa-puzzle-piece"></i> 🧩 CẤU TRÚC CHIẾT TỰ & TƯ DUY VĂN HÓA TRUNG HOA:
           </div>
           <div class="etym-body">
-            ${etymologyHtml || item.etymology}
+            <div style="background: #f8fafc; border-left: 4px solid #6366f1; padding: 14px 18px; border-radius: 10px; margin-bottom: 14px; border: 1px solid #e2e8f0;">
+              <h4 style="font-size: 1.05rem; color: #4338ca; font-weight: 800; margin-bottom: 8px;">
+                🇨🇳 Chiết Tự & Tư Duy Văn Hóa Cho Từ Vựng "${item.hz}" (${item.py}):
+              </h4>
+              <div style="font-size: 0.96rem; color: #0f172a; line-height: 1.65;">
+                ${item.etymology ? item.etymology.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') : ''}
+              </div>
+            </div>
+            
+            ${etymologyHtml ? `
+              <details style="margin-top: 10px; border-top: 1px dashed #cbd5e1; padding-top: 10px;">
+                <summary style="cursor: pointer; font-weight: 700; color: #475569; font-size: 0.9rem;">
+                  🔍 Xem thêm Chiết tự & Tự nguyên bộ thủ của từng chữ Hán đơn lẻ (${charArray.join(', ')}):
+                </summary>
+                <div style="margin-top: 10px;">
+                  ${etymologyHtml}
+                </div>
+              </details>
+            ` : ''}
           </div>
         </div>
       </div>
