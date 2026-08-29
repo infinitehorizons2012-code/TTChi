@@ -50,7 +50,7 @@ const hanziComponentDb = {
     char: '老',
     mnemonic: 'Hình ảnh người cao tuổi chống gậy tay cầm thìa ăn ⟶ "Già/Lão làng/Thầy" (老).',
     components: [
-      { name: 'Bộ Lão (<ctrl42>)', color: '#d97706', strokes: [0, 1, 2, 3] },
+      { name: 'Bộ Lão (耂)', color: '#d97706', strokes: [0, 1, 2, 3] },
       { name: 'Bộ Chủy (匕)', color: '#059669', strokes: [4, 5] }
     ]
   },
@@ -823,7 +823,7 @@ function selectVocabWord(index, el) {
             <span style="font-weight: 800; color: #4338ca; font-size: 0.95rem;">
               🎨 Chiết tự & Tô màu nét bộ thủ cho ${charArray.length} chữ của từ "${item.hz}":
             </span>
-            <button type="button" class="btn-daily-action" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); font-size: 0.88rem; padding: 8px 18px; position: relative; z-index: 20; cursor: pointer;" onclick="animateActiveHanzi()">
+            <button type="button" class="btn-daily-action" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); font-size: 0.88rem; padding: 8px 18px; position: relative; z-index: 20; cursor: pointer;" onclick="window.animateActiveHanzi()">
               <i class="fa-solid fa-pen-nib"></i> 🖊️ Xem Nét Viết Vi Cấp
             </button>
           </div>
@@ -895,7 +895,7 @@ function renderMultiHanziAnimation(charArray) {
     wrapper.className = 'hanzi-writer-box-item custom-hanzi-colors';
     wrapper.innerHTML = `
       <style>${customCss}</style>
-      <div id="${boxId}" class="hanzi-writer-box" style="cursor: pointer;" title="Bấm vào để xem viết chữ '${char}'" onclick="animateSingleHanzi(${idx})"></div>
+      <div id="${boxId}" class="hanzi-writer-box" style="cursor: pointer;" title="Bấm vào để xem viết chữ '${char}'" onclick="window.animateSingleHanzi(${idx})"></div>
       <span class="hw-char-label">Nét chữ '${char}'</span>
       <div class="component-badges-row">
         ${componentBadgesHtml}
@@ -913,11 +913,13 @@ function renderMultiHanziAnimation(charArray) {
           radicalColor: null,
           showOutline: true,
           strokeAnimationSpeed: 1.5,
-          delayBetweenStrokes: 150
+          delayBetweenStrokes: 150,
+          onLoadCharDataSuccess: function() {
+            // Trigger animation immediately once character SVG data is loaded
+            writer.animateCharacter();
+          }
         });
         currentWriters.push(writer);
-        // Play stroke order animation upon initial load
-        writer.animateCharacter();
       } catch (e) {
         document.getElementById(boxId).innerHTML = `<span style="font-size: 3.5rem; font-family: 'Noto Sans SC'; color: #4338ca;">${char}</span>`;
       }
@@ -931,19 +933,34 @@ function animateActiveHanzi() {
   if (currentWriters && currentWriters.length > 0) {
     currentWriters.forEach((writer, idx) => {
       setTimeout(() => {
-        if (writer && typeof writer.animateCharacter === 'function') {
-          writer.animateCharacter();
+        if (writer) {
+          if (typeof writer.cancelAnimation === 'function') {
+            writer.cancelAnimation();
+          }
+          if (typeof writer.animateCharacter === 'function') {
+            writer.animateCharacter();
+          }
         }
-      }, idx * 700);
+      }, idx * 600);
     });
   }
 }
 
 function animateSingleHanzi(idx) {
-  if (currentWriters && currentWriters[idx] && typeof currentWriters[idx].animateCharacter === 'function') {
-    currentWriters[idx].animateCharacter();
+  if (currentWriters && currentWriters[idx]) {
+    const writer = currentWriters[idx];
+    if (typeof writer.cancelAnimation === 'function') {
+      writer.cancelAnimation();
+    }
+    if (typeof writer.animateCharacter === 'function') {
+      writer.animateCharacter();
+    }
   }
 }
+
+// Expose animation functions globally so inline onclick handler can NEVER fail
+window.animateActiveHanzi = animateActiveHanzi;
+window.animateSingleHanzi = animateSingleHanzi;
 
 // 8. Subtab Switcher for Vocab Module
 function switchVocabSubtab(subtabId, el) {
