@@ -1,3 +1,12 @@
+
+function getCleanBadgeName(rawName) {
+  if (!rawName) return '';
+  const trimmed = rawName.trim();
+  const match = trimmed.match(/^[\u4e00-\u9fff\u2e80-\u2eff\u31c0-\u31ef\u3400-\u4dbf\u20000-\u2a6df\u2a700-\u2b73f\u2b740-\u2b81f\u2b820-\u2ceaf𦥑𠂤]/u);
+  if (match) return match[0];
+  return trimmed.split(/\s+/)[0];
+}
+
 // Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Multi-Color Hanzi Component Animator & APP_MNEMONIC Etymology Engine)
 
 let timerInterval = null;
@@ -1256,7 +1265,8 @@ function renderMultiHanziAnimation(charArray) {
 
     if (compData && compData.components) {
       compData.components.forEach(comp => {
-        componentBadgesHtml += `<span class="comp-badge" style="background: ${comp.color};">${comp.name}</span>`;
+        const cleanLabel = getCleanBadgeName(comp.name);
+        componentBadgesHtml += `<span class="comp-badge" style="background: ${comp.color};">${cleanLabel}</span>`;
         if (comp.strokes) {
           comp.strokes.forEach(sIdx => {
             customCss += `
