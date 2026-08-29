@@ -1,4 +1,4 @@
-/* Single Page Kids & UbD Educational CSS - Spaced Retrieval Review Tab & Student Account System */
+/* Single Page Kids & UbD Educational CSS - Multi-Color Component Hanzi Animation & APP_MNEMONIC System */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+SC:wght@500;700;900&display=swap');
 
 :root {
@@ -708,7 +708,7 @@ body {
   color: #64748b;
 }
 
-/* Hanzi Learning Detail Card & Multi-Character Support */
+/* Hanzi Learning Detail Card & Multi-Character Component Styling */
 .etym-box {
   background: #fffbeb;
   border: 2px solid #fde68a;
@@ -732,37 +732,87 @@ body {
   line-height: 1.5;
 }
 
+.app-mnemonic-box {
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+  border: 2px solid #a7f3d0;
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin-top: 1rem;
+}
+
+.app-mnemonic-header {
+  color: #047857;
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-mnemonic-body {
+  color: #065f46;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
 .multi-hanzi-wrapper {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .hanzi-writer-box-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
 .hanzi-writer-box {
   background: #ffffff;
-  border: 2px solid #cbd5e1;
-  border-radius: 16px;
-  width: 130px;
-  height: 130px;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  width: 140px;
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
 }
 
 .hw-char-label {
   font-family: 'Noto Sans SC', sans-serif;
-  font-weight: 800;
+  font-weight: 900;
   color: #4338ca;
-  font-size: 0.88rem;
-  margin-top: 4px;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+.component-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 8px;
+  max-width: 140px;
+}
+
+.comp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 50px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
 }
 
 /* Interactive Test Engine Styling */

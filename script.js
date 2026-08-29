@@ -1,4 +1,4 @@
-// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Vocab Learning Module, Auth Username/Password & Spaced Retrieval 1-3-7)
+// Pure JavaScript Educational Engine for HSK 1 Lesson 1 (Multi-Color Hanzi Component Animator & APP_MNEMONIC Etymology Engine)
 
 let timerInterval = null;
 let timerSeconds = 0;
@@ -20,7 +20,157 @@ const defaultAccounts = {
   }
 };
 
-// 1. Vocabulary Database for HSK 1 Lesson 1 (12 Nòng cốt từ vựng & Chiết Tự)
+// 1. HANZI COMPONENT DATABASE (COLOR OVERRIDE STROKES & APP_MNEMONIC)
+const hanziComponentDb = {
+  '你': {
+    char: '你',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Người (亻) đứng đối diện (尔) trò chuyện cùng bạn chính là "Bạn/Cậu" (你).',
+    components: [
+      { name: 'Bộ Nhân (亻)', color: '#0284c7', strokes: [0, 1] },
+      { name: 'Bộ Nhĩ (尔)', color: '#e11d48', strokes: [2, 3, 4, 5, 6] }
+    ]
+  },
+  '您': {
+    char: '您',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Đặt người bạn (你) ở trong tim (心) để thể hiện lòng kính trọng tối cao với thầy cô/bề trên ⟶ "Ngài/Thầy/Cô" (您).',
+    components: [
+      { name: 'Chữ 你 (Bạn)', color: '#0284c7', strokes: [0, 1, 2, 3, 4, 5, 6] },
+      { name: 'Bộ Tâm (心)', color: '#e11d48', strokes: [7, 8, 9, 10] }
+    ]
+  },
+  '们': {
+    char: '们',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Nhiều người (亻) đứng tụ họp trước cánh cửa (门) ⟶ Hậu tố số nhiều "Các/Những" (们).',
+    components: [
+      { name: 'Bộ Nhân (亻)', color: '#0284c7', strokes: [0, 1] },
+      { name: 'Chữ 门 (Door)', color: '#7e22ce', strokes: [2, 3, 4] }
+    ]
+  },
+  '老': {
+    char: '老',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Người cao tuổi chống gậy tay cầm thìa ăn ⟶ "Già/Lão làng/Thầy" (老).',
+    components: [
+      { name: 'Bộ Lão (耂)', color: '#d97706', strokes: [0, 1, 2, 3] },
+      { name: 'Bộ Chủy (匕)', color: '#059669', strokes: [4, 5] }
+    ]
+  },
+  '师': {
+    char: '师',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Người dẫn dắt đội quân (𠂤) cầm khăn gấm (巾) truyền dạy trí thức ⟶ "Thầy giáo/Bậc thầy" (师).',
+    components: [
+      { name: 'Bộ Đôi (𠂤)', color: '#7e22ce', strokes: [0, 1, 2] },
+      { name: 'Bộ Cân (巾)', color: '#0284c7', strokes: [3, 4, 5] }
+    ]
+  },
+  '王': {
+    char: '王',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** 3 nét ngang chỉ Thiên - Địa - Nhân (Trời - Đất - Người); Nét dọc nối cả 3 thành vị Vua làm chủ ⟶ "Họ Vương/Vua" (王).',
+    components: [
+      { name: 'Tam Tài (Thiên-Địa-Nhân)', color: '#d97706', strokes: [0, 1, 2] },
+      { name: 'Trục Trục Trụ', color: '#dc2626', strokes: [3] }
+    ]
+  },
+  '学': {
+    char: '学',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Đứa trẻ (子) tiếp thu các nốt tri thức (𛅦) dưới mái trường (宀) ⟶ "Học tập/Học sinh" (学).',
+    components: [
+      { name: 'Hạt Tri Thức (𛅦)', color: '#0284c7', strokes: [0, 1, 2] },
+      { name: 'Mái Trường (宀)', color: '#d97706', strokes: [3, 4] },
+      { name: 'Đứa Trẻ (子)', color: '#059669', strokes: [5, 6, 7] }
+    ]
+  },
+  '生': {
+    char: '生',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Mầm cây xanh chồi nhô lên phát triển từ lòng đất (土) ⟶ "Sinh sống/Sinh ra/Học sinh" (生).',
+    components: [
+      { name: 'Mầm Chồi xanh', color: '#10b981', strokes: [0, 1, 2] },
+      { name: 'Bộ Thổ (土)', color: '#b45309', strokes: [3, 4] }
+    ]
+  },
+  '同': {
+    char: '同',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Mọi người cùng sống chung dưới khung mái nhà (冂) và phát ra chung lời nói (口) ⟶ "Cùng nhau/Đồng lòng" (同).',
+    components: [
+      { name: 'Khung Nhà (冂)', color: '#0284c7', strokes: [0, 1] },
+      { name: 'Ngang & Khẩu (口)', color: '#7e22ce', strokes: [2, 3, 4, 5] }
+    ]
+  },
+  '大': {
+    char: '大',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Hình ảnh một con người (人) dang rộng hai tay hai chân hết cỡ ⟶ "To lớn/Đại" (大).',
+    components: [
+      { name: 'Nét Ngang (Giới hạn)', color: '#0284c7', strokes: [0] },
+      { name: 'Người dang tay (人)', color: '#e11d48', strokes: [1, 2] }
+    ]
+  },
+  '家': {
+    char: '家',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Dưới mái nhà (宀) che chở có đàn gia súc gia tài (豕) sung túc ⟶ "Mái nhà/Gia đình" (家).',
+    components: [
+      { name: 'Mái Nhà (宀)', color: '#d97706', strokes: [0, 1, 2] },
+      { name: 'Bộ Thỉ - Gia súc (豕)', color: '#059669', strokes: [3, 4, 5, 6, 7, 8, 9] }
+    ]
+  },
+  '好': {
+    char: '好',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Người mẹ (女) bế đứa con nhỏ (子) trên tay là hình ảnh ấm áp tốt đẹp nhất ⟶ "Tốt/Đẹp/Hay/Khỏe" (好).',
+    components: [
+      { name: 'Bộ Nữ (女)', color: '#ec4899', strokes: [0, 1, 2] },
+      { name: 'Bộ Tử (子)', color: '#0284c7', strokes: [3, 4, 5] }
+    ]
+  },
+  '谢': {
+    char: '谢',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Dùng lời nói (讠) cúi gập thân thể (身) một cách chừng mực lễ độ (寸) ⟶ "Cảm ơn/Tạ ơn" (谢).',
+    components: [
+      { name: 'Bộ Ngôn (讠)', color: '#0284c7', strokes: [0, 1] },
+      { name: 'Bộ Thân (身)', color: '#7e22ce', strokes: [2, 3, 4, 5, 6, 7, 8] },
+      { name: 'Bộ Thốn (寸)', color: '#dc2626', strokes: [9, 10, 11] }
+    ]
+  },
+  '不': {
+    char: '不',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Con chim bay vút lên bầu trời không chịu hạ cánh xuống đất (一) ⟶ "Không/Bất" (不).',
+    components: [
+      { name: 'Nét Ngang (Mặt đất)', color: '#0284c7', strokes: [0] },
+      { name: 'Cánh chim bay', color: '#dc2626', strokes: [1, 2, 3] }
+    ]
+  },
+  '客': {
+    char: '客',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Người phương xa (各) ghé thăm bước vào dưới mái nhà (宀) ⟶ "Khách sáo/Khách khứa" (客).',
+    components: [
+      { name: 'Mái Nhà (宀)', color: '#d97706', strokes: [0, 1, 2] },
+      { name: 'Chữ Các (各)', color: '#0284c7', strokes: [3, 4, 5, 6, 7, 8] }
+    ]
+  },
+  '气': {
+    char: '气',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Luồng mây trời hơi nước bốc lên uốn lượn nhẹ nhàng ⟶ "Khí chất/Không khí" (气).',
+    components: [
+      { name: 'Mây trời bay', color: '#0284c7', strokes: [0, 1, 2] },
+      { name: 'Luồng Khí lượn', color: '#7e22ce', strokes: [3] }
+    ]
+  },
+  '再': {
+    char: '再',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Mầm cây mọc trên giàn lại nảy mầm kết trái lần nữa ⟶ "Lặp lại/Một lần nữa" (再).',
+    components: [
+      { name: 'Khung Giàn hoa', color: '#d97706', strokes: [0, 1, 2, 3] },
+      { name: 'Bộ Thổ (土)', color: '#059669', strokes: [4, 5] }
+    ]
+  },
+  '见': {
+    char: '见',
+    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Đôi chân (儿) bước đi tới gặp mặt và đôi mắt (目) nhìn thấy ⟶ "Gặp mặt/Thấy" (见).',
+    components: [
+      { name: 'Bộ Mục (目)', color: '#0284c7', strokes: [0, 1] },
+      { name: 'Bộ Nhân (儿)', color: '#e11d48', strokes: [2, 3] }
+    ]
+  }
+};
+
+// 2. Vocabulary Database for HSK 1 Lesson 1 (12 Nòng cốt từ vựng & Chiết Tự)
 const vocabDatabase = [
   {
     hz: "你",
@@ -108,7 +258,7 @@ const vocabDatabase = [
   }
 ];
 
-// 2. Full Question Bank Database (3 Complete Sets of 4-Skill Questions)
+// 3. Full Question Bank Database (3 Complete Sets of 4-Skill Questions)
 const testBankSets = [
   // --- BỘ ĐỀ 1 (SET A) ---
   {
@@ -410,7 +560,7 @@ const testBankSets = [
   }
 ];
 
-// 3. Student Account Authentication & Database Functions
+// 4. Student Account Authentication & Database Functions
 function getAllAccounts() {
   try {
     const raw = localStorage.getItem('hsk1_auth_accounts_db');
@@ -598,7 +748,7 @@ function renderSavedAccountsList() {
   container.innerHTML = html;
 }
 
-// 4. Render 12 Vocabulary Selector Grid
+// 5. Render 12 Vocabulary Selector Grid
 function renderVocabGridList() {
   const container = document.getElementById('vocab-words-grid');
   if (!container) return;
@@ -620,7 +770,7 @@ function renderVocabGridList() {
   selectVocabWord(0);
 }
 
-// 5. Select & Render Active Vocab Learning Card (Nghe - Viết Multi Char - Chiết Tự)
+// 6. Select & Render Active Vocab Learning Card with Multi-Color Components & APP_MNEMONIC
 function selectVocabWord(index, el) {
   if (el) {
     document.querySelectorAll('.vocab-word-item').forEach(i => i.classList.remove('active'));
@@ -638,6 +788,14 @@ function selectVocabWord(index, el) {
     contentBox.style.display = 'block';
 
     const charArray = Array.from(item.hz);
+
+    // Collect APP_MNEMONICS for characters in this word
+    let mnemonicsHtml = '';
+    charArray.forEach(ch => {
+      if (hanziComponentDb[ch] && hanziComponentDb[ch].mnemonic) {
+        mnemonicsHtml += `<p style="margin-bottom: 6px;">${hanziComponentDb[ch].mnemonic}</p>`;
+      }
+    });
 
     contentBox.innerHTML = `
       <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px;">
@@ -658,26 +816,36 @@ function selectVocabWord(index, el) {
         </button>
       </div>
 
-      <!-- HANZI WRITER MULTI-CHARACTER CONTAINERS & ETYMOLOGY BOX -->
+      <!-- HANZI WRITER MULTI-COLOR COMPONENT CONTAINERS -->
       <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem;">
         <div>
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
             <span style="font-weight: 800; color: #4338ca; font-size: 0.95rem;">
-              ✍️ Mô phỏng nét viết cho ${charArray.length} chữ của từ "${item.hz}":
+              🎨 Chiết tự & Tô màu nét bộ thủ cho ${charArray.length} chữ của từ "${item.hz}":
             </span>
             <button type="button" class="calib-btn" style="font-size: 0.85rem;" onclick="animateActiveHanzi()">
-              <i class="fa-solid fa-pen-nib"></i> Xem Nét Viết
+              <i class="fa-solid fa-pen-nib"></i> Xem Nét Viết Vi Cấp
             </button>
           </div>
           <div id="multi-hanzi-container" class="multi-hanzi-wrapper"></div>
         </div>
 
+        <!-- ETYMOLOGY & APP_MNEMONIC CARDS -->
         <div class="etym-box">
           <div class="etym-header">
-            <i class="fa-solid fa-puzzle-piece"></i> 🧩 CHIẾT TỰ & MẸO GHI NHỚ (Etymology):
+            <i class="fa-solid fa-puzzle-piece"></i> 🧩 CẤU TRÚC CHIẾT TỰ (Etymology):
           </div>
           <div class="etym-body">
             ${item.etymology}
+          </div>
+        </div>
+
+        <div class="app-mnemonic-box">
+          <div class="app-mnemonic-header">
+            <i class="fa-solid fa-seedling"></i> 🌱 APP_MNEMONIC (Mẹo Nhớ Chiết Tự Sinh Động):
+          </div>
+          <div class="app-mnemonic-body">
+            ${mnemonicsHtml || `<p>Chữ ${item.hz}: Chiết tự ghi nhớ sinh động được lắp ráp từ các bộ thủ tự nhiên.</p>`}
           </div>
         </div>
       </div>
@@ -689,6 +857,7 @@ function selectVocabWord(index, el) {
   }
 }
 
+// 7. Render Multi-Color Hanzi Animation (CSS Injection Technique from hanzi-chiet-tu-animator skill)
 function renderMultiHanziAnimation(charArray) {
   const container = document.getElementById('multi-hanzi-container');
   if (!container) return;
@@ -697,23 +866,54 @@ function renderMultiHanziAnimation(charArray) {
 
   charArray.forEach((char, idx) => {
     const boxId = `hw_box_${idx}`;
+    const wrapperId = `hw_wrapper_${idx}`;
+    const compData = hanziComponentDb[char];
+
+    // Build CSS stroke color injection per skill specification
+    let customCss = '';
+    let componentBadgesHtml = '';
+
+    if (compData && compData.components) {
+      compData.components.forEach(comp => {
+        componentBadgesHtml += `<span class="comp-badge" style="background: ${comp.color};">${comp.name}</span>`;
+        if (comp.strokes) {
+          comp.strokes.forEach(sIdx => {
+            // sIdx + 1 because nth-child is 1-indexed
+            customCss += `
+              #${wrapperId} svg path:nth-child(${sIdx + 1}) {
+                fill: ${comp.color} !important;
+                stroke: ${comp.color} !important;
+              }
+            `;
+          });
+        }
+      });
+    }
+
     const wrapper = document.createElement('div');
-    wrapper.className = 'hanzi-writer-box-item';
+    wrapper.id = wrapperId;
+    wrapper.className = 'hanzi-writer-box-item custom-hanzi-colors';
     wrapper.innerHTML = `
-      <div id="${boxId}" class="hanzi-writer-box"></div>
+      <style>${customCss}</style>
+      <div id="${boxId}" class="hanzi-writer-box" onclick="animateSingleHanzi(${idx})"></div>
       <span class="hw-char-label">Nét chữ '${char}'</span>
+      <div class="component-badges-row">
+        ${componentBadgesHtml}
+      </div>
     `;
     container.appendChild(wrapper);
 
     if (typeof HanziWriter !== 'undefined') {
       try {
         const writer = HanziWriter.create(boxId, char, {
-          width: 120,
-          height: 120,
+          width: 130,
+          height: 130,
           padding: 5,
-          strokeColor: '#4338ca',
-          radialColor: '#f43f5e',
-          showOutline: true
+          strokeColor: '#64748b',
+          radicalColor: null,
+          showOutline: true,
+          strokeAnimationSpeed: 1.2,
+          delayBetweenStrokes: 120
         });
         writer.animateCharacter();
         currentWriters.push(writer);
@@ -731,12 +931,18 @@ function animateActiveHanzi() {
     currentWriters.forEach((writer, idx) => {
       setTimeout(() => {
         writer.animateCharacter();
-      }, idx * 500);
+      }, idx * 600);
     });
   }
 }
 
-// 6. Subtab Switcher for Vocab Module
+function animateSingleHanzi(idx) {
+  if (currentWriters && currentWriters[idx]) {
+    currentWriters[idx].animateCharacter();
+  }
+}
+
+// 8. Subtab Switcher for Vocab Module
 function switchVocabSubtab(subtabId, el) {
   const subtabs = document.querySelectorAll('.vocab-subtab-content');
   subtabs.forEach(s => s.style.display = 'none');
@@ -753,7 +959,7 @@ function switchVocabSubtab(subtabId, el) {
   }
 }
 
-// 7. Interactive Vocab Matching Quiz
+// 9. Interactive Vocab Matching Quiz
 function renderVocabQuiz() {
   const container = document.getElementById('vocab-quiz-container');
   if (!container) return;
@@ -800,7 +1006,7 @@ function checkVocabQuizItem(idx, correctPy, btnEl) {
   }
 }
 
-// 8. Render Active Test Question Set to DOM
+// 10. Render Active Test Question Set to DOM
 function renderCurrentTestSet() {
   const container = document.getElementById('test-questions-container');
   const badgeEl = document.getElementById('bank-set-badge');
@@ -844,7 +1050,7 @@ function renderCurrentTestSet() {
   container.innerHTML = html;
 }
 
-// 9. Start Test Action (Triggers Timer and Reveals Questions)
+// 11. Start Test Action (Triggers Timer and Reveals Questions)
 function startTestNow() {
   isTestStarted = true;
   const overlay = document.getElementById('test-start-overlay');
@@ -860,7 +1066,7 @@ function startTestNow() {
   startTestTimer();
 }
 
-// 10. Render Spaced Retrieval 1-3-7 Dedicated Review Tab (Tab 4)
+// 12. Render Spaced Retrieval 1-3-7 Dedicated Review Tab (Tab 4)
 function renderSpacedReviewTab() {
   const container = document.getElementById('spaced-review-questions-box');
   if (!container) return;
@@ -945,7 +1151,7 @@ function goToReviewTab() {
   }
 }
 
-// 11. Tab Switcher & Timer Manager
+// 13. Tab Switcher & Timer Manager
 function switchPageTab(tabId, el) {
   const tabs = document.querySelectorAll('.tab-content');
   tabs.forEach(t => {
@@ -1010,7 +1216,7 @@ function stopTestTimer() {
   }
 }
 
-// 12. Web Speech API
+// 14. Web Speech API
 function speakText(text) {
   if ('speechSynthesis' in window) {
     window.speechSynthesis.cancel();
@@ -1023,7 +1229,7 @@ function speakText(text) {
   }
 }
 
-// 13. Calibration State Manager ([V], [?], [X])
+// 15. Calibration State Manager ([V], [?], [X])
 const jsCalibData = { 1: '?', 2: '?', 3: '?', 4: '?' };
 
 function setQuestionCalib(qNum, state, btnEl) {
@@ -1041,7 +1247,7 @@ function setQuestionCalib(qNum, state, btnEl) {
   else if (state === 'X') btnEl.classList.add('active-red');
 }
 
-// 14. Interactive Option Checker for Transfer Practice Questions
+// 16. Interactive Option Checker for Transfer Practice Questions
 function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl, explainText) {
   const container = btnEl.parentElement;
   if (!container) return;
@@ -1072,7 +1278,7 @@ function checkTransferAnswer(qId, quizIdx, selectedOptIdx, correctOptIdx, btnEl,
   }
 }
 
-// 15. Evaluator Execution Function
+// 17. Evaluator Execution Function
 function runPureJSEvaluator() {
   stopTestTimer();
 
@@ -1218,7 +1424,7 @@ function runPureJSEvaluator() {
   }
 }
 
-// 16. Dynamic Bank Swapper Button Action
+// 18. Dynamic Bank Swapper Button Action
 function shuffleAndGenerateNewTestSet() {
   currentBankSetIndex = (currentBankSetIndex + 1) % testBankSets.length;
   renderCurrentTestSet();
@@ -1231,7 +1437,7 @@ function shuffleAndGenerateNewTestSet() {
   if (testArea) testArea.scrollIntoView({ behavior: 'smooth' });
 }
 
-// 17. Automatic Daily Scheduler via LocalStorage per student account
+// 19. Automatic Daily Scheduler via LocalStorage per student account
 function checkDailyScheduleOnLoad() {
   try {
     const raw = localStorage.getItem(`hsk1_spaced_${activeUsername}`);
