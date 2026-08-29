@@ -1244,19 +1244,7 @@ function selectVocabWord(index, el) {
               </h4>
               <div style="font-size: 0.96rem; color: #0f172a; line-height: 1.65;">
                 ${item.etymology ? item.etymology.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') : ''}
-              </div>
             </div>
-            
-            ${etymologyHtml ? `
-              <details style="margin-top: 10px; border-top: 1px dashed #cbd5e1; padding-top: 10px;">
-                <summary style="cursor: pointer; font-weight: 700; color: #475569; font-size: 0.9rem;">
-                  🔍 Xem thêm Chiết tự & Tự nguyên bộ thủ của từng chữ Hán đơn lẻ (${charArray.join(', ')}):
-                </summary>
-                <div style="margin-top: 10px;">
-                  ${etymologyHtml}
-                </div>
-              </details>
-            ` : ''}
           </div>
         </div>
       </div>
