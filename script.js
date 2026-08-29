@@ -23,8 +23,8 @@ const defaultAccounts = {
 // 1. HANZI COMPONENT DATABASE (COLOR OVERRIDE STROKES & APP_MNEMONIC)
 const hanziComponentDb = {
   '你': {
-    char: '你',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Người (亻) đứng đối diện (尔) trò chuyện cùng bạn chính là "Bạn/Cậu" (你).',
+    char: '奇',
+    mnemonic: 'Người (亻) đứng đối diện (尔) trò chuyện cùng bạn chính là "Bạn/Cậu" (你).',
     components: [
       { name: 'Bộ Nhân (亻)', color: '#0284c7', strokes: [0, 1] },
       { name: 'Bộ Nhĩ (尔)', color: '#e11d48', strokes: [2, 3, 4, 5, 6] }
@@ -32,7 +32,7 @@ const hanziComponentDb = {
   },
   '您': {
     char: '您',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Đặt người bạn (你) ở trong tim (心) để thể hiện lòng kính trọng tối cao với thầy cô/bề trên ⟶ "Ngài/Thầy/Cô" (您).',
+    mnemonic: 'Đặt người bạn (你) ở trong tim (心) để thể hiện lòng kính trọng tối cao với thầy cô/bề trên ⟶ "Ngài/Thầy/Cô" (您).',
     components: [
       { name: 'Chữ 你 (Bạn)', color: '#0284c7', strokes: [0, 1, 2, 3, 4, 5, 6] },
       { name: 'Bộ Tâm (心)', color: '#e11d48', strokes: [7, 8, 9, 10] }
@@ -40,7 +40,7 @@ const hanziComponentDb = {
   },
   '们': {
     char: '们',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Nhiều người (亻) đứng tụ họp trước cánh cửa (门) ⟶ Hậu tố số nhiều "Các/Những" (们).',
+    mnemonic: 'Nhiều người (亻) đứng tụ họp trước cánh cửa (门) ⟶ Hậu tố số nhiều "Các/Những" (们).',
     components: [
       { name: 'Bộ Nhân (亻)', color: '#0284c7', strokes: [0, 1] },
       { name: 'Chữ 门 (Door)', color: '#7e22ce', strokes: [2, 3, 4] }
@@ -48,7 +48,7 @@ const hanziComponentDb = {
   },
   '老': {
     char: '老',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Người cao tuổi chống gậy tay cầm thìa ăn ⟶ "Già/Lão làng/Thầy" (老).',
+    mnemonic: 'Hình ảnh người cao tuổi chống gậy tay cầm thìa ăn ⟶ "Già/Lão làng/Thầy" (老).',
     components: [
       { name: 'Bộ Lão (耂)', color: '#d97706', strokes: [0, 1, 2, 3] },
       { name: 'Bộ Chủy (匕)', color: '#059669', strokes: [4, 5] }
@@ -56,7 +56,7 @@ const hanziComponentDb = {
   },
   '师': {
     char: '师',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Người dẫn dắt đội quân (𠂤) cầm khăn gấm (巾) truyền dạy trí thức ⟶ "Thầy giáo/Bậc thầy" (师).',
+    mnemonic: 'Người dẫn dắt đội quân (𠂤) cầm khăn gấm (巾) truyền dạy trí thức ⟶ "Thầy giáo/Bậc thầy" (师).',
     components: [
       { name: 'Bộ Đôi (𠂤)', color: '#7e22ce', strokes: [0, 1, 2] },
       { name: 'Bộ Cân (巾)', color: '#0284c7', strokes: [3, 4, 5] }
@@ -64,7 +64,7 @@ const hanziComponentDb = {
   },
   '王': {
     char: '王',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** 3 nét ngang chỉ Thiên - Địa - Nhân (Trời - Đất - Người); Nét dọc nối cả 3 thành vị Vua làm chủ ⟶ "Họ Vương/Vua" (王).',
+    mnemonic: '3 nét ngang chỉ Thiên - Địa - Nhân (Trời - Đất - Người); Nét dọc nối cả 3 thành vị Vua làm chủ ⟶ "Họ Vương/Vua" (王).',
     components: [
       { name: 'Tam Tài (Thiên-Địa-Nhân)', color: '#d97706', strokes: [0, 1, 2] },
       { name: 'Trục Trục Trụ', color: '#dc2626', strokes: [3] }
@@ -72,7 +72,7 @@ const hanziComponentDb = {
   },
   '学': {
     char: '学',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Đứa trẻ (子) tiếp thu các nốt tri thức (𛅦) dưới mái trường (宀) ⟶ "Học tập/Học sinh" (学).',
+    mnemonic: 'Đứa trẻ (子) tiếp thu các nốt tri thức (𛅦) dưới mái trường (宀) ⟶ "Học tập/Học sinh" (学).',
     components: [
       { name: 'Hạt Tri Thức (𛅦)', color: '#0284c7', strokes: [0, 1, 2] },
       { name: 'Mái Trường (宀)', color: '#d97706', strokes: [3, 4] },
@@ -81,7 +81,7 @@ const hanziComponentDb = {
   },
   '生': {
     char: '生',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Mầm cây xanh chồi nhô lên phát triển từ lòng đất (土) ⟶ "Sinh sống/Sinh ra/Học sinh" (生).',
+    mnemonic: 'Mầm cây xanh chồi nhô lên phát triển từ lòng đất (土) ⟶ "Sinh sống/Sinh ra/Học sinh" (生).',
     components: [
       { name: 'Mầm Chồi xanh', color: '#10b981', strokes: [0, 1, 2] },
       { name: 'Bộ Thổ (土)', color: '#b45309', strokes: [3, 4] }
@@ -89,7 +89,7 @@ const hanziComponentDb = {
   },
   '同': {
     char: '同',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Mọi người cùng sống chung dưới khung mái nhà (冂) và phát ra chung lời nói (口) ⟶ "Cùng nhau/Đồng lòng" (同).',
+    mnemonic: 'Mọi người cùng sống chung dưới khung mái nhà (冂) và phát ra chung lời nói (口) ⟶ "Cùng nhau/Đồng lòng" (同).',
     components: [
       { name: 'Khung Nhà (冂)', color: '#0284c7', strokes: [0, 1] },
       { name: 'Ngang & Khẩu (口)', color: '#7e22ce', strokes: [2, 3, 4, 5] }
@@ -97,7 +97,7 @@ const hanziComponentDb = {
   },
   '大': {
     char: '大',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Hình ảnh một con người (人) dang rộng hai tay hai chân hết cỡ ⟶ "To lớn/Đại" (大).',
+    mnemonic: 'Hình ảnh một con người (人) dang rộng hai tay hai chân hết cỡ ⟶ "To lớn/Đại" (大).',
     components: [
       { name: 'Nét Ngang (Giới hạn)', color: '#0284c7', strokes: [0] },
       { name: 'Người dang tay (人)', color: '#e11d48', strokes: [1, 2] }
@@ -105,7 +105,7 @@ const hanziComponentDb = {
   },
   '家': {
     char: '家',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Dưới mái nhà (宀) che chở có đàn gia súc gia tài (豕) sung túc ⟶ "Mái nhà/Gia đình" (家).',
+    mnemonic: 'Dưới mái nhà (宀) che chở có đàn gia súc gia tài (豕) sung túc ⟶ "Mái nhà/Gia đình" (家).',
     components: [
       { name: 'Mái Nhà (宀)', color: '#d97706', strokes: [0, 1, 2] },
       { name: 'Bộ Thỉ - Gia súc (豕)', color: '#059669', strokes: [3, 4, 5, 6, 7, 8, 9] }
@@ -113,7 +113,7 @@ const hanziComponentDb = {
   },
   '好': {
     char: '好',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Người mẹ (女) bế đứa con nhỏ (子) trên tay là hình ảnh ấm áp tốt đẹp nhất ⟶ "Tốt/Đẹp/Hay/Khỏe" (好).',
+    mnemonic: 'Người mẹ (女) bế đứa con nhỏ (子) trên tay là hình ảnh ấm áp tốt đẹp nhất ⟶ "Tốt/Đẹp/Hay/Khỏe" (好).',
     components: [
       { name: 'Bộ Nữ (女)', color: '#ec4899', strokes: [0, 1, 2] },
       { name: 'Bộ Tử (子)', color: '#0284c7', strokes: [3, 4, 5] }
@@ -121,7 +121,7 @@ const hanziComponentDb = {
   },
   '谢': {
     char: '谢',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Dùng lời nói (讠) cúi gập thân thể (身) một cách chừng mực lễ độ (寸) ⟶ "Cảm ơn/Tạ ơn" (谢).',
+    mnemonic: 'Dùng lời nói (讠) cúi gập thân thể (身) một cách chừng mực lễ độ (寸) ⟶ "Cảm ơn/Tạ ơn" (谢).',
     components: [
       { name: 'Bộ Ngôn (讠)', color: '#0284c7', strokes: [0, 1] },
       { name: 'Bộ Thân (身)', color: '#7e22ce', strokes: [2, 3, 4, 5, 6, 7, 8] },
@@ -130,7 +130,7 @@ const hanziComponentDb = {
   },
   '不': {
     char: '不',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Con chim bay vút lên bầu trời không chịu hạ cánh xuống đất (一) ⟶ "Không/Bất" (不).',
+    mnemonic: 'Con chim bay vút lên bầu trời không chịu hạ cánh xuống đất (一) ⟶ "Không/Bất" (不).',
     components: [
       { name: 'Nét Ngang (Mặt đất)', color: '#0284c7', strokes: [0] },
       { name: 'Cánh chim bay', color: '#dc2626', strokes: [1, 2, 3] }
@@ -138,7 +138,7 @@ const hanziComponentDb = {
   },
   '客': {
     char: '客',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Người phương xa (各) ghé thăm bước vào dưới mái nhà (宀) ⟶ "Khách sáo/Khách khứa" (客).',
+    mnemonic: 'Người phương xa (各) ghé thăm bước vào dưới mái nhà (宀) ⟶ "Khách sáo/Khách khứa" (客).',
     components: [
       { name: 'Mái Nhà (宀)', color: '#d97706', strokes: [0, 1, 2] },
       { name: 'Chữ Các (各)', color: '#0284c7', strokes: [3, 4, 5, 6, 7, 8] }
@@ -146,7 +146,7 @@ const hanziComponentDb = {
   },
   '气': {
     char: '气',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Luồng mây trời hơi nước bốc lên uốn lượn nhẹ nhàng ⟶ "Khí chất/Không khí" (气).',
+    mnemonic: 'Luồng mây trời hơi nước bốc lên uốn lượn nhẹ nhàng ⟶ "Khí chất/Không khí" (气).',
     components: [
       { name: 'Mây trời bay', color: '#0284c7', strokes: [0, 1, 2] },
       { name: 'Luồng Khí lượn', color: '#7e22ce', strokes: [3] }
@@ -154,7 +154,7 @@ const hanziComponentDb = {
   },
   '再': {
     char: '再',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Mầm cây mọc trên giàn lại nảy mầm kết trái lần nữa ⟶ "Lặp lại/Một lần nữa" (再).',
+    mnemonic: 'Mầm cây mọc trên giàn lại nảy mầm kết trái lần nữa ⟶ "Lặp lại/Một lần nữa" (再).',
     components: [
       { name: 'Khung Giàn hoa', color: '#d97706', strokes: [0, 1, 2, 3] },
       { name: 'Bộ Thổ (土)', color: '#059669', strokes: [4, 5] }
@@ -162,7 +162,7 @@ const hanziComponentDb = {
   },
   '见': {
     char: '见',
-    mnemonic: '💡 **APP_MNEMONIC (Mẹo Nhớ):** Đôi chân (儿) bước đi tới gặp mặt và đôi mắt (目) nhìn thấy ⟶ "Gặp mặt/Thấy" (见).',
+    mnemonic: 'Đôi chân (儿) bước đi tới gặp mặt và đôi mắt (目) nhìn thấy ⟶ "Gặp mặt/Thấy" (见).',
     components: [
       { name: 'Bộ Mục (目)', color: '#0284c7', strokes: [0, 1] },
       { name: 'Bộ Nhân (儿)', color: '#e11d48', strokes: [2, 3] }
@@ -770,7 +770,7 @@ function renderVocabGridList() {
   selectVocabWord(0);
 }
 
-// 6. Select & Render Active Vocab Learning Card with Multi-Color Components & APP_MNEMONIC
+// 6. Select & Render Active Vocab Learning Card with APP_MNEMONIC FIRST then ETYMOLOGY
 function selectVocabWord(index, el) {
   if (el) {
     document.querySelectorAll('.vocab-word-item').forEach(i => i.classList.remove('active'));
@@ -789,11 +789,11 @@ function selectVocabWord(index, el) {
 
     const charArray = Array.from(item.hz);
 
-    // Collect APP_MNEMONICS for characters in this word
+    // Collect APP_MNEMONICS for characters in this word (formatted cleanly)
     let mnemonicsHtml = '';
     charArray.forEach(ch => {
       if (hanziComponentDb[ch] && hanziComponentDb[ch].mnemonic) {
-        mnemonicsHtml += `<p style="margin-bottom: 6px;">${hanziComponentDb[ch].mnemonic}</p>`;
+        mnemonicsHtml += `<p style="margin-bottom: 6px; font-weight: 700; color: #065f46;">• Chữ <strong>'${ch}'</strong>: ${hanziComponentDb[ch].mnemonic}</p>`;
       }
     });
 
@@ -819,33 +819,34 @@ function selectVocabWord(index, el) {
       <!-- HANZI WRITER MULTI-COLOR COMPONENT CONTAINERS -->
       <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem;">
         <div>
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 10px;">
             <span style="font-weight: 800; color: #4338ca; font-size: 0.95rem;">
               🎨 Chiết tự & Tô màu nét bộ thủ cho ${charArray.length} chữ của từ "${item.hz}":
             </span>
-            <button type="button" class="calib-btn" style="font-size: 0.85rem;" onclick="animateActiveHanzi()">
-              <i class="fa-solid fa-pen-nib"></i> Xem Nét Viết Vi Cấp
+            <button type="button" class="btn-daily-action" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); font-size: 0.88rem; padding: 8px 18px; z-index: 10;" onclick="animateActiveHanzi()">
+              <i class="fa-solid fa-pen-nib"></i> 🖊️ Xem Nét Viết Vi Cấp
             </button>
           </div>
           <div id="multi-hanzi-container" class="multi-hanzi-wrapper"></div>
         </div>
 
-        <!-- ETYMOLOGY & APP_MNEMONIC CARDS -->
-        <div class="etym-box">
-          <div class="etym-header">
-            <i class="fa-solid fa-puzzle-piece"></i> 🧩 CẤU TRÚC CHIẾT TỰ (Etymology):
-          </div>
-          <div class="etym-body">
-            ${item.etymology}
-          </div>
-        </div>
-
+        <!-- 1. APP_MNEMONIC CARD FIRST (KHOANH 1 ĐẶT LÊN TRƯỚC KHOANH 2) -->
         <div class="app-mnemonic-box">
           <div class="app-mnemonic-header">
             <i class="fa-solid fa-seedling"></i> 🌱 APP_MNEMONIC (Mẹo Nhớ Chiết Tự Sinh Động):
           </div>
           <div class="app-mnemonic-body">
             ${mnemonicsHtml || `<p>Chữ ${item.hz}: Chiết tự ghi nhớ sinh động được lắp ráp từ các bộ thủ tự nhiên.</p>`}
+          </div>
+        </div>
+
+        <!-- 2. ETYMOLOGY CARD SECOND (KHOANH 2 ĐẶT PHÍA DƯỚI KHOANH 1) -->
+        <div class="etym-box">
+          <div class="etym-header">
+            <i class="fa-solid fa-puzzle-piece"></i> 🧩 CẤU TRÚC CHIẾT TỰ (Etymology):
+          </div>
+          <div class="etym-body">
+            ${item.etymology}
           </div>
         </div>
       </div>
@@ -878,7 +879,6 @@ function renderMultiHanziAnimation(charArray) {
         componentBadgesHtml += `<span class="comp-badge" style="background: ${comp.color};">${comp.name}</span>`;
         if (comp.strokes) {
           comp.strokes.forEach(sIdx => {
-            // sIdx + 1 because nth-child is 1-indexed
             customCss += `
               #${wrapperId} svg path:nth-child(${sIdx + 1}) {
                 fill: ${comp.color} !important;
@@ -895,7 +895,7 @@ function renderMultiHanziAnimation(charArray) {
     wrapper.className = 'hanzi-writer-box-item custom-hanzi-colors';
     wrapper.innerHTML = `
       <style>${customCss}</style>
-      <div id="${boxId}" class="hanzi-writer-box" onclick="animateSingleHanzi(${idx})"></div>
+      <div id="${boxId}" class="hanzi-writer-box" style="cursor: pointer;" title="Bấm vào để xem viết chữ '${char}'" onclick="animateSingleHanzi(${idx})"></div>
       <span class="hw-char-label">Nét chữ '${char}'</span>
       <div class="component-badges-row">
         ${componentBadgesHtml}
@@ -930,14 +930,16 @@ function animateActiveHanzi() {
   if (currentWriters && currentWriters.length > 0) {
     currentWriters.forEach((writer, idx) => {
       setTimeout(() => {
-        writer.animateCharacter();
+        if (writer && typeof writer.animateCharacter === 'function') {
+          writer.animateCharacter();
+        }
       }, idx * 600);
     });
   }
 }
 
 function animateSingleHanzi(idx) {
-  if (currentWriters && currentWriters[idx]) {
+  if (currentWriters && currentWriters[idx] && typeof currentWriters[idx].animateCharacter === 'function') {
     currentWriters[idx].animateCharacter();
   }
 }
