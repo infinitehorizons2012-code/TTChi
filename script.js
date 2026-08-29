@@ -329,7 +329,7 @@ const testBankSets = [
         transferQuizzes: [
           {
             title: "Biến thể 3.1: Học sinh 2 đáp lại lời cảm ơn của Học sinh 1 '谢谢大家！':",
-            options: ["A. 再见！", "B. 不客气！"],
+            options: ["A. 再见！", "B. Không có gì!"],
             correctIdx: 1,
             explain: "Chính xác! Học sinh 1: 谢谢大家！ ⟶ Học sinh 2 đáp lại: 不客气！ (Bú kèqi!)."
           }
@@ -819,13 +819,10 @@ function selectVocabWord(index, el) {
       <!-- HANZI WRITER MULTI-COLOR COMPONENT CONTAINERS -->
       <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem;">
         <div>
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 10px;">
+          <div style="margin-bottom: 8px;">
             <span style="font-weight: 800; color: #4338ca; font-size: 0.95rem;">
               🎨 Chiết tự & Tô màu nét bộ thủ cho ${charArray.length} chữ của từ "${item.hz}":
             </span>
-            <button type="button" class="btn-daily-action" style="background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); font-size: 0.88rem; padding: 8px 18px; position: relative; z-index: 20; cursor: pointer;" onclick="window.animateActiveHanzi()">
-              <i class="fa-solid fa-pen-nib"></i> 🖊️ Xem Nét Viết Vi Cấp
-            </button>
           </div>
           <div id="multi-hanzi-container" class="multi-hanzi-wrapper"></div>
         </div>
