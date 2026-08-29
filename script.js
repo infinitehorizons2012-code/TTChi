@@ -24,148 +24,526 @@ const defaultAccounts = {
 const hanziComponentDb = {
   '你': {
     char: '你',
-    mnemonic: 'Người (亻) đứng đối diện (尔) trò chuyện cùng bạn chính là "Bạn/Cậu" (你).',
+    pinyin: "nǐ",
+    amHanViet: "nhĩ",
+    nghia: "anh, bạn, mày; vậy (dùng để kết thúc câu)",
+    mnemonic: "Hán-Việt \"nễ\": bộ Nhân 亻(người) đứng cạnh 尔 (Nhĩ, gợi âm) — chỉ vào \"người\" trước mặt mà gọi \"bạn, anh\". | Gương Hán-Việt | \"nễ\" ít gặp trong từ Hán-Việt thuần; chữ 尔 (nhĩ) phổ biến hơn, như trong phiên âm tên. | Mở khoá kiến thức | Biết 你 (nễ) là nắm được đại từ \"bạn\" cơ bản nhất khi giao tiếp.",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 人 | Số nét | 7 | nét | 亻 | nhân | biểu nghĩa | người | 尔 | nhĩ | biểu âm | ngươi, mày | 你 (Nễ) = 亻(Nhân, biểu nghĩa: người) + 尔 (Nhĩ, biểu âm); chữ hình thanh. Cũng có thuyết xem là hội ý: người (人) + ngươi (尔).\n\n**Tự nguyên (Nguồn gốc):** Lục thư thông | Theo Wiktionary, 你 là chữ hình thanh ghép 亻(人, người — biểu nghĩa) với 尔 (Nhĩ — biểu âm), dùng làm đại từ ngôi thứ hai \"bạn, anh\". Một thuyết khác xem đây là hội ý: người (人) kết hợp với 尔 (ngươi). Đây là chữ tạo muộn, hiện chỉ thấy ở Lục thư thông, chưa thấy trong giáp cốt/kim văn. | Theo Wiktionary · độ tin cậy trung bình · ảnh từ Hán tự nguyên",
     components: [
-      { name: 'Bộ Nhân (亻)', color: '#0284c7', strokes: [0, 1] },
-      { name: 'Bộ Nhĩ (尔)', color: '#e11d48', strokes: [2, 3, 4, 5, 6] }
+          {
+                "name": "Bộ Nhân (亻)",
+                "color": "#0284c7",
+                "strokes": [
+                      0,
+                      1
+                ]
+          },
+          {
+                "name": "Bộ Nhĩ (尔)",
+                "color": "#e11d48",
+                "strokes": [
+                      2,
+                      3,
+                      4,
+                      5,
+                      6
+                ]
+          }
     ]
   },
   '您': {
     char: '您',
-    mnemonic: 'Đặt người bạn (你) ở trong tim (心) để thể hiện lòng kính trọng tối cao với thầy cô/bề trên ⟶ "Ngài/Thầy/Cô" (您).',
+    pinyin: "nín",
+    amHanViet: "nâm",
+    nghia: "ngài; ông (đại từ nhân xưng, có ý kính trọng)",
+    mnemonic: "Hán-Việt \"nâm\": gọi 'bạn' (你) bằng cả tấm lòng (心) kính trọng — đó là cách thưa 'ngài', 'quý vị'. | Gương Hán-Việt | Chữ 您 ít gặp trong từ Hán-Việt thông dụng; đây là kính ngữ thuần Trung, tương đương 'ngài, quý vị' trong tiếng Việt. | Mở khoá kiến thức | Nắm 您 giúp giao tiếp lịch sự với người lớn tuổi, khách hàng, đối tác — quan trọng trong văn hoá xưng hô Trung Quốc.",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 心 | Số nét | 11 | nét | 你 | nễ | biểu nghĩa | bạn (cách xưng hô thường) | 心 | tâm | biểu nghĩa | trái tim, tấm lòng (cũng gợi âm -m) | 您 = 你 (Nễ: bạn) + 心 (Tâm: tấm lòng); chữ hội ý — gọi 'bạn' bằng cả tấm lòng kính trọng, đó là cách xưng hô lịch sự 您.\n\n**Tự nguyên (Nguồn gốc):** Theo Wiktionary, 您 là hợp thể hội ý của 你 (anh, bạn) và 心 (tấm lòng). Bộ 心 có thể đồng thời gợi âm vần -m của âm Trung cổ (theo Viên et al., 1996). Đây là dạng kính ngữ của 你, tương đương 'ngài, ông, quý vị' trong tiếng Việt. | Theo Wiktionary · độ tin cậy cao",
     components: [
-      { name: 'Chữ 你 (Bạn)', color: '#0284c7', strokes: [0, 1, 2, 3, 4, 5, 6] },
-      { name: 'Bộ Tâm (心)', color: '#e11d48', strokes: [7, 8, 9, 10] }
+          {
+                "name": "Chữ 你 (Bạn)",
+                "color": "#0284c7",
+                "strokes": [
+                      0,
+                      1,
+                      2,
+                      3,
+                      4,
+                      5,
+                      6
+                ]
+          },
+          {
+                "name": "Bộ Tâm (心)",
+                "color": "#e11d48",
+                "strokes": [
+                      7,
+                      8,
+                      9,
+                      10
+                ]
+          }
     ]
   },
   '们': {
     char: '们',
-    mnemonic: 'Nhiều người (亻) đứng tụ họp trước cánh cửa (门) ⟶ Hậu tố số nhiều "Các/Những" (们).',
+    pinyin: "men",
+    amHanViet: "môn",
+    nghia: "bọn, các, chúng",
+    mnemonic: "Hán-Việt \"Môn\" — nhiều người (亻) cùng bước qua một cửa (门); 们 biến \"tôi, anh\" thành \"chúng tôi, các anh\". | Gương Hán-Việt | \"môn\" trong \"môn\" (chỉ số nhiều), đồng âm với \"môn\" trong \"môn học\" | Mở khoá kiến thức | Biết 们 mở khoá \"chúng tôi\" (我们), \"các bạn\" (你们), \"họ\" (他们).",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 人 | Số nét | 5 | nét | 亻 | nhân | biểu nghĩa | người | 门 | môn | biểu âm | cửa | 们 = 亻(Nhân, biểu nghĩa: người) + 门 (Môn, biểu âm); chữ hình thanh giản thể của 們. Bộ 亻chỉ nghĩa liên quan đến người, 门 mượn âm.\n\n**Tự nguyên (Nguồn gốc):** Chữ 们 là dạng giản thể của 們, lấy 门 thay cho 門 làm phần âm. Đây là chữ hình thanh ghép bộ 亻(người) chỉ nghĩa và 门 chỉ âm; dùng làm hậu tố tạo số nhiều cho đại từ và danh từ chỉ người. | Theo Wiktionary · độ tin cậy trung bình",
     components: [
-      { name: 'Bộ Nhân (亻)', color: '#0284c7', strokes: [0, 1] },
-      { name: 'Chữ 门 (Door)', color: '#7e22ce', strokes: [2, 3, 4] }
+          {
+                "name": "Bộ Nhân (亻)",
+                "color": "#0284c7",
+                "strokes": [
+                      0,
+                      1
+                ]
+          },
+          {
+                "name": "Chữ 门 (Door)",
+                "color": "#7e22ce",
+                "strokes": [
+                      2,
+                      3,
+                      4
+                ]
+          }
     ]
   },
   '老': {
     char: '老',
-    mnemonic: 'Hình ảnh người cao tuổi chống gậy tay cầm thìa ăn ⟶ "Già/Lão làng/Thầy" (老).',
+    pinyin: "lǎo",
+    amHanViet: "lão",
+    nghia: "già, nhiều tuổi",
+    mnemonic: "Hán-Việt 'lão' là già: hình ông lão tóc dài (耂) chống cây gậy (匕) — dáng người già lụ khụ. | Gương Hán-Việt | 'lão' trong 'lão hóa', 'lão làng', 'kính lão đắc thọ'. | Mở khoá kiến thức | Biết 老 mở khóa 'lão hóa', 'người già' và cách gọi 老师 (thầy giáo), 老板 (ông chủ).",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 老 | Số nét | 6 | nét | 耂 | lão | biểu nghĩa | người già tóc dài | 匕 | chuỷ | biểu nghĩa | cây gậy chống | 老 = 耂 (phần trên, hình người tóc dài) + 匕 (phần dưới, cây gậy chống); chữ hội ý vẽ một ông già tóc dài chống gậy. Không phải hình thanh.\n\n**Tự nguyên (Nguồn gốc):** Kim văn | Bạch thư | Đại triện | Tiểu triện | Lệ thư | Theo Wiktionary, 老 là chữ hội ý: kết hợp 人 (người) + 毛 (tóc) + 匕 (cây gậy/can) — hình một người tóc dài (người già) đang chống gậy. So sánh phần trên với 孝. Chữ này đồng nguyên với 考, là ví dụ thường được dẫn cho phép 'chuyển chú' (轉注). | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Bộ Lão (耂)', color: '#d97706', strokes: [0, 1, 2, 3] },
-      { name: 'Bộ Chủy (匕)', color: '#059669', strokes: [4, 5] }
+          {
+                "name": "Bộ Lão (耂)",
+                "color": "#d97706",
+                "strokes": [
+                      0,
+                      1,
+                      2,
+                      3
+                ]
+          },
+          {
+                "name": "Bộ Chủy (匕)",
+                "color": "#059669",
+                "strokes": [
+                      4,
+                      5
+                ]
+          }
     ]
   },
   '师': {
     char: '师',
-    mnemonic: 'Người dẫn dắt đội quân (𠂤) cầm khăn gấm (巾) truyền dạy trí thức ⟶ "Thầy giáo/Bậc thầy" (师).',
+    pinyin: "shī",
+    amHanViet: "sư",
+    nghia: "nhiều, đông đúc; sư (gồm 2500 lính); thầy giáo; sư sãi",
+    mnemonic: "Hán-Việt \"sư\": gốc chỉ một \"sư\" gồm hàng nghìn quân tụ lại — người dẫn dắt đám đông ấy thành \"thầy, bậc thầy\". | Gương Hán-Việt | \"sư\" trong \"giáo sư\", \"sư phụ\", \"luật sư\". | Mở khoá kiến thức | Biết 师 (sư) mở khoá: giáo sư, sư phụ, luật sư, kỹ sư.",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 巾 | Số nét | 6 | nét | 帀 | táp | biểu nghĩa | vây quanh | 师 (Sư) là giản thể của 師 (bộ 𠂤 rút thành phần trái). Nghĩa gốc liên hệ với \"đám đông, đạo quân\" (sư = 2500 lính), về sau mở rộng thành \"thầy, bậc thầy\".\n\n**Tự nguyên (Nguồn gốc):** Kim văn | Tiểu triện | Theo Wiktionary, 师 là dạng giản thể của 師 (thành phần 𠂤 được rút gọn), so sánh với 帅 từ 帥. Chữ 師 vốn mang nghĩa \"đạo quân, đám đông\" (một sư gồm khoảng 2500 lính), về sau mở rộng sang nghĩa \"thầy giáo, bậc thầy\". | Theo Wiktionary · độ tin cậy trung bình · ảnh từ Wikimedia",
     components: [
-      { name: 'Bộ Đôi (𠂤)', color: '#7e22ce', strokes: [0, 1, 2] },
-      { name: 'Bộ Cân (巾)', color: '#0284c7', strokes: [3, 4, 5] }
+          {
+                "name": "Bộ Đôi (𠂤)",
+                "color": "#7e22ce",
+                "strokes": [
+                      0,
+                      1,
+                      2
+                ]
+          },
+          {
+                "name": "Bộ Cân (巾)",
+                "color": "#0284c7",
+                "strokes": [
+                      3,
+                      4,
+                      5
+                ]
+          }
     ]
   },
   '王': {
     char: '王',
-    mnemonic: '3 nét ngang chỉ Thiên - Địa - Nhân (Trời - Đất - Người); Nét dọc nối cả 3 thành vị Vua làm chủ ⟶ "Họ Vương/Vua" (王).',
+    pinyin: "wáng",
+    amHanViet: "vương, vượng",
+    nghia: "vua",
+    mnemonic: "Hán-Việt 'Vương': hình chiếc rìu lễ ba nét ngang vững chãi — kẻ cầm rìu lễ là 'vương', là vua. | Gương Hán-Việt | 'Vương' trong quốc vương, đế vương, vương quốc, vương phi, Diêm Vương, vương giả. | Mở khoá kiến thức | Biết 王 mở khoá 国王 (quốc vương), 王子 (vương tử, hoàng tử), 王后 (vương hậu), 王国 (vương quốc), 阎王 (Diêm Vương), 王牌 (lá bài chủ).",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 玉 | Số nét | 4 | nét | 王 | vương | tượng hình | vua, hình chiếc rìu lễ | 王 là chữ tượng hình độc lập, vẽ hình một chiếc rìu lễ (có thể bằng ngọc) — biểu tượng quyền lực của vua. Đây cũng là một bộ thủ; không phân tích thành các bộ phận con.\n\n**Tự nguyên (Nguồn gốc):** Giáp cốt văn | Kim văn | Đại triện | Tiểu triện | Theo Wiktionary, 王 nguyên là hình vẽ một chiếc rìu lễ (có thuyết là bằng ngọc) đặt cạnh ngai vàng, dùng trong nghi lễ tế tự ở Trung Quốc cổ. Cách giải thích truyền thống — ba nét ngang là Trời, Người, Đất; nét sổ là vua nối ba cõi — chỉ là cách 'dân gian giải tự' về sau, không phù hợp với hình giáp cốt. 王 không liên quan tới 玉 (ngọc) hay 主 (chủ). | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Tam Tài (Thiên-Địa-Nhân)', color: '#d97706', strokes: [0, 1, 2] },
-      { name: 'Trục Trục Trụ', color: '#dc2626', strokes: [3] }
+          {
+                "name": "Tam Tài (Thiên-Địa-Nhân)",
+                "color": "#d97706",
+                "strokes": [
+                      0,
+                      1,
+                      2
+                ]
+          },
+          {
+                "name": "Trục Trụ (Nét sổ)",
+                "color": "#dc2626",
+                "strokes": [
+                      3
+                ]
+          }
     ]
   },
   '学': {
     char: '学',
-    mnemonic: 'Đứa trẻ (子) tiếp thu các nốt tri thức (𛅦) dưới mái trường (宀) ⟶ "Học tập/Học sinh" (学).',
+    pinyin: "xué",
+    amHanViet: "học",
+    nghia: "học hành",
+    mnemonic: "Hán-Việt 'học' là học hành: hình dung đôi bàn tay 𦥑 dìu đứa trẻ 子 dưới mái 冖 — chính là cảnh học tập. | Gương Hán-Việt | 'học' trong 'học sinh', 'học tập', 'đại học'. | Mở khoá kiến thức | Biết 学 mở khóa 'học sinh', 'đại học', 'khoa học', 'văn học'.",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 子 | Số nét | 8 | nét | 𭕄 | biểu nghĩa | hai bàn tay ôm lấy 爻 | 冖 | mịch | biểu nghĩa | mái che (vốn là 六 bị biến) | 子 | tử | biểu nghĩa | đứa trẻ đang học | 学 (phồn thể 學) là chữ hình thanh phức tạp: gốc gồm 爻 (phần âm) với hai bàn tay 𦥑 ôm quanh, sau thêm 子 (đứa trẻ) làm biểu nghĩa. Phần 六 bị biến thành 冖, các bàn tay dính liền với 冖. Không nên hiểu đơn giản là 'tay + trẻ + mái'.\n\n**Tự nguyên (Nguồn gốc):** Giáp cốt văn | Kim văn | Bạch thư | Đại triện | Theo Wiktionary, 學 có thể là chữ hình thanh: 爻 và 六 cùng góp phần âm. Về sau hai bàn tay 𦥑 được thêm vào ôm lấy 爻, rồi thêm 子 (đứa trẻ) để biểu nghĩa 'học'. Ở tự dạng hiện đại, 六 đã biến thành 冖 (mái che) và hai bàn tay 𦥑 quanh 爻 dính liền với 冖. Hình tượng: đứa trẻ dưới sự dìu dắt của bàn tay người lớn — việc học. | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Hạt Tri Thức (𛅦)', color: '#0284c7', strokes: [0, 1, 2] },
-      { name: 'Mái Trường (宀)', color: '#d97706', strokes: [3, 4] },
-      { name: 'Đứa Trẻ (子)', color: '#059669', strokes: [5, 6, 7] }
+          {
+                "name": "Hạt Tri Thức (𛅦)",
+                "color": "#0284c7",
+                "strokes": [
+                      0,
+                      1,
+                      2
+                ]
+          },
+          {
+                "name": "Mái Trường (宀)",
+                "color": "#d97706",
+                "strokes": [
+                      3,
+                      4
+                ]
+          },
+          {
+                "name": "Đứa Trẻ (子)",
+                "color": "#059669",
+                "strokes": [
+                      5,
+                      6,
+                      7
+                ]
+          }
     ]
   },
   '生': {
     char: '生',
-    mnemonic: 'Mầm cây xanh chồi nhô lên phát triển từ lòng đất (土) ⟶ "Sinh sống/Sinh ra/Học sinh" (生).',
+    pinyin: "shēng",
+    amHanViet: "sinh, sanh",
+    nghia: "sinh đẻ; sống",
+    mnemonic: "Hán-Việt \"sinh\": Sinh (生) là mầm non đội đất mọc lên: cái gì nảy mầm, mọc ra thì 'sinh', 'sống'. | Gương Hán-Việt | 'sinh' trong 'học sinh', 'sinh nhật', 'sinh sống'. | Mở khoá kiến thức | Biết 生 (sinh) mở khoá các từ học sinh, sinh nhật, sinh hoạt.",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 生 | Số nét | 5 | nét | 屮 | triệt | biểu nghĩa | mầm cây | 一 | nhất | biểu nghĩa | mặt đất | 生 là chữ hội ý (ic): mầm cây 屮 nhú lên từ mặt đất 一, biểu thị sự 'sinh ra, nảy mầm, sống'.\n\n**Tự nguyên (Nguồn gốc):** Đại triện | Tiểu triện | Theo Wiktionary, 生 là chữ hội ý: mầm cây (屮) đâm lên từ mặt đất (一), nghĩa là 'nảy mầm, sinh trưởng'. Một dạng cổ bảo lưu là 𤯓. | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Mầm Chồi xanh', color: '#10b981', strokes: [0, 1, 2] },
-      { name: 'Bộ Thổ (土)', color: '#b45309', strokes: [3, 4] }
+          {
+                "name": "Mầm Chồi xanh",
+                "color": "#10b981",
+                "strokes": [
+                      0,
+                      1,
+                      2
+                ]
+          },
+          {
+                "name": "Bộ Thổ (土)",
+                "color": "#b45309",
+                "strokes": [
+                      3,
+                      4
+                ]
+          }
     ]
   },
   '同': {
     char: '同',
-    mnemonic: 'Mọi người cùng sống chung dưới khung mái nhà (冂) và phát ra chung lời nói (口) ⟶ "Cùng nhau/Đồng lòng" (同).',
+    pinyin: "tóng",
+    amHanViet: "đồng",
+    nghia: "cùng nhau",
+    mnemonic: "Hán-Việt \"Đồng\" — một cái ống (𠔼) khép kín đều nhau, mọi phía như một; 同 nghĩa là \"cùng, giống nhau\". | Gương Hán-Việt | \"đồng\" trong \"đồng thời\" (同时), \"cộng đồng\" | Mở khoá kiến thức | Biết 同 mở khoá \"đồng thời\" (同时), \"đồng chí\" (同志), \"chung\" (共同).",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 口 | Số nét | 6 | nét | 𠔼 | tượng hình | khung ống | 口 | khẩu | thành phần thêm | miệng, lỗ | 同 là chữ tượng hình, vẽ một cái ống — chữ gốc của 筒 (ống); bộ 口 được thêm sau để đánh dấu cái lỗ, tránh nhầm với 凡. Không phải chữ hình thanh.\n\n**Tự nguyên (Nguồn gốc):** Giáp cốt văn | Kim văn | Đại triện | Tiểu triện | Theo Wiktionary, 同 là chữ tượng hình vẽ một cái ống — đây là hình thái gốc của 筒 (ống). Bộ 口 được thêm vào sau để đánh dấu phần miệng ống và tránh nhầm với 凡. Trong chữ cổ, 同 và 凡 phân biệt nhau không phải nhờ có 口 mà nhờ tính đối xứng: 同 cân đối, còn 凡 có nét phải hất ra ngoài. | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Khung Nhà (冂)', color: '#0284c7', strokes: [0, 1] },
-      { name: 'Ngang & Khẩu (口)', color: '#7e22ce', strokes: [2, 3, 4, 5] }
+          {
+                "name": "Khung Nhà (冂)",
+                "color": "#0284c7",
+                "strokes": [
+                      0,
+                      1
+                ]
+          },
+          {
+                "name": "Ngang & Khẩu (口)",
+                "color": "#7e22ce",
+                "strokes": [
+                      2,
+                      3,
+                      4,
+                      5
+                ]
+          }
     ]
   },
   '大': {
     char: '大',
-    mnemonic: 'Hình ảnh một con người (人) dang rộng hai tay hai chân hết cỡ ⟶ "To lớn/Đại" (大).',
+    pinyin: "dà",
+    amHanViet: "đại, thái",
+    nghia: "to, lớn",
+    mnemonic: "Hán-Việt \"Đại\" — một người (人) dang rộng tay chân choán cả khoảng không; cái gì choán nhiều thì \"to, lớn\". | Gương Hán-Việt | \"đại\" trong \"vĩ đại\" (伟大), \"đại học\" | Mở khoá kiến thức | Biết 大 mở khoá \"vĩ đại\" (伟大), \"khuếch đại\" (扩大), \"khổng lồ\" (巨大).",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 大 | Số nét | 3 | nét | 人 | nhân | tượng hình | người dang tay | 大 là chữ tượng hình, vẽ một người nhìn thẳng phía trước; không phải chữ hội ý hay hình thanh. Ban đầu là chữ gốc của 夫 (người đàn ông), sau mượn âm chỉ nghĩa \"to lớn\".\n\n**Tự nguyên (Nguồn gốc):** Giáp cốt văn | Kim văn | Tiểu triện | Theo Wiktionary, 大 là chữ tượng hình vẽ một người nhìn chính diện. Đây là hình thái gốc của 夫 (người đàn ông), về sau được mượn âm để chỉ \"to, lớn\". Thường được giải là người dang rộng hai tay, song chữ cổ không cho thấy sự dang tay đó. So sánh với 立 (người đứng) và 文 (người dang tay có hình xăm trên ngực). | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Nét Ngang (Giới hạn)', color: '#0284c7', strokes: [0] },
-      { name: 'Người dang tay (人)', color: '#e11d48', strokes: [1, 2] }
+          {
+                "name": "Nét Ngang (Giới hạn)",
+                "color": "#0284c7",
+                "strokes": [
+                      0
+                ]
+          },
+          {
+                "name": "Người dang tay (人)",
+                "color": "#e11d48",
+                "strokes": [
+                      1,
+                      2
+                ]
+          }
     ]
   },
   '家': {
     char: '家',
-    mnemonic: 'Dưới mái nhà (宀) che chở có đàn gia súc gia tài (豕) sung túc ⟶ "Mái nhà/Gia đình" (家).',
+    pinyin: "jiā",
+    amHanViet: "gia",
+    nghia: "nhà; tiếng vợ gọi chồng",
+    mnemonic: "Hán-Việt 'gia' là nhà: dưới mái nhà 宀 có con vật nuôi 豕 — hình ảnh quen thuộc của một mái 'gia đình'. | Gương Hán-Việt | 'gia' trong 'gia đình', 'quốc gia', 'chuyên gia'. | Mở khoá kiến thức | Biết 家 mở khóa 'gia đình', 'quốc gia', 'chuyên gia' và bộ 宀 (mái nhà).",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 宀 | Số nét | 10 | nét | 宀 | miên | biểu nghĩa | mái nhà | 豕 | thỉ | biểu âm | con lợn (vốn là phần âm bị biến) | 家 = 宀 (Miên, mái nhà) biểu nghĩa + 豕 (Thỉ, con lợn) ở dưới; chữ hình thanh. Lưu ý: phần dưới gốc là 𢑓 (biểu âm) nhưng đã biến dạng thành 豕, nên cách giải 'mái nhà + con lợn' là dân gian.\n\n**Tự nguyên (Nguồn gốc):** Kim văn | Đại triện | Tiểu triện | Theo Wiktionary, trong giáp cốt văn 家 là chữ hình thanh: 宀 (mái nhà) biểu nghĩa, 𢑓 biểu âm. Về sau phần biểu âm bị viết hỏng (corrupt) thành 豕 (con lợn), khiến Thuyết Văn Giải Tự giải nhầm thành 'mái nhà + lợn'. Mọi cách giải dựa trên 豕 đều là dân gian vì đã bỏ sót thành phần gốc 𢑓. | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Mái Nhà (宀)', color: '#d97706', strokes: [0, 1, 2] },
-      { name: 'Bộ Thỉ - Gia súc (豕)', color: '#059669', strokes: [3, 4, 5, 6, 7, 8, 9] }
+          {
+                "name": "Mái Nhà (宀)",
+                "color": "#d97706",
+                "strokes": [
+                      0,
+                      1,
+                      2
+                ]
+          },
+          {
+                "name": "Bộ Thỉ - Gia súc (豕)",
+                "color": "#059669",
+                "strokes": [
+                      3,
+                      4,
+                      5,
+                      6,
+                      7,
+                      8,
+                      9
+                ]
+          }
     ]
   },
   '好': {
     char: '好',
-    mnemonic: 'Người mẹ (女) bế đứa con nhỏ (子) trên tay là hình ảnh ấm áp tốt đẹp nhất ⟶ "Tốt/Đẹp/Hay/Khỏe" (好).',
+    pinyin: "hǎo",
+    amHanViet: "hảo, hiếu",
+    nghia: "tốt, hay, đẹp; sung sướng; được",
+    mnemonic: "Hán-Việt \"Hảo\" — người mẹ (女) ôm đứa con (子) bên mình, cảnh đẹp đẽ ấy chính là \"tốt, hay\". | Gương Hán-Việt | \"hảo\" trong \"hảo hán\", \"hữu hảo\" (友好); biến âm \"hiếu\" trong \"hiếu kỳ\" (好奇) | Mở khoá kiến thức | Biết 好 mở khoá \"hữu hảo\" (友好), \"tốt nhất\" (最好), \"hiếu kỳ\" (好奇).",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 女 | Số nét | 6 | nét | 女 | nữ | biểu nghĩa | người nữ, người mẹ | 子 | tử | biểu nghĩa | đứa con | 好 = 女 (Nữ) + 子 (Tử); chữ hội ý: ghép \"người nữ\" và \"đứa con\" để gợi điều \"tốt đẹp\".\n\n**Tự nguyên (Nguồn gốc):** Giáp cốt văn | Kim văn | Theo Wiktionary, 好 là chữ hội ý ghép 女 (người nữ) và 子 (đứa con). Cách giải được chấp nhận rộng rãi là người phụ nữ có con là điều tốt; cũng có thuyết cho rằng nó vẽ tình cảm gắn bó giữa mẹ và con, từ đó sinh nghĩa \"tốt, hay\". Các giáp cốt văn, kim văn có 子 viết nhỏ ủng hộ cách hiểu này. | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Bộ Nữ (女)', color: '#ec4899', strokes: [0, 1, 2] },
-      { name: 'Bộ Tử (子)', color: '#0284c7', strokes: [3, 4, 5] }
+          {
+                "name": "Bộ Nữ (女)",
+                "color": "#ec4899",
+                "strokes": [
+                      0,
+                      1,
+                      2
+                ]
+          },
+          {
+                "name": "Bộ Tử (子)",
+                "color": "#0284c7",
+                "strokes": [
+                      3,
+                      4,
+                      5
+                ]
+          }
     ]
   },
   '谢': {
     char: '谢',
-    mnemonic: 'Dùng lời nói (讠) cúi gập thân thể (身) một cách chừng mực lễ độ (寸) ⟶ "Cảm ơn/Tạ ơn" (谢).',
+    pinyin: "xiè",
+    amHanViet: "tạ",
+    nghia: "cảm tạ, cảm ơn; nhận lỗi, xin lỗi, tạ lỗi; rụng, tàn, rã",
+    mnemonic: "Hán-Việt \"tạ\": Tạ (谢) là dùng lời nói (讠) để bày tỏ: 'cảm tạ', 'tạ ơn', cũng là 'tạ lỗi'. | Gương Hán-Việt | 'tạ' trong 'cảm tạ', 'đa tạ', 'tạ lỗi'. | Mở khoá kiến thức | Biết 谢 (tạ) mở khoá các từ cảm tạ, đa tạ, tạ ơn.",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 言 | Số nét | 12 | nét | 讠 | ngôn | biểu nghĩa | lời nói (言) | 射 | xạ | biểu âm | bắn (gợi âm) | 谢 là dạng giản thể của 謝, chữ hình thanh: bộ 言 (viết 讠, biểu nghĩa: lời nói) + 射 (Xạ, biểu âm). Dùng lời để 'cảm tạ, từ tạ'.\n\n**Tự nguyên (Nguồn gốc):** Giáp cốt văn | Kim văn | Lục thư thông | Theo Wiktionary, 谢 là dạng giản thể của 謝 (giản hoá 訁→讠). Chữ phồn thể 謝 là hình thanh: 言 (讠, lời nói) làm nghĩa phù, 射 (xạ) làm thanh phù; nghĩa 'cảm tạ, từ chối, tàn rụng'. | Theo Wiktionary · độ tin cậy cao · ảnh từ Hán tự nguyên",
     components: [
-      { name: 'Bộ Ngôn (讠)', color: '#0284c7', strokes: [0, 1] },
-      { name: 'Bộ Thân (身)', color: '#7e22ce', strokes: [2, 3, 4, 5, 6, 7, 8] },
-      { name: 'Bộ Thốn (寸)', color: '#dc2626', strokes: [9, 10, 11] }
+          {
+                "name": "Bộ Ngôn (讠)",
+                "color": "#0284c7",
+                "strokes": [
+                      0,
+                      1
+                ]
+          },
+          {
+                "name": "Bộ Thân (身)",
+                "color": "#7e22ce",
+                "strokes": [
+                      2,
+                      3,
+                      4,
+                      5,
+                      6,
+                      7,
+                      8
+                ]
+          },
+          {
+                "name": "Bộ Thốn (寸)",
+                "color": "#dc2626",
+                "strokes": [
+                      9,
+                      10,
+                      11
+                ]
+          }
     ]
   },
   '不': {
     char: '不',
-    mnemonic: 'Con chim bay vút lên bầu trời không chịu hạ cánh xuống đất (一) ⟶ "Không/Bất" (不).',
+    pinyin: "bù",
+    amHanViet: "bất",
+    nghia: "không, chẳng",
+    mnemonic: "Hán-Việt \"bất\": gốc là đài hoa, sau mượn dùng làm chữ \"không\" — nay 不 là tiếng phủ định thông dụng nhất, đứng trước động từ là gạt phăng đi. | Gương Hán-Việt | \"bất\" trong \"bất công\", \"bất bình\", \"bất ngờ\". | Mở khoá kiến thức | Biết 不 (bất) mở khoá vô số từ phủ định: bất công, bất an, bất tiện.",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 一 | Số nét | 4 | nét | 一 | nhất | hình thể | nét ngang | 不 (Bất) gốc là hình vẽ đài hoa (calyx). Đây là chữ tượng hình, không phải hình thanh hay hội ý; nét trên cùng và các nét dưới mô phỏng cuống và đài hoa.\n\n**Tự nguyên (Nguồn gốc):** Kim văn | Bạch thư | Tiểu triện | Theo Wiktionary, 不 ban đầu là hình vẽ đài hoa của một bông hoa. Về sau 不 được ghép với hình cái miệng (口) tạo thành 否, mang nghĩa \"không, phủ định\"; nghĩa phủ định này lan ngược về chính chữ 不, khiến 不 thành đồng nghĩa với 否. Nghĩa gốc \"đài hoa\" sau được viết bằng chữ mới 柎. Karlgren và Wieger lại giải thích theo Thuyết Văn: một con chim bay về phía trời (一), bầu trời là giới hạn của chim nên sinh ra ý phủ định. | Theo Wiktionary · độ tin cậy trung bình · ảnh từ Wikimedia",
     components: [
-      { name: 'Nét Ngang (Mặt đất)', color: '#0284c7', strokes: [0] },
-      { name: 'Cánh chim bay', color: '#dc2626', strokes: [1, 2, 3] }
+          {
+                "name": "Nét Ngang (Mặt đất)",
+                "color": "#0284c7",
+                "strokes": [
+                      0
+                ]
+          },
+          {
+                "name": "Cánh chim bay",
+                "color": "#dc2626",
+                "strokes": [
+                      1,
+                      2,
+                      3
+                ]
+          }
     ]
   },
   '客': {
     char: '客',
-    mnemonic: 'Người phương xa (各) ghé thăm bước vào dưới mái nhà (宀) ⟶ "Khách sáo/Khách khứa" (客).',
+    pinyin: "kè",
+    amHanViet: "khách",
+    nghia: "khách, người ngoài",
+    mnemonic: "Hán-Việt \"khách\": dưới mái nhà 宀 đón người 'các' (各) phương xa đến - đó chính là 'khách'. | Gương Hán-Việt | 'khách' trong 'khách hàng', 'hành khách', 'tân khách'. | Mở khoá kiến thức | Biết 客 mở khóa các từ khách hàng, hành khách, tiếp khách, du khách.",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 宀 | Số nét | 9 | nét | 宀 | miên | biểu nghĩa | mái nhà | 各 | các | biểu âm | các, biểu âm | 客 = 宀 (Miên, mái nhà) + 各 (Các, biểu âm); chữ hình thanh. Người 'các' (đến từ nơi khác) đứng dưới mái nhà - đó là khách.\n\n**Tự nguyên (Nguồn gốc):** Kim văn | Bạch thư | Đại triện | Theo Wiktionary, 客 là chữ hình thanh: 宀 (mái nhà) biểu nghĩa và 各 biểu âm. Chữ 各 vốn vẽ một bàn chân đi vào nơi nào đó, nên cũng gợi ý 'người từ nơi khác đến'. Tổ hợp 宀 + 各 nên nghĩa 'người khách dưới mái nhà ta', từ đó phái sinh 'khách hàng, hành khách'. | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Mái Nhà (宀)', color: '#d97706', strokes: [0, 1, 2] },
-      { name: 'Chữ Các (各)', color: '#0284c7', strokes: [3, 4, 5, 6, 7, 8] }
+          {
+                "name": "Mái Nhà (宀)",
+                "color": "#d97706",
+                "strokes": [
+                      0,
+                      1,
+                      2
+                ]
+          },
+          {
+                "name": "Chữ Các (各)",
+                "color": "#0284c7",
+                "strokes": [
+                      3,
+                      4,
+                      5,
+                      6,
+                      7,
+                      8
+                ]
+          }
     ]
   },
   '气': {
     char: '气',
-    mnemonic: 'Luồng mây trời hơi nước bốc lên uốn lượn nhẹ nhàng ⟶ "Khí chất/Không khí" (气).',
+    pinyin: "qì",
+    amHanViet: "khí",
+    nghia: "khí, hơi",
+    mnemonic: "Hán-Việt \"khí\": ba nét uốn như làn mây/hơi bay lượn trên trời — 气 là \"khí, hơi\". | Gương Hán-Việt | \"khí\" trong \"không khí\", \"khí hậu\", \"dũng khí\". | Mở khoá kiến thức | Biết 气 (khí) mở khoá: không khí, khí hậu, dũng khí, tính khí.",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 气 | Số nét | 4 | nét | 𠂉 | hình thể | nét trên cùng | 气 (Khí) là chữ tượng hình: vẽ những đám mây trôi trên bầu trời. Không phải hình thanh hay hội ý.\n\n**Tự nguyên (Nguồn gốc):** Giáp cốt văn | Kim văn | Bạch thư | Đại triện | Tiểu triện | Theo Wiktionary, 气 là chữ tượng hình vẽ mây trôi trên bầu trời. Trong giáp cốt văn nó được viết bằng ba nét ngang, biểu thị \"cảm giác\" của bầu trời; để khỏi nhầm với số 三, người ta thêm một nét nhỏ kéo từ trên xuống. Biến thể của nó là 乞 (về sau dùng để chỉ nghĩa \"xin, cầu xin\"). Không liên quan về nghĩa với 氣 và 餼. | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Mây trời bay', color: '#0284c7', strokes: [0, 1, 2] },
-      { name: 'Luồng Khí lượn', color: '#7e22ce', strokes: [3] }
+          {
+                "name": "Mây trời bay",
+                "color": "#0284c7",
+                "strokes": [
+                      0,
+                      1,
+                      2
+                ]
+          },
+          {
+                "name": "Luồng Khí lượn",
+                "color": "#7e22ce",
+                "strokes": [
+                      3
+                ]
+          }
     ]
   },
   '再': {
     char: '再',
-    mnemonic: 'Mầm cây mọc trên giàn lại nảy mầm kết trái lần nữa ⟶ "Lặp lại/Một lần nữa" (再).',
+    pinyin: "zài",
+    amHanViet: "tái",
+    nghia: "lại, lần nữa; làm lại",
+    mnemonic: "Hán-Việt 'tái' là lại/lần nữa: nhớ 'tái' trong 'tái diễn' — làm 'lại' thêm một lần nữa. | Gương Hán-Việt | 'tái' trong 'tái diễn', 'tái sinh', 'tái hiện'. | Mở khoá kiến thức | Biết 再 mở khóa 'tái sinh', 'tái diễn', 'tái hiện' và lời chào 再见 (tạm biệt).",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 冂 | Số nét | 6 | nét | 一 | nhất | biểu nghĩa | một | 冓 | biểu nghĩa | phần dưới (hình giỏ/cá, đã giản) | 再 thường được phân tích là hội ý: 一 (một) ghép với phần dưới (vốn liên quan tới 冓, hình giỏ đan hoặc đôi cá), diễn ý 'làm lại một lần nữa'. Nguồn gốc còn nhiều giả thuyết nên cách phân tích này có hedge.\n\n**Tự nguyên (Nguồn gốc):** Giáp cốt văn | Kim văn | Đại triện | Theo Wiktionary, nguồn gốc 再 chưa thống nhất, có nhiều giả thuyết: là nửa dưới của 冓 (hình con cá), hoặc hình công cụ bện dây thừng, hoặc hội ý 魚+二 'bắt hai con cá cùng lúc', hoặc 一+冓 'cái giỏ đan lặp đi lặp lại'. Hầu hết các thuyết đều quy về ý 'lặp lại điều đã làm một lần', tức nghĩa 'lại, lần nữa'. | Theo Wiktionary · độ tin cậy trung bình · ảnh từ Wikimedia",
     components: [
-      { name: 'Khung Giàn hoa', color: '#d97706', strokes: [0, 1, 2, 3] },
-      { name: 'Bộ Thổ (土)', color: '#059669', strokes: [4, 5] }
+          {
+                "name": "Khung Giàn hoa",
+                "color": "#d97706",
+                "strokes": [
+                      0,
+                      1,
+                      2,
+                      3
+                ]
+          },
+          {
+                "name": "Bộ Thổ (土)",
+                "color": "#059669",
+                "strokes": [
+                      4,
+                      5
+                ]
+          }
     ]
   },
   '见': {
     char: '见',
-    mnemonic: 'Đôi chân (儿) bước đi tới gặp mặt và đôi mắt (目) nhìn thấy ⟶ "Gặp mặt/Thấy" (见).',
+    pinyin: "jiàn",
+    amHanViet: "kiến",
+    nghia: "gặp, thấy",
+    mnemonic: "Hán-Việt 'kiến' là thấy/gặp: nhớ con mắt 目 đặt trên đôi chân người 儿 — người đi tới và 'nhìn thấy'. | Gương Hán-Việt | 'kiến' trong 'ý kiến', 'kiến thức', 'tái kiến' (再见). | Mở khoá kiến thức | Biết 见 mở khóa 'ý kiến', 'tái kiến' (tạm biệt) và bộ 见 trong 观, 视, 觉.",
+    etymology: "**Cấu trúc bộ thủ:** Bộ thủ | 見 | Số nét | 4 | nét | 见 | kiến | hội ý | con mắt 目 trên thân người 儿 đang nhìn | 见 (phồn thể 見) là chữ hội ý: phía trên là 目 (con mắt), phía dưới là 儿 (người), gộp lại chỉ 'người dùng mắt để nhìn, thấy'. Bản giản thể từ lối thảo thư.\n\n**Tự nguyên (Nguồn gốc):** Kim văn | Đại triện | Tiểu triện | Theo Wiktionary, 见 là dạng giản thể của 見, hình thành từ lối thảo thư. Chữ 見 là hội ý: 目 (con mắt) đặt trên 儿 (người), diễn ý một người đang dùng mắt nhìn — nghĩa 'thấy, gặp'. Đây là một chữ hội ý cổ điển và là bộ thủ của nhiều chữ liên quan tới việc nhìn. | Theo Wiktionary · độ tin cậy cao · ảnh từ Wikimedia",
     components: [
-      { name: 'Bộ Mục (目)', color: '#0284c7', strokes: [0, 1] },
-      { name: 'Bộ Nhân (儿)', color: '#e11d48', strokes: [2, 3] }
+          {
+                "name": "Bộ Mục (目)",
+                "color": "#0284c7",
+                "strokes": [
+                      0,
+                      1
+                ]
+          },
+          {
+                "name": "Bộ Nhân (儿)",
+                "color": "#e11d48",
+                "strokes": [
+                      2,
+                      3
+                ]
+          }
     ]
   }
 };
@@ -789,11 +1167,28 @@ function selectVocabWord(index, el) {
 
     const charArray = Array.from(item.hz);
 
-    // Collect APP_MNEMONICS for characters in this word (formatted cleanly)
+    // Collect APP_MNEMONICS & ETYMOLOGIES for all characters in this word from da-chiet-tu database
     let mnemonicsHtml = '';
+    let etymologyHtml = '';
+
     charArray.forEach(ch => {
-      if (hanziComponentDb[ch] && hanziComponentDb[ch].mnemonic) {
-        mnemonicsHtml += `<p style="margin-bottom: 6px; font-weight: 700; color: #065f46;">• Chữ <strong>'${ch}'</strong>: ${hanziComponentDb[ch].mnemonic}</p>`;
+      const dbItem = hanziComponentDb[ch];
+      if (dbItem) {
+        if (dbItem.mnemonic) {
+          mnemonicsHtml += `<div style="margin-bottom: 10px; border-left: 3px solid #10b981; padding-left: 10px;">
+            <p style="font-weight: 800; color: #047857; font-size: 0.98rem; margin-bottom: 2px;">• Chữ <strong>'${ch}'</strong> (${dbItem.amHanViet || ''} / ${dbItem.pinyin || ''}):</p>
+            <p style="color: #065f46; font-size: 0.94rem; line-height: 1.5;">${dbItem.mnemonic.replace(/\n/g, '<br>')}</p>
+          </div>`;
+        }
+        if (dbItem.etymology) {
+          const formattedEtym = dbItem.etymology
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\n/g, '<br>');
+          etymologyHtml += `<div style="margin-bottom: 12px; border-left: 3px solid #6366f1; padding-left: 10px;">
+            <p style="font-weight: 800; color: #4338ca; font-size: 0.98rem; margin-bottom: 4px;">• Chiết tự chữ <strong>'${ch}'</strong> (${dbItem.amHanViet || ''} - ${dbItem.nghia || ''}):</p>
+            <div style="color: #334155; font-size: 0.92rem; line-height: 1.5;">${formattedEtym}</div>
+          </div>`;
+        }
       }
     });
 
@@ -843,7 +1238,7 @@ function selectVocabWord(index, el) {
             <i class="fa-solid fa-puzzle-piece"></i> 🧩 CẤU TRÚC CHIẾT TỰ (Etymology):
           </div>
           <div class="etym-body">
-            ${item.etymology}
+            ${etymologyHtml || item.etymology}
           </div>
         </div>
       </div>
